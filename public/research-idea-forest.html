@@ -1,0 +1,1806 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>research-idea-forest.html</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe id="codex-visualization" sandbox="allow-scripts" scrolling="no" referrerpolicy="no-referrer" title="research-idea-forest.html" data-srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'&quot;&gt;
+&lt;title&gt;research-idea-forest.html&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;(() =&gt; {
+  const root = document.documentElement;
+  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+  const apply = Reflect.apply;
+  const isArray = Array.isArray;
+  const parentWindow = globalThis.parent;
+  /**
+   * @param {object} prototype
+   * @param {string} property
+   */
+  const getPrototypeGetter = (prototype, property) =&gt; {
+    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
+    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
+    if (getter == null) {
+      throw new Error(`Missing ${property} getter`);
+    }
+    return getter;
+  };
+  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
+  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
+  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const addHostMessageListener = MessagePort.prototype.addEventListener;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const postHostMessage = MessagePort.prototype.postMessage;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const startHostPort = MessagePort.prototype.start;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
+  /** @type {MessagePort | null} */
+  let hostPort = null;
+  const postToHost = (type, payload) =&gt; {
+    if (hostPort != null) {
+      apply(postHostMessage, hostPort, [{ type, ...payload }]);
+    }
+  };
+  const openExternal = ({ href }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;open-external&quot;, { href });
+    }
+  };
+  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;follow-up&quot;, { context, prompt, title });
+    }
+    return Promise.resolve();
+  };
+  const syncTheme = () =&gt; {
+    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    root.dataset.theme = theme;
+    globalThis.openai = {
+      ...globalThis.openai,
+      openExternal,
+      sendFollowUpMessage,
+      theme,
+      visualizationStyleVariables: {},
+      visualizationTheme: theme,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: globalThis.openai },
+      }),
+    );
+  };
+  const sendHeight = () =&gt; {
+    postToHost(&quot;height&quot;, {
+      height: Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.getBoundingClientRect().height,
+        ),
+      ),
+    });
+  };
+
+  globalThis.addEventListener(
+    &quot;message&quot;,
+    (event) =&gt; {
+      const data = apply(getMessageData, event, []);
+      const ports = apply(getMessagePorts, event, []);
+      const source = apply(getMessageSource, event, []);
+      if (
+        source !== parentWindow ||
+        typeof data !== &quot;object&quot; ||
+        data == null ||
+        data.type !== &quot;codex-visualization-initialize&quot; ||
+        !isArray(ports) ||
+        ports.length !== 1
+      ) {
+        return;
+      }
+      apply(stopMessagePropagation, event, []);
+      const nextHostPort = ports[0];
+      try {
+        apply(addHostMessageListener, nextHostPort, [
+          &quot;message&quot;,
+          (event) =&gt; {
+            const data = apply(getMessageData, event, []);
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+              sendHeight();
+            }
+          },
+        ]);
+        apply(startHostPort, nextHostPort, []);
+      } catch {
+        return;
+      }
+      hostPort = nextHostPort;
+      sendHeight();
+    },
+    { capture: true },
+  );
+  document.currentScript?.remove();
+  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
+  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let element = null;
+    if (event.target instanceof globalThis.Element) {
+      element = event.target;
+    } else if (event.target instanceof globalThis.Node) {
+      element = event.target.parentElement;
+    }
+    const link = element?.closest(&quot;a[href]&quot;);
+    const href = link?.getAttribute(&quot;href&quot;);
+    if (href == null) {
+      return;
+    }
+    if (href.startsWith(&quot;#&quot;)) {
+      let id;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
+      const target = id.length === 0 ? root : document.getElementById(id);
+      if (
+        target == null ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      event.preventDefault();
+      postToHost(&quot;scroll-to&quot;, {
+        top: target.getBoundingClientRect().top + globalThis.scrollY,
+      });
+      return;
+    }
+    event.preventDefault();
+    openExternal({ href });
+  });
+  new ResizeObserver(sendHeight).observe(document.body);
+  syncTheme();
+})();
+&lt;/script&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --red: light-dark(rgb(186 38 35), rgb(250 66 62));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;script&gt;
+(() =&gt; {
+  const root = document.documentElement;
+  const initialGlobals =
+    globalThis.__codexVisualizationInitialGlobals ?? globalThis.openai;
+  delete globalThis.__codexVisualizationInitialGlobals;
+  let appliedProperties = [];
+
+  const applyHostStyleVariables = (styleVariables) =&gt; {
+    if (styleVariables == null || typeof styleVariables !== &quot;object&quot;) {
+      return;
+    }
+    for (const property of appliedProperties) {
+      root.style.removeProperty(property);
+    }
+    appliedProperties = [];
+    for (const [property, value] of Object.entries(styleVariables)) {
+      if (property.startsWith(&quot;--&quot;) &amp;&amp; typeof value === &quot;string&quot;) {
+        root.style.setProperty(property, value);
+        appliedProperties.push(property);
+      }
+    }
+  };
+
+  const syncHostStyles = (globals) =&gt; {
+    applyHostStyleVariables(globals?.visualizationStyleVariables);
+  };
+
+  syncHostStyles(initialGlobals);
+  globalThis.addEventListener(&quot;openai:set_globals&quot;, (event) =&gt; {
+    syncHostStyles(event.detail?.globals);
+  });
+})();
+&lt;/script&gt;
+
+&lt;div id=&quot;research-idea-forest&quot; data-theme=&quot;auto&quot;&gt;
+  &lt;style&gt;
+    #research-idea-forest {
+      --bg: #f4f6f1;
+      --surface: rgba(255,255,255,.88);
+      --surface-2: #eef1e9;
+      --ink: #172019;
+      --muted: #607065;
+      --line: #cad2c5;
+      --accent: #135f4a;
+      --accent-2: #df7245;
+      --good: #27744d;
+      --warn: #b96b19;
+      --stop: #a1433d;
+      --shadow: 0 18px 48px rgba(30,48,36,.12);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 5%, rgba(223,114,69,.16), transparent 28rem),
+        radial-gradient(circle at 92% 20%, rgba(19,95,74,.13), transparent 30rem),
+        var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: clamp(18px, 3vw, 34px);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;
+      box-sizing: border-box;
+      min-height: 720px;
+    }
+    @media (prefers-color-scheme: dark) {
+      #research-idea-forest {
+        --bg: #111813;
+        --surface: rgba(26,35,29,.92);
+        --surface-2: #202b23;
+        --ink: #ecf2ed;
+        --muted: #a7b5aa;
+        --line: #39483d;
+        --accent: #73c7a7;
+        --accent-2: #f29a70;
+        --good: #74c99a;
+        --warn: #efad58;
+        --stop: #ee8a82;
+        --shadow: 0 18px 48px rgba(0,0,0,.28);
+      }
+    }
+    #research-idea-forest * { box-sizing: border-box; }
+    #research-idea-forest .rif-kicker {
+      display: flex; align-items: center; gap: 9px; margin-bottom: 8px;
+      color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    }
+    #research-idea-forest .rif-kicker::before { content: &quot;&quot;; width: 26px; height: 2px; background: var(--accent-2); }
+    #research-idea-forest h1 { margin: 0; max-width: 980px; font: 750 clamp(28px, 4.8vw, 54px)/1.04 Georgia, &quot;Times New Roman&quot;, serif; letter-spacing: -.035em; }
+    #research-idea-forest .rif-sub { max-width: 900px; margin: 14px 0 22px; color: var(--muted); font-size: 15px; line-height: 1.65; }
+    #research-idea-forest .rif-metrics { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin: 0 0 22px; }
+    #research-idea-forest .rif-metric { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 13px 15px; box-shadow: var(--shadow); }
+    #research-idea-forest .rif-metric strong { display: block; font: 750 25px/1 Georgia, serif; color: var(--accent); }
+    #research-idea-forest .rif-metric span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+    #research-idea-forest .rif-core {
+      position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
+      margin: 0 0 20px; padding: 18px; border: 1px solid color-mix(in srgb, var(--accent) 38%, var(--line)); border-radius: 18px;
+      background: linear-gradient(115deg, color-mix(in srgb, var(--accent) 10%, var(--surface)), var(--surface));
+    }
+    #research-idea-forest .rif-core::after { content: &quot;&quot;; position: absolute; inset: auto -30px -45px auto; width: 150px; height: 150px; border: 26px solid color-mix(in srgb, var(--accent-2) 13%, transparent); border-radius: 50%; }
+    #research-idea-forest .rif-core-side { color: var(--muted); font-size: 12px; line-height: 1.55; }
+    #research-idea-forest .rif-core-side:last-child { text-align: right; }
+    #research-idea-forest .rif-core-center { position: relative; z-index: 1; text-align: center; min-width: 240px; }
+    #research-idea-forest .rif-core-center b { display: block; color: var(--accent-2); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+    #research-idea-forest .rif-core-center strong { display: block; margin-top: 5px; font: 700 20px/1.22 Georgia, serif; }
+    #research-idea-forest .rif-toolbar { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; margin-bottom: 18px; }
+    #research-idea-forest .rif-tabs { display: flex; gap: 7px; flex-wrap: wrap; flex: 1; }
+    #research-idea-forest button { color: inherit; font: inherit; }
+    #research-idea-forest .rif-tab {
+      border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 9px 12px; cursor: pointer; font-size: 12px; font-weight: 750;
+      transition: transform .15s ease, background .15s ease, color .15s ease;
+    }
+    #research-idea-forest .rif-tab:hover { transform: translateY(-1px); }
+    #research-idea-forest .rif-tab[aria-selected=&quot;true&quot;] { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+    #research-idea-forest .rif-search { width: min(260px,100%); border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 10px 14px; outline: none; }
+    #research-idea-forest .rif-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+    #research-idea-forest .rif-branch { display: none; }
+    #research-idea-forest .rif-branch.is-active { display: block; animation: rif-in .22s ease; }
+    @keyframes rif-in { from { opacity: 0; transform: translateY(5px); } }
+    #research-idea-forest .rif-branch-head { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(210px,.7fr); gap: 16px; margin-bottom: 14px; }
+    #research-idea-forest .rif-branch-title, #research-idea-forest .rif-pressure { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 17px; }
+    #research-idea-forest .rif-branch-title h2 { margin: 0; font: 750 25px/1.1 Georgia, serif; }
+    #research-idea-forest .rif-branch-title p, #research-idea-forest .rif-pressure p { margin: 8px 0 0; color: var(--muted); line-height: 1.55; font-size: 13px; }
+    #research-idea-forest .rif-pressure b { color: var(--stop); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+    #research-idea-forest .rif-tree { position: relative; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+    #research-idea-forest .rif-tree::before { content: &quot;&quot;; position: absolute; left: 11px; right: 11px; top: -7px; height: 1px; background: var(--line); }
+    #research-idea-forest details { position: relative; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); overflow: hidden; min-height: 96px; }
+    #research-idea-forest details::before { content: &quot;&quot;; position: absolute; top: -8px; left: 50%; width: 1px; height: 8px; background: var(--line); }
+    #research-idea-forest summary { list-style: none; cursor: pointer; padding: 15px 15px 13px; }
+    #research-idea-forest summary::-webkit-details-marker { display: none; }
+    #research-idea-forest .rif-node-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    #research-idea-forest .rif-node-code { color: var(--accent); font-size: 11px; font-weight: 850; letter-spacing: .08em; }
+    #research-idea-forest .rif-chevron { color: var(--muted); transition: transform .18s; }
+    #research-idea-forest details[open] .rif-chevron { transform: rotate(45deg); }
+    #research-idea-forest .rif-node-title { display: block; margin-top: 6px; font-weight: 760; font-size: 14px; line-height: 1.35; }
+    #research-idea-forest .rif-node-meta { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+    #research-idea-forest .rif-chip { border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 3px 7px; font-size: 10px; }
+    #research-idea-forest .rif-chip.pressure { color: var(--stop); border-color: color-mix(in srgb, var(--stop) 40%, var(--line)); }
+    #research-idea-forest .rif-chip.open { color: var(--good); border-color: color-mix(in srgb, var(--good) 40%, var(--line)); }
+    #research-idea-forest .rif-node-body { border-top: 1px dashed var(--line); background: var(--surface-2); padding: 12px 15px 15px; }
+    #research-idea-forest .rif-evidence { color: var(--muted); font-size: 11px; line-height: 1.55; }
+    #research-idea-forest .rif-leaves { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+    #research-idea-forest .rif-leaves li { position: relative; padding: 8px 9px 8px 25px; border-radius: 9px; background: var(--surface); font-size: 12px; line-height: 1.45; }
+    #research-idea-forest .rif-leaves li::before { content: &quot;↳&quot;; position: absolute; left: 9px; color: var(--accent-2); font-weight: 800; }
+    #research-idea-forest .rif-status { display: inline-flex; align-items: center; gap: 5px; margin-top: 9px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+    #research-idea-forest .rif-status::before { content: &quot;&quot;; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    #research-idea-forest .probe { color: var(--good); }
+    #research-idea-forest .audit { color: var(--warn); }
+    #research-idea-forest .nested { color: var(--stop); }
+    #research-idea-forest .radar { color: var(--muted); }
+    #research-idea-forest .rif-hidden { display: none !important; }
+    #research-idea-forest .rif-foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 18px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    #research-idea-forest .rif-legend { display: flex; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 900px) {
+      #research-idea-forest .rif-tree { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      #research-idea-forest .rif-branch-head { grid-template-columns: 1fr; }
+      #research-idea-forest .rif-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width: 620px) {
+      #research-idea-forest { border-radius: 14px; padding: 16px; }
+      #research-idea-forest .rif-tree { grid-template-columns: 1fr; }
+      #research-idea-forest .rif-core { grid-template-columns: 1fr; text-align: left; }
+      #research-idea-forest .rif-core-side:last-child { text-align: left; }
+      #research-idea-forest .rif-core-center { text-align: left; min-width: 0; }
+      #research-idea-forest .rif-search { width: 100%; }
+    }
+  &lt;/style&gt;
+
+  &lt;div class=&quot;rif-kicker&quot;&gt;Second-pass literature review&lt;/div&gt;
+  &lt;h1&gt;Six-Branch Idea Forest&lt;/h1&gt;
+  &lt;p class=&quot;rif-sub&quot;&gt;不是六个题目，而是六个持续分叉的研究森林。点击方向，再展开论文簇；每个节点都把已有覆盖、剩余评测变量与当前决策分开。&lt;/p&gt;
+
+  &lt;section class=&quot;rif-metrics&quot; aria-label=&quot;Review summary&quot;&gt;
+    &lt;div class=&quot;rif-metric&quot;&gt;&lt;strong&gt;106&lt;/strong&gt;&lt;span&gt;已打开核验的 primary sources&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;rif-metric&quot;&gt;&lt;strong&gt;32&lt;/strong&gt;&lt;span&gt;按问题与评测单位组织的 clusters&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;rif-metric&quot;&gt;&lt;strong&gt;24+&lt;/strong&gt;&lt;span&gt;本轮一阶 idea leaves，可继续组合分叉&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;rif-metric&quot;&gt;&lt;strong&gt;36&lt;/strong&gt;&lt;span&gt;Kanban candidates；当前无 empirical result&lt;/span&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;rif-core&quot; aria-label=&quot;Shared research object&quot;&gt;
+    &lt;div class=&quot;rif-core-side&quot;&gt;过去：storage / trigger / adaptation&lt;br&gt;组件能力与单点分数&lt;/div&gt;
+    &lt;div class=&quot;rif-core-center&quot;&gt;&lt;b&gt;Current shared white space&lt;/b&gt;&lt;strong&gt;State transition → Responsibility → Residual influence&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class=&quot;rif-core-side&quot;&gt;下一步：paired counterfactual&lt;br&gt;alternative action / repair / rollback&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;div class=&quot;rif-toolbar&quot;&gt;
+    &lt;div class=&quot;rif-tabs&quot; role=&quot;tablist&quot; aria-label=&quot;Research branches&quot;&gt;
+      &lt;button class=&quot;rif-tab&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot; data-target=&quot;m-ai&quot;&gt;M-AI&lt;/button&gt;
+      &lt;button class=&quot;rif-tab&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot; data-target=&quot;m-phy&quot;&gt;M-PHY&lt;/button&gt;
+      &lt;button class=&quot;rif-tab&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot; data-target=&quot;p-ai&quot;&gt;P-AI&lt;/button&gt;
+      &lt;button class=&quot;rif-tab&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot; data-target=&quot;p-phy&quot;&gt;P-PHY&lt;/button&gt;
+      &lt;button class=&quot;rif-tab&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot; data-target=&quot;u-ai&quot;&gt;U-AI&lt;/button&gt;
+      &lt;button class=&quot;rif-tab&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot; data-target=&quot;u-phy&quot;&gt;U-PHY&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;input class=&quot;rif-search&quot; type=&quot;search&quot; aria-label=&quot;Search clusters and leaves&quot; placeholder=&quot;搜索 cluster / paper / idea…&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;section class=&quot;rif-branch is-active&quot; id=&quot;m-ai&quot; role=&quot;tabpanel&quot; data-branch=&quot;m-ai&quot;&gt;
+    &lt;div class=&quot;rif-branch-head&quot;&gt;
+      &lt;div class=&quot;rif-branch-title&quot;&gt;&lt;h2&gt;M-AI · AI Memory&lt;/h2&gt;&lt;p&gt;从“存什么、怎么找”转向 transaction、authority、revocation、repair 与行动后果。&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;rif-pressure&quot;&gt;&lt;b&gt;Strongest pressure&lt;/b&gt;&lt;p&gt;MemTX / MemTxn / STALE / GateMem / Commit-Time Authorization 已直接占据 lifecycle 与 governance 强邻域。&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;rif-tree&quot;&gt;
+      &lt;details open data-search=&quot;runtime storage MemGPT Mem0 A-MEM Zep decision sufficiency rollback&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MA-1&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Storage &amp; runtime&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;crowded&lt;/span&gt;&lt;span class=&quot;rif-chip open&quot;&gt;decision gap&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;MemGPT · Mem0 · A-MEM · Zep&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Equal-budget structure vs decision sufficiency&lt;/li&gt;&lt;li&gt;Explicit / cache / skill / parametric rollback&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;LongMemEval MemoryArena STALE PersistBench lifecycle state machine abstention&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MA-2&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Recall → lifecycle state&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;new benchmarks&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;LongMemEval · MemoryArena · STALE · PersistBench&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L1 lifecycle-equivalent paired histories&lt;/li&gt;&lt;li&gt;L2 explicit update / expire / revoke / restore machine&lt;/li&gt;&lt;li&gt;L3 abstain: unknown / unauthorized / stale / irreversible&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status probe&quot;&gt;C01 probe&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;MemoryArena environment action skill blame responsibility&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MA-3&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Memory–environment–action&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;responsibility&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;MemoryArena · LongMemEval-V2 · MUSE-Autoskill&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Environment drift invalidates old runbooks&lt;/li&gt;&lt;li&gt;Writer → memory → policy → tool blame matrix&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;MetaMem ATRBench TMEM acquisition value information proactive memory&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MA-4&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Acquisition &amp; meta-memory&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;future value&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;MetaMem · ATRBench · TMEM&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Ask-now / use-later value of information&lt;/li&gt;&lt;li&gt;Cross-layer selective rollback&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;MemTX MemTxn GateMem authorization governance repair residual revocation&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MA-5&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Governance &amp; repair&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;very strong pressure&lt;/span&gt;&lt;span class=&quot;rif-chip open&quot;&gt;benign residue&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;MemTX · MemTxn · GateMem · MemSecBench · Commit-Time Auth&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L4 residual influence after benign revocation&lt;/li&gt;&lt;li&gt;Owner / delegate / subject authority matrix&lt;/li&gt;&lt;li&gt;Commit witness vs post-commit repair responsibility&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status probe&quot;&gt;C03 narrowed probe&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;rif-branch&quot; id=&quot;m-phy&quot; role=&quot;tabpanel&quot; data-branch=&quot;m-phy&quot;&gt;
+    &lt;div class=&quot;rif-branch-head&quot;&gt;
+      &lt;div class=&quot;rif-branch-title&quot;&gt;&lt;h2&gt;M-PHY · Physiological Memory&lt;/h2&gt;&lt;p&gt;生理方向不是换数据集；特殊价值来自 missingness、设备 provenance、时间尺度与决策后果。&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;rif-pressure&quot;&gt;&lt;b&gt;Strongest pressure&lt;/b&gt;&lt;p&gt;OpenMHC、LSM-2 与 wearable foundation models 让“再做 representation / imputation”非常拥挤。&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;rif-tree&quot;&gt;
+      &lt;details data-search=&quot;OpenMHC NormWear PaPaGei MOMENT representation foundation model&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MP-1&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Wearable representation&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;highly crowded&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;OpenMHC · NormWear · PaPaGei · MOMENT&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Representation quality vs downstream decision regret&lt;/li&gt;&lt;li&gt;Acute–chronic contradiction with abstention&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;PHIA PhysioLLM WAG VitalAgent language health insight provenance&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MP-2&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Wearable-to-language insight&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;provenance&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;PHIA · PhysioLLM · WAG · VitalAgent&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Insight traced to device / window / quality / version&lt;/li&gt;&lt;li&gt;Stale insight withdrawal after medication or routine change&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details open data-search=&quot;LSM-2 OpenMHC missingness MNAR active sensing ask wait regret&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MP-3&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Missingness → acquisition → action&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;generic version killed&lt;/span&gt;&lt;span class=&quot;rif-chip open&quot;&gt;cause &amp; regret&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;LSM-2 · OpenMHC · ProAgent · HabitSense&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L5 missingness cause → action&lt;/li&gt;&lt;li&gt;L6 policy-induced missingness&lt;/li&gt;&lt;li&gt;L7 decision-aware imputation&lt;/li&gt;&lt;li&gt;L8 privacy-cost sensing&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status audit&quot;&gt;C08 branch / audit&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;GLOBEM longitudinal multiscale intervention baseline&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MP-4&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Longitudinal &amp; multiscale&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;decision compression&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;GLOBEM · PH-LLM · post-intervention response&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Decision-sufficient, not reconstruction-optimal memory&lt;/li&gt;&lt;li&gt;Treatment effect mistaken as new baseline&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;device placement firmware provenance deletion physiological memory&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;MP-5&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Device provenance &amp; deletion&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;derived state&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;PaPaGei · cross-device stress · on-device HAR&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Device change vs true physiology paired attribution&lt;/li&gt;&lt;li&gt;Raw → feature → profile → recommendation deletion&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;rif-branch&quot; id=&quot;p-ai&quot; role=&quot;tabpanel&quot; data-branch=&quot;p-ai&quot;&gt;
+    &lt;div class=&quot;rif-branch-head&quot;&gt;
+      &lt;div class=&quot;rif-branch-title&quot;&gt;&lt;h2&gt;P-AI · Proactive Agent&lt;/h2&gt;&lt;p&gt;从 act/silent 扩展为 watch、wait、ask、prepare、suggest、execute、withdraw 与 repair。&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;rif-pressure&quot;&gt;&lt;b&gt;Strongest pressure&lt;/b&gt;&lt;p&gt;ProEvent、ProAgentBench、ProactiveVideoQA 与 AgentAbstain 已直接覆盖事件、timing 与 abstention。&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;rif-tree&quot;&gt;
+      &lt;details data-search=&quot;ProactiveBench ProCIS trigger retrieval content&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PA-1&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Trigger &amp; retrieval&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;binary crowded&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;ProactiveBench · ProCIS · TGL Trigger&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Risk-conditioned action granularity&lt;/li&gt;&lt;li&gt;Trigger correct, channel/tool wrong decomposition&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;ProEvent pi-Bench ProAgentBench long horizon workflow intent&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PA-2&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Events &amp; hidden intent&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;direct benchmarks&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;ProEvent · π-Bench · ProAgentBench&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Event state revision with downstream side effects&lt;/li&gt;&lt;li&gt;Cross-session dependency responsibility&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;Ask-before-Plan ATRBench uncertainty information seeking clarification&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PA-3&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Ask &amp; information acquisition&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;question cost&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;Ask-before-Plan · ATRBench · Uncertainty of Thoughts&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Ask / wait / retrieve / prepare value ordering&lt;/li&gt;&lt;li&gt;Question burden under uncertain future value&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details open data-search=&quot;ProAct-75 PROBE action lattice parallel irreversible tool&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PA-4&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Structured action lattice&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;policy ranking&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;ProAct-75 · PROBE · AgentAbstain&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L9 action-lattice policy&lt;/li&gt;&lt;li&gt;Suggest / prepare / execute by reversibility&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status probe&quot;&gt;C13 probe&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details open data-search=&quot;timing repair retraction correction trust C14 C15&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PA-5&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Timing &amp; post-action repair&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;standalone killed&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;ProEvent · ProactiveVideoQA · AgentAbstain · MemTX&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L10 consequence-aware timing&lt;/li&gt;&lt;li&gt;L11 irreversible-action repair&lt;/li&gt;&lt;li&gt;L12 repeated-assistance trust erosion&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status nested&quot;&gt;C14/C15 nested&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;rif-branch&quot; id=&quot;p-phy&quot; role=&quot;tabpanel&quot; data-branch=&quot;p-phy&quot;&gt;
+    &lt;div class=&quot;rif-branch-head&quot;&gt;
+      &lt;div class=&quot;rif-branch-title&quot;&gt;&lt;h2&gt;P-PHY · Physiological Proactivity&lt;/h2&gt;&lt;p&gt;JITAI/MRT 提供成熟语言；核心是构念、因果 estimand、感知闭环与 intervention dynamics。&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;rif-pressure&quot;&gt;&lt;b&gt;Hard boundary&lt;/b&gt;&lt;p&gt;Need、availability、receptivity、feasibility、response prediction 与 treatment effect 不能互换。&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;rif-tree&quot;&gt;
+      &lt;details data-search=&quot;JITAI need receptivity feasibility effect construct&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PP-1&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;JITAI constructs&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;mature field&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;JITAI frameworks · HeartSteps&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L14 construct-conflict matched cases&lt;/li&gt;&lt;li&gt;No-intervention as an explicit option&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status audit&quot;&gt;C19 audit&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details open data-search=&quot;MRT causal excursion assignment propensity ranking proxy SCM&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PP-2&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Causal excursion effects&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;proxy failure&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;MRT methods · HeartSteps · HeartSteps II&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L13 proxy-vs-policy ranking reversal&lt;/li&gt;&lt;li&gt;Proximal / distal / burden estimand split&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status probe&quot;&gt;C23 diagnosis&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;availability receptivity social context delivery&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PP-3&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Need &amp; receptivity conflict&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;alternative action&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;Mental Health Receptivity · Opportune Speaker&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;High-need / low-receptivity quadrants&lt;/li&gt;&lt;li&gt;Wait / switch modality / ask / escalate&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;PULSE ProAgent sensing delay opportunity window withdrawal&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PP-4&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Sensing loop &amp; delay&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;PULSE&lt;/span&gt;&lt;span class=&quot;rif-chip open&quot;&gt;closed loop&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;PULSE · ProAgent · SigmaScheduling · HabitSense&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L15 sensing-loop policy&lt;/li&gt;&lt;li&gt;L16 state-resolved withdrawal timing&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;dose habituation response effect intervention adherence&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;PP-5&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Dose, response &amp; habituation&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;longitudinal effect&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;Post-intervention response · WatchGuardian&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Dose-aware policy and cooldown&lt;/li&gt;&lt;li&gt;Intervention-induced adherence drift&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;rif-branch&quot; id=&quot;u-ai&quot; role=&quot;tabpanel&quot; data-branch=&quot;u-ai&quot;&gt;
+    &lt;div class=&quot;rif-branch-head&quot;&gt;
+      &lt;div class=&quot;rif-branch-title&quot;&gt;&lt;h2&gt;U-AI · AI Personalization&lt;/h2&gt;&lt;p&gt;从“用了用户信息吗”转向偏好何时有效、冲突来自哪里、更新哪一层、如何协商与回滚。&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;rif-pressure&quot;&gt;&lt;b&gt;Strongest pressure&lt;/b&gt;&lt;p&gt;HorizonBench、PERMA、BenchPreS、Persona2Web 已覆盖长期演化、context selectivity 与 personalized action。&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;rif-tree&quot;&gt;
+      &lt;details data-search=&quot;persona explicit PersonaFeedback PersoBench identity&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UA-1&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Explicit persona&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;crowded&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;PersonaFeedback · PersoBench · PersonaMem&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Personalized-but-task-wrong two-axis evaluation&lt;/li&gt;&lt;li&gt;Explain and disable a used preference&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details open data-search=&quot;LaMP BenchPreS Persona2Web preference conflict context role&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UA-2&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;History retrieval &amp; selectivity&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;strong overlap&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;LaMP · BenchPreS · Persona2Web · RPEval&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L17 role/context conflict — only as attribution, not raw selectivity&lt;/li&gt;&lt;li&gt;Latest / role filter / ask-user killer baselines&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status probe&quot;&gt;C25 narrowed probe&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;HorizonBench PERMA RealPref lifelong evolving preference&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UA-3&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Lifelong preference evolution&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;direct benchmarks&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;HorizonBench · PERMA · RealPref · AI PERSONA&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Preference drift vs context vs identity attribution&lt;/li&gt;&lt;li&gt;L20 performative preference drift&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status audit&quot;&gt;branch&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;adapter policy personalization rollback SAGER TMEM&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UA-4&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Alignment, adapter &amp; policy&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;layer attribution&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;SAGER · TMEM · PerCE · Personalized Soups&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L19 update-layer attribution&lt;/li&gt;&lt;li&gt;Memory vs adapter vs policy rollback&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;C30 radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details open data-search=&quot;feedback clarification correction debt routing C28&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UA-5&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Feedback-cause routing&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;clean opportunity&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;ATRBench · PAHF · Ask-before-Plan&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L18 feedback → memory/reasoning/policy/style/tool&lt;/li&gt;&lt;li&gt;Correction debt across contexts&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status probe&quot;&gt;C28 define&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;shared household delegate identity negotiation GateMem&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UA-6&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Multi-identity negotiation&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;GateMem&lt;/span&gt;&lt;span class=&quot;rif-chip open&quot;&gt;role matrix&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;GateMem · Collaborative Memory&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Owner / speaker / subject / beneficiary arbitration&lt;/li&gt;&lt;li&gt;Ask / negotiate / default / abstain policy&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status audit&quot;&gt;C04/C26 audit&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;rif-branch&quot; id=&quot;u-phy&quot; role=&quot;tabpanel&quot; data-branch=&quot;u-phy&quot;&gt;
+    &lt;div class=&quot;rif-branch-head&quot;&gt;
+      &lt;div class=&quot;rif-branch-title&quot;&gt;&lt;h2&gt;U-PHY · Physiological Personalization&lt;/h2&gt;&lt;p&gt;个体适配已经成熟；机会在于 shift 来源、负迁移、operator choice、因果异质性与安全冷启动。&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;rif-pressure&quot;&gt;&lt;b&gt;Hard boundary&lt;/b&gt;&lt;p&gt;平均 adaptation gain 不能说明为何更新、该更新哪层、是否伤害某些用户，或介入是否真的有效。&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;rif-tree&quot;&gt;
+      &lt;details data-search=&quot;population representation individual variability wearable&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UP-1&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Population → individual gap&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;representation mature&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;OpenMHC · NormWear · PaPaGei&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Worst-user and subgroup failures hidden by mean AUROC&lt;/li&gt;&lt;li&gt;Population prior vs personal baseline calibration&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;few shot on device adaptation uncertainty negative transfer&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UP-2&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Few-shot/on-device adaptation&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip pressure&quot;&gt;many methods&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;Uncertainty-aware HAR · on-device few-shot HAR&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L23 negative-transfer prediction&lt;/li&gt;&lt;li&gt;Label / sense / abstain calibration budget&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;C32/C36 radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details open data-search=&quot;GLOBEM drift attribution device context label operator C31&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UP-3&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Drift attribution → operator&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;strong residual space&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;GLOBEM · cross-device stress · longitudinal HAR&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L21 physiology/device/context/label/policy attribution&lt;/li&gt;&lt;li&gt;Choose norm/head/adapter/memory/no-update&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status audit&quot;&gt;C31 data gate&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;personal health insight behavior prediction utility&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UP-4&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Personal health insight&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;utility gap&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;PH-LLM · PhysioLLM · Personalized Digital Health&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;Insight accuracy vs decision/user utility&lt;/li&gt;&lt;li&gt;When support users cause negative transfer&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;heterogeneous intervention effect response causal dose&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UP-5&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Heterogeneous intervention effect&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;causal split&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;MRT methods · post-intervention response&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L24 response prediction vs treatment effect&lt;/li&gt;&lt;li&gt;Person × context × dose heterogeneity&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;C33/C35 radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details data-search=&quot;cold start privacy deletion rollback abstention&quot;&gt;
+        &lt;summary&gt;&lt;div class=&quot;rif-node-top&quot;&gt;&lt;span class=&quot;rif-node-code&quot;&gt;UP-6&lt;/span&gt;&lt;span class=&quot;rif-chevron&quot;&gt;＋&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;rif-node-title&quot;&gt;Safe cold start &amp; deletion&lt;/span&gt;&lt;div class=&quot;rif-node-meta&quot;&gt;&lt;span class=&quot;rif-chip open&quot;&gt;safety&lt;/span&gt;&lt;/div&gt;&lt;/summary&gt;
+        &lt;div class=&quot;rif-node-body&quot;&gt;&lt;div class=&quot;rif-evidence&quot;&gt;Federated HAR privacy · on-device adaptation&lt;/div&gt;&lt;ul class=&quot;rif-leaves&quot;&gt;&lt;li&gt;L22 safe cold start with abstention&lt;/li&gt;&lt;li&gt;Revoke prototype/adapter/federated contribution&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;rif-status radar&quot;&gt;C36 radar&lt;/span&gt;&lt;/div&gt;
+      &lt;/details&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;footer class=&quot;rif-foot&quot;&gt;
+    &lt;div class=&quot;rif-legend&quot;&gt;&lt;span class=&quot;rif-status probe&quot;&gt;probe/define&lt;/span&gt;&lt;span class=&quot;rif-status audit&quot;&gt;audit/data gate&lt;/span&gt;&lt;span class=&quot;rif-status nested&quot;&gt;nested/broad killed&lt;/span&gt;&lt;span class=&quot;rif-status radar&quot;&gt;paper radar&lt;/span&gt;&lt;/div&gt;
+    &lt;div&gt;证据边界：paper presence ≠ novelty proof；author-reported result ≠ local reproduction。&lt;/div&gt;
+  &lt;/footer&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById('research-idea-forest');
+      if (!root) return;
+      const tabs = [...root.querySelectorAll('.rif-tab')];
+      const branches = [...root.querySelectorAll('.rif-branch')];
+      const search = root.querySelector('.rif-search');
+      const activate = (id) =&gt; {
+        tabs.forEach(t =&gt; t.setAttribute('aria-selected', String(t.dataset.target === id)));
+        branches.forEach(b =&gt; b.classList.toggle('is-active', b.id === id));
+        filter();
+      };
+      const filter = () =&gt; {
+        const q = (search.value || '').trim().toLowerCase();
+        const active = root.querySelector('.rif-branch.is-active');
+        if (!active) return;
+        active.querySelectorAll('details').forEach(node =&gt; {
+          const hay = `${node.dataset.search || ''} ${node.textContent}`.toLowerCase();
+          const match = !q || hay.includes(q);
+          node.classList.toggle('rif-hidden', !match);
+          if (q &amp;&amp; match) node.open = true;
+        });
+      };
+      tabs.forEach(tab =&gt; tab.addEventListener('click', () =&gt; activate(tab.dataset.target)));
+      search.addEventListener('input', filter);
+      search.addEventListener('keydown', e =&gt; { if (e.key === 'Escape') { search.value = ''; filter(); search.blur(); } });
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+
+&lt;style id=&quot;codex-visualization-document-scrollbar&quot;&gt;html,body{scrollbar-width:none!important}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}&lt;/style&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<script>(() => {
+  const frame = document.getElementById("codex-visualization");
+  if (!(frame instanceof HTMLIFrameElement)) {
+    return;
+  }
+  let viewportHeight = globalThis.innerHeight;
+
+  const channel = new MessageChannel();
+  channel.port1.addEventListener("message", (event) => {
+    const data = event.data;
+    if (typeof data !== "object" || data == null) {
+      return;
+    }
+    if (data.type === "height") {
+      const height = data.height;
+      if (
+        typeof height === "number" &&
+        Number.isFinite(height) &&
+        height >= 0 &&
+        height <= 10_000
+      ) {
+        frame.style.height = Math.ceil(height) + "px";
+      }
+      return;
+    }
+    if (data.type === "scroll-to") {
+      const top = data.top;
+      if (
+        typeof top === "number" &&
+        Number.isFinite(top) &&
+        top >= 0 &&
+        globalThis.navigator.userActivation?.isActive === true
+      ) {
+        globalThis.scrollTo({
+          top: Math.ceil(
+            globalThis.scrollY + frame.getBoundingClientRect().top + top,
+          ),
+        });
+      }
+      return;
+    }
+    if (data.type === "open-external") {
+      const rawHref = data.href;
+      if (typeof rawHref !== "string") {
+        return;
+      }
+      let href;
+      try {
+        const url = new URL(rawHref, document.baseURI);
+        if (url.protocol !== "https:") {
+          return;
+        }
+        href = url.href;
+      } catch {
+        return;
+      }
+      if (globalThis.navigator.userActivation?.isActive === true) {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.rel = "noopener noreferrer";
+        anchor.target = "_blank";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+      }
+      return;
+    }
+    if (data.type === "follow-up") {
+      const prompt = data.prompt;
+      if (
+        typeof prompt !== "string" ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      const title = data.title;
+      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
+    }
+  });
+  channel.port1.start();
+  const srcdoc = frame.dataset.srcdoc;
+  if (srcdoc == null) {
+    return;
+  }
+  globalThis.addEventListener("resize", () => {
+    const height = Number.parseFloat(frame.style.height);
+    if (!Number.isFinite(height) || height <= viewportHeight) {
+      frame.style.removeProperty("height");
+    }
+    viewportHeight = globalThis.innerHeight;
+    channel.port1.postMessage({ type: "measure" });
+  });
+  frame.addEventListener(
+    "load",
+    () => {
+      frame.contentWindow?.postMessage(
+        { type: "codex-visualization-initialize" },
+        "*",
+        [channel.port2],
+      );
+    },
+    { once: true },
+  );
+  frame.srcdoc = srcdoc;
+  delete frame.dataset.srcdoc;
+})();
+</script>
+</body>
+</html>
