@@ -1,0 +1,70 @@
+schema_version: 2
+
+identity:
+  run_id:
+  experiment_id:
+  primary_branch:
+  owner:
+  started_at:
+  ended_at:
+
+design:
+  hypothesis:
+  independent_variable:
+  held_constants: []
+  primary_metric:
+  baselines: []
+  stop_rule:
+  resource_ceiling:
+
+reproducibility:
+  repo:
+  commit_sha:
+  dirty_diff_digest: clean
+  environment:
+  entrypoint:
+  prompt_version: not_applicable
+  model:
+  parameters: {}
+  seed:
+
+data:
+  source_uri:
+  cache_path:
+  snapshot_digest:
+  split_digest:
+  license_or_consent:
+  leakage_check:
+
+runtime:
+  requested:
+    gpu:
+    cpu:
+    memory:
+  actual:
+    gpu_model:
+    gpu_count:
+    cpu:
+    memory:
+  ssh_target:
+  resolved_host:
+  remote_identity:
+  pool:
+  job_worker_instance:
+  storage_source_uri:
+  mount_probe:
+  exit_code:
+  wall_time:
+
+artifacts:
+  output_uri:
+  logs_uri:
+  metrics_uri:
+  checkpoint_uri: not_applicable
+  digests: {}
+
+result:
+  status: positive | negative | mixed | failed | invalid | inconclusive
+  summary:
+  integrity_notes:
+  decision: continue | branch | park | kill
