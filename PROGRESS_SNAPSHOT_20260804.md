@@ -8,7 +8,7 @@
 
 项目处在完整科研管道（发现→验证→实验→固化→成稿→评审→发布）的**第 1–2 段（发现 + 验证）**：34 个独立 Candidate 已定义，其中 5 个已到 `probe-ready`，但 **0 Actual Run、尚无任何 Local Result**（当前证据组合最高只到 inference / source-supported 级；证据等级属于具体 assertion，不是给整张卡贴标签）。
 
-> 这是早期发现阶段的**正常状态，不是落后**。发现阶段的产物本来就是"可证伪的问题 + 廉价验证设计"，而非实验结果。真正的下一步只有一件事：**把这 5 个 probe-ready 的 inference 跑成 local-result**——那是第一篇论文的起点。
+> 这是早期发现阶段的**正常状态，不是落后**。发现阶段的产物本来就是“可证伪的问题 + 廉价验证设计”，而非实验结果。真正的下一步只有一件事：**把至少一个 probe-ready Spec 变成有效 Run、Artifact 与 Evidence Decision**。positive / negative / mixed / inconclusive 都可以形成 Local Result，前提是 Run 有效并且证据可审计。
 
 ---
 
@@ -25,13 +25,13 @@
 
 **饿死预警**：M-PHY、U-PHY 是当前最需要照顾的两条线。M-PHY 除 C08 外 5 张全滞留 radar；U-PHY 唯一活跃的 C31 被 data-gate 挡住，等于整条线暂时停摆。
 
-> 注（对齐 OPERATIONS §3 新语义）：这里的"饿死"指**动量**信号，不是"候选数量不够"——组合健康不按候选数量判定。U-PHY 更准确的描述是事实上进入 `parked` 模式（unlock condition = 拿到真实 shift metadata）；M-PHY 处于 `explore`，需要把 C08 推过 overlap audit 而非硬凑新卡。
+> 注（对齐 OPERATIONS §3 新语义）：这里的“饿死”指**动量**信号，不是“候选数量不够”——组合健康不按候选数量判定。M-PHY 的 `explore` 已进入结构化索引；U-PHY 当前是 Candidate-level `blocked`，`parked` 只能作为待决定的 Track mode，不能在没有 Decision Event 时写成已生效事实。
 
 ---
 
 ## 3. 五张可立即跑的 Probe（指向性核心）
 
-这五张都是 `probe-ready` + CPU/API 资源 + **无 blocker**，是把 inference 变 local-result **成本最低的五个入口**。continue/kill 条件取自 BACKLOG Top12 的"关键边界"，非杜撰：
+这五张都是 `probe-ready` + CPU/API 资源 + **无 blocker**，是产生第一批可审计 Run / Artifact **成本最低的五个入口**。continue/kill 条件取自 BACKLOG Top12 的“关键边界”，非杜撰：
 
 | Candidate | 跑什么 | Continue 条件 | Kill 条件 |
 | --- | --- | --- | --- |
@@ -64,8 +64,8 @@
 - 把跑出的证据、状态变化回写事实源。
 
 **只在这几点需要你拍板（高影响）**：
-- 某个 probe 出结果后的 **kill / continue** 决定；
-- C02 / C04 是否 **branch**（分叉）；
+- 某个 probe 出结果后的 **kill / split / merge** 决定；
+- C02 / C04 是否 **split**（分叉）；
 - 任何 **Paper Project 立项**；
 - 任何**花真实 GPU** 的 Run（目前仅 C31 会触及，且它还卡在 data-gate）。
 
@@ -80,12 +80,17 @@
 但距离不用百分比，用"缺什么"表达：
 
 ```text
-离第一个 Paper Opportunity：只差 1 步
-└── 5 张 probe 里任意一张跑出 positive + 同预算强 baseline 后仍有 headroom
-    → 即可升为第一个 Paper Opportunity（然后才谈 Paper Project 立项）
+离第一条 Local Result：缺 1 个有效闭环
+└── Spec → Run Manifest → Artifact digest → Evidence Review → Decision
+
+离第一个 Paper Opportunity：仍需满足 promotion contract
+├── 至少一条有效 Local Result（必要但不充分）
+├── 强 baseline 后仍有存活 Claim 或可复用 diagnosis
+├── novelty pressure audit 通过
+└── 能形成可组合的 contribution / evidence path
 ```
 
-换句话说：**你离"开始形成一篇论文"不是很远——只隔着一次成功的 cheap probe。** 现在尚无 Local Result 不是问题，是还没开跑；一旦 C03 或 C13 跑出稳定 failure，就产生第一条 Local-Result 级证据，坐标立刻从"发现"推进到"有真实证据支撑的论文机会"。
+换句话说：**你离第一条本地证据只隔着一次有效 cheap probe，但离 Paper Opportunity 不是机械的一步。** C03 或 C13 无论得到 positive、negative 或 mixed 结果，只要 Run 有效，都会把坐标从“只有设计”推进到“已有本地证据与研究决定”；是否晋级 Paper Opportunity 要再按 promotion contract 审核。
 
 ---
 

@@ -4,7 +4,7 @@
 更新日期：2026-08-03
 阶段：论文驱动的问题发现与评测空间广扫；暂不设置 Draft gate
 
-本文件是 card 实时状态的**唯一动态视图**：当前列、下一步、blocker、证据级、停滞判定与溯源入口。稳定规范（brainstorm 合同、评测样例、四类决定定义）与论文簇判断不在此，见文末「指针区」。
+本文件是方便人阅读的动态摘要：当前列、下一步、blocker、证据级、停滞判定与溯源入口。结构化计数、关系和五维状态以 `research-index.yaml` 为准，变化历史以 `research-events.jsonl` 为准；本文件不得覆盖它们。稳定规范（brainstorm 合同、评测样例、决定定义）与论文簇判断不在此，见文末「指针区」。
 
 ## 本周期唯一目标
 
@@ -22,9 +22,9 @@
 
 ## 宏观组合视图
 
-六分支 × 各成熟度阶段的活跃分布（格内为卡数，由下方主表聚合得出）：
+六 Track × 各成熟度阶段的节点分布（格内为节点数；当前结构化索引冻结为 36 节点 / 34 独立 Candidate）：
 
-| Branch | Radar | Eval audit | Prob Def | Probe Ready | Data/GPU Gate | Nested | 终局 | 合计 |
+| Track | Radar | Eval audit | Prob Def | Probe Ready | Data/GPU Gate | Nested | 终局 | 合计 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | M-AI | 2 | 2 | 0 | 2 | 0 | 0 | 0 | 6 |
 | M-PHY | 5 | 1 | 0 | 0 | 0 | 0 | 0 | 6 |
@@ -34,7 +34,7 @@
 | U-PHY | 5 | 0 | 0 | 0 | 1 | 0 | 0 | 6 |
 | **合计** | **22** | **5** | **1** | **5** | **1** | **2** | **0** | **36** |
 
-**饿死信号**：每分支都维持 6 个 failure family（满足合同下限），但 **M-PHY 与 U-PHY 各有 5/6 仍滞留 Radar**、过 Radar 的活跃卡各只 1 张（C08、C31），动量最弱；U-PHY 唯一活跃卡 C31 还被 Data Gate 卡住。下周期补新候选/推进时优先照顾这两条线。终局列为 0：尚无本项目 Run，不能产生经验性终局判断——这是诚实进度信号，非停滞。
+**动量信号**：M-PHY 与 U-PHY 各有 5/6 节点仍滞留 Radar，过 Radar 的 Candidate 各只 1 张（C08、C31），动量最弱；U-PHY 的 C31 还被 Data Gate 卡住。组合健康不按固定 Candidate 数判断，应优先完成 C08 overlap audit 和 C31 metadata gate。终局列为 0：尚无本项目 Run，不能产生经验性终局判断——这是诚实进度信号，非停滞。
 
 ## 动态 Kanban
 
@@ -56,7 +56,7 @@ Paper Radar
 
 过 Radar 的 14 张活跃卡逐卡列全字段；22 张仍在 Radar 的候选按分支聚合于表下，不逐卡展开（N6：详细度随成熟度增长）。列名为唯一状态词，不再另设第二套标签。
 
-| 卡 | 分支 | 当前列 | 下一步动作 | blocker | 证据级 | 最后决策日 | 资源 |
+| Candidate | Track | 当前列 | 下一步动作 | blocker | 证据级 | 最后决策日 | 资源 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | C01 Lifecycle Counterfactuals | M-AI | Cheap Probe Ready | 180 组 paired trajectories + 5 baselines | 无 | inference | 2026-08-03※ | CPU/API |
 | C03 Benign Revocation Residual | M-AI | Cheap Probe Ready | 四层 canary + residual-influence matrix | 无 | inference | 2026-08-03※ | CPU/API |
@@ -73,7 +73,7 @@ Paper Radar
 | C14 Consequence-aware Timing | P-AI | Nested slice | 作为 C13 evaluator 的 timing slice 实现 | 依附 C13 probe，无独立启动 | inference | 2026-07-31 | CPU/API |
 | C15 Irreversible-action Repair | P-AI | Nested slice | 作为 C13/C03 evaluator 的 repair slice 实现 | 依附 C13/C03 probe，无独立启动 | inference | 2026-07-31 | CPU/API |
 
-Radar 候选（22，按分支聚合，未逐卡展开；进入 Eval audit 时才升为独立行）：
+Radar 候选（22，按 Track 聚合，未逐卡展开；进入 Eval audit 时才升为独立行）：
 - M-AI：C05–C06
 - M-PHY：C07、C09–C12
 - P-AI：C16–C18
@@ -81,7 +81,7 @@ Radar 候选（22，按分支聚合，未逐卡展开；进入 Eval audit 时才
 - U-AI：C27、C29–C30
 - U-PHY：C32–C36
 
-合计 36 个 candidates。※ 标记的最后决策日为**看板重建基准日 2026-08-03**，非真实决策日——用于启动下方 5-工作日 SLA；C14/C15 的 2026-07-31 是 nest 决策实际发生日（见周期决策记录）。证据级当前全部为 `inference`，无一 `local-result`（尚无 Run）：这是当前最重要的诚实进度信号。各卡 nearest-work pressure 记于 [sources/2026-07-30-adjacent-source-ledger.md](sources/2026-07-30-adjacent-source-ledger.md) 与 [LITERATURE_MAP.md](LITERATURE_MAP.md) §10。
+合计 36 个节点，其中 C14/C15 已 Nest，因此独立 Candidate 为 34。※ 标记的最后决策日为**看板重建基准日 2026-08-03**，非真实决策日——不得作为真实 Research Event；C14/C15 的 2026-07-31 是 nest 决策实际发生日。证据级当前全部为 `inference`，无一 `local-result`（尚无 Run）：这是当前最重要的诚实进度信号。各卡 nearest-work pressure 记于 [sources/2026-07-30-adjacent-source-ledger.md](sources/2026-07-30-adjacent-source-ledger.md) 与 [LITERATURE_MAP.md](LITERATURE_MAP.md) §10。
 
 ### 看板移动规则
 

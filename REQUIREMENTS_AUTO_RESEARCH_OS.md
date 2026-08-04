@@ -128,20 +128,23 @@ Source / Failure → Paper Radar → Overlap & Evaluation Audit → Problem Defi
 └── 2 个 Novelty Threat 未解决
 ```
 
-## 9. 当前实现问题（已对 research-idea-forest-site 核实）
+## 9. 当前实现状态（2026-08-04 重构后）
 
-事实源核对结果（`app/research-data.ts`, 725 行）：
-1. ✅ 手工维护 **8 个 Proposal**（C01/C03/C08/C13/C23/C25/C28/C31），canonical 跟踪 36 节点。
-2. ✅ 手工 **11 个 Experiment 对象**，但 canonical `experiments/` 真实文件 **0 个**。
-3. ✅ **无 Paper Project 对象**（导出类型仅 Paper/Cluster/Branch/Proposal/Experiment）；只有 51 个 Source Paper。
-4. Literature/Proposal/Experiment/Asset 做成五个平级空间，因果关系要用户脑补。
-5. 汇总数字、最近活动、阶段状态**硬编码**，不随 canonical 变化。
-6. C14/C15 已 Nest 却仍计入 36 独立 Candidate（应为 34）。
-7. "最后决策日"部分是看板初始化日期，非真实事件时间，无法显示可靠速度。
-8. UI 展示"实验准备度"，却不展示真正缺失的 evaluator/代码/快照/Run。
-9. 仍用旧词 `Proposal` / `branch`（违反 CONTEXT.md）。
+已关闭的根因：
 
-根因：不是 CSS/布局问题，是**数据模型与事实源**问题。
+1. `research-index.yaml` 已接管稳定 ID、关系、五维状态、时间戳和指针；Dashboard 不再手工维护第二份研究事实。
+2. 结构化索引包含 **106 Source ledger 入口、32 Literature Cluster、36 Candidate 节点、11 Experiment Spec**。
+3. 所有视图统一派生 **34 独立 Candidate + 2 Nested Slice + 5 Probe Ready + 0 Actual Run + 0 Local Result**。
+4. `Experiment Spec / Run / Artifact / Local Result`、`Source Paper / Paper Thread`、`Candidate / Proposal view` 已分离。
+5. 浏览器已重构为 `Now / Research Map / Candidates / Experiments / Decisions / Paper Portfolio / Assets` 七个因果下钻工作区。
+6. Leader Brief 采用确定性选择和 3–5 条注意力上限；External Review、Spec 和 Source Paper 结果不会显示成本地证据。
+7. `research-events.jsonl` 已承接 append-only applied transition，Nest 决策可恢复。
+8. `settle-research-event.mjs` 已提供 stable-ID typed changes、optimistic locking、两文件 journal、证据边界校验与中断恢复；Dashboard sync 会拒绝读取写入中或待恢复状态。
+
+仍未关闭的基础设施：
+
+- 106 个 ledger 来源中仍有一部分等待完整 Cluster / assertion-level Candidate linkage；页面会诚实显示未链接数量；
+- 尚未执行第一条真实 Cheap Probe，因此 Run / Artifact / Local Result / Paper Thread 仍为 0。
 
 ## 10. 数据层组织（文件少、边界清）
 
@@ -158,11 +161,11 @@ Source / Failure → Paper Radar → Overlap & Evaluation Audit → Problem Defi
 
 ## 11. 优先级
 
-**P0 · 先把系统事实做对**：冻结术语（✅ CONTEXT.md）；定义稳定 ID 与关系（✅ 本文件 §2）；修正 36 节点 / 34 独立 Candidate 口径；建 `research-index.yaml`；分 Experiment Spec 与 Run；分 Source Paper 与 Paper Project；所有汇总自动计算；明确 0 Actual Run。
+**P0 · 先把系统事实做对（✅ 已完成）**：冻结术语；稳定 ID 与关系；36 节点 / 34 独立 Candidate；`research-index.yaml`；Spec / Run；Source Paper / Paper Thread；自动汇总；明确 0 Actual Run；原子 writer 与 optimistic locking。
 
-**P1 · 可工作的研究界面**：Now/Portfolio、Research Map、Candidate Workspace、Experiment Center、Decision/Evolution DAG、Paper Opportunity/Project。
+**P1 · 可工作的研究界面（✅ 已完成）**：Now/Portfolio、Research Map、Candidate Workspace、Experiment Center、Decision/Evolution、Paper Opportunity/Project、Assets。
 
-**P2 · 效率与体验**：GPT Pro Project 自动同步与陈旧提醒；从论文半自动生成 Cluster/Candidate 草稿；Run Manifest 自动采集；Artifact/图表自动挂接；本地服务持久启动；搜索/过滤/跨对象跳转；托管访问。
+**P2 · 效率与体验（进行中）**：GPT Pro Project 自动同步与陈旧提醒；从论文半自动生成 Cluster/Candidate 草稿；Run Manifest 自动采集；Artifact/图表自动挂接；本地服务持久启动；托管访问。
 
 ## 12. 验收标准
 

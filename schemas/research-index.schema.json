@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.auto-research/schemas/research-index.schema.json",
+  "title": "Auto Research OS index",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "program",
+    "tracks",
+    "sourcePapers",
+    "clusters",
+    "gaps",
+    "candidates",
+    "experimentSpecs",
+    "runs",
+    "artifacts",
+    "evidenceLinks",
+    "decisions",
+    "paperThreads"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "generatedAt": { "type": "string" },
+    "program": {
+      "type": "object",
+      "required": ["id", "title", "researchObject"],
+      "properties": { "id": { "const": "PROGRAM" } }
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "mode"],
+        "properties": {
+          "id": { "enum": ["M-AI", "M-PHY", "P-AI", "P-PHY", "U-AI", "U-PHY"] },
+          "mode": { "enum": ["explore", "validate", "maintain", "parked"] }
+        }
+      }
+    },
+    "sourcePapers": { "type": "array" },
+    "clusters": { "type": "array" },
+    "gaps": { "type": "array" },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "trackId",
+          "title",
+          "maturity",
+          "workState",
+          "evidenceSummary",
+          "nextAction",
+          "nestedInto"
+        ],
+        "properties": {
+          "id": { "pattern": "^C[0-9]{2}$" },
+          "maturity": { "enum": ["radar", "audit", "problem", "probe", "pilot", "confirmation", "paper"] },
+          "workState": { "enum": ["active", "blocked", "parked", "closed"] },
+          "evidenceSummary": { "enum": ["unverified-lead", "source-supported", "inference", "local-result"] },
+          "nestedInto": { "type": "array", "items": { "pattern": "^C[0-9]{2}$" } }
+        }
+      }
+    },
+    "experimentSpecs": { "type": "array" },
+    "runs": { "type": "array" },
+    "artifacts": { "type": "array" },
+    "evidenceLinks": { "type": "array" },
+    "decisions": { "type": "array" },
+    "paperThreads": { "type": "array" }
+  },
+  "additionalProperties": true
+}

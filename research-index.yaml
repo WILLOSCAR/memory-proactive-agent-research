@@ -1,0 +1,4238 @@
+{
+  "$schema": "./schemas/research-index.schema.json",
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-04T16:00:00+08:00",
+  "sourceSnapshot": {
+    "authority": "SOURCE_AUTHORITY.yaml",
+    "vocabulary": "CONTEXT.md",
+    "currentState": "CURRENT.md",
+    "candidateDefinitions": "PROBLEM_BACKLOG.md",
+    "literature": "LITERATURE_MAP.md",
+    "sourceLedger": "sources/2026-07-30-adjacent-source-ledger.md"
+  },
+  "program": {
+    "id": "PROGRAM",
+    "title": "Memory × Proactive × Personalization Auto Research",
+    "researchObject": "A long-lived agent choosing whether to acquire information, wait, act, abstain, withdraw, or repair under changing users, history, environment, authority, sensors, tools, and memory.",
+    "cycle": {
+      "startsAt": "2026-07-30",
+      "endsAt": "2026-08-12"
+    }
+  },
+  "tracks": [
+    {
+      "id": "M-AI",
+      "family": "Memory",
+      "title": "AI Memory",
+      "subtitle": "生命周期、授权与可修复记忆",
+      "thesis": "不再问能否记住，而是问状态改变后，什么仍有效、谁有权使用、残余影响如何清除。",
+      "accent": "#167d72",
+      "mode": "validate",
+      "modeReason": "At least one falsifiable Candidate is under validation.",
+      "unlockCondition": null
+    },
+    {
+      "id": "M-PHY",
+      "family": "Memory",
+      "title": "Physiological Memory",
+      "subtitle": "连续信号如何形成决策可用的长期状态",
+      "thesis": "真正的难点不是换成 wearable 数据，而是缺失原因、设备 provenance 与多时间尺度如何改变决策。",
+      "accent": "#2b6cb0",
+      "mode": "explore",
+      "modeReason": "Only C08 has advanced beyond radar.",
+      "unlockCondition": null
+    },
+    {
+      "id": "P-AI",
+      "family": "Proactive",
+      "title": "Proactive Agent",
+      "subtitle": "从 act/silent 走向多动作与可逆介入",
+      "thesis": "主动性不是触发分类，而是 watch、wait、ask、prepare、suggest、execute、withdraw 的代价敏感策略。",
+      "accent": "#9a5b13",
+      "mode": "validate",
+      "modeReason": "At least one falsifiable Candidate is under validation.",
+      "unlockCondition": null
+    },
+    {
+      "id": "P-PHY",
+      "family": "Proactive",
+      "title": "Physiological Proactivity",
+      "subtitle": "闭环感知、介入时机与因果效应",
+      "thesis": "need、receptivity、feasibility、response 与 treatment effect 必须拆开，预测不能代替决策价值。",
+      "accent": "#b23a48",
+      "mode": "validate",
+      "modeReason": "At least one falsifiable Candidate is under validation.",
+      "unlockCondition": null
+    },
+    {
+      "id": "U-AI",
+      "family": "Personalization",
+      "title": "AI Personalization",
+      "subtitle": "多身份、偏好冲突与可撤销修正",
+      "thesis": "个性化的核心压力已经从“是否使用用户信息”转向变化原因、冲突协商与该更新哪一层。",
+      "accent": "#6f55a8",
+      "mode": "validate",
+      "modeReason": "At least one falsifiable Candidate is under validation.",
+      "unlockCondition": null
+    },
+    {
+      "id": "U-PHY",
+      "family": "Personalization",
+      "title": "Physiological Personalization",
+      "subtitle": "漂移归因、安全适配与异质效应",
+      "thesis": "先判断变化来自 physiology、device、context、label 还是 policy，再决定 update operator；平均增益不够。",
+      "accent": "#287a4d",
+      "mode": "validate",
+      "modeReason": "At least one falsifiable Candidate is under validation.",
+      "unlockCondition": null
+    }
+  ],
+  "sourcePapers": [
+    {
+      "id": "SRC-001",
+      "legacyId": null,
+      "title": "PM-Bench",
+      "topic": "Prospective Memory",
+      "url": "https://arxiv.org/abs/2607.12385",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "延迟意图需要在未来时间/事件/环境 cue 出现时执行；提供七天模拟任务。",
+      "note": "延迟意图需要在未来时间/事件/环境 cue 出现时执行；提供七天模拟任务。",
+      "trackIds": [
+        "M-AI",
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "legacyId": null,
+      "title": "ProactAgent",
+      "topic": "Proactive Retrieval",
+      "url": "https://arxiv.org/abs/2604.20572",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "把 retrieval 作为 policy action，用 paired branches 学习何时、检索什么。",
+      "note": "把 retrieval 作为 policy action，用 paired branches 学习何时、检索什么。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "legacyId": null,
+      "title": "Proactive Memory Agent",
+      "topic": "Memory Intervention",
+      "url": "https://arxiv.org/abs/2607.08716",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "独立 memory agent 更新 bank，并选择注入 reminder 或保持静默。",
+      "note": "独立 memory agent 更新 bank，并选择注入 reminder 或保持静默。",
+      "trackIds": [
+        "M-AI",
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "legacyId": null,
+      "title": "ProAct",
+      "topic": "Background Anticipation",
+      "url": "https://arxiv.org/abs/2605.25971",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "使用 idle-time compute、对话历史和持久 memory 预判后续需求。",
+      "note": "使用 idle-time compute、对话历史和持久 memory 预判后续需求。",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-005",
+      "legacyId": null,
+      "title": "TGL Trigger",
+      "topic": "Wake-up Trigger",
+      "url": "https://arxiv.org/abs/2605.30152",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "用小型 temporal graph model 处理事件流，只在 trigger 后调用 LLM。",
+      "note": "用小型 temporal graph model 处理事件流，只在 trigger 后调用 LLM。",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-006",
+      "legacyId": "contextagent",
+      "title": "ContextAgent",
+      "topic": "Sensory Proactivity",
+      "url": "https://arxiv.org/abs/2505.14668",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "用 wearable video/audio context 与 persona 预测是否主动服务，并调用工具。",
+      "note": "Wearable audio/video context and persona for proactive service.",
+      "trackIds": [
+        "P-AI",
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-007",
+      "legacyId": "proagent",
+      "title": "ProAgent",
+      "topic": "Active Sensing",
+      "url": "https://arxiv.org/abs/2512.06721",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "always-on 低成本信号与 on-demand 高成本视觉构成 tiered perception。",
+      "note": "Tiered perception with cheap always-on and costly on-demand sensing.",
+      "trackIds": [
+        "M-PHY",
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-008",
+      "legacyId": null,
+      "title": "ProMemAssist",
+      "topic": "Working Memory / Timing",
+      "url": "https://arxiv.org/abs/2507.21378",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "根据多模态信号维护工作记忆，并在帮助价值与打扰成本间选择时机。",
+      "note": "根据多模态信号维护工作记忆，并在帮助价值与打扰成本间选择时机。",
+      "trackIds": [
+        "P-AI",
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-009",
+      "legacyId": null,
+      "title": "VitalAgent",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2605.29483",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "longitudinal physiological memory、ECG/PPG 工具推理和 proactive monitoring。",
+      "note": "longitudinal physiological memory、ECG/PPG 工具推理和 proactive monitoring。",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-010",
+      "legacyId": null,
+      "title": "AwareLLM",
+      "topic": "Psychophysiological Agent",
+      "url": "https://arxiv.org/abs/2605.09625",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "融合 egocentric vision、gaze、pupillometry、posture 和 heart activity 做主动协作。",
+      "note": "融合 egocentric vision、gaze、pupillometry、posture 和 heart activity 做主动协作。",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-011",
+      "legacyId": "phllm",
+      "title": "PH-LLM",
+      "topic": "Personal Health LLM",
+      "url": "https://arxiv.org/abs/2406.06474",
+      "year": "2024",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "Fitbit/Pixel Watch 时间序列上的睡眠、运动洞察与建议；强调安全与专家评测。",
+      "note": "Wearable time-series insight and recommendation with expert evaluation.",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-012",
+      "legacyId": "normwear",
+      "title": "NormWear",
+      "topic": "Wearable Foundation Model",
+      "url": "https://arxiv.org/abs/2412.09758",
+      "year": "2024",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "在 PPG/ECG/EEG/GSR/IMU 上预训练并与文本表示对齐。",
+      "note": "Cross-modal wearable representation aligned with text.",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-013",
+      "legacyId": "wearablegi",
+      "title": "Wearable Health General Intelligence",
+      "topic": "Wearable Foundation Model / Personal Health Agent",
+      "url": "https://arxiv.org/abs/2605.22759",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "摘要报告超过一万亿分钟、五百万参与者的未标注传感器预训练，并在 35 个 health prediction tasks 上评测；只用于说明 population-scale representation 的强规模压力，不代表本项目复现或认可其全部结果。",
+      "note": "Population-scale wearable pretraining creates strong representation pressure.",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-014",
+      "legacyId": null,
+      "title": "Wearable Behavior FM",
+      "topic": "Wearable Representation",
+      "url": "https://arxiv.org/abs/2507.00191",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "大规模 wearable behavioral signals 的 foundation model 与多类健康预测。",
+      "note": "大规模 wearable behavioral signals 的 foundation model 与多类健康预测。",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-015",
+      "legacyId": null,
+      "title": "AURA-MFM",
+      "topic": "IMU–Language Alignment",
+      "url": "https://arxiv.org/abs/2506.03174",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "对齐 third-person video、motion capture、IMU 与 text。",
+      "note": "对齐 third-person video、motion capture、IMU 与 text。",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-016",
+      "legacyId": null,
+      "title": "PerMemBench",
+      "topic": "Personalized Memory",
+      "url": "https://arxiv.org/abs/2605.25535",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "不同用户具有不同的 memory value；研究 personalized storage gating。",
+      "note": "不同用户具有不同的 memory value；研究 personalized storage gating。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-017",
+      "legacyId": null,
+      "title": "RPEval",
+      "topic": "Rational Personalization",
+      "url": "https://arxiv.org/abs/2601.16621",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "irrelevant memory 会干扰 intent understanding，评测何时不应使用个性化记忆。",
+      "note": "irrelevant memory 会干扰 intent understanding，评测何时不应使用个性化记忆。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-018",
+      "legacyId": null,
+      "title": "PersonaMem",
+      "topic": "Dynamic User Profile",
+      "url": "https://arxiv.org/abs/2504.14225",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "跨 session 追踪动态用户画像与偏好演化。",
+      "note": "跨 session 追踪动态用户画像与偏好演化。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-019",
+      "legacyId": "ondevicehar",
+      "title": "On-device Few-shot HAR",
+      "topic": "Concept Drift",
+      "url": "https://arxiv.org/abs/2508.15413",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "针对新用户的 concept drift，用设备端少样本适配分类头。",
+      "note": "Few-shot classifier-head adaptation for new-user concept drift.",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-020",
+      "legacyId": "sigma",
+      "title": "SigmaScheduling",
+      "topic": "JITAI Timing",
+      "url": "https://arxiv.org/abs/2507.10798",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "根据行为时间预测的不确定性动态安排 intervention decision point。",
+      "note": "Schedules intervention decision points from temporal uncertainty.",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-021",
+      "legacyId": "receptivity",
+      "title": "Mental Health Receptivity",
+      "topic": "JITAI Receptivity",
+      "url": "https://arxiv.org/abs/2508.02817",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "区分 intervention acceptance 与 feasibility，并使用被动感知上下文。",
+      "note": "Separates intervention acceptance from contextual feasibility.",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-022",
+      "legacyId": null,
+      "title": "Smartwatch JITAI",
+      "topic": "Contextual Intervention",
+      "url": "https://arxiv.org/abs/2501.09530",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "基于环境、个体历史和微调查在手表上提供热/噪声干预。",
+      "note": "基于环境、个体历史和微调查在手表上提供热/噪声干预。",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-023",
+      "legacyId": null,
+      "title": "Opportune Smart Speaker",
+      "topic": "Interruptibility",
+      "url": "https://doi.org/10.1145/3411810",
+      "year": "2020",
+      "venue": "IMWUT 2020",
+      "verification": "verified",
+      "evidenceBoundary": "家庭活动、忙碌、情绪、移动与 social presence 影响主动语音介入时机。",
+      "note": "家庭活动、忙碌、情绪、移动与 social presence 影响主动语音介入时机。",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-024",
+      "legacyId": null,
+      "title": "Sensible Agent",
+      "topic": "Delivery Modality",
+      "url": "https://arxiv.org/abs/2509.09255",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "同时调整提供什么帮助和用什么低打扰方式表达。",
+      "note": "同时调整提供什么帮助和用什么低打扰方式表达。",
+      "trackIds": []
+    },
+    {
+      "id": "SRC-025",
+      "legacyId": null,
+      "title": "SocialMind",
+      "topic": "Proactive AR",
+      "url": "https://arxiv.org/abs/2412.04036",
+      "year": "2024",
+      "venue": "2024 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "多模态社会线索、AR 眼镜与对话中的及时建议。",
+      "note": "多模态社会线索、AR 眼镜与对话中的及时建议。",
+      "trackIds": []
+    },
+    {
+      "id": "SRC-026",
+      "legacyId": null,
+      "title": "HabitSense",
+      "topic": "Selective Sensing / Privacy",
+      "url": "https://doi.org/10.1145/3678591",
+      "year": "2024",
+      "venue": "IMWUT 2024",
+      "verification": "verified",
+      "evidenceBoundary": "用 IMU/热成像等先判断事件，只在必要时记录并做端侧隐私处理。",
+      "note": "用 IMU/热成像等先判断事件，只在必要时记录并做端侧隐私处理。",
+      "trackIds": [
+        "M-PHY",
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-027",
+      "legacyId": null,
+      "title": "Personal Health Informatics",
+      "topic": "Personal Informatics",
+      "url": "https://doi.org/10.1145/3749503",
+      "year": "2025",
+      "venue": "IMWUT 2025",
+      "verification": "verified",
+      "evidenceBoundary": "GAI 支持 personal tracking 的 planning、tracking、reflecting 与 acting。",
+      "note": "GAI 支持 personal tracking 的 planning、tracking、reflecting 与 acting。",
+      "trackIds": []
+    },
+    {
+      "id": "SRC-028",
+      "legacyId": null,
+      "title": "UbiComp/ISWC 2025 Program",
+      "topic": "Venue evidence",
+      "url": "https://www.ubicomp.org/ubicomp-iswc-2025/program",
+      "year": "2025",
+      "venue": "verified",
+      "verification": "verified",
+      "evidenceBoundary": "官方议程覆盖 proactive AR、wearable multimodality、personal health、activity recognition 和 edge agents。",
+      "note": "官方议程覆盖 proactive AR、wearable multimodality、personal health、activity recognition 和 edge agents。",
+      "trackIds": []
+    },
+    {
+      "id": "SRC-029",
+      "legacyId": null,
+      "title": "Hidden in Memory",
+      "topic": "Memory Poisoning",
+      "url": "https://arxiv.org/abs/2605.15338",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "外部上下文可植入延迟触发的持久 memory poison；自然任务表现正常不代表未来安全。",
+      "note": "外部上下文可植入延迟触发的持久 memory poison；自然任务表现正常不代表未来安全。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-030",
+      "legacyId": null,
+      "title": "Securing LLM-Agent Long-Term Memory",
+      "topic": "Origin-bound Authority",
+      "url": "https://arxiv.org/abs/2606.24322",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "将 memory authority 绑定到来源，并讨论 laundering attack 与机器可检验保证。",
+      "note": "将 memory authority 绑定到来源，并讨论 laundering attack 与机器可检验保证。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-031",
+      "legacyId": null,
+      "title": "MetaMem",
+      "topic": "Meta-memory",
+      "url": "https://arxiv.org/abs/2602.11182",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "用可演化 meta-memory 教 Agent 如何利用碎片化历史，而不只增加存储。",
+      "note": "用可演化 meta-memory 教 Agent 如何利用碎片化历史，而不只增加存储。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-032",
+      "legacyId": null,
+      "title": "Multi-Agent Memory",
+      "topic": "Shared Memory Architecture",
+      "url": "https://arxiv.org/abs/2603.10062",
+      "year": "2026",
+      "venue": "2026 position paper",
+      "verification": "verified",
+      "evidenceBoundary": "从共享/分布式记忆、一致性和访问控制讨论多 Agent memory 设计空间。",
+      "note": "从共享/分布式记忆、一致性和访问控制讨论多 Agent memory 设计空间。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-033",
+      "legacyId": "collaborative",
+      "title": "Collaborative Memory",
+      "topic": "Multi-user Memory",
+      "url": "https://arxiv.org/abs/2505.18279",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "研究多用户、多 Agent 的动态、非对称 memory sharing 与访问权限。",
+      "note": "Dynamic asymmetric memory sharing across users and agents.",
+      "trackIds": [
+        "M-AI",
+        "M-PHY",
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-034",
+      "legacyId": null,
+      "title": "TMEM",
+      "topic": "Parametric Self-evolution",
+      "url": "https://arxiv.org/abs/2606.04536",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "将显式 memory 与 episode 内快速 LoRA 更新结合，形成 parametric memory novelty pressure。",
+      "note": "将显式 memory 与 episode 内快速 LoRA 更新结合，形成 parametric memory novelty pressure。",
+      "trackIds": [
+        "M-AI",
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-035",
+      "legacyId": null,
+      "title": "MUSE-Autoskill",
+      "topic": "Skill Memory",
+      "url": "https://arxiv.org/abs/2605.27366",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "把 skill creation、memory、管理、测试和运行反馈组织为持续演化 lifecycle。",
+      "note": "把 skill creation、memory、管理、测试和运行反馈组织为持续演化 lifecycle。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-036",
+      "legacyId": "pahf",
+      "title": "PAHF",
+      "topic": "Continual Personalization",
+      "url": "https://arxiv.org/abs/2602.16173",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "通过行动前澄清、memory 与行动后反馈做在线个性化，并考虑 persona shift。",
+      "note": "Clarification, memory and post-action feedback for continual personalization.",
+      "trackIds": [
+        "P-AI",
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-037",
+      "legacyId": null,
+      "title": "PPP",
+      "topic": "Proactivity × Personalization",
+      "url": "https://arxiv.org/abs/2511.02208",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "在 UserVille 中联合训练 Productivity、Proactivity、Personalization，直接形成 P-AI×U-AI 压力。",
+      "note": "在 UserVille 中联合训练 Productivity、Proactivity、Personalization，直接形成 P-AI×U-AI 压力。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-038",
+      "legacyId": null,
+      "title": "SAGER",
+      "topic": "Personalized Policy Skill",
+      "url": "https://arxiv.org/abs/2604.14972",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "为每个用户持续演化独立的决策 policy skill，区分“记住偏好”和“个性化推理方式”。",
+      "note": "为每个用户持续演化独立的决策 policy skill，区分“记住偏好”和“个性化推理方式”。",
+      "trackIds": [
+        "M-AI",
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-039",
+      "legacyId": "postresponse",
+      "title": "Post-intervention Response",
+      "topic": "Physiological Response Personalization",
+      "url": "https://arxiv.org/abs/2604.14738",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "预测 wearable intervention 后 15–120 分钟生理轨迹；支持 U-PHY pilot，但预测不等于因果效应。",
+      "note": "Forecasts physiological trajectories after an intervention; not causal effect.",
+      "trackIds": [
+        "M-PHY",
+        "P-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-040",
+      "legacyId": "mrt",
+      "title": "MRT Methods",
+      "topic": "Causal JITAI Evaluation",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9276848",
+      "year": "2022",
+      "venue": "Methods",
+      "verification": "verified",
+      "evidenceBoundary": "Micro-randomized trial 与 causal excursion effect 用于回答何时、对谁、哪种介入有效。",
+      "note": "Causal excursion effects for repeated time-varying interventions.",
+      "trackIds": [
+        "P-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-041",
+      "legacyId": null,
+      "title": "Generative Agents",
+      "topic": "Memory Stream / Reflection",
+      "url": "https://arxiv.org/abs/2304.03442",
+      "year": "2023",
+      "venue": "2023 paper",
+      "verification": "verified",
+      "evidenceBoundary": "保存完整经验、生成高层 reflection 并动态检索用于规划；主要评测 believable behavior。",
+      "note": "保存完整经验、生成高层 reflection 并动态检索用于规划；主要评测 believable behavior。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-042",
+      "legacyId": null,
+      "title": "MemoryBank",
+      "topic": "Long-term Companion Memory",
+      "url": "https://arxiv.org/abs/2305.10250",
+      "year": "2023",
+      "venue": "2023 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "存储对话、事件摘要与用户画像，并以遗忘曲线式机制更新；实验偏 recall 与陪伴质量。",
+      "note": "存储对话、事件摘要与用户画像，并以遗忘曲线式机制更新；实验偏 recall 与陪伴质量。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-043",
+      "legacyId": "memgpt",
+      "title": "MemGPT",
+      "topic": "Hierarchical Memory Runtime",
+      "url": "https://arxiv.org/abs/2310.08560",
+      "year": "2023",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "用类似操作系统的多层 memory 和 interrupt 管理有限上下文。",
+      "note": "Hierarchical memory runtime and interrupt-style context management.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-044",
+      "legacyId": "locomo",
+      "title": "LoCoMo",
+      "topic": "Long Conversational Memory",
+      "url": "https://arxiv.org/abs/2402.17753",
+      "year": "2024",
+      "venue": "ACL",
+      "verification": "verified",
+      "evidenceBoundary": "最长 35 个 session、约 300 turns；评测 QA、event summarization 与多模态对话生成。",
+      "note": "Long conversational memory across sessions, QA and temporal reasoning.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-045",
+      "legacyId": "longmemeval",
+      "title": "LongMemEval",
+      "topic": "Long-term Interactive Memory",
+      "url": "https://arxiv.org/abs/2410.10813",
+      "year": "2025",
+      "venue": "ICLR",
+      "verification": "verified",
+      "evidenceBoundary": "500 个问题覆盖 extraction、跨 session reasoning、temporal reasoning、knowledge update 与 abstention。",
+      "note": "Extraction, cross-session reasoning, knowledge updates and abstention.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-046",
+      "legacyId": "longmemeval2",
+      "title": "LongMemEval-V2",
+      "topic": "Environment Experience Memory",
+      "url": "https://arxiv.org/abs/2605.12493",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "451 个问题评测 web agent 的 state、workflow、gotcha 与 premise awareness；历史可达 500 trajectories。",
+      "note": "Environment experience memory for web-agent state, workflow and gotchas.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-047",
+      "legacyId": "memoryarena",
+      "title": "MemoryArena",
+      "topic": "Memory–Action Loop",
+      "url": "https://arxiv.org/abs/2602.16313",
+      "year": "2026",
+      "venue": "ICML",
+      "verification": "verified",
+      "evidenceBoundary": "用相互依赖的多 session agent tasks，把记忆获取、压缩与未来行动放在同一闭环评测。",
+      "note": "Couples memory acquisition and compression to downstream agent action.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-048",
+      "legacyId": "mem0",
+      "title": "Mem0",
+      "topic": "Scalable Long-term Memory",
+      "url": "https://arxiv.org/abs/2504.19413",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "动态抽取、整合、检索 conversational memory，并在 LoCoMo 上比较 accuracy、latency 与 token cost。",
+      "note": "Dynamic extraction and retrieval under accuracy, latency and token-cost pressure.",
+      "trackIds": [
+        "M-AI",
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-049",
+      "legacyId": "amem",
+      "title": "A-MEM",
+      "topic": "Dynamic Agentic Memory",
+      "url": "https://arxiv.org/abs/2502.12110",
+      "year": "2025",
+      "venue": "NeurIPS",
+      "verification": "verified",
+      "evidenceBoundary": "以 Zettelkasten 式 note、link 与 evolution 动态组织 agent memory。",
+      "note": "Zettelkasten-style notes, links and evolving memory organization.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-050",
+      "legacyId": null,
+      "title": "Zep",
+      "topic": "Temporal Knowledge Graph Memory",
+      "url": "https://arxiv.org/abs/2501.13956",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "用 temporal knowledge graph 维护事实的历史关系，并在 DMR/LongMemEval 报告 accuracy 与 latency。",
+      "note": "用 temporal knowledge graph 维护事实的历史关系，并在 DMR/LongMemEval 报告 accuracy 与 latency。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-051",
+      "legacyId": null,
+      "title": "MPBench",
+      "topic": "Memory Poisoning",
+      "url": "https://arxiv.org/abs/2606.04329",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "枚举 memory write channel、结构漏洞与 poisoning attack；表明激进写入/检索会增加攻击面。",
+      "note": "枚举 memory write channel、结构漏洞与 poisoning attack；表明激进写入/检索会增加攻击面。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-052",
+      "legacyId": null,
+      "title": "MemSecBench",
+      "topic": "Lifecycle Memory Security",
+      "url": "https://arxiv.org/abs/2607.27080",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "用 Write–Execute–Forget 七个 checkpoint 追踪 persistence、下游后果与 selective repair。",
+      "note": "用 Write–Execute–Forget 七个 checkpoint 追踪 persistence、下游后果与 selective repair。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-053",
+      "legacyId": null,
+      "title": "MemGate",
+      "topic": "Trustworthy Memory Search",
+      "url": "https://arxiv.org/abs/2606.06054",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "把 memory search 视为 trust boundary，在 A-MEM、Mem0、MemOS 与个人 Agent 设置评估 admission gate。",
+      "note": "把 memory search 视为 trust boundary，在 A-MEM、Mem0、MemOS 与个人 Agent 设置评估 admission gate。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-054",
+      "legacyId": null,
+      "title": "AgentLeak",
+      "topic": "Multi-Agent Privacy Leakage",
+      "url": "https://arxiv.org/abs/2602.11510",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "评测 output、inter-agent message、shared memory 与 tool argument 等内部泄漏通道。",
+      "note": "评测 output、inter-agent message、shared memory 与 tool argument 等内部泄漏通道。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-055",
+      "legacyId": null,
+      "title": "MOMENT",
+      "topic": "General Time-series Foundation Model",
+      "url": "https://arxiv.org/abs/2402.03885",
+      "year": "2024",
+      "venue": "ICML 2024",
+      "verification": "verified",
+      "evidenceBoundary": "建立 Time-series Pile 与 limited-supervision benchmark；是 wearable 专用模型的通用强基线。",
+      "note": "建立 Time-series Pile 与 limited-supervision benchmark；是 wearable 专用模型的通用强基线。",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-056",
+      "legacyId": null,
+      "title": "PaPaGei",
+      "topic": "Open PPG Foundation Model",
+      "url": "https://arxiv.org/abs/2410.20542",
+      "year": "2024",
+      "venue": "2024 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "在公开 PPG 数据上预训练并跨 20 个任务评测，同时报告跨肤色 bias 与跨设备泛化压力。",
+      "note": "在公开 PPG 数据上预训练并跨 20 个任务评测，同时报告跨肤色 bias 与跨设备泛化压力。",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-057",
+      "legacyId": "lsm2",
+      "title": "LSM-2",
+      "topic": "Incomplete Wearable Data",
+      "url": "https://arxiv.org/abs/2506.05321",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "用 Adaptive and Inherited Masking 直接从真实不完整 wearable 数据学习，而不是先插值。",
+      "note": "Learns directly from realistically incomplete wearable streams.",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-058",
+      "legacyId": null,
+      "title": "Large-scale Wearable SSL",
+      "topic": "Physiological Representation",
+      "url": "https://arxiv.org/abs/2011.04601",
+      "year": "2011",
+      "venue": "2020 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "用大规模 wrist accelerometer 与 ECG 自监督学习可迁移、包含个体生理信息的表示。",
+      "note": "用大规模 wrist accelerometer 与 ECG 自监督学习可迁移、包含个体生理信息的表示。",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-059",
+      "legacyId": "globem",
+      "title": "GLOBEM",
+      "topic": "Longitudinal Generalization",
+      "url": "https://arxiv.org/abs/2211.02733",
+      "year": "2022",
+      "venue": "NeurIPS Dataset",
+      "verification": "verified",
+      "evidenceBoundary": "700+ user-years、497 users，支持跨用户、跨年份和跨数据集行为建模评测。",
+      "note": "Longitudinal cross-user, cross-year and cross-dataset behavioral modeling.",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-060",
+      "legacyId": "phia",
+      "title": "PHIA",
+      "topic": "Wearable Health Insight Agent",
+      "url": "https://arxiv.org/abs/2406.06464",
+      "year": "2024",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "用 code generation 与 retrieval 工具分析 wearable 数据；发布 4000+ health insight QA。",
+      "note": "Code and retrieval tools for personalized wearable insight QA.",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-061",
+      "legacyId": null,
+      "title": "PhysioLLM",
+      "topic": "Interactive Personal Health Insight",
+      "url": "https://arxiv.org/abs/2406.19283",
+      "year": "2024",
+      "venue": "2024 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "融合 wearable 与上下文进行健康探索，并以 24 名 Fitbit 用户的 user study 评测。",
+      "note": "融合 wearable 与上下文进行健康探索，并以 24 名 Fitbit 用户的 user study 评测。",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-062",
+      "legacyId": "stressrepro",
+      "title": "Stress Reproducibility",
+      "topic": "Cross-device Physiological Generalization",
+      "url": "https://arxiv.org/abs/2505.05694",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "同一 stress pipeline 在研究级和消费级设备间表现变化，直接支持 device provenance 问题。",
+      "note": "Shows the same pipeline can shift across research and consumer devices.",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-063",
+      "legacyId": "proactivebench",
+      "title": "ProactiveBench",
+      "topic": "Proactive Assistance Trigger",
+      "url": "https://arxiv.org/abs/2410.12361",
+      "year": "2024",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "6790 个 real-activity-derived events，用 human accept/reject 训练与评测主动帮助。",
+      "note": "Human accept/reject labels for proactive assistance triggers.",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-064",
+      "legacyId": "procis",
+      "title": "ProCIS",
+      "topic": "Proactive Conversational Retrieval",
+      "url": "https://arxiv.org/abs/2405.06460",
+      "year": "2024",
+      "venue": "SIGIR",
+      "verification": "verified",
+      "evidenceBoundary": "2.8M conversations，评测何时主动检索何种资源，并提出 npDCG。",
+      "note": "When and what to retrieve proactively in conversation.",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-065",
+      "legacyId": "askbeforeplan",
+      "title": "Ask-before-Plan",
+      "topic": "Clarification before Planning",
+      "url": "https://arxiv.org/abs/2406.12639",
+      "year": "2024",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "评测是否需要澄清、调用工具补信息并形成计划。",
+      "note": "Clarification and tool-based information collection before planning.",
+      "trackIds": [
+        "P-AI",
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-066",
+      "legacyId": "proevent",
+      "title": "ProEvent",
+      "topic": "Event-centric Proactivity",
+      "url": "https://arxiv.org/abs/2607.17701",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "从即时消息维护事件；评测 response timing、单步/多步 correctness，并包含 event cancellation 压力。",
+      "note": "Event-centric timing, correctness and cancellation pressure.",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-067",
+      "legacyId": null,
+      "title": "ProAct-75",
+      "topic": "Structure-aware Proactive Response",
+      "url": "https://arxiv.org/abs/2602.03430",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "75 tasks、step-level task graph，评测 trigger、saved steps 与 parallel action。",
+      "note": "75 tasks、step-level task graph，评测 trigger、saved steps 与 parallel action。",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-068",
+      "legacyId": "pibench",
+      "title": "π-Bench",
+      "topic": "Long-horizon Personal Assistant",
+      "url": "https://arxiv.org/abs/2605.14678",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "100 个多轮任务、5 类 persona、隐藏意图、跨任务依赖与跨 session continuity。",
+      "note": "Long-horizon personal-assistant tasks with hidden intent and continuity.",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-069",
+      "legacyId": "proagentbench",
+      "title": "ProAgentBench",
+      "topic": "Real Continuous Workflow",
+      "url": "https://arxiv.org/abs/2602.04482",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "500+ 小时真实用户 session、28K+ events；拆分 timing prediction 与 assist content generation。",
+      "note": "Continuous workflow benchmark separating timing from assist content.",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-070",
+      "legacyId": "agentabstain",
+      "title": "AgentAbstain",
+      "topic": "Agentic Abstention",
+      "url": "https://arxiv.org/abs/2607.10059",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "263 对 should-act/should-abstain executable tasks；揭示 task success 与 abstention 相互独立及 post-hoc abstention。",
+      "note": "Paired executable should-act and should-abstain tasks.",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-071",
+      "legacyId": "atrbench",
+      "title": "ATRBench",
+      "topic": "Ask-to-Remember",
+      "url": "https://arxiv.org/abs/2605.28108",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "隐藏偏好作为 ground truth，评测 Agent 是否现在询问、以后使用，而不只是回忆已知偏好。",
+      "note": "Whether an agent should ask now and reuse the preference later.",
+      "trackIds": [
+        "M-AI",
+        "P-AI",
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-072",
+      "legacyId": "probe",
+      "title": "PROBE",
+      "topic": "Proactive Problem Solving",
+      "url": "https://arxiv.org/abs/2510.19771",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "把 proactivity 拆为发现未明示问题、定位 bottleneck、执行 resolution。",
+      "note": "Discovers unspoken problems, bottlenecks and resolutions.",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-073",
+      "legacyId": null,
+      "title": "ProactiveVideoQA",
+      "topic": "Temporal Proactive Interaction",
+      "url": "https://arxiv.org/abs/2507.09313",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "评测视频播放中的主动响应时机，并提出考虑时间动态的 PAUC。",
+      "note": "评测视频播放中的主动响应时机，并提出考虑时间动态的 PAUC。",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-074",
+      "legacyId": null,
+      "title": "Uncertainty of Thoughts",
+      "topic": "Active Information Seeking",
+      "url": "https://arxiv.org/abs/2402.03271",
+      "year": "2024",
+      "venue": "2024 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "用 uncertainty-aware rollout 与 information gain 选择问题，覆盖 diagnosis/troubleshooting 等主动询问任务。",
+      "note": "用 uncertainty-aware rollout 与 information gain 选择问题，覆盖 diagnosis/troubleshooting 等主动询问任务。",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-075",
+      "legacyId": "jitai",
+      "title": "JITAI Pragmatic Framework",
+      "topic": "Intervention Problem Definition",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4732268",
+      "year": "2016",
+      "venue": "Annals of Behavioral Medicine",
+      "verification": "verified",
+      "evidenceBoundary": "把动态需求、receptivity 与 provide-nothing option 纳入 JITAI 构造。",
+      "note": "Separates decision points, need, receptivity and provide-nothing options.",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-076",
+      "legacyId": null,
+      "title": "JITAI Design Principles",
+      "topic": "JITAI Components",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5364076",
+      "year": "unknown",
+      "venue": "methods paper",
+      "verification": "verified",
+      "evidenceBoundary": "定义 decision point、tailoring variable、intervention option、decision rule、proximal/distal outcome。",
+      "note": "定义 decision point、tailoring variable、intervention option、decision rule、proximal/distal outcome。",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-077",
+      "legacyId": "heartsteps",
+      "title": "HeartSteps",
+      "topic": "Micro-randomized JITAI",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6401341",
+      "year": "2019",
+      "venue": "JITAI Study",
+      "verification": "verified",
+      "evidenceBoundary": "6 周、44 人、每日最多五次随机化建议；直接测 suggestion 对随后步数的近端效应与随时间衰减。",
+      "note": "Micro-randomized suggestions and proximal step-count effects.",
+      "trackIds": [
+        "P-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-078",
+      "legacyId": null,
+      "title": "HeartSteps II",
+      "topic": "Longitudinal JITAI Testbed",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8872509",
+      "year": "unknown",
+      "venue": "protocol paper",
+      "verification": "verified",
+      "evidenceBoundary": "一年部署，用多时间尺度随机化研究行为理论与实时个性化。",
+      "note": "一年部署，用多时间尺度随机化研究行为理论与实时个性化。",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-079",
+      "legacyId": null,
+      "title": "WatchGuardian",
+      "topic": "User-defined Smartwatch Intervention",
+      "url": "https://arxiv.org/abs/2502.05783",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "让用户定义希望干预的行为并在手表上执行个性化 JITI。",
+      "note": "让用户定义希望干预的行为并在手表上执行个性化 JITI。",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-080",
+      "legacyId": null,
+      "title": "Last JITAI",
+      "topic": "LLM-issued JITAI",
+      "url": "https://arxiv.org/abs/2402.08658",
+      "year": "2024",
+      "venue": "2024 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "比较 GPT-4、普通人和医护专家产生的 JITAI 决策/内容；human rating 不等于因果效果。",
+      "note": "比较 GPT-4、普通人和医护专家产生的 JITAI 决策/内容；human rating 不等于因果效果。",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-081",
+      "legacyId": "lamp",
+      "title": "LaMP",
+      "topic": "Language Model Personalization",
+      "url": "https://aclanthology.org/2024.acl-long.399",
+      "year": "2024",
+      "venue": "ACL",
+      "verification": "verified",
+      "evidenceBoundary": "七个 classification/generation tasks，同时提供新用户与时间切分，建立 history-retrieval personalization 基线。",
+      "note": "History-retrieval personalization across classification and generation tasks.",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-082",
+      "legacyId": null,
+      "title": "LongLaMP",
+      "topic": "Personalized Long-form Generation",
+      "url": "https://arxiv.org/abs/2407.11016",
+      "year": "2024",
+      "venue": "2024 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "覆盖 email、abstract、review、topic 等长文本个性化生成。",
+      "note": "覆盖 email、abstract、review、topic 等长文本个性化生成。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-083",
+      "legacyId": null,
+      "title": "AI PERSONA",
+      "topic": "Lifelong Personalization",
+      "url": "https://arxiv.org/abs/2412.13103",
+      "year": "2024",
+      "venue": "2024 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "明确定义持续适配不断变化用户 profile 的 lifelong personalization 任务。",
+      "note": "明确定义持续适配不断变化用户 profile 的 lifelong personalization 任务。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-084",
+      "legacyId": null,
+      "title": "PersonaFeedback",
+      "topic": "Explicit-persona Personalization",
+      "url": "https://arxiv.org/abs/2506.12915",
+      "year": "2025",
+      "venue": "2025 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "用 8298 个 human-annotated cases 解耦 persona inference 与 persona-conditioned generation。",
+      "note": "用 8298 个 human-annotated cases 解耦 persona inference 与 persona-conditioned generation。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-085",
+      "legacyId": "realpref",
+      "title": "RealPref",
+      "topic": "Long-horizon Preference Following",
+      "url": "https://arxiv.org/abs/2603.04191",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "100 profiles、1300 preferences、显式到隐式四类表达及长上下文评测。",
+      "note": "Long-horizon following of explicit and implicit preferences.",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-086",
+      "legacyId": null,
+      "title": "PersoBench",
+      "topic": "Persona-aware Dialogue",
+      "url": "https://arxiv.org/abs/2410.03198",
+      "year": "2024",
+      "venue": "2024 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "同时评测 fluency、diversity、coherence 与 personalization，说明通用生成质量不等于个性化正确。",
+      "note": "同时评测 fluency、diversity、coherence 与 personalization，说明通用生成质量不等于个性化正确。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-087",
+      "legacyId": null,
+      "title": "Personalized Soups",
+      "topic": "Personalized Alignment",
+      "url": "https://arxiv.org/abs/2310.11564",
+      "year": "2023",
+      "venue": "2023 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "把相互冲突的偏好视为多目标 alignment，并在推理时合并参数。",
+      "note": "把相互冲突的偏好视为多目标 alignment，并在推理时合并参数。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-088",
+      "legacyId": null,
+      "title": "PersonaVLM",
+      "topic": "Long-term Multimodal Personalization",
+      "url": "https://arxiv.org/abs/2604.13074",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "用 chronological multimodal memories 与 evolving personality 做长期 MLLM 个性化。",
+      "note": "用 chronological multimodal memories 与 evolving personality 做长期 MLLM 个性化。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-089",
+      "legacyId": null,
+      "title": "PerCE",
+      "topic": "Token-level Personalization",
+      "url": "https://arxiv.org/abs/2603.06595",
+      "year": "2026",
+      "venue": "2026 preprint",
+      "verification": "verified",
+      "evidenceBoundary": "以 causal intervention 估计 token 的 personalization degree，形成 token-aware training 压力。",
+      "note": "以 causal intervention 估计 token 的 personalization degree，形成 token-aware training 压力。",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-090",
+      "legacyId": "pdh",
+      "title": "Personalized Digital Health",
+      "topic": "Adaptive Support Users",
+      "url": "https://arxiv.org/abs/2605.02004",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "用相似与不相似 support users 训练个体模型，直接暴露 sparse/noisy personal data 与负迁移压力。",
+      "note": "Support-user transfer exposes sparse-data and negative-transfer pressure.",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-091",
+      "legacyId": "uncertaintyhar",
+      "title": "Uncertainty-aware HAR",
+      "topic": "On-device User Adaptation",
+      "url": "https://arxiv.org/abs/2606.04798",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "支持有标注、无标注或无校准的轻量 prototype adaptation，并显式考虑不确定性。",
+      "note": "Lightweight prototype adaptation with labeled, unlabeled or no calibration.",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-092",
+      "legacyId": null,
+      "title": "Personalized Stress Monitoring",
+      "topic": "Longitudinal Free-living Personalization",
+      "url": "https://arxiv.org/abs/2108.00144",
+      "year": "2021",
+      "venue": "2021 paper",
+      "verification": "verified",
+      "evidenceBoundary": "1–3 个月 free-living wearable 数据与主动请求标签，显示个体化和 label budget 压力。",
+      "note": "1–3 个月 free-living wearable 数据与主动请求标签，显示个体化和 label budget 压力。",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-093",
+      "legacyId": "fedhar",
+      "title": "Federated HAR Privacy",
+      "topic": "Wearable Personalization Privacy",
+      "url": "https://arxiv.org/abs/2405.10979",
+      "year": "2024",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "在五个 HAR 数据集展示 federated wearable modeling 的 membership-inference 风险。",
+      "note": "Membership-inference risk in federated wearable personalization.",
+      "trackIds": [
+        "M-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-094",
+      "legacyId": "memtx",
+      "title": "MemTX",
+      "topic": "Transactional Belief Commit",
+      "url": "https://arxiv.org/abs/2607.23929",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "将 memory update 组织为 snapshot-isolated staging 与 commit；用 evidence、permission、provenance 和 validity gate 约束不可逆工具动作，并在 retraction 后触发 typed repair。",
+      "note": "Snapshot-isolated memory staging, commit and typed repair.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-095",
+      "legacyId": "memtxn",
+      "title": "MemTxn",
+      "topic": "Memory Transaction Boundary",
+      "url": "https://arxiv.org/abs/2607.27834",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "以 source-supported update validation、temporal version resolution 和 durable snapshot recovery 约束 stateful memory 更新。",
+      "note": "Source-supported update validation and durable snapshot recovery.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-096",
+      "legacyId": "gatemem",
+      "title": "GateMem",
+      "topic": "Multi-principal Memory Governance",
+      "url": "https://arxiv.org/abs/2606.18829",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "在 shared-memory agent 中联合评测 utility、access control 与 active forgetting，形成家庭/办公/医疗/教育多主体治理压力。",
+      "note": "Multi-principal utility, access control and active forgetting.",
+      "trackIds": [
+        "M-AI",
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-097",
+      "legacyId": "stale",
+      "title": "STALE",
+      "topic": "Implicit Memory Invalidation",
+      "url": "https://arxiv.org/abs/2605.06527",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "研究新信息并不显式否定旧记忆、但已使其失效的场景；评测 state resolution、premise resistance 与 policy adaptation。",
+      "note": "Implicit invalidation when new information makes old memory unusable.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-098",
+      "legacyId": null,
+      "title": "PersistBench",
+      "topic": "Cross-context Forgetting",
+      "url": "https://arxiv.org/abs/2602.01146",
+      "year": "2026",
+      "venue": "ICML 2026",
+      "verification": "verified",
+      "evidenceBoundary": "评测长期记忆何时应被忘记，覆盖跨域泄漏与 memory-induced sycophancy；直接压缩泛化“偏好冲突/遗忘”主张。",
+      "note": "评测长期记忆何时应被忘记，覆盖跨域泄漏与 memory-induced sycophancy；直接压缩泛化“偏好冲突/遗忘”主张。",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-099",
+      "legacyId": "commitauth",
+      "title": "Commit-Time Authorization",
+      "topic": "Durable-effect Authorization",
+      "url": "https://arxiv.org/abs/2607.10487",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "主张 durable effect 只有在 commit 时 authority witness 仍 fresh、causal、bound 且 eligible 才可生效，直接形成 C02 的强邻近覆盖。",
+      "note": "Durable effects require a fresh and causally bound authority witness.",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-100",
+      "legacyId": "openmhc",
+      "title": "OpenMHC",
+      "topic": "Wearable Foundation Model Benchmark",
+      "url": "https://arxiv.org/abs/2607.16235",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "汇集超过 6000 万小时、19 类 sensor channels、11894 名参与者，并统一 downstream prediction、imputation 与 forecasting 评测。",
+      "note": "Large wearable benchmark spanning prediction, imputation and forecasting.",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-101",
+      "legacyId": "wag",
+      "title": "WAG",
+      "topic": "Personalized Wearable Graph Retrieval",
+      "url": "https://arxiv.org/abs/2605.18763",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "以 query-conditioned graph retrieval 为个体 wearable 数据提供上下文化 LLM reasoning，压缩泛化“wearable-to-language memory”主张。",
+      "note": "Query-conditioned graph retrieval over personal wearable data.",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-102",
+      "legacyId": "pulse",
+      "title": "PULSE",
+      "topic": "Passive-sensing Proactive Investigation",
+      "url": "https://arxiv.org/abs/2605.17679",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "Agent 自主选择 passive sensing modality 与 lookback depth，并结合个体 baseline 做癌症生存者主动介入；对 active sensing 与 proactive health 形成直接压力。",
+      "note": "Chooses passive-sensing modality and lookback depth for proactive investigation.",
+      "trackIds": [
+        "M-PHY",
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-103",
+      "legacyId": "horizonbench",
+      "title": "HorizonBench",
+      "topic": "Evolving Long-horizon Preference",
+      "url": "https://arxiv.org/abs/2604.17283",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "用结构化 mental-state graph 生成六个月偏好演化轨迹，提供每次变化的 ground-truth provenance；直接覆盖长期 preference state tracking。",
+      "note": "Six-month evolving preferences with provenance of each change.",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-104",
+      "legacyId": "perma",
+      "title": "PERMA",
+      "topic": "Event-driven Personalized Memory",
+      "url": "https://arxiv.org/abs/2603.23231",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "用跨 session、跨 domain 的事件关系与时序 preference query 评测 persona consistency，超出简单 needle retrieval。",
+      "note": "Event-driven, temporal and cross-domain personalized memory.",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-105",
+      "legacyId": "benchpres",
+      "title": "BenchPreS",
+      "topic": "Context-aware Preference Selectivity",
+      "url": "https://arxiv.org/abs/2603.16557",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "评测第三方沟通中何时应用或抑制持久偏好，直接覆盖 context/role-conditioned preference selectivity。",
+      "note": "When persistent preferences should be applied or suppressed.",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-106",
+      "legacyId": "persona2web",
+      "title": "Persona2Web",
+      "topic": "Personalized Web Agent",
+      "url": "https://arxiv.org/abs/2602.17003",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified",
+      "evidenceBoundary": "以隐式长期用户历史和歧义 web query 评测 personalized agent 的 contextual reasoning，并拆分 reasoning evidence。",
+      "note": "Personalized web actions from ambiguous queries and long-term history.",
+      "trackIds": [
+        "U-AI"
+      ]
+    }
+  ],
+  "clusters": [
+    {
+      "id": "MA-1",
+      "trackId": "M-AI",
+      "title": "存储、组织与运行时",
+      "focus": "write / compress / retrieve / hierarchy",
+      "commonEvaluation": "QA · recall · latency · token cost",
+      "gapId": "GAP-MAI-01",
+      "gap": "authority、purpose、expiry 与 action risk 没有进入 admission。",
+      "sourceIds": [
+        "SRC-041",
+        "SRC-042",
+        "SRC-043",
+        "SRC-048",
+        "SRC-049",
+        "SRC-050"
+      ]
+    },
+    {
+      "id": "MA-2",
+      "trackId": "M-AI",
+      "title": "长期 recall、更新与 abstention",
+      "focus": "cross-session recall / temporal update",
+      "commonEvaluation": "QA · evidence retrieval · task success",
+      "gapId": "GAP-MAI-02",
+      "gap": "等价历史下的 lifecycle 差异、撤销残留与责任归因。",
+      "sourceIds": [
+        "SRC-001",
+        "SRC-044",
+        "SRC-045",
+        "SRC-046",
+        "SRC-047",
+        "SRC-097",
+        "SRC-098"
+      ]
+    },
+    {
+      "id": "MA-3",
+      "trackId": "M-AI",
+      "title": "记忆–环境–行动闭环",
+      "focus": "experience → policy → tool action",
+      "commonEvaluation": "trajectory reuse · task success",
+      "gapId": "GAP-MAI-03",
+      "gap": "环境变化后旧经验何时失效，以及错误行动由谁修复。",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-035",
+        "SRC-046",
+        "SRC-047"
+      ]
+    },
+    {
+      "id": "MA-4",
+      "trackId": "M-AI",
+      "title": "主动获取与 meta-memory",
+      "focus": "ask / store / learn / rollback",
+      "commonEvaluation": "future utility · question cost",
+      "gapId": "GAP-MAI-04",
+      "gap": "询问负担、未来任务不确定性与跨层撤销。",
+      "sourceIds": [
+        "SRC-003",
+        "SRC-031",
+        "SRC-034",
+        "SRC-038",
+        "SRC-043",
+        "SRC-071"
+      ]
+    },
+    {
+      "id": "MA-5",
+      "trackId": "M-AI",
+      "title": "安全、授权、共享与 repair",
+      "focus": "commit / revoke / delete / repair",
+      "commonEvaluation": "commit validity · leakage · retention",
+      "gapId": "GAP-MAI-05",
+      "gap": "普通用户撤权后的跨层 residue 与多主体责任。",
+      "sourceIds": [
+        "SRC-029",
+        "SRC-030",
+        "SRC-033",
+        "SRC-051",
+        "SRC-052",
+        "SRC-053",
+        "SRC-054",
+        "SRC-094",
+        "SRC-095",
+        "SRC-096",
+        "SRC-099"
+      ]
+    },
+    {
+      "id": "MP-1",
+      "trackId": "M-PHY",
+      "title": "Wearable representation",
+      "focus": "modality / device / population representation",
+      "commonEvaluation": "AUROC · F1 · zero/few-shot",
+      "gapId": "GAP-MPHY-01",
+      "gap": "representation quality 与 downstream decision regret 没有对齐。",
+      "sourceIds": [
+        "SRC-012",
+        "SRC-013",
+        "SRC-014",
+        "SRC-015",
+        "SRC-055",
+        "SRC-056",
+        "SRC-100"
+      ]
+    },
+    {
+      "id": "MP-2",
+      "trackId": "M-PHY",
+      "title": "Wearable-to-language",
+      "focus": "insight / QA / tool reasoning",
+      "commonEvaluation": "expert rubric · QA · user study",
+      "gapId": "GAP-MPHY-02",
+      "gap": "结论是否来自有效时段，错误 insight 如何撤回。",
+      "sourceIds": [
+        "SRC-009",
+        "SRC-010",
+        "SRC-011",
+        "SRC-060",
+        "SRC-061",
+        "SRC-101"
+      ]
+    },
+    {
+      "id": "MP-3",
+      "trackId": "M-PHY",
+      "title": "缺失、噪声与主动感知",
+      "focus": "MNAR / ask / sense / wait",
+      "commonEvaluation": "mask robustness · action regret",
+      "gapId": "GAP-MPHY-03",
+      "gap": "自然缺失、拒绝、设备故障与 policy-induced missingness 未区分。",
+      "sourceIds": [
+        "SRC-007",
+        "SRC-026",
+        "SRC-057",
+        "SRC-100",
+        "SRC-102"
+      ]
+    },
+    {
+      "id": "MP-4",
+      "trackId": "M-PHY",
+      "title": "纵向、多时间尺度与变化",
+      "focus": "event / routine / baseline / exception",
+      "commonEvaluation": "cross-year · forecasting",
+      "gapId": "GAP-MPHY-04",
+      "gap": "介入造成的变化可能被错误写成自然 baseline。",
+      "sourceIds": [
+        "SRC-009",
+        "SRC-011",
+        "SRC-039",
+        "SRC-059"
+      ]
+    },
+    {
+      "id": "MP-5",
+      "trackId": "M-PHY",
+      "title": "设备与治理 provenance",
+      "focus": "device / placement / firmware / deletion",
+      "commonEvaluation": "cross-device · adaptation gain",
+      "gapId": "GAP-MPHY-05",
+      "gap": "provenance 尚未进入 memory validity 与 derived deletion。",
+      "sourceIds": [
+        "SRC-012",
+        "SRC-019",
+        "SRC-033",
+        "SRC-056",
+        "SRC-062",
+        "SRC-093"
+      ]
+    },
+    {
+      "id": "PA-1",
+      "trackId": "P-AI",
+      "title": "Trigger、检索与内容",
+      "focus": "trigger / retrieve / suggest",
+      "commonEvaluation": "F1 · AUC · npDCG · accept",
+      "gapId": "GAP-PAI-01",
+      "gap": "多动作后果、不可逆风险与长期效用不可见。",
+      "sourceIds": [
+        "SRC-003",
+        "SRC-005",
+        "SRC-063",
+        "SRC-064"
+      ]
+    },
+    {
+      "id": "PA-2",
+      "trackId": "P-AI",
+      "title": "长程事件与连续工作流",
+      "focus": "event / hidden intent / workflow",
+      "commonEvaluation": "timing · task success · pipeline",
+      "gapId": "GAP-PAI-02",
+      "gap": "取消后的 repair、多需求优先级与长期信任。",
+      "sourceIds": [
+        "SRC-001",
+        "SRC-066",
+        "SRC-068",
+        "SRC-069",
+        "SRC-072"
+      ]
+    },
+    {
+      "id": "PA-3",
+      "trackId": "P-AI",
+      "title": "主动提问与信息获取",
+      "focus": "ask / infer / default / abstain",
+      "commonEvaluation": "question efficiency · future utility",
+      "gapId": "GAP-PAI-03",
+      "gap": "询问负担、身份归因与 sense/ask 替代关系。",
+      "sourceIds": [
+        "SRC-036",
+        "SRC-065",
+        "SRC-071",
+        "SRC-074"
+      ]
+    },
+    {
+      "id": "PA-4",
+      "trackId": "P-AI",
+      "title": "结构化行动与问题解决",
+      "focus": "prepare / execute / escalate / rollback",
+      "commonEvaluation": "saved steps · end-to-end success",
+      "gapId": "GAP-PAI-04",
+      "gap": "side effect、partial completion 与可逆 staging。",
+      "sourceIds": [
+        "SRC-004",
+        "SRC-006",
+        "SRC-067",
+        "SRC-068",
+        "SRC-072"
+      ]
+    },
+    {
+      "id": "PA-5",
+      "trackId": "P-AI",
+      "title": "Abstention、timing 与 repair",
+      "focus": "wait / retract / correct / compensate",
+      "commonEvaluation": "paired accuracy · timing · regret",
+      "gapId": "GAP-PAI-05",
+      "gap": "行动后的 retract/correct 与用户已采取行动的后果。",
+      "sourceIds": [
+        "SRC-008",
+        "SRC-066",
+        "SRC-070",
+        "SRC-073"
+      ]
+    },
+    {
+      "id": "PP-1",
+      "trackId": "P-PHY",
+      "title": "JITAI 问题定义",
+      "focus": "need / receptivity / feasibility / effect",
+      "commonEvaluation": "availability · proximal outcome · burden",
+      "gapId": "GAP-PPHY-01",
+      "gap": "Agent 论文常把多个构念压成 acceptance。",
+      "sourceIds": [
+        "SRC-075",
+        "SRC-076",
+        "SRC-077"
+      ]
+    },
+    {
+      "id": "PP-2",
+      "trackId": "P-PHY",
+      "title": "MRT 与 causal excursion",
+      "focus": "assignment / moderator / outcome",
+      "commonEvaluation": "causal excursion · WCLS",
+      "gapId": "GAP-PPHY-02",
+      "gap": "公开 Agent 数据通常缺 assignment、propensity 与 outcome。",
+      "sourceIds": [
+        "SRC-040",
+        "SRC-077",
+        "SRC-078"
+      ]
+    },
+    {
+      "id": "PP-3",
+      "trackId": "P-PHY",
+      "title": "Need、receptivity 与 feasibility",
+      "focus": "context / privacy / availability",
+      "commonEvaluation": "acceptance · self-report · classifier",
+      "gapId": "GAP-PPHY-03",
+      "gap": "接受不等于有效，社会情境与安全约束不足。",
+      "sourceIds": [
+        "SRC-006",
+        "SRC-021",
+        "SRC-022",
+        "SRC-023"
+      ]
+    },
+    {
+      "id": "PP-4",
+      "trackId": "P-PHY",
+      "title": "主动感知与机会窗口",
+      "focus": "sense / latency / state half-life",
+      "commonEvaluation": "uncertainty · timing · energy",
+      "gapId": "GAP-PPHY-04",
+      "gap": "感知本身改变 observation、隐私和未来行为。",
+      "sourceIds": [
+        "SRC-007",
+        "SRC-008",
+        "SRC-020",
+        "SRC-026",
+        "SRC-102"
+      ]
+    },
+    {
+      "id": "PP-5",
+      "trackId": "P-PHY",
+      "title": "剂量、withdrawal 与 habituation",
+      "focus": "dose / response / withdrawal",
+      "commonEvaluation": "forecast · adherence · effect",
+      "gapId": "GAP-PPHY-05",
+      "gap": "response prediction 与 causal effect 混淆，重复介入会改写数据。",
+      "sourceIds": [
+        "SRC-039",
+        "SRC-077",
+        "SRC-079",
+        "SRC-080"
+      ]
+    },
+    {
+      "id": "UA-1",
+      "trackId": "U-AI",
+      "title": "显式 persona 与响应",
+      "focus": "persona-conditioned generation",
+      "commonEvaluation": "preference · fluency · coherence",
+      "gapId": "GAP-UAI-01",
+      "gap": "persona 是否属于当前角色与目标，冲突时如何处理。",
+      "sourceIds": [
+        "SRC-018",
+        "SRC-081",
+        "SRC-084",
+        "SRC-085",
+        "SRC-086"
+      ]
+    },
+    {
+      "id": "UA-2",
+      "trackId": "U-AI",
+      "title": "历史检索与生成",
+      "focus": "history retrieval / selective use",
+      "commonEvaluation": "ROUGE · quality · rationality",
+      "gapId": "GAP-UAI-02",
+      "gap": "历史冲突、feedback cause 与修正残余影响。",
+      "sourceIds": [
+        "SRC-016",
+        "SRC-017",
+        "SRC-048",
+        "SRC-081",
+        "SRC-082",
+        "SRC-105",
+        "SRC-106"
+      ]
+    },
+    {
+      "id": "UA-3",
+      "trackId": "U-AI",
+      "title": "动态偏好与 lifelong persona",
+      "focus": "preference shift / provenance",
+      "commonEvaluation": "long-context following · shift",
+      "gapId": "GAP-UAI-03",
+      "gap": "变化原因、agent 诱导变化与错误适配 rollback。",
+      "sourceIds": [
+        "SRC-036",
+        "SRC-038",
+        "SRC-083",
+        "SRC-085",
+        "SRC-088",
+        "SRC-103",
+        "SRC-104"
+      ]
+    },
+    {
+      "id": "UA-4",
+      "trackId": "U-AI",
+      "title": "Alignment、adapter 与 policy",
+      "focus": "memory / prompt / adapter / policy",
+      "commonEvaluation": "preference score · transfer",
+      "gapId": "GAP-UAI-04",
+      "gap": "各层独立贡献和撤销成本缺少责任分解。",
+      "sourceIds": [
+        "SRC-034",
+        "SRC-036",
+        "SRC-038",
+        "SRC-087",
+        "SRC-089",
+        "SRC-103"
+      ]
+    },
+    {
+      "id": "UA-5",
+      "trackId": "U-AI",
+      "title": "主动获取、澄清与 feedback",
+      "focus": "ask / feedback / correction",
+      "commonEvaluation": "future success · adaptation",
+      "gapId": "GAP-UAI-05",
+      "gap": "反馈究竟修 memory、reasoning、policy、style 还是 tool。",
+      "sourceIds": [
+        "SRC-036",
+        "SRC-037",
+        "SRC-065",
+        "SRC-071"
+      ]
+    },
+    {
+      "id": "UA-6",
+      "trackId": "U-AI",
+      "title": "多身份、多角色与协商",
+      "focus": "owner / delegate / subject / beneficiary",
+      "commonEvaluation": "access · utility · harm",
+      "gapId": "GAP-UAI-06",
+      "gap": "共享设备和家庭场景缺统一身份与偏好仲裁评测。",
+      "sourceIds": [
+        "SRC-032",
+        "SRC-033",
+        "SRC-096"
+      ]
+    },
+    {
+      "id": "UP-1",
+      "trackId": "U-PHY",
+      "title": "Population representation 与个体差异",
+      "focus": "population prior / per-user harm",
+      "commonEvaluation": "LOSO · few-shot · cross-dataset",
+      "gapId": "GAP-UPHY-01",
+      "gap": "平均 gain 掩盖 negative transfer 与 worst-user harm。",
+      "sourceIds": [
+        "SRC-012",
+        "SRC-013",
+        "SRC-056",
+        "SRC-058",
+        "SRC-090"
+      ]
+    },
+    {
+      "id": "UP-2",
+      "trackId": "U-PHY",
+      "title": "Few-shot 与 on-device adaptation",
+      "focus": "prototype / head / normalization",
+      "commonEvaluation": "macro-F1 · compute · calibration",
+      "gapId": "GAP-UPHY-02",
+      "gap": "shift 来源、错误 pseudo-label 与更新可撤销性。",
+      "sourceIds": [
+        "SRC-019",
+        "SRC-091"
+      ]
+    },
+    {
+      "id": "UP-3",
+      "trackId": "U-PHY",
+      "title": "多年泛化与部署漂移",
+      "focus": "year / cohort / device / context",
+      "commonEvaluation": "cross-year · AUROC · recovery",
+      "gapId": "GAP-UPHY-03",
+      "gap": "下降原因未分解，错误适配可能比不适配更差。",
+      "sourceIds": [
+        "SRC-059",
+        "SRC-062",
+        "SRC-092"
+      ]
+    },
+    {
+      "id": "UP-4",
+      "trackId": "U-PHY",
+      "title": "个体 insight 与行为预测",
+      "focus": "support users / personal baseline",
+      "commonEvaluation": "expert rubric · RMSE · user study",
+      "gapId": "GAP-UPHY-04",
+      "gap": "个性化增益来自 sensing、memory 还是 policy 尚未分解。",
+      "sourceIds": [
+        "SRC-011",
+        "SRC-060",
+        "SRC-061",
+        "SRC-090"
+      ]
+    },
+    {
+      "id": "UP-5",
+      "trackId": "U-PHY",
+      "title": "异质介入效应与 agent-induced drift",
+      "focus": "person × context × dose",
+      "commonEvaluation": "CATE · response · adherence",
+      "gapId": "GAP-UPHY-05",
+      "gap": "预测与 effect 混淆，agent 会改变未来依从性与缺失。",
+      "sourceIds": [
+        "SRC-039",
+        "SRC-040",
+        "SRC-077"
+      ]
+    },
+    {
+      "id": "UP-6",
+      "trackId": "U-PHY",
+      "title": "安全冷启动、隐私与删除",
+      "focus": "label budget / abstain / derived model deletion",
+      "commonEvaluation": "risk–coverage · leakage · rollback",
+      "gapId": "GAP-UPHY-06",
+      "gap": "何时请求标签、如何撤销 adapter 和 federated contribution。",
+      "sourceIds": [
+        "SRC-091",
+        "SRC-093"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "id": "GAP-MAI-01",
+      "clusterId": "MA-1",
+      "trackId": "M-AI",
+      "statement": "authority、purpose、expiry 与 action risk 没有进入 admission。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-MAI-02",
+      "clusterId": "MA-2",
+      "trackId": "M-AI",
+      "statement": "等价历史下的 lifecycle 差异、撤销残留与责任归因。",
+      "candidateIds": [
+        "C01"
+      ]
+    },
+    {
+      "id": "GAP-MAI-03",
+      "clusterId": "MA-3",
+      "trackId": "M-AI",
+      "statement": "环境变化后旧经验何时失效，以及错误行动由谁修复。",
+      "candidateIds": [
+        "C01"
+      ]
+    },
+    {
+      "id": "GAP-MAI-04",
+      "clusterId": "MA-4",
+      "trackId": "M-AI",
+      "statement": "询问负担、未来任务不确定性与跨层撤销。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-MAI-05",
+      "clusterId": "MA-5",
+      "trackId": "M-AI",
+      "statement": "普通用户撤权后的跨层 residue 与多主体责任。",
+      "candidateIds": [
+        "C03"
+      ]
+    },
+    {
+      "id": "GAP-MPHY-01",
+      "clusterId": "MP-1",
+      "trackId": "M-PHY",
+      "statement": "representation quality 与 downstream decision regret 没有对齐。",
+      "candidateIds": [
+        "C08"
+      ]
+    },
+    {
+      "id": "GAP-MPHY-02",
+      "clusterId": "MP-2",
+      "trackId": "M-PHY",
+      "statement": "结论是否来自有效时段，错误 insight 如何撤回。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-MPHY-03",
+      "clusterId": "MP-3",
+      "trackId": "M-PHY",
+      "statement": "自然缺失、拒绝、设备故障与 policy-induced missingness 未区分。",
+      "candidateIds": [
+        "C08"
+      ]
+    },
+    {
+      "id": "GAP-MPHY-04",
+      "clusterId": "MP-4",
+      "trackId": "M-PHY",
+      "statement": "介入造成的变化可能被错误写成自然 baseline。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-MPHY-05",
+      "clusterId": "MP-5",
+      "trackId": "M-PHY",
+      "statement": "provenance 尚未进入 memory validity 与 derived deletion。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-PAI-01",
+      "clusterId": "PA-1",
+      "trackId": "P-AI",
+      "statement": "多动作后果、不可逆风险与长期效用不可见。",
+      "candidateIds": [
+        "C13"
+      ]
+    },
+    {
+      "id": "GAP-PAI-02",
+      "clusterId": "PA-2",
+      "trackId": "P-AI",
+      "statement": "取消后的 repair、多需求优先级与长期信任。",
+      "candidateIds": [
+        "C13"
+      ]
+    },
+    {
+      "id": "GAP-PAI-03",
+      "clusterId": "PA-3",
+      "trackId": "P-AI",
+      "statement": "询问负担、身份归因与 sense/ask 替代关系。",
+      "candidateIds": [
+        "C13"
+      ]
+    },
+    {
+      "id": "GAP-PAI-04",
+      "clusterId": "PA-4",
+      "trackId": "P-AI",
+      "statement": "side effect、partial completion 与可逆 staging。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-PAI-05",
+      "clusterId": "PA-5",
+      "trackId": "P-AI",
+      "statement": "行动后的 retract/correct 与用户已采取行动的后果。",
+      "candidateIds": [
+        "C13"
+      ]
+    },
+    {
+      "id": "GAP-PPHY-01",
+      "clusterId": "PP-1",
+      "trackId": "P-PHY",
+      "statement": "Agent 论文常把多个构念压成 acceptance。",
+      "candidateIds": [
+        "C23"
+      ]
+    },
+    {
+      "id": "GAP-PPHY-02",
+      "clusterId": "PP-2",
+      "trackId": "P-PHY",
+      "statement": "公开 Agent 数据通常缺 assignment、propensity 与 outcome。",
+      "candidateIds": [
+        "C23"
+      ]
+    },
+    {
+      "id": "GAP-PPHY-03",
+      "clusterId": "PP-3",
+      "trackId": "P-PHY",
+      "statement": "接受不等于有效，社会情境与安全约束不足。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-PPHY-04",
+      "clusterId": "PP-4",
+      "trackId": "P-PHY",
+      "statement": "感知本身改变 observation、隐私和未来行为。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-PPHY-05",
+      "clusterId": "PP-5",
+      "trackId": "P-PHY",
+      "statement": "response prediction 与 causal effect 混淆，重复介入会改写数据。",
+      "candidateIds": [
+        "C23"
+      ]
+    },
+    {
+      "id": "GAP-UAI-01",
+      "clusterId": "UA-1",
+      "trackId": "U-AI",
+      "statement": "persona 是否属于当前角色与目标，冲突时如何处理。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-UAI-02",
+      "clusterId": "UA-2",
+      "trackId": "U-AI",
+      "statement": "历史冲突、feedback cause 与修正残余影响。",
+      "candidateIds": [
+        "C25"
+      ]
+    },
+    {
+      "id": "GAP-UAI-03",
+      "clusterId": "UA-3",
+      "trackId": "U-AI",
+      "statement": "变化原因、agent 诱导变化与错误适配 rollback。",
+      "candidateIds": [
+        "C25"
+      ]
+    },
+    {
+      "id": "GAP-UAI-04",
+      "clusterId": "UA-4",
+      "trackId": "U-AI",
+      "statement": "各层独立贡献和撤销成本缺少责任分解。",
+      "candidateIds": [
+        "C25",
+        "C28"
+      ]
+    },
+    {
+      "id": "GAP-UAI-05",
+      "clusterId": "UA-5",
+      "trackId": "U-AI",
+      "statement": "反馈究竟修 memory、reasoning、policy、style 还是 tool。",
+      "candidateIds": [
+        "C28"
+      ]
+    },
+    {
+      "id": "GAP-UAI-06",
+      "clusterId": "UA-6",
+      "trackId": "U-AI",
+      "statement": "共享设备和家庭场景缺统一身份与偏好仲裁评测。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-UPHY-01",
+      "clusterId": "UP-1",
+      "trackId": "U-PHY",
+      "statement": "平均 gain 掩盖 negative transfer 与 worst-user harm。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-UPHY-02",
+      "clusterId": "UP-2",
+      "trackId": "U-PHY",
+      "statement": "shift 来源、错误 pseudo-label 与更新可撤销性。",
+      "candidateIds": [
+        "C31"
+      ]
+    },
+    {
+      "id": "GAP-UPHY-03",
+      "clusterId": "UP-3",
+      "trackId": "U-PHY",
+      "statement": "下降原因未分解，错误适配可能比不适配更差。",
+      "candidateIds": [
+        "C31"
+      ]
+    },
+    {
+      "id": "GAP-UPHY-04",
+      "clusterId": "UP-4",
+      "trackId": "U-PHY",
+      "statement": "个性化增益来自 sensing、memory 还是 policy 尚未分解。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-UPHY-05",
+      "clusterId": "UP-5",
+      "trackId": "U-PHY",
+      "statement": "预测与 effect 混淆，agent 会改变未来依从性与缺失。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-UPHY-06",
+      "clusterId": "UP-6",
+      "trackId": "U-PHY",
+      "statement": "何时请求标签、如何撤销 adapter 和 federated contribution。",
+      "candidateIds": [
+        "C31"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "C01",
+      "trackId": "M-AI",
+      "title": "Lifecycle Counterfactuals",
+      "maturity": "probe",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "probe-ready",
+      "nextAction": "180 组 paired trajectories + 5 baselines",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [
+        "SRC-045",
+        "SRC-097",
+        "SRC-047"
+      ],
+      "proposal": {
+        "paperShape": "Benchmark / Evaluation",
+        "origin": [
+          "LongMemEval pressure",
+          "Lifecycle gap",
+          "GPT Pro shortlist"
+        ],
+        "falsifiableClaim": "相同最终文本历史、不同 update/cancel/expire/delete/revive 轨迹，是否导致稳定而有后果的 Agent failure？",
+        "composition": "把 LongMemEval 的跨 session 更新、STALE 的隐式失效与 MemoryArena 的行动后果组合成 history-equivalent pairing。",
+        "evaluationUnit": "Lifecycle trajectory",
+        "actionSpace": "retrieve · abstain · verify · act",
+        "counterfactual": "同一最终 history，不同 lifecycle path",
+        "primaryMetric": "failure stability + downstream consequence",
+        "killerBaseline": "full history + tuned recency",
+        "maxDays": "1–3 days",
+        "nextEvidence": "生成 180 对轨迹并先跑 5 个强简单 baseline。",
+        "killRule": "full-history + tuned-recency 接近 oracle，则停止新 benchmark claim。",
+        "externalReviewPressure": "Top-ranked as a falsifiable evaluation opportunity.",
+        "localVerdict": "保留，但限定 benign lifecycle、action consequence 与 responsibility。"
+      }
+    },
+    {
+      "id": "C02",
+      "trackId": "M-AI",
+      "title": "Action-Conditioned Authority",
+      "maturity": "audit",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method",
+        "eval"
+      ],
+      "initialRoute": "branch-after-overlap",
+      "nextAction": "authority × action-risk overlap matrix",
+      "blocker": "broad framing 已终止，待确认残余变量是否独立成立",
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C03",
+      "trackId": "M-AI",
+      "title": "Benign Revocation Residual",
+      "maturity": "probe",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "systems"
+      ],
+      "initialRoute": "probe-ready-narrowed",
+      "nextAction": "四层 canary + residual-influence matrix",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [
+        "SRC-094",
+        "SRC-095",
+        "SRC-096",
+        "SRC-099"
+      ],
+      "proposal": {
+        "paperShape": "Benchmark + Systems",
+        "origin": [
+          "MemTX pressure",
+          "GateMem pressure",
+          "Local narrowing"
+        ],
+        "falsifiableClaim": "用户正常撤权以后，影响是否仍残留在 summary、cache、index 或 adapter，并继续改变回答或行动？",
+        "composition": "从 transaction/repair 文献中移除恶意 poisoning 主张，只保留 benign user revocation 的跨层 residual influence。",
+        "evaluationUnit": "Revocation episode × storage layer",
+        "actionSpace": "revoke · purge · rollback · explain",
+        "counterfactual": "source-tag purge vs cross-layer repair",
+        "primaryMetric": "residual influence + benign utility retention",
+        "killerBaseline": "source-tagged purge",
+        "maxDays": "1–3 days",
+        "nextEvidence": "四层 canary 与 residual-influence matrix。",
+        "killRule": "普通 source-tag purge 足够清除影响，则降为 engineering note。",
+        "externalReviewPressure": "Strong, but transaction and governance papers create heavy novelty pressure.",
+        "localVerdict": "只测 benign cross-layer residue，不泛称 deletion/authority。"
+      }
+    },
+    {
+      "id": "C04",
+      "trackId": "M-AI",
+      "title": "Household Identity Boundary",
+      "maturity": "audit",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "novelty-hold",
+      "nextAction": "owner/delegate/subject/beneficiary 角色矩阵 overlap",
+      "blocker": "须证明角色矩阵带来独立 failure（novelty-hold）",
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C05",
+      "trackId": "M-AI",
+      "title": "Provenance Laundering Stress Test",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C06",
+      "trackId": "M-AI",
+      "title": "Explicit vs Parametric Memory Rollback",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "systems",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C07",
+      "trackId": "M-PHY",
+      "title": "Equal-Budget Multi-Timescale Memory",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C08",
+      "trackId": "M-PHY",
+      "title": "Missingness Cause → Action",
+      "maturity": "audit",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method",
+        "eval"
+      ],
+      "initialRoute": "branch-after-overlap",
+      "nextAction": "paper overlap + metadata audit",
+      "blocker": "overlap audit 未过前不进 GPU 队列",
+      "unlockCondition": null,
+      "resource": "CPU",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [
+        "SRC-057",
+        "SRC-100",
+        "SRC-102"
+      ],
+      "proposal": {
+        "paperShape": "Method + Evaluation",
+        "origin": [
+          "LSM-2 pressure",
+          "OpenMHC pressure",
+          "Active-sensing branch"
+        ],
+        "falsifiableClaim": "缺失原因能否改变 ask、sense、wait、abstain 的最佳动作，并最终改变 downstream regret？",
+        "composition": "把 incomplete representation、MNAR metadata 与 active acquisition 合并，但主动放弃 generic imputation claim。",
+        "evaluationUnit": "Sensor episode / decision point",
+        "actionSpace": "ask · sense · wait · abstain",
+        "counterfactual": "同一 mask，不同 missingness cause",
+        "primaryMetric": "decision regret + privacy/energy cost",
+        "killerBaseline": "uncertainty threshold + fixed imputation",
+        "maxDays": "Audit before probe",
+        "nextEvidence": "逐篇 overlap 与公开数据 metadata/许可审计。",
+        "killRule": "cause 标签不改变 policy ranking，则终止 action-aware branch。",
+        "externalReviewPressure": "Originally attractive, but generic missingness is directly pressured.",
+        "localVerdict": "generic version killed；仅保留 cause → action → consequence。"
+      }
+    },
+    {
+      "id": "C09",
+      "trackId": "M-PHY",
+      "title": "Device and Placement Provenance Invalidation",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C10",
+      "trackId": "M-PHY",
+      "title": "Acute–Chronic Evidence Contradiction",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C11",
+      "trackId": "M-PHY",
+      "title": "Deletion of Derived Physiological Memory",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "governance",
+        "systems"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C12",
+      "trackId": "M-PHY",
+      "title": "Decision-Sufficient Physiological Summarization",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C13",
+      "trackId": "P-AI",
+      "title": "Multi-Action Deferral",
+      "maturity": "probe",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method",
+        "eval"
+      ],
+      "initialRoute": "probe-ready",
+      "nextAction": "250 decision points × 6 actions × 3 costs",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [
+        "SRC-063",
+        "SRC-070",
+        "SRC-065",
+        "SRC-066"
+      ],
+      "proposal": {
+        "paperShape": "Method + Evaluation",
+        "origin": [
+          "Binary-trigger gap",
+          "AgentAbstain",
+          "Ask-before-Plan"
+        ],
+        "falsifiableClaim": "binary act/silent 是否掩盖 wait、ask、prepare 等低风险动作的独立价值？",
+        "composition": "把 trigger、abstention、clarification 与 reversible staging 放进同一 action lattice，并按后果计价。",
+        "evaluationUnit": "Decision point with downstream consequence",
+        "actionSpace": "silent · wait · ask · prepare · suggest · execute",
+        "counterfactual": "binary trigger vs six-action matched replay",
+        "primaryMetric": "cost-sensitive policy value",
+        "killerBaseline": "binary trigger + two-stage prompt",
+        "maxDays": "1–3 days",
+        "nextEvidence": "250 decision points × 6 actions × 3 cost settings。",
+        "killRule": "two-stage prompt 追平，则 method claim kill，保留 evaluator。",
+        "externalReviewPressure": "High-value only if actions are consequence-distinct, not renamed labels.",
+        "localVerdict": "GO；C14 timing 与 C15 repair 作为 nested slices。"
+      }
+    },
+    {
+      "id": "C14",
+      "trackId": "P-AI",
+      "title": "Consequence-aware Timing",
+      "maturity": "probe",
+      "workState": "closed",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "nested evaluation"
+      ],
+      "initialRoute": "nested-under-C13",
+      "nextAction": "作为 C13 evaluator 的 timing slice 实现",
+      "blocker": "依附 C13 probe，无独立启动",
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-31",
+      "nestedInto": [
+        "C13"
+      ],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C15",
+      "trackId": "P-AI",
+      "title": "Irreversible-action Repair",
+      "maturity": "probe",
+      "workState": "closed",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "nested evaluation",
+        "systems"
+      ],
+      "initialRoute": "nested-under-C13/C03",
+      "nextAction": "作为 C13/C03 evaluator 的 repair slice 实现",
+      "blocker": "依附 C13/C03 probe，无独立启动",
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-31",
+      "nestedInto": [
+        "C13",
+        "C03"
+      ],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C16",
+      "trackId": "P-AI",
+      "title": "Counterfactual Assistance Value",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "diagnosis",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C17",
+      "trackId": "P-AI",
+      "title": "Tool-Failure-Aware Escalation",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method",
+        "systems"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C18",
+      "trackId": "P-AI",
+      "title": "Longitudinal Habituation and Trust Erosion",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "hci"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C19",
+      "trackId": "P-PHY",
+      "title": "Need–Receptivity–Effect Audit",
+      "maturity": "audit",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "diagnosis",
+        "audit"
+      ],
+      "initialRoute": "data-audit",
+      "nextAction": "assignment/availability/propensity/outcome/license 清单",
+      "blocker": "缺可识别条件则只能留作 diagnosis",
+      "unlockCondition": null,
+      "resource": "CPU",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C20",
+      "trackId": "P-PHY",
+      "title": "Delay-Aware Physiological Intervention Windows",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C21",
+      "trackId": "P-PHY",
+      "title": "Active Sensing with Ask/Wait Alternatives",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C22",
+      "trackId": "P-PHY",
+      "title": "Withdrawal after State Resolution",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "hci"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C23",
+      "trackId": "P-PHY",
+      "title": "Closed-Loop Confounding",
+      "maturity": "probe",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "diagnosis",
+        "benchmark"
+      ],
+      "initialRoute": "probe-ready",
+      "nextAction": "known-ground-truth SCM + ranking map",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [
+        "SRC-075",
+        "SRC-040",
+        "SRC-077",
+        "SRC-039"
+      ],
+      "proposal": {
+        "paperShape": "Diagnosis / Benchmark",
+        "origin": [
+          "JITAI causal language",
+          "Proxy mismatch",
+          "GPT Pro diagnosis"
+        ],
+        "falsifiableClaim": "response prediction 或 acceptance proxy 是否会在闭环条件下把真实 policy 排名反过来？",
+        "composition": "用 JITAI/MRT estimand 约束 Agent evaluation，并只在 known-ground-truth SCM 中建立 ranking reversal。",
+        "evaluationUnit": "Repeated intervention decision point",
+        "actionSpace": "intervene · wait · no treatment",
+        "counterfactual": "observational proxy vs randomized ground truth",
+        "primaryMetric": "policy-ranking agreement",
+        "killerBaseline": "oracle propensity / no-confounding setting",
+        "maxDays": "1–3 days",
+        "nextEvidence": "known-ground-truth simulator + proxy/ranking map。",
+        "killRule": "合理条件下 proxy 排名始终稳定，则停止 benchmark。",
+        "externalReviewPressure": "Useful diagnosis; must not be presented as real-world causal evidence.",
+        "localVerdict": "只证明 possibility 与 identifiability boundary。"
+      }
+    },
+    {
+      "id": "C24",
+      "trackId": "P-PHY",
+      "title": "Delivery Modality under Sensor/Social Uncertainty",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "eval",
+        "hci"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C25",
+      "trackId": "U-AI",
+      "title": "Conflict Attribution / Negotiation",
+      "maturity": "probe",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "probe-ready",
+      "nextAction": "200 matched swaps + negotiation/rollback slice",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [
+        "SRC-103",
+        "SRC-104",
+        "SRC-105",
+        "SRC-106"
+      ],
+      "proposal": {
+        "paperShape": "Benchmark / Evaluation",
+        "origin": [
+          "HorizonBench pressure",
+          "BenchPreS pressure",
+          "Correction debt"
+        ],
+        "falsifiableClaim": "角色、情境和时间偏好冲突时，latest/role filter 之后是否仍需要原因归因、协商和 rollback？",
+        "composition": "把 lifelong preference provenance、context selectivity 与 personalized action 压力组合成 matched swaps。",
+        "evaluationUnit": "Preference conflict episode",
+        "actionSpace": "latest · role-filter · ask · negotiate · abstain · rollback",
+        "counterfactual": "同一偏好文本，不同 role/context/cause",
+        "primaryMetric": "task utility + correction debt",
+        "killerBaseline": "latest-valid + role filter",
+        "maxDays": "1–3 days",
+        "nextEvidence": "200 matched swaps + negotiation/rollback slices。",
+        "killRule": "简单 latest/role filter 解决，则 branch 到 update-layer attribution。",
+        "externalReviewPressure": "Strong before the newest preference benchmarks were added.",
+        "localVerdict": "收窄到 cause attribution、negotiation、update-layer choice。"
+      }
+    },
+    {
+      "id": "C26",
+      "trackId": "U-AI",
+      "title": "Identity Attribution",
+      "maturity": "audit",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "overlap-audit",
+      "nextAction": "identity-before-personalization overlap audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C27",
+      "trackId": "U-AI",
+      "title": "Value of Clarification for Personalization",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C28",
+      "trackId": "U-AI",
+      "title": "Feedback Ambiguity / Correction Debt",
+      "maturity": "problem",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "eval"
+      ],
+      "initialRoute": "opportunity",
+      "nextAction": "冻结 feedback-cause schema + matched-pair 设计",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [
+        "SRC-036",
+        "SRC-071",
+        "SRC-065"
+      ],
+      "proposal": {
+        "paperShape": "Benchmark / Evaluation",
+        "origin": [
+          "PAHF feedback",
+          "ATRBench acquisition",
+          "GPT Pro opportunity"
+        ],
+        "falsifiableClaim": "同一句用户纠正，究竟应更新 memory、reasoning、policy、style、tool 还是 interface？",
+        "composition": "从 feedback acquisition 文献向责任路由推进，用 matched pair 固定文字、改变真实错误来源。",
+        "evaluationUnit": "Correction event → future contexts",
+        "actionSpace": "route update · ask · rollback",
+        "counterfactual": "同一 feedback，不同 latent failure cause",
+        "primaryMetric": "routing accuracy + repeated correction debt",
+        "killerBaseline": "single global memory update",
+        "maxDays": "Schema first",
+        "nextEvidence": "冻结 150 个 matched cases 的 cause taxonomy。",
+        "killRule": "错误来源不可被可靠标注或简单 router 无 headroom，则 branch。",
+        "externalReviewPressure": "One of the clearest remaining U-AI opportunities.",
+        "localVerdict": "保持 Problem Definition；先冻结 schema，不提前写方法。"
+      }
+    },
+    {
+      "id": "C29",
+      "trackId": "U-AI",
+      "title": "Performative Personalization and Co-Adaptation",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "diagnosis",
+        "method"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C30",
+      "trackId": "U-AI",
+      "title": "Memory Personalization vs Policy Personalization",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "diagnosis",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C31",
+      "trackId": "U-PHY",
+      "title": "Drift Attribution",
+      "maturity": "audit",
+      "workState": "blocked",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "benchmark",
+        "method"
+      ],
+      "initialRoute": "data-gate",
+      "nextAction": "对齐真实 shift metadata 后再单卡",
+      "blocker": "缺公开数据的时间/设备/佩戴变化证据",
+      "unlockCondition": "对齐真实 shift metadata 后再单卡",
+      "resource": "1 GPU",
+      "updatedAt": "2026-08-03",
+      "nestedInto": [],
+      "sourceIds": [
+        "SRC-059",
+        "SRC-062",
+        "SRC-019",
+        "SRC-091"
+      ],
+      "proposal": {
+        "paperShape": "Benchmark + Method",
+        "origin": [
+          "GLOBEM",
+          "Cross-device pressure",
+          "Selective adaptation"
+        ],
+        "falsifiableClaim": "change detection 之后，错误归因是否会选择错误 update operator，并造成负迁移？",
+        "composition": "将跨年、设备和个体 drift 证据与 selective update/rollback 串成 detection → attribution → operator → recovery。",
+        "evaluationUnit": "User-period / device episode",
+        "actionSpace": "no update · prototype · head · norm · adapter · memory",
+        "counterfactual": "相同性能下降，不同真实 shift source",
+        "primaryMetric": "operator regret + worst-user harm",
+        "killerBaseline": "change detector + fixed adaptation",
+        "maxDays": "Data alignment first",
+        "nextEvidence": "2 个公开数据集 × 4 shift families，先核对真实 metadata。",
+        "killRule": "只有 synthetic shift 或 attribution 不改变 operator 排名，则不做真实主张。",
+        "externalReviewPressure": "Conditional GO if real shift metadata exists.",
+        "localVerdict": "保持 Data/GPU gate；synthetic 只验 harness。"
+      }
+    },
+    {
+      "id": "C32",
+      "trackId": "U-PHY",
+      "title": "Selective Update under Scarce Labels",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C33",
+      "trackId": "U-PHY",
+      "title": "Heterogeneous Causal Intervention Response",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "causal method"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C34",
+      "trackId": "U-PHY",
+      "title": "Habituation-Aware Personalized Intervention",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method",
+        "hci"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C35",
+      "trackId": "U-PHY",
+      "title": "Agent-Induced Adherence Drift",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "diagnosis",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    },
+    {
+      "id": "C36",
+      "trackId": "U-PHY",
+      "title": "Safe Cold-Start Transfer with Abstention",
+      "maturity": "radar",
+      "workState": "active",
+      "evidenceSummary": "inference",
+      "outputShape": [
+        "method",
+        "eval"
+      ],
+      "initialRoute": "radar",
+      "nextAction": "Complete nearest-work and evaluation-space audit",
+      "blocker": null,
+      "unlockCondition": null,
+      "resource": "CPU/API",
+      "updatedAt": "2026-07-30",
+      "nestedInto": [],
+      "sourceIds": [],
+      "proposal": null
+    }
+  ],
+  "experimentSpecs": [
+    {
+      "id": "E-C01-01",
+      "candidateIds": [
+        "C01"
+      ],
+      "title": "Lifecycle paired generator",
+      "status": "ready",
+      "resource": "CPU/API",
+      "scale": "180 pairs · 5 baselines",
+      "decisionQuestion": "是否存在稳定 history-equivalence failure？",
+      "primaryMetric": "failure stability + consequence",
+      "killerBaseline": "full history + recency",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "done"
+        },
+        {
+          "label": "Evaluator",
+          "state": "active"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": null,
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C03-01",
+      "candidateIds": [
+        "C03"
+      ],
+      "title": "Cross-layer revocation canary",
+      "status": "ready",
+      "resource": "CPU/API",
+      "scale": "4 layers · influence matrix",
+      "decisionQuestion": "普通 purge 是否足够？",
+      "primaryMetric": "residual influence",
+      "killerBaseline": "source-tag purge",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "done"
+        },
+        {
+          "label": "Evaluator",
+          "state": "active"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": null,
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C13-01",
+      "candidateIds": [
+        "C13"
+      ],
+      "title": "Multi-action consequence replay",
+      "status": "ready",
+      "resource": "CPU/API",
+      "scale": "250 points · 6 actions · 3 costs",
+      "decisionQuestion": "多动作是否比 binary trigger 可辨？",
+      "primaryMetric": "policy value / regret",
+      "killerBaseline": "binary + two-stage",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "done"
+        },
+        {
+          "label": "Evaluator",
+          "state": "active"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": null,
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C23-01",
+      "candidateIds": [
+        "C23"
+      ],
+      "title": "Closed-loop causal SCM",
+      "status": "ready",
+      "resource": "CPU",
+      "scale": "known-ground-truth simulator",
+      "decisionQuestion": "proxy 是否反转 policy 排名？",
+      "primaryMetric": "rank agreement",
+      "killerBaseline": "oracle propensity",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "done"
+        },
+        {
+          "label": "Evaluator",
+          "state": "active"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": null,
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C25-01",
+      "candidateIds": [
+        "C25"
+      ],
+      "title": "Preference cause/context swaps",
+      "status": "ready",
+      "resource": "CPU/API",
+      "scale": "200 matched swaps",
+      "decisionQuestion": "simple filters 是否已解决？",
+      "primaryMetric": "utility + correction debt",
+      "killerBaseline": "latest-valid + role filter",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "done"
+        },
+        {
+          "label": "Evaluator",
+          "state": "active"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": null,
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C08-01",
+      "candidateIds": [
+        "C08"
+      ],
+      "title": "Missingness overlap + metadata audit",
+      "status": "definition",
+      "resource": "CPU",
+      "scale": "paper/data audit",
+      "decisionQuestion": "cause/action 是否仍是独立变量？",
+      "primaryMetric": "coverage + identifiability",
+      "killerBaseline": "LSM-2 / OpenMHC",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "active"
+        },
+        {
+          "label": "Evaluator",
+          "state": "todo"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": null,
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C19-01",
+      "candidateIds": [
+        "C19"
+      ],
+      "title": "MRT/JITAI estimand audit",
+      "status": "definition",
+      "resource": "CPU",
+      "scale": "assignment/outcome checklist",
+      "decisionQuestion": "causal question 是否可识别？",
+      "primaryMetric": "required-field coverage",
+      "killerBaseline": "diagnosis-only route",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "active"
+        },
+        {
+          "label": "Evaluator",
+          "state": "todo"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": null,
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C28-01",
+      "candidateIds": [
+        "C28"
+      ],
+      "title": "Feedback-cause matched pairs",
+      "status": "definition",
+      "resource": "CPU/API",
+      "scale": "150 matched cases",
+      "decisionQuestion": "同一 feedback 是否对应不同修正对象？",
+      "primaryMetric": "routing + correction debt",
+      "killerBaseline": "global memory update",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "active"
+        },
+        {
+          "label": "Evaluator",
+          "state": "todo"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": null,
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C31-01",
+      "candidateIds": [
+        "C31"
+      ],
+      "title": "Drift-type injection harness",
+      "status": "blocked",
+      "resource": "1×80G",
+      "scale": "2 datasets · 4 shifts",
+      "decisionQuestion": "attribution 是否改变 operator choice？",
+      "primaryMetric": "operator regret",
+      "killerBaseline": "detect + fixed update",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "blocked"
+        },
+        {
+          "label": "Evaluator",
+          "state": "todo"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": "等待真实 shift metadata 与公开数据对齐；未分配 GPU。",
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C14-01",
+      "candidateIds": [
+        "C14"
+      ],
+      "title": "Consequence-aware timing slice",
+      "status": "nested",
+      "resource": "CPU/API",
+      "scale": "150 timing cases",
+      "decisionQuestion": "是否改变 C13 排名？",
+      "primaryMetric": "early/late regret",
+      "killerBaseline": "timing-only",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "active"
+        },
+        {
+          "label": "Evaluator",
+          "state": "todo"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": "Standalone claim killed；仅嵌入 C13 evaluator。",
+      "plannedRuns": []
+    },
+    {
+      "id": "E-C15-01",
+      "candidateIds": [
+        "C15"
+      ],
+      "title": "Irreversible-action repair slice",
+      "status": "nested",
+      "resource": "CPU/API",
+      "scale": "100 repair cases",
+      "decisionQuestion": "是否改变 C13/C03 repair 排名？",
+      "primaryMetric": "residual side effect",
+      "killerBaseline": "post-hoc abstain",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "active"
+        },
+        {
+          "label": "Evaluator",
+          "state": "todo"
+        },
+        {
+          "label": "Baseline",
+          "state": "todo"
+        },
+        {
+          "label": "Run",
+          "state": "todo"
+        },
+        {
+          "label": "Decision",
+          "state": "todo"
+        }
+      ],
+      "note": "Broad repair paper killed；保留不可逆 action slice。",
+      "plannedRuns": []
+    }
+  ],
+  "runs": [],
+  "artifacts": [],
+  "evidenceLinks": [
+    {
+      "id": "EL-C01-01",
+      "assertionId": "C01@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-045"
+    },
+    {
+      "id": "EL-C01-02",
+      "assertionId": "C01@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-097"
+    },
+    {
+      "id": "EL-C01-03",
+      "assertionId": "C01@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-047"
+    },
+    {
+      "id": "EL-C03-01",
+      "assertionId": "C03@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-094"
+    },
+    {
+      "id": "EL-C03-02",
+      "assertionId": "C03@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-095"
+    },
+    {
+      "id": "EL-C03-03",
+      "assertionId": "C03@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-096"
+    },
+    {
+      "id": "EL-C03-04",
+      "assertionId": "C03@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-099"
+    },
+    {
+      "id": "EL-C08-01",
+      "assertionId": "C08@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-057"
+    },
+    {
+      "id": "EL-C08-02",
+      "assertionId": "C08@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-100"
+    },
+    {
+      "id": "EL-C08-03",
+      "assertionId": "C08@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-102"
+    },
+    {
+      "id": "EL-C13-01",
+      "assertionId": "C13@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-063"
+    },
+    {
+      "id": "EL-C13-02",
+      "assertionId": "C13@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-070"
+    },
+    {
+      "id": "EL-C13-03",
+      "assertionId": "C13@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-065"
+    },
+    {
+      "id": "EL-C13-04",
+      "assertionId": "C13@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-066"
+    },
+    {
+      "id": "EL-C23-01",
+      "assertionId": "C23@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-075"
+    },
+    {
+      "id": "EL-C23-02",
+      "assertionId": "C23@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-040"
+    },
+    {
+      "id": "EL-C23-03",
+      "assertionId": "C23@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-077"
+    },
+    {
+      "id": "EL-C23-04",
+      "assertionId": "C23@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-039"
+    },
+    {
+      "id": "EL-C25-01",
+      "assertionId": "C25@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-103"
+    },
+    {
+      "id": "EL-C25-02",
+      "assertionId": "C25@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-104"
+    },
+    {
+      "id": "EL-C25-03",
+      "assertionId": "C25@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-105"
+    },
+    {
+      "id": "EL-C25-04",
+      "assertionId": "C25@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-106"
+    },
+    {
+      "id": "EL-C28-01",
+      "assertionId": "C28@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-036"
+    },
+    {
+      "id": "EL-C28-02",
+      "assertionId": "C28@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-071"
+    },
+    {
+      "id": "EL-C28-03",
+      "assertionId": "C28@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-065"
+    },
+    {
+      "id": "EL-C31-01",
+      "assertionId": "C31@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-059"
+    },
+    {
+      "id": "EL-C31-02",
+      "assertionId": "C31@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-062"
+    },
+    {
+      "id": "EL-C31-03",
+      "assertionId": "C31@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-019"
+    },
+    {
+      "id": "EL-C31-04",
+      "assertionId": "C31@v1.research_pressure",
+      "relation": "pressure",
+      "basisType": "source-paper",
+      "scope": "nearest-work and evaluation-space pressure",
+      "refId": "SRC-091"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-001",
+      "date": "2026-07-31",
+      "state": "applied",
+      "outcome": "nest",
+      "candidateIds": [
+        "C14",
+        "C13"
+      ],
+      "rationale": "Standalone timing claim was covered; retain it as a consequence-aware evaluator slice under C13.",
+      "basis": [
+        {
+          "type": "source-audit",
+          "ref": "CURRENT.md#周期决策记录"
+        }
+      ]
+    },
+    {
+      "id": "D-002",
+      "date": "2026-07-31",
+      "state": "applied",
+      "outcome": "nest",
+      "candidateIds": [
+        "C15",
+        "C13",
+        "C03"
+      ],
+      "rationale": "Broad repair claim was covered; retain irreversible-action repair as a reusable evaluator slice.",
+      "basis": [
+        {
+          "type": "source-audit",
+          "ref": "CURRENT.md#周期决策记录"
+        }
+      ]
+    }
+  ],
+  "paperThreads": [],
+  "reusableAssets": [
+    {
+      "id": "A-001",
+      "title": "Source ledger",
+      "question": "原始证据是什么？",
+      "output": "URL · version · verified boundary",
+      "owner": "Literature",
+      "status": "defined"
+    },
+    {
+      "id": "A-002",
+      "title": "Cluster map",
+      "question": "论文共同测了什么？",
+      "output": "estimand · unit · pressure · blind spot",
+      "owner": "Literature",
+      "status": "defined"
+    },
+    {
+      "id": "A-003",
+      "title": "Research proposal",
+      "question": "为什么值得测？",
+      "output": "failure · counterfactual · baseline · kill rule",
+      "owner": "Proposal",
+      "status": "defined"
+    },
+    {
+      "id": "A-004",
+      "title": "Experiment spec",
+      "question": "要操纵什么？",
+      "output": "independent variable · held constants · metric",
+      "owner": "Experiment",
+      "status": "defined"
+    },
+    {
+      "id": "A-005",
+      "title": "Run manifest",
+      "question": "实际执行了什么？",
+      "output": "commit · data digest · actual resource · output",
+      "owner": "Run",
+      "status": "defined"
+    },
+    {
+      "id": "A-006",
+      "title": "Artifact",
+      "question": "不可变证据在哪里？",
+      "output": "URI · digest · table · error slices",
+      "owner": "Evidence",
+      "status": "defined"
+    },
+    {
+      "id": "A-007",
+      "title": "Decision record",
+      "question": "下一步是什么？",
+      "output": "continue · branch · park · kill",
+      "owner": "Decision",
+      "status": "defined"
+    },
+    {
+      "id": "A-008",
+      "title": "External review",
+      "question": "GPT Pro 改变了什么？",
+      "output": "raw review + separate local verdict",
+      "owner": "Review",
+      "status": "defined"
+    },
+    {
+      "id": "A-009",
+      "title": "Failure archive",
+      "question": "走不通的路如何复用？",
+      "output": "negative · invalid · failed · unlock condition",
+      "owner": "Archive",
+      "status": "defined"
+    }
+  ],
+  "externalReviews": [
+    {
+      "id": "REV-001",
+      "date": "2026-08-04",
+      "title": "Auto Research OS SOP architecture review",
+      "role": "pressure-only",
+      "rawRef": "artifacts/auto-research-os-sop-review-20260804-pro-response.md",
+      "verdictRef": "review/AUTO_RESEARCH_OS_SOP_VERDICT_20260804.md"
+    }
+  ]
+}

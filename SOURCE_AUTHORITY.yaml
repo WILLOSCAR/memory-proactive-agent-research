@@ -43,6 +43,21 @@ sources:
     authority: current_state
     governs: [candidate_definitions, candidate_lineage, probe_queue]
 
+  research-index.yaml:
+    authority: current_state
+    governs: [stable_ids, entity_relations, five_dimensional_state, timestamps, pointers]
+    note: This is the only structured state consumed by the dashboard.
+
+  research-events.jsonl:
+    authority: current_state
+    governs: [settlement_history, applied_transitions, decision_lineage]
+    note: Append-only event log; narrative summaries cannot override it.
+
+  CURRENT.md:
+    authority: supporting_context
+    governs: [human_readable_current_summary]
+    superseded_by: [research-index.yaml, research-events.jsonl]
+
   sources/2026-07-30-adjacent-source-ledger.md:
     authority: verified_evidence
     governs: [opened_source_scope, citation_boundary]
@@ -82,3 +97,5 @@ rules:
   - Verified evidence supports only its recorded scope.
   - External review never becomes evidence and changes state only through a local verdict.
   - Dashboard and Leader Brief must derive from canonical/current-state assets, not chat transcripts.
+  - Structured counts and state come from research-index.yaml; CURRENT.md is a readable projection.
+  - A Research Event records change history but does not become evidence unless it contains a valid typed evidence pointer.

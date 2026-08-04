@@ -79,7 +79,9 @@ attribution_labels:
 - `PROGRAM_MAP.md`：长期范围、3×2 资产索引和开放式评测轴；
 - `LITERATURE_MAP.md`：论文簇、共同评测假设、coverage pressure 与 Idea Forest；
 - `PROBLEM_BACKLOG.md`：问题定义、候选 atlas、证据边界和初始路由的 source of truth；
-- `CURRENT.md`：card 实时 column、next action、blocker、当前 probe 队列和停止条件的唯一动态看板；
+- `research-index.yaml`：稳定 ID、关系、五维状态、时间戳与指针的唯一结构化事实源；
+- `research-events.jsonl`：Settlement 与 applied transition 的 append-only 历史；
+- `CURRENT.md`：由结构化状态派生或人工维护的轻量可读摘要，不得覆盖结构化索引；
 - `OPERATIONS.md`：资产、实验、运行与数据规则；
 - `GPT_PRO_REVIEW.md`：外部模型原始建议的本地采纳/修改/拒绝；
 - `sources/*ledger.md`：已经打开核验的原始论文、benchmark 与精确证据范围；
@@ -241,7 +243,7 @@ research_event:
 - Agent 可在多个执行线程中研究，但必须回写到同一组 canonical 实体和稳定 ID；
 - 只有影响 Claim、Evidence、Decision、Blocker 或 Next Action 的内容需要 Settlement；普通命令输出和逐日活动不入账；
 - 一轮同时改变多个 Candidate 时分别结算，Leader Brief 再将同类变化压缩成 3–5 条解释性结论；
-- Settlement 必须由唯一 close-out 工具保障；未来 `research-index.yaml` 与 append-only `research-events.jsonl` 由同一次原子写入更新，并以 `base_revision` 拒绝静默覆盖；
+- Settlement 必须由唯一 close-out 工具保障；`scripts/settle-research-event.mjs` 使用 exact `baseRevision`、独占锁与 durable journal 同步更新 `research-index.yaml` 和 append-only `research-events.jsonl`，拒绝静默覆盖；中断后必须 `--recover`，Dashboard sync 在 lock/journal 存在时拒绝读取；
 - Leader Brief 的候选选取、优先级、3–5 条上限和 pointer validation 使用确定性规则；LLM 只可润色表达，不得改变 evidence type 或创造 pointer；
 - External Review 只记录 pressure；必须经过 Codex verdict 才能改变 Candidate；
 - 看板从 Settlement 与 canonical 资产生成，不解析聊天记录、不依赖用户记住原线程；

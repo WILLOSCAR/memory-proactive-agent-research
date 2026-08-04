@@ -22,14 +22,16 @@
 | [PROGRAM_MAP.md](PROGRAM_MAP.md) | 长期研究对象、3×2 索引、开放式评测轴 | 当前任务、运行日志 |
 | [LITERATURE_MAP.md](LITERATURE_MAP.md) | 六个方向的论文簇、共同盲区、Idea Forest 与 cross-branch 组合 | 逐篇来源流水、card 实时状态 |
 | [PROBLEM_BACKLOG.md](PROBLEM_BACKLOG.md) | 36 个候选、Top 12、问题定义、证据边界和初始路由 | card 实时列、周进度、长篇原始外部回答 |
-| [CURRENT.md](CURRENT.md) | card 实时状态的唯一动态 Kanban、执行车道和停止条件 | 永久规范、历史流水账 |
+| [research-index.yaml](research-index.yaml) | 稳定 ID、关系、五维状态、时间戳和指针的唯一结构化事实源 | 长篇叙事、聊天记录 |
+| [research-events.jsonl](research-events.jsonl) | append-only Settlement 与 applied transition 历史 | 手工摘要、未生效建议 |
+| [CURRENT.md](CURRENT.md) | 方便人阅读的当前摘要与执行车道 | 覆盖结构化索引、另建一套计数 |
 | [OPERATIONS.md](OPERATIONS.md) | idea、实验、运行、评测与数据规则 | 研究方向判断、某周具体结果 |
 | [GPT_PRO_REVIEW.md](GPT_PRO_REVIEW.md) | GPT Pro 建议与 Codex 的采纳/修改/拒绝 | 未经复核的新事实 |
 | [sources/2026-07-30-adjacent-source-ledger.md](sources/2026-07-30-adjacent-source-ledger.md) | 已打开核验的原始论文、benchmark 与证据范围 | 本项目已复现论文或完成 novelty search 的暗示 |
 
 系统自身的产品目标、Leader 体验、对象模型与验收基线见 [REQUIREMENTS_AUTO_RESEARCH_OS.md](REQUIREMENTS_AUTO_RESEARCH_OS.md)；它是设计约束，不是日常研究状态入口。
 
-新发现先写入 backlog；只有进入真实 Experiment/Run 才增加目录。
+新发现先写入 backlog；状态和关系的实质变化通过 Settlement writer 同时更新 `research-index.yaml` 与 `research-events.jsonl`，不要手工分两次改。只有进入真实 Experiment/Run 才增加目录。
 
 ## 当前研究口径
 
@@ -79,6 +81,14 @@ memory-proactive-agent-research/
 ├── PROGRAM_MAP.md
 ├── LITERATURE_MAP.md
 ├── PROBLEM_BACKLOG.md
+├── research-index.yaml              # 唯一结构化状态
+├── research-events.jsonl            # append-only Settlement
+├── schemas/
+│   └── research-index.schema.json
+├── scripts/
+│   └── settle-research-event.mjs    # 唯一状态写入口
+├── tests/
+│   └── settle-research-event.test.mjs
 ├── CURRENT.md
 ├── OPERATIONS.md
 ├── GPT_PRO_REVIEW.md
@@ -126,3 +136,33 @@ experiments/<experiment-id>/
 - `sources/2026-07-30-adjacent-source-ledger.md`。
 
 `operations/ASSET_PROTOCOL.md`、`operations/WEEKLY_ITERATION.md` 和 `review/PORTFOLIO_SELF_AUDIT.md` 是此前评审看到的冻结快照，保留用于审计，但不再作为当前规范。
+
+## 浏览器 Control Plane
+
+只读看板在相邻仓库 `../research-idea-forest-site`。更新结构化状态后执行：
+
+```bash
+cd ../research-idea-forest-site
+npm run sync:data
+npm test
+```
+
+浏览器数据由 `research-index.yaml + research-events.jsonl` 生成，不解析聊天记录，也不把 External Review、Experiment Spec 或 Source Paper 结果显示成本地实验结果。
+
+## Settlement writer
+
+先取得当前精确 revision，把它写入 typed event 的 `baseRevision`；再 dry-run，最后提交：
+
+```bash
+node scripts/settle-research-event.mjs --revision
+node scripts/settle-research-event.mjs --event /absolute/path/to/event.json --dry-run
+node scripts/settle-research-event.mjs --event /absolute/path/to/event.json
+```
+
+writer 只接受 stable-ID 路径上的 `add / replace / link / unlink`，拒绝过期 revision、重复 ID、不完整 Run Manifest、无 digest/Run 的 Artifact、本地结果伪链接、把 External Review 当 support，以及非法 Decision state。写入期间使用独占锁和 durable journal；若进程在两个文件替换之间中断，先执行：
+
+```bash
+node scripts/settle-research-event.mjs --recover
+```
+
+Dashboard sync 在 lock 或 pending journal 存在时会停止，避免读取半次 Settlement。成功提交后再到相邻 site 仓执行 `npm run sync:data`。
