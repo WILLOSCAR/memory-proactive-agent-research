@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/research-index.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-08-04T18:30:00+08:00",
+  "generatedAt": "2026-08-04T20:00:00+08:00",
   "sourceSnapshot": {
     "authority": "SOURCE_AUTHORITY.yaml",
     "vocabulary": "CONTEXT.md",
@@ -2723,6 +2723,546 @@
       "trackIds": [
         "U-PHY"
       ]
+    },
+    {
+      "id": "SRC-175",
+      "legacyId": "2406.06671",
+      "title": "Controlling Counterfactual Harm in DSS via Prediction Sets",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2406.06671",
+      "year": "2024",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-176",
+      "legacyId": "2204.12993",
+      "title": "Counterfactual harm",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2204.12993",
+      "year": "2022",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-177",
+      "legacyId": "2602.14331",
+      "title": "Bayesian Framework Human-AI: Complementarity & Correlation Neglect",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2602.14331",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct(incremental value侧)",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-178",
+      "legacyId": "2602.17646",
+      "title": "Multi-Round Human-AI Collaboration w/ User-Specified Requirements",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2602.17646",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct-ish",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-179",
+      "legacyId": "2504.07423",
+      "title": "Over-Relying on Reliance: Realistic Eval of Clinical DSS",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2504.07423",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-180",
+      "legacyId": "2606.06081",
+      "title": "Measuring Appropriate Reliance on Set-Valued AI Advice",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2606.06081",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-181",
+      "legacyId": "2604.23283",
+      "title": "Revisable by Design: Streaming LLM Agent Execution",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2604.23283",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct(最逼近)",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-182",
+      "legacyId": "2602.14849",
+      "title": "Atomix",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2602.14849",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct(机制侧)",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-183",
+      "legacyId": "2404.06921",
+      "title": "GoEX",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2404.06921",
+      "year": "2024",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct(概念/系统)",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-184",
+      "legacyId": "2602.16975",
+      "title": "\"It's like a pet\": Multi-person Households Privacy for Household Robots",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2602.16975",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(需求侧,最强框架挤压)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-185",
+      "legacyId": "2409.09363",
+      "title": "Security/Privacy of People in Shared Home Environments",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2409.09363",
+      "year": "2024",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-186",
+      "legacyId": "1911.10186",
+      "title": "KRATOS: Multi-User Access Control for Smart Home",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/1911.10186",
+      "year": "2019",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(机制层)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-187",
+      "legacyId": "2006.03907",
+      "title": "Privacy threats in intimate relationships",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2006.03907",
+      "year": "2020",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(奠基)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-188",
+      "legacyId": "2205.00288",
+      "title": "Baselines/Protocols for Household Speaker Recognition",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2205.00288",
+      "year": "2022",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(识人底座)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-189",
+      "legacyId": "2303.04957",
+      "title": "Towards Usable Parental Control for Voice Assistants",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2303.04957",
+      "year": "2023",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-190",
+      "legacyId": "2506.06591",
+      "title": "Privacy Perspectives of Chinese Smart Home Product Teams",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2506.06591",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(供给侧)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-191",
+      "legacyId": "1908.04284",
+      "title": "Personal VAD: Speaker-Conditioned Voice Activity Detection",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/1908.04284",
+      "year": "2019",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(per-user门控底座)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-192",
+      "legacyId": "2606.03518",
+      "title": "Overlaying Governance: Compositional Authorization for Delegation in Agentic AI",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2606.03518",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-193",
+      "legacyId": "2604.04522",
+      "title": "HDP: Cryptographic Human Delegation Provenance in Agentic AI",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2604.04522",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(人类是principal更近一步)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-194",
+      "legacyId": "2607.24368",
+      "title": "Keep It InMind: Implicit-Association Blind Spot in Agent Memory",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2607.24368",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-195",
+      "legacyId": "2606.22877",
+      "title": "DynamicMem: Long-Horizon Memory Benchmark Real-World",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2606.22877",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-196",
+      "legacyId": "2604.16909",
+      "title": "PRISM: Probing Reasoning/Instruction/Source Memory in Hallucinations",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2604.16909",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-197",
+      "legacyId": "2506.06485",
+      "title": "Task Matters: Knowledge Requirements Shape Context-Memory Conflict",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2506.06485",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-198",
+      "legacyId": "2605.14473",
+      "title": "Does RAG Know When Retrieval Is Wrong? (CDD)",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2605.14473",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-199",
+      "legacyId": "2606.16285",
+      "title": "HiMPO: Hindsight-Informed Memory Policy Optimization",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2606.16285",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-200",
+      "legacyId": "2607.14371",
+      "title": "SFT vs ICL Equilibrium under Congestion",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2607.14371",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct(update-layer对比)",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-201",
+      "legacyId": "2603.15518",
+      "title": "RoSE: Beyond Covariance Trap Same-Subject Knowledge Editing",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2603.15518",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-202",
+      "legacyId": "2607.10526",
+      "title": "PASB: Persistent Sycophancy in Stateful Personal Agents",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2607.10526",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct(write层)",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-203",
+      "legacyId": "2607.02509",
+      "title": "ReContext: Recursive Evidence Replay",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2607.02509",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-204",
+      "legacyId": "2605.07242",
+      "title": "MEMOREPAIR: Barrier-First Cascade Repair in Agentic Memory",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2605.07242",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "direct(A半)/pressure(B半)",
+      "note": "2026-08-04 round2 deep-dive; direct",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-205",
+      "legacyId": "2606.17573",
+      "title": "Cordon: Semantic Transactions for Tool-Using Agents",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2606.17573",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-206",
+      "legacyId": "2607.00269",
+      "title": "Mnemosyne: Agentic Transaction Processing",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2607.00269",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(最接近级联)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-207",
+      "legacyId": "2503.11951",
+      "title": "SagaLLM: Transaction Guarantees for Multi-Agent Planning",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2503.11951",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-208",
+      "legacyId": "2603.20625",
+      "title": "ACRFence: Semantic Rollback Attacks in Checkpoint-Restore",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2603.20625",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(安全)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-209",
+      "legacyId": "2606.30306",
+      "title": "Always-On Agents: Survey Persistent Memory/State/Governance",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2606.30306",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(元证据)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-210",
+      "legacyId": "2606.18473",
+      "title": "PreUnlearn: Auditing Collateral Damage Before Unlearning",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2606.18473",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "pressure(错误层级)",
+      "note": "2026-08-04 round2 deep-dive; pressure",
+      "trackIds": [
+        "M-AI"
+      ]
     }
   ],
   "clusters": [
@@ -3510,6 +4050,33 @@
       "trackId": "U-AI",
       "statement": "knowledge-to-action / IPA 归因层：有记忆却不照做被 StateAuditor+IBA-Bench 两篇 2026-08 独立命名；仍缺 memory vs policy vs weight 的归因拆分（FABLE/Reward Crisis）。",
       "candidateIds": []
+    },
+    {
+      "id": "GAP-MAI-REVOKE-ACTION",
+      "clusterId": null,
+      "trackId": "M-AI",
+      "statement": "撤权后级联撤回已执行的真实外部动作(下单/提醒/发消息):补偿机制已成熟(Cordon/Atomix/SagaLLM/Mnemosyne)但无一由benign回溯撤权触发、沿memory→action provenance级联。收窄到三点耦合:合法回溯撤权触发+provenance级联+不可逆真实副作用补偿。",
+      "candidateIds": [
+        "C03"
+      ]
+    },
+    {
+      "id": "GAP-PAI-SOCIAL-REPAIR",
+      "clusterId": null,
+      "trackId": "P-AI",
+      "statement": "已外发输出(已发消息/已建日程)的用户感知社交repair及其评测:unsend/召回/道歉近乎零命中(arXiv 0);事后撤回仅存在于系统事务层(可逆/可补偿),面向第三方的修正/致歉/信任修复是真空。",
+      "candidateIds": [
+        "C15"
+      ]
+    },
+    {
+      "id": "GAP-UAI-ATTRIB-LAYER",
+      "clusterId": null,
+      "trackId": "U-AI",
+      "statement": "正确记忆已在context/可检索、agent行动仍用旧值时的断点三分归因(retrieval-routing/policy-decoding/parametric),以agent行动为eval unit的统一诊断benchmark。窗口收窄:必须显式区别DynamicMem\"93%是检索\"与CDD\"context-vs-parametric可观测性\"。",
+      "candidateIds": [
+        "C30"
+      ]
     }
   ],
   "candidates": [
@@ -3605,7 +4172,8 @@
         "SRC-096",
         "SRC-099",
         "SRC-110",
-        "SRC-111"
+        "SRC-111",
+        "SRC-204"
       ],
       "proposal": {
         "paperShape": "Benchmark + Systems",
@@ -3951,7 +4519,14 @@
         "C13",
         "C03"
       ],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-175",
+        "SRC-177",
+        "SRC-178",
+        "SRC-181",
+        "SRC-182",
+        "SRC-183"
+      ],
       "proposal": null
     },
     {
@@ -3972,7 +4547,14 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-175",
+        "SRC-177",
+        "SRC-178",
+        "SRC-181",
+        "SRC-182",
+        "SRC-183"
+      ],
       "proposal": null
     },
     {
@@ -4366,7 +4948,14 @@
       "sourceIds": [
         "SRC-162",
         "SRC-163",
-        "SRC-164"
+        "SRC-164",
+        "SRC-194",
+        "SRC-195",
+        "SRC-196",
+        "SRC-197",
+        "SRC-198",
+        "SRC-200",
+        "SRC-202"
       ],
       "proposal": null
     },

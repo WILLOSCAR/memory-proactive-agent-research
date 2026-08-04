@@ -125,6 +125,7 @@ Radar 候选（22，按 Track 聚合，未逐卡展开；进入 Eval audit 时�
 | 2026-07-31 | nest | C14 → C13 | 独立 timing benchmark 被 ProactiveVideoQA/ProEvent/ProAgentBench 覆盖，降为 C13 的 consequence-aware opportunity-window slice |
 | 2026-07-31 | nest | C15 → C13/C03 | 泛化 repair benchmark 被 ProEvent/MemSecBench/MemTX 覆盖，降为不可逆 tool action 的 repair/residual slice |
 | 2026-08-04 | sweep | +68 源 | 六 Track 并行文献 sweep，sourcePapers 106→174；novelty 线索见 [sources/2026-08-04-literature-sweep.md](sources/2026-08-04-literature-sweep.md)；未动任何 Candidate 状态 |
+| 2026-08-04 | sweep2 | +36 源 | 4 个定向深挖(C03-B半/C15社交repair/C30归因层/C04三层贯通)，sourcePapers 174→210；3 条收窄后 gap 线索；未动任何 Candidate 状态 |
 
 本周期尚未产生 kill/branch/新增候选的其他决策。下周期若无 kill/branch，须在此显式说明原因。
 
