@@ -79,4 +79,4 @@ npm run lint
 - Leader Brief 最多展示五条注意项，并保留稳定实体指针。
 - External Review 只能形成 pressure，不能直接形成 support。
 
-`public/research-idea-forest.html` 是旧版静态图谱，仅作为历史快照保留。
+仓库只保留 React Control Plane；旧 Sites 静态图谱与早期独立 Kanban 已删除，避免形成第二展示入口。

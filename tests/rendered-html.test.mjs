@@ -75,5 +75,4 @@ test("keeps the canonical data seam, interactions, and social preview wired", as
   assert.match(layout, /generateMetadata/);
   assert.match(layout, /socialImage/);
   await access(new URL("../public/og.png", import.meta.url));
-  await access(new URL("../public/research-idea-forest.html", import.meta.url));
 });
