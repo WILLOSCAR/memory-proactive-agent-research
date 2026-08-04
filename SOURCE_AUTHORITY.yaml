@@ -1,0 +1,84 @@
+schema_version: 1
+updated_at: 2026-08-04
+purpose: >-
+  Resolve precedence when local files or ChatGPT Project Sources use different
+  generations of the Auto Research ontology. Lower-authority sources remain
+  available for audit but must not override canonical sources.
+
+precedence:
+  - canonical
+  - current_state
+  - verified_evidence
+  - adopted_decision
+  - supporting_context
+  - frozen_legacy
+  - user_managed_reference
+
+sources:
+  CONTEXT.md:
+    authority: canonical
+    governs: [vocabulary, entity_boundaries, evidence_terms]
+
+  REQUIREMENTS_AUTO_RESEARCH_OS.md:
+    authority: canonical
+    governs: [product_goal, domain_model, interface_contract, acceptance]
+
+  OPERATIONS.md:
+    authority: canonical
+    governs: [research_workflow, experiment_rules, settlement_sop]
+
+  PROJECT_BRIEF.md:
+    authority: supporting_context
+    governs: [program_scope, research_objective]
+
+  PROGRAM_MAP.md:
+    authority: current_state
+    governs: [track_index, program_map]
+
+  LITERATURE_MAP.md:
+    authority: current_state
+    governs: [literature_clusters, coverage_pressure]
+
+  PROBLEM_BACKLOG.md:
+    authority: current_state
+    governs: [candidate_definitions, candidate_lineage, probe_queue]
+
+  sources/2026-07-30-adjacent-source-ledger.md:
+    authority: verified_evidence
+    governs: [opened_source_scope, citation_boundary]
+
+  GPT_PRO_REVIEW.md:
+    authority: adopted_decision
+    governs: [external_review_index, local_adoption_history]
+    note: GPT Pro raw output remains external review; only local verdicts are adopted decisions.
+
+  review/AUTO_RESEARCH_OS_SOP_VERDICT_20260804.md:
+    authority: adopted_decision
+    governs: [auto_research_os_architecture_delta, settlement_delta]
+
+  review/PORTFOLIO_SELF_AUDIT.md:
+    authority: frozen_legacy
+    superseded_by: [REQUIREMENTS_AUTO_RESEARCH_OS.md]
+
+  operations/ASSET_PROTOCOL.md:
+    authority: frozen_legacy
+    superseded_by: [CONTEXT.md, REQUIREMENTS_AUTO_RESEARCH_OS.md, OPERATIONS.md]
+    note: Its Idea, Claim, and paper-proposition Track ontology is not canonical.
+
+  operations/WEEKLY_ITERATION.md:
+    authority: frozen_legacy
+    superseded_by: [OPERATIONS.md, REQUIREMENTS_AUTO_RESEARCH_OS.md]
+    note: Fixed per-track candidate quotas are not portfolio health requirements.
+
+remote_user_managed:
+  bridge-reference-asset-protocol-f466a4c377b8.md.txt:
+    authority: user_managed_reference
+    ownership: user
+    deletion_policy: never_delete_without_explicit_user_instruction
+
+rules:
+  - Canonical vocabulary wins over frozen legacy terminology.
+  - Current-state files may change research state but may not redefine entities.
+  - Verified evidence supports only its recorded scope.
+  - External review never becomes evidence and changes state only through a local verdict.
+  - Dashboard and Leader Brief must derive from canonical/current-state assets, not chat transcripts.

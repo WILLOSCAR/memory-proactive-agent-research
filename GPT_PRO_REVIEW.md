@@ -1,15 +1,16 @@
 # GPT Pro Reviews and Local Decisions
 
-更新日期：2026-07-31  
+更新日期：2026-08-04
 用途：只记录外部评审对本地研究树的影响；GPT Pro 不是论文证据
 
-## 1. 三轮评审
+## 1. 四轮评审
 
 | Round | 任务 | 主要产物 |
 | --- | --- | --- |
 | Portfolio review | 压力测试 3×2、资源和资产规范 | 3×2 适合运营，不是 ontology；Physiological 不是免费 novelty |
 | Aggressive problem/evaluation brainstorm | 推翻过早收敛，扩散问题与评测空间 | P1–P6 降级为 seeds；12 轴评测 grammar；36 个候选；Top 12；cheap-probe queue |
 | Six-branch literature adversarial audit | 用新增 2025–2026 论文反压 cluster 与 Top candidates | C02/C08 broad framing 终止并分叉；C14/C15 降为 nested slices；C25 收窄；C28 保持强 opportunity |
+| Auto Research OS / SOP architecture review | 压力测试 Leader Brief、对象模型、Settlement 与 MVP | 采用 targeted consolidation；新增 Source authority、Research Event、typed Evidence Link、独立状态机与确定性 Brief 约束 |
 
 后两轮都使用 ChatGPT Project `Auto Research`、Pro 模型和不可变 evidence bundle。外部原文/结构化转录与独立本地 verdict 分开保存，不把 GPT Pro 当作论文证据。
 
@@ -108,3 +109,12 @@ GPT Pro 指出 backlog 中 `Wearable Health Foundation Model`、arXiv:2605.22759
 - Codex verdict：对应 session 的 `verdicts/`
 
 ChatGPT Project：<https://chatgpt.com/g/g-p-6a6b0516fbb8819185e47160a2b7552b/project>
+
+### Auto Research OS / SOP architecture review
+
+- 原始 Pro 回答：`artifacts/auto-research-os-sop-review-20260804-pro-response.md`
+- Codex 独立 verdict：`review/AUTO_RESEARCH_OS_SOP_VERDICT_20260804.md`
+- Evidence bundle：`artifacts/auto-research-os-sop-review-20260804-bundle.md`
+- Bundle SHA-256：`c48f257153b7f1474a1b6b238498c5bae3782ff686529722f070d1cafbc7f4ea`
+- ChatGPT conversation：<https://chatgpt.com/g/g-p-6a6b0516fbb8819185e47160a2b7552b-auto-research/c/6a719564-56c8-83ec-8419-a8db4c3b2684?tab=sources>
+- 核心本地决定：浏览器 MVP 是只读 sensemaking surface；Candidate / Evidence / Decision 仍是主轴；External Review 不能直接改状态；系统先完成一条真实 Cheap Probe 闭环，再扩展执行 UI。

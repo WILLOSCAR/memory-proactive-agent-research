@@ -1,7 +1,9 @@
 # Resource-Aware Weekly Iteration
 
-状态：v0.2 默认值，具体 track 可覆盖  
+状态：**frozen legacy heuristic / superseded**
 目标：M-AI、M-PHY、P-AI、P-PHY、U-AI、U-PHY 中所有活跃论文线每周都有可复核版本，同时避免把不稳定的 2–4×80G GPU 变成唯一进度来源。UbiComp/HCI 小产品使用独立版本账本。
+
+> 本文件保留其资源阶梯与历史默认值，不再规定所有 Track 的统一周配额。当前运营规则以 [../OPERATIONS.md](../OPERATIONS.md)、[../REQUIREMENTS_AUTO_RESEARCH_OS.md](../REQUIREMENTS_AUTO_RESEARCH_OS.md) 和 [../SOURCE_AUTHORITY.yaml](../SOURCE_AUTHORITY.yaml) 为准。
 
 ## 1. 版本阶梯
 

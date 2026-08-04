@@ -92,8 +92,8 @@ attribution_labels:
 
 允许高数量，不允许低区分度：
 
-1. 每个分支维护至少 6 个不同 failure family；
-2. 每周每分支至少补充 3 个新候选；
+1. 每条 Track 持续维护足以避免过早收敛的不同 failure family；`6` 是 discovery 期启发式，不是永恒硬配额；
+2. 每条 Track 显式标记 `explore / validate / maintain / parked`；只有 `explore` 模式把每周补充候选当作 brainstorm heuristic，组合健康不按候选数量判定；
 3. 候选优先来自论文 limitation、benchmark 不可观察空间、指标代理错位和真实 failure；
 4. 每个候选必须指出受害者/代价、评测单位、一个非默认动作和 no-action/alternative-action counterfactual；
 5. 相同 `use/abstain/ask gate` 换领域名，不算新 idea；
@@ -207,3 +207,63 @@ attribution_labels:
 - 一个重要 decision 无法从 backlog 恢复。
 
 其他变化更新现有入口，不扩张目录。
+
+## 12. 用户–Agent 研究交互 SOP
+
+本项目默认使用聊天线程完成探索和执行，但线程不是长期记忆。每次产生会改变研究判断的增量后，Agent 在结束前完成一次 **Settlement**：
+
+```yaml
+research_event:
+  event_id: EVT-<stable-id>
+  batch_id: BATCH-<optional-shared-id>
+  recorded_at: <iso-8601>
+  actor: user | codex | tool
+  base_revision: <canonical-revision>
+  scope: PROGRAM | <track-id> | <candidate-id> | <experiment-spec-id> | <run-id>
+  affected_entities: []
+  changes: []  # typed create / replace / link / unlink operations
+  narrative:
+    changed: "本轮新增或修正了什么"
+    why_it_matters: "它为什么改变研究组合、评测或论文机会"
+  evidence_refs: []  # typed ref + relation + scope；External Review 只能 pressure
+  decision_refs: []  # proposed / approved / applied 必须分开
+  decision_needed_from_user: "没有则写 none"
+  next_evidence:
+    deliverable: "下一轮要产生什么"
+    acceptance_test: "什么条件下算完成"
+  blockers: []  # 每个 blocker 必须有 unlock condition
+  outcome: material-change | no-material-change
+```
+
+执行原则：
+
+- 用户可以只给 Program、Track 或 Candidate 级目标，不必为每个子问题手工创建独立线程；
+- Agent 可在多个执行线程中研究，但必须回写到同一组 canonical 实体和稳定 ID；
+- 只有影响 Claim、Evidence、Decision、Blocker 或 Next Action 的内容需要 Settlement；普通命令输出和逐日活动不入账；
+- 一轮同时改变多个 Candidate 时分别结算，Leader Brief 再将同类变化压缩成 3–5 条解释性结论；
+- Settlement 必须由唯一 close-out 工具保障；未来 `research-index.yaml` 与 append-only `research-events.jsonl` 由同一次原子写入更新，并以 `base_revision` 拒绝静默覆盖；
+- Leader Brief 的候选选取、优先级、3–5 条上限和 pointer validation 使用确定性规则；LLM 只可润色表达，不得改变 evidence type 或创造 pointer；
+- External Review 只记录 pressure；必须经过 Codex verdict 才能改变 Candidate；
+- 看板从 Settlement 与 canonical 资产生成，不解析聊天记录、不依赖用户记住原线程；
+- 用户保留 Kill / Split / Merge / 激活 Paper Project 等高影响研究决策权；Agent 可以提出建议并继续不依赖该决定的安全工作。
+
+### 低依赖执行契约（默认自主，高影响才打扰）
+
+SOP 的默认姿态是**低依赖**：不要求用户逐步确认，Agent 默认自主推进，只在真正改变研究命运的拐点才请用户拍板。
+
+**Agent 默认自主（无需事先确认，事后在快照汇报）**：
+- 为 probe-ready 候选搭 evaluator / killer baseline / oracle；
+- 跑 overlap audit、paper 核验、数据构念检查；
+- 设计并执行不花真实 GPU 的 cheap probe（CPU/API）；
+- 把新增证据、状态变化、Settlement 回写 canonical 事实源（`research-index.yaml` 与相应 MD）。
+
+**只有三类事必须先问用户（高影响闸门）**：
+1. **kill / split / merge** 一个 Candidate；
+2. 激活 **Paper Project**（从 Paper Opportunity 立项）；
+3. 任何**花真实 GPU** 的 Run。
+
+**打扰预算**：一轮交互最多向用户提 **1 个**高影响决策；其余高影响项打包进下一次进展快照，不逐条弹问。低影响事实、运行状态、blocker 由 Agent 自主维护。
+
+**异步汇报面**：用户不在线时，Agent 继续做上面"默认自主"范围内的安全工作，产出累积到进展快照（如 `PROGRESS_SNAPSHOT_<date>.md`）。用户回来只需读快照 + 拍 1–2 个高影响决策，不必重开线程或逐个追问候选。
+
+**证据纪律不因自主而放松**：自主推进产生的判断仍按证据级如实标注（unverified-lead / source-supported / inference / local-result）；GPT Pro 等 External Review 只作 pressure，必须经本地 verdict 才能改变 Candidate。自主 ≠ 降低证据门槛。

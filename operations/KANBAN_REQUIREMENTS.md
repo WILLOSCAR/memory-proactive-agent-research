@@ -1,5 +1,7 @@
 # Kanban Requirements (What, not How)
 
+> **上位替代（2026-08-04）**：本文件（看板层需求 N0–N15）现从属于更上位的 [../REQUIREMENTS_AUTO_RESEARCH_OS.md](../REQUIREMENTS_AUTO_RESEARCH_OS.md)（Auto Research OS 需求基线）与 [../CONTEXT.md](../CONTEXT.md)（术语词典）。看板只是该系统的可视化投影。术语冲突（如 branch→Track、Proposal→Candidate 详情、Experiment→Spec/Run）一律以 CONTEXT.md 为准。本文件保留作看板层的细化验收项。
+
 创建日期：2026-08-03
 状态：需求基线；只定义"看板要满足什么"，不规定任何具体形式（表格布局、字段顺序、放哪个文件都留待"研究形式"阶段决定）。
 
@@ -70,7 +72,7 @@ narrow（窄化）、nest（降级为 slice）、branch（分叉）、merge（�
 ### N10 宏观组合视图
 存在单一入口，一眼看到全局进度，而非逐卡翻找：
 - 六个分支 × 各成熟度阶段的分布（谁在推进、谁在饿死）；
-- 组合健康信号：每分支是否满足既有约定（≥6 failure family、每周 ≥3 新候选、每周 ≥1 kill/branch）；
+- 组合健康信号：每条 Track 的运营模式、最近 material/depth event、下一条可验收 Evidence 与 blocker/unlock；固定候选数量只作 `explore` 模式 heuristic，不作健康硬指标；
 - 进度以证据 / 决策衡量，不以文档数量或活动量衡量——避免把 inference 显示成 result（呼应"卡片只按证据移动"）。
 
 ### N11 横跨全生命周期
@@ -129,6 +131,50 @@ narrow（窄化）、nest（降级为 slice）、branch（分叉）、merge（�
 现状差距：当前看板只覆盖阶段 1–2，且无 L0/L1/L3。"离论文多远"活在未画出的阶段 3–7，这是"进度判断不准"的根因。
 
 实现顺序（受 N0 约束，先粗后细）：**先 L0+L1（宏观驾驶舱与方向 summary）→ 再补 L2 的完整管道列 → 最后 L3 详情页。** 先给完整看板，再给详情页（用户明确此顺序）。
+
+### N16 Leader 认知压缩层
+
+浏览器 HTML 的首要用户不是逐卡录入员，而是需要快速形成判断的 Research Leader。L0 不能只是统计面板，必须在一屏内给出一份可解释的 Leader Brief，使用户无需重开多个 Codex 对话、逐个追问 Candidate 背景，也能回答：
+
+- 自上次查看以来，真正改变了什么；
+- 为什么这些变化影响研究组合或论文机会；
+- 哪些判断来自 Source Paper，哪些仍是 Inference，哪些已有 Local Result；
+- 当前最值得关注的 3–5 个对象是什么，为什么不是其余对象；
+- 哪些事项需要用户做研究决策，哪些 Agent 可继续自主推进；
+- 下一轮会产生什么可验收证据；
+- 当前最接近形成哪些 Paper Opportunity / Paper Project，还缺什么证据。
+
+认知负载约束：
+
+- 默认页面只显示 3–5 条需要注意的解释性结论；完整论文、Candidate 与 Run 信息按需下钻；
+- 原始论文优先聚合为 Literature Cluster，不在首页铺满 citation；
+- 数字旁必须解释变化原因和含义，不显示无法解释的“完成百分比”；
+- 同类更新合并为一个 narrative，不把逐日活动流水推给用户；
+- 首页同时给出“现在不需要关注什么”，帮助抑制无效注意力；
+- 宏观结论必须能回溯到具体 Candidate、Decision 或 Evidence，不能由页面文案凭空生成。
+
+### N17 浏览器作为异步 Research Control Plane
+
+用户与 Codex 的聊天线程是执行空间，不是研究事实源。一次有效协作结束后，Agent 必须把可复用状态结算回 canonical 资产；浏览器只读取这些资产，使用户即使不打开原线程也能恢复上下文。
+
+最小交互闭环：
+
+```text
+用户给出 Program / Track / Candidate 级目标
+  → Agent 读取 canonical 资产并执行研究
+  → 产生 Source / Proposal / Experiment / Run / Review 增量
+  → 记录 Evidence、影响、Decision/待决策、Next Action 与 Blocker
+  → Dashboard 生成 Leader Brief 与下钻视图
+  → 用户只对高影响研究决策作确认
+```
+
+验收约束：
+
+- 新开多少 Codex 线程不影响研究连续性；线程关闭后，浏览器仍能回答 N1 与 N16；
+- 对话原文不直接进入看板，只有结构化结算后的研究事实和解释进入；
+- Agent 可自主记录来源、事实状态、实验运行和 blocker；Kill / Split / Merge / 激活 Paper Project 等高影响决定保持用户可见并可追溯；
+- GPT Pro 输出先保存为 External Review，再经本地 verdict 影响 Candidate，不得直接成为 Evidence；
+- Dashboard 是只读投影的第一阶段目标；编辑、自动派发线程与通知属于后续能力，不阻塞“浏览器掌握全局”。
 
 ## 不在本文件范围（留待"研究形式"阶段）
 - 两层还是一层、看板与厚卡如何切分；

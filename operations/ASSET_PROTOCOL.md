@@ -1,7 +1,9 @@
 # Auto Research Asset Protocol
 
-状态：v0.2  
+状态：**frozen legacy / superseded**
 更新日期：2026-07-30
+
+> 本文件保留用于历史审计，不再定义 canonical ontology。`Idea / Claim / 可投稿命题型 Track` 等旧术语已由 [../CONTEXT.md](../CONTEXT.md)、[../REQUIREMENTS_AUTO_RESEARCH_OS.md](../REQUIREMENTS_AUTO_RESEARCH_OS.md) 与 [../OPERATIONS.md](../OPERATIONS.md) 上位替代；权威层级见 [../SOURCE_AUTHORITY.yaml](../SOURCE_AUTHORITY.yaml)。
 
 ## 1. 目标
 
@@ -230,7 +232,7 @@ resource_ceiling:
 不同 SSH、机房、资源池和云盘不能假设互通：
 
 - 数据 source of truth 使用 HDFS、对象存储或带 digest 的可访问 URI；
-- 本地与 ByteNAS/cloud-disk 目录默认是 cache，除非另有声明；
+- 本地与网络存储/云盘目录默认是 cache，除非另有声明；
 - manifest 同时记录 source URI、cache path 与 snapshot digest；
 - 运行前验证 resolved host、remote identity、GPU、mount 与读写；
 - 运行后将 config、日志、指标和 checkpoint 同步回 source-of-truth；

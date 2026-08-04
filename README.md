@@ -1,6 +1,6 @@
 # Memory / Proactive / Personalization Research
 
-更新日期：2026-07-31
+更新日期：2026-08-04
 
 这是一个以论文产出为主、以 Auto Research 为执行方式的研究仓库。当前阶段从论文、benchmark 与真实 failure 中高速发现和证伪问题；暂不设置 Draft gate。
 
@@ -12,10 +12,13 @@
 
 每条线都包含通用 AI 与生理/行为数据设置。`3×2` 是资产索引，不是学术 ontology 或 idea 边界；六个分支都可独立、持续地产生多个 idea、评测、实验和论文。
 
-## 日常只看这七个入口
+## 日常入口
+
+文件出现术语或结论冲突时，先看 [SOURCE_AUTHORITY.yaml](SOURCE_AUTHORITY.yaml) 的权威层级；低权威文件只用于审计，不得覆盖 canonical 定义。
 
 | 文件 | 唯一职责 | 不应该放什么 |
 | --- | --- | --- |
+| [CONTEXT.md](CONTEXT.md) | Auto Research OS 的唯一术语词典与计数口径 | 页面实现、任务状态、研究结论 |
 | [PROGRAM_MAP.md](PROGRAM_MAP.md) | 长期研究对象、3×2 索引、开放式评测轴 | 当前任务、运行日志 |
 | [LITERATURE_MAP.md](LITERATURE_MAP.md) | 六个方向的论文簇、共同盲区、Idea Forest 与 cross-branch 组合 | 逐篇来源流水、card 实时状态 |
 | [PROBLEM_BACKLOG.md](PROBLEM_BACKLOG.md) | 36 个候选、Top 12、问题定义、证据边界和初始路由 | card 实时列、周进度、长篇原始外部回答 |
@@ -23,6 +26,8 @@
 | [OPERATIONS.md](OPERATIONS.md) | idea、实验、运行、评测与数据规则 | 研究方向判断、某周具体结果 |
 | [GPT_PRO_REVIEW.md](GPT_PRO_REVIEW.md) | GPT Pro 建议与 Codex 的采纳/修改/拒绝 | 未经复核的新事实 |
 | [sources/2026-07-30-adjacent-source-ledger.md](sources/2026-07-30-adjacent-source-ledger.md) | 已打开核验的原始论文、benchmark 与证据范围 | 本项目已复现论文或完成 novelty search 的暗示 |
+
+系统自身的产品目标、Leader 体验、对象模型与验收基线见 [REQUIREMENTS_AUTO_RESEARCH_OS.md](REQUIREMENTS_AUTO_RESEARCH_OS.md)；它是设计约束，不是日常研究状态入口。
 
 新发现先写入 backlog；只有进入真实 Experiment/Run 才增加目录。
 
@@ -48,7 +53,8 @@ P1–P6 已从“六个 root problems”降级为 paper seeds，并扩散为 36 
 ## 狂暴迭代，不狂暴下结论
 
 - 每个分支持续维护至少 6 个不同 failure family；
-- 每周每分支继续补充至少 3 个论文/评测驱动候选；
+- 六条 Track 都保持可解释的信息流，但不要求同一深度或平均分配资源；
+- 每条 Track 显式处于 `explore / validate / maintain / parked` 之一；只有 `explore` 可把“每周补充候选”当作 brainstorm heuristic，不作为组合健康硬指标；
 - 每个候选必须有真实 failure、counterfactual、killer baseline、1–3 天 probe 和 kill/branch 条件；
 - CPU/API 工作可以全线并行，单卡 smoke 串行；
 - 每周至少 kill 或 branch 一个节点；

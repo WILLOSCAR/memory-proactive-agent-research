@@ -1,7 +1,9 @@
 # 3×2 Research Portfolio Self-Audit
 
 日期：2026-07-30  
-结论状态：Codex 初审，等待 GPT Pro 反驳
+结论状态：**frozen historical audit / superseded**
+
+> 本文件只记录 2026-07-30 的组合审计快照。当前术语、对象模型与产品合同以 [../CONTEXT.md](../CONTEXT.md)、[../REQUIREMENTS_AUTO_RESEARCH_OS.md](../REQUIREMENTS_AUTO_RESEARCH_OS.md) 及 [../SOURCE_AUTHORITY.yaml](../SOURCE_AUTHORITY.yaml) 为准。
 
 ## 1. 总结判断
 
