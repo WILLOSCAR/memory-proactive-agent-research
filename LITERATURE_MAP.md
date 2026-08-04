@@ -62,6 +62,8 @@
 
 本轮所有 cluster 的 novelty pressure 检查时间为 `2026-07-31`。下一轮 overlap matrix 必须逐项比较 evaluation unit、intervention、counterfactual、metric 与 blind spot，不能只比较标题相似度。
 
+> **2026-08-04 增补**：六 Track 并行 sweep 新增 68 源（SRC-107..SRC-174），novelty pressure 检查基线更新至 `2026-08-04`。逐源明细与 novelty 线索地图见 [sources/2026-08-04-literature-sweep.md](sources/2026-08-04-literature-sweep.md)；C01/C02/C05/C08/C13/C14/C18/C22/C24/C34/C35 遭 direct-coverage 挤压，C04/C11/C15/C16 相对有余地（均为线索，非 kill 决定）。
+
 ## 2. M-AI：AI Memory
 
 ### MA-1 存储、组织与运行时管理

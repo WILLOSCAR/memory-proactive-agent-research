@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/research-index.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-08-04T16:00:00+08:00",
+  "generatedAt": "2026-08-04T18:30:00+08:00",
   "sourceSnapshot": {
     "authority": "SOURCE_AUTHORITY.yaml",
     "vocabulary": "CONTEXT.md",
@@ -1700,6 +1700,1029 @@
       "trackIds": [
         "U-AI"
       ]
+    },
+    {
+      "id": "SRC-107",
+      "legacyId": "2607.27773",
+      "title": "ChronoMem: Version Control & Semantic Rollback for LLM Agent Memory",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2607.27773",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "Google ADK语义版本控制层+整库快照+NL undo映射;post-exposure反事实后验证协议;自称首个开源semantic global rollback;单位=整库快照未处理跨层residual/authority",
+      "note": "2026-08-04 sweep; verdict: direct→C01",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-108",
+      "legacyId": "2608.01679",
+      "title": "AuthMem-Bench: When Memory Becomes Authority (Authority Collapse)",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2608.01679",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "consolidation抹掉合法使用约束=\"authority collapse\";paired benchmark 7×7;无authority元数据未授权动作50.3%→预测标签后0.0%;非commit-time gating/无revoke;与Commit-Time Authorization互补",
+      "note": "2026-08-04 sweep; verdict: direct→C02",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-109",
+      "legacyId": "2607.29167",
+      "title": "PPMF: Memory Provenance Laundering — Non-Amplification Firewall",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2607.29167",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "外部observation洗成合法user history;中间件保留provenance匹配action risk;ASR1.0→闸门后0未授权高危;依赖平台provenance可信;与Securing-LLM-Agent相邻独立",
+      "note": "2026-08-04 sweep; verdict: direct→C05",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-110",
+      "legacyId": "2606.29788",
+      "title": "MemLeak: Diagnosing Information Leaks in Multimodal Agent Memory",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2606.29788",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "Information Provenance Graph按deletion affordance分类;删除后保留图像可恢复12%/47%图像泄漏无法从文本恢复;隐私视角非benign revocation/非parametric",
+      "note": "2026-08-04 sweep; verdict: direct→C03",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-111",
+      "legacyId": "2606.15903",
+      "title": "ForgetEval: Control-Plane Placement Shapes Forgetting",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2606.15903",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "recall vs control plane(supersede/release/purge);13配置×385对抗;\"生产失败主要是forgetting失败但benchmark只测recall\";未追踪删除后跨层residual行动后果",
+      "note": "2026-08-04 sweep; verdict: direct→C03",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-112",
+      "legacyId": "2605.28839",
+      "title": "One Mask to Rule Them All: Hidden Facts after Editing",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2605.28839",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "训练compact binary mask逆转weight edit(逆转80%训练/>70%测试);\"edits suppress rather than overwrite\"留residual;针对ROME/MEMIT不涉explicit+parametric联合回滚",
+      "note": "2026-08-04 sweep; verdict: direct→C06",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-113",
+      "legacyId": "2607.20827",
+      "title": "Auditing Provenance Sensitivity in LLM Agent Action Selection",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2607.20827",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "target-specific授权审计;450受控next-action;trusted/untrusted改变动作5.4%;审计敏感性非构造gating机制;stress-set率",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-114",
+      "legacyId": "2606.24535",
+      "title": "MemClaw: Governed Shared Memory for Multi-Agent",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2606.24535",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "fleet-memory四失败(leakage/stale/contradiction/provenance collapse);生产多租户+provenance链100%重建;principal=agent/tenant非家庭自然人",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-115",
+      "legacyId": "2607.05844",
+      "title": "StateFuse: Deterministic Conflict-Preserving Memory",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2607.05844",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "OpSet/CRDT冲突保留记忆;immutable history+correction handle;282冲突切片;never collapse保留矛盾但不做revoke/rollback",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-116",
+      "legacyId": "2606.22030",
+      "title": "Nous: Reliability-Conditional Updating & Provenance-Capped Poisoning Defense",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2606.22030",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "entity-attribute类别分布贝叶斯更新;provenance-capped(信任以来源为上界)抗volumetric poisoning;LoCoMo纯贝叶斯不敌last-write-wins;非laundering/非revoke",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-117",
+      "legacyId": "2606.25161",
+      "title": "TRUSTMEM: Trustworthy Memory Consolidation",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2606.25161",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "Memory Transition Verifier(coverage/preservation/faithfulness)+preference RL;HaluMem+12.14F1;transition级corruption↓79%;保证更新可信非counterfactual rollback",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "M-AI"
+      ]
+    },
+    {
+      "id": "SRC-118",
+      "legacyId": "2608.01619",
+      "title": "StateAuditor: Repairing Implicit Stale Dependencies",
+      "topic": "AI Memory",
+      "url": "https://arxiv.org/abs/2608.01619",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "STALE的IPA gap(识别过时仍用旧值);反向从state审计到draft+provenance/chronology校验;VTA.736vs.686;作者自限不覆盖harder lifecycle;STALE本体在库",
+      "note": "2026-08-04 sweep; verdict: direct→C28",
+      "trackIds": [
+        "M-AI",
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-119",
+      "legacyId": "2603.19564",
+      "title": "Wearable FMs Should Go Beyond Static Encoders",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2603.19564",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "论证static encoder在慢性尺度失效;只主张不实现;无模型无数据集",
+      "note": "2026-08-04 sweep; verdict: direct→C07",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-120",
+      "legacyId": "2601.12215",
+      "title": "MMR: Wavelet Masked Multiscale Reconstruction for PPG FM",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2601.12215",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "小波多分辨率masked重建;1700万PPG段;multiscale落在单窗口内时频(10s)非秒→周;reconstruction目标",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-121",
+      "legacyId": "2606.17106",
+      "title": "Informative Missingness to Generate Irregular Clinical TS",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2606.17106",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "diffusion联合生成lab值+missingness pattern;DACMI/MIMIC-III;生成任务非cause→action",
+      "note": "2026-08-04 sweep; verdict: direct→C08",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-122",
+      "legacyId": "2607.02938",
+      "title": "CISM: Missingness as Signal Channel-Independent Spectrogram",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2607.02938",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "每变量spectrogram+missingness stream;MIMIC-IV死亡AUROC0.72;缺失→prediction非→action",
+      "note": "2026-08-04 sweep; verdict: direct→C08",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-123",
+      "legacyId": "2604.21235",
+      "title": "★Dynamic Representations & Policies from Multimodal Clinical TS w/ Informative M",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2604.21235",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "缺失→潜状态(Bayesian filtering)→治疗策略;MIMIC/eICU脓毒症FQE0.679vs0.528;ICU EHR非wearable→C08须锚wearable连续信号+设备语境differentiate",
+      "note": "2026-08-04 sweep; verdict: direct→C08",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-124",
+      "legacyId": "2512.00479",
+      "title": "★Aligning Beliefs under Informative Missingness: LLM Steerability",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2512.00479",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "LLM不原生利用informative missingness需刻意干预;ICU testbed→证伪\"接LLM即可处理缺失语义\"强化C08前提",
+      "note": "2026-08-04 sweep; verdict: direct→C08",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-125",
+      "legacyId": "2605.17859",
+      "title": "Multi-site PPG: In-the-Wild Dataset (耳环/戒指/手表/项链)",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2605.17859",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "量化body-location致HR差异(耳环2.30→项链8.68 bpm);>350小时;数据集非invalidation机制;现成数据可支撑C09评测",
+      "note": "2026-08-04 sweep; verdict: direct→C09",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-126",
+      "legacyId": "2509.25383",
+      "title": "Beyond the Pocket: Bodily Placements of Commercial Wearables",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2509.25383",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "300人问卷真实佩戴习惯;HCI调查未触provenance数据有效性机制",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-127",
+      "legacyId": "2606.23705",
+      "title": "Event-Aligned Multi-Rater Pain Assessments",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2606.23705",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "rater-aware稀疏评分转pain-change事件+生理对齐保留rater身份;处理rater间冲突非急慢冲突;preliminary",
+      "note": "2026-08-04 sweep; verdict: direct→C10",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-128",
+      "legacyId": "2606.10900",
+      "title": "Personalized Short-Term AFib Forecasting from Wearable ECG",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2606.10900",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "全局模型个人微调60s段预测5min;个体化AUROC0.711vs0.614;个体vs全局基线张力但未建急慢冲突仲裁",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-129",
+      "legacyId": "2606.18147",
+      "title": "WEQA: Wearable Health QA w/ Query-Adaptive Agentic Reasoning",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2606.18147",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "query-adaptive agent路由传感工具;4数据集+12专家盲评+24%;与VitalAgent/WAG同家族;未把\"足够性\"设显式目标",
+      "note": "2026-08-04 sweep; verdict: direct→C12",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-130",
+      "legacyId": "2607.06954",
+      "title": "StepFM: 仅用计步数据的广谱健康FM",
+      "topic": "Physiological Memory",
+      "url": "https://arxiv.org/abs/2607.06954",
+      "year": "2607",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "仅计步跨20+任务跨设备迁移;极简充分信号存在性证明(决策充分>重建保真);经验充分非\"摘要充分性\"框架",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "M-PHY"
+      ]
+    },
+    {
+      "id": "SRC-131",
+      "legacyId": "2602.01532",
+      "title": "PRISM: Festina Lente Proactivity (risk-sensitive uncertainty-aware)",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2602.01532",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "成本非对称阈值门+边界处才慢思考counterfactual；ProactiveBench 上 FA↓22.78% F1↑20.14%；counterfactual 仅内部机制非评测单位",
+      "note": "2026-08-04 sweep; verdict: direct→C13",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-132",
+      "legacyId": "2602.04000",
+      "title": "After Talking with 1,000 Personas: Preference-Aligned Proactive Assistants",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2602.04000",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "1000 persona 模拟冷启动 timing/autonomy/style + 端上 steering；34真人；关停+跨会话trust为核心动因",
+      "note": "2026-08-04 sweep; verdict: direct→C18",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-133",
+      "legacyId": "2608.01949",
+      "title": "STEPS: Self-Triggered Agentic Push Recommendation",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2608.01949",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "同时决定是否推+何时自唤醒；线上A/B 关停率↓1.9% 算力↓79%；工业推荐域",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-134",
+      "legacyId": "2607.03730",
+      "title": "ProACT: Breakdown-Aware Proactive Agent in Multi-User Collab",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2607.03730",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "speaker-attributed 判 breakdown→silence/speak→路由skill；3244 turn×5 LLM；首个多用户协作 proactive benchmark；动作空间不全",
+      "note": "2026-08-04 sweep; verdict: direct→C13",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-135",
+      "legacyId": "2510.25224",
+      "title": "ProMediate: Proactive Agents in Multi-party Negotiation",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2510.25224",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "when&how to intervene，intervention latency 指标；调停域；latency 数字需正文核",
+      "note": "2026-08-04 sweep; verdict: direct→C14",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-136",
+      "legacyId": "2510.13105",
+      "title": "EgoSocial: Proactive Intervention via Egocentric Social Perception",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2510.13105",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "13500 社交video-QA；Intervention Timing 独立指标(Gemini2.5Pro仅14.4%)；社交视频域",
+      "note": "2026-08-04 sweep; verdict: direct→C14",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-137",
+      "legacyId": "2604.15037",
+      "title": "ProVoice-Bench: Proactivity of Voice Agents",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2604.15037",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "4新任务1182样本；over-triggering 被显式测；语音合成域",
+      "note": "2026-08-04 sweep; verdict: direct→C13",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-138",
+      "legacyId": "2602.11351",
+      "title": "BAO: Behavioral Agentic Optimization Pareto Frontiers",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2602.11351",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "agentic RL 正则inter-turn；task-perf↑ vs user-effort↓ Pareto；未用helpfulness/intrusiveness原词",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-139",
+      "legacyId": "2607.11523",
+      "title": "Vinci2 / EgoServe: Proactive Assistance in Continuous Egocentric Video",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2607.11523",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "training-free 记忆agent逐时刻RAG；EgoServe 3000+实例×4时间记忆跨度；egocentric域",
+      "note": "2026-08-04 sweep; verdict: direct→C13",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-140",
+      "legacyId": "2602.03468",
+      "title": "IntentRL: Proactive User-intent Agents for Deep Research via RL",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2602.03468",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "shallow-to-deep intent refinement+两阶段RL；intent hit rate；只覆盖执行前澄清；邻近Ask-before-Plan",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-141",
+      "legacyId": "2607.08768",
+      "title": "UniClawBench: Universal Benchmark for Proactive Agents",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2607.08768",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "5能力400双语真实任务闭环Docker；评测单位是任务checkpoint非介入决策；收口\"benchmark空白\"叙述",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-142",
+      "legacyId": "2604.08898",
+      "title": "Omakase: Proactive Assistance for Evolving Research Projects",
+      "topic": "Proactive Agent",
+      "url": "https://arxiv.org/abs/2604.08898",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "监控项目文档→推断timely查询→蒸馏suggestion；N=42主观usefulness/timeliness；非增量价值测量",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "P-AI"
+      ]
+    },
+    {
+      "id": "SRC-143",
+      "legacyId": "2511.02944",
+      "title": "Power Constrained Nonstationary Bandits w/ Habituation & Recovery (ROGUE-TS)",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2511.02944",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "⚠跨Track重叠(U-PHY也捞到→trackIds:[P-PHY,U-PHY]) | habituation/recovery 写进reward+Thompson；2真实MRT；非因果效应估计",
+      "note": "2026-08-04 sweep; verdict: direct→C22,C34",
+      "trackIds": [
+        "P-PHY",
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-144",
+      "legacyId": "2502.13500",
+      "title": "Distal Causal Excursion Effects (DCEE)",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2502.13500",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "MRT远期效应估计+cross-fitting；HeartSteps；早期prompt长期效应更强；群体非个体",
+      "note": "2026-08-04 sweep; verdict: direct→C22",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-145",
+      "legacyId": "2606.25107",
+      "title": "Nonparametric Optimal Stochastic JITAI for Distal Outcomes",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2606.25107",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "随机策略regimen-response非参估计+GP置信带；方法学无新部署",
+      "note": "2026-08-04 sweep; verdict: direct→C19",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-146",
+      "legacyId": "2506.20027",
+      "title": "Dynamic Causal Mediation for Intensive Longitudinal Data",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2506.20027",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "natural direct/indirect excursion 分解+多重稳健；HeartSteps+SleepHealth；中介仅即时",
+      "note": "2026-08-04 sweep; verdict: direct→C23",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-147",
+      "legacyId": "2605.24261",
+      "title": "Online Learning under Endogenous Adherence (UCB-BOLD)",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2605.24261",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "线性动力系统+logit建模内生依从；合成队列非真实闭环",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-148",
+      "legacyId": "2602.21383",
+      "title": "Time-Varying Effects in Hybrid SMART-MRT",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2602.21383",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "数字×人工协同因果估计;M-Bridge狂饮;synergy数学形式未给",
+      "note": "2026-08-04 sweep; verdict: direct→C24",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-149",
+      "legacyId": "2606.18596",
+      "title": "LLM Voice Diaries for Sleep (adherence/context)",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2606.18596",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "语音日记vs文本 N=30场地;依从↑但结构化字段↓;与Opportune Smart Speaker相邻但新",
+      "note": "2026-08-04 sweep; verdict: direct→C24",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-150",
+      "legacyId": "2605.27950",
+      "title": "Inferring Dietary Receptivity from Egocentric Eating Images",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2605.27950",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "CLIP+transformer从AIM-2相机推receptivity三维;pilot;可行性非因果,勿当effect",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-151",
+      "legacyId": "2510.18880",
+      "title": "Wayfinding AI: Benefits of Context-seeking in Health Conversations",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2510.18880",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "4研究N=163 randomized blinded;延迟数轮仍更有用;非生理JITAI时机",
+      "note": "2026-08-04 sweep; verdict: direct→C21",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-152",
+      "legacyId": "2508.10060",
+      "title": "PEARL: Personalized Exercise Assistant RL — 4-arm RCT",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2508.10060",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "13463 Fitbit四臂RL nudge;RL臂+296步显著;组均非个体化",
+      "note": "2026-08-04 sweep; verdict: direct→C24",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-153",
+      "legacyId": "2512.08828",
+      "title": "Prediction Intervals for ITE (Conformal, Multi-Decision)",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2512.08828",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "conformal时变ITE区间;Intern Health Study;区间非点识别",
+      "note": "2026-08-04 sweep; verdict: direct→C19",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-154",
+      "legacyId": "2510.08359",
+      "title": "DR-EMEE: Doubly Robust Stabilized Weights for Binary Proximal MRT",
+      "topic": "Physiological Proactive",
+      "url": "https://arxiv.org/abs/2510.08359",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "per-decision IPW+回归双稳健;HeartSteps/PAMAP2/mHealth;MRT Methods的2025增量",
+      "note": "2026-08-04 sweep; verdict: direct→C19",
+      "trackIds": [
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-155",
+      "legacyId": "2607.28384",
+      "title": "When Specifications Conflict: Symmetry-Based Preference Framework",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2607.28384",
+      "year": "2027",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "550冲突×11函数族;偏好序formal>NL>示例;冲突对象是任务规格表示模态非用户role/context/time",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-156",
+      "legacyId": "2605.25200",
+      "title": "GroupTravelBench: Multi-Person Travel Planning",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2605.25200",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "首个多用户多轮规划650任务;私有偏好elicitation+冲突协调+效用公平;顶级模型validity<12%;多人非单用户内部冲突",
+      "note": "2026-08-04 sweep; verdict: direct→C25",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-157",
+      "legacyId": "2603.23848",
+      "title": "BeliefShift: Temporal Belief Consistency & Opinion Drift",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2603.23848",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "3track2400轨迹;个性化vs抗漂移权衡;测belief变化非preference correction debt",
+      "note": "2026-08-04 sweep; verdict: direct→C25",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-158",
+      "legacyId": "2604.25022",
+      "title": "AFA: Identity-Aware Memory Preventing Persona Confusion",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2604.25022",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "命名persona confusion;语音说话人识别+per-user memory;PAT58289turns;PAA35.7%→61.3%;多人非单用户多角色",
+      "note": "2026-08-04 sweep; verdict: direct→C26",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-159",
+      "legacyId": "2601.06407",
+      "title": "Value of Information: Human-Agent Communication",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2601.06407",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "VoI框架权衡提问效用vs认知负担parameter-free;4域;通用ask-vs-act非偏好澄清长期收益",
+      "note": "2026-08-04 sweep; verdict: direct→C27",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-160",
+      "legacyId": "2606.30863",
+      "title": "Beyond Expert Users: Construct Preferences not Elicit (CoShop)",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2606.30863",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "Search-Experience-Credence;CoPref+CoShop基准5模型<56%;澄清=帮建偏好非提取=新gap线索(construction vs elicitation)",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-161",
+      "legacyId": "2605.13307",
+      "title": "PRISM-X: Personalised Fine-Tuning w/ Human & Simulated Users",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2605.13307",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "PRISM重招530人52国;preference FT优于prompting但放大sycophancy/relationship-seeking;模拟用户缺人类自一致性",
+      "note": "2026-08-04 sweep; verdict: direct→C29",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-162",
+      "legacyId": "2512.23067",
+      "title": "Reward Model Selection Crisis in Personalized Alignment (Pref-LaMP)",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2512.23067",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "policy accuracy指标;RM准确率作选择标准灾难失效τ0.08-0.31;ICL≥3B压制RGD;判别排序与生成解耦",
+      "note": "2026-08-04 sweep; verdict: direct→C30",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-163",
+      "legacyId": "2605.24657",
+      "title": "Beyond Inference-Only: Weight Consolidation vs Cascading Compaction",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2605.24657",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "context/compaction vs夜间LoRA weight consolidation;10对话保留80.4%vs36.8%(+43.6);compaction丢纠正=correction debt成因;样本小软件域",
+      "note": "2026-08-04 sweep; verdict: direct→C30",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-164",
+      "legacyId": "2608.00215",
+      "title": "FABLE: Personalizing LLM Agents w/ Small Policy Models",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2608.00215",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "因子化memory/信息获取/回复决策;Bayesian contextual Thompson学残差偏好;把policy层从memory/prompt/weight分离;线性假设方法提案",
+      "note": "2026-08-04 sweep; verdict: direct→C30",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-165",
+      "legacyId": "2608.02171",
+      "title": "IBA-Bench: Implicit Behavioral Alignment",
+      "topic": "AI Personalization",
+      "url": "https://arxiv.org/abs/2608.02171",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "knowledge-to-action gap;9域纵向史;个性化对SOTA仍挑战;与StateAuditor IPA gap高度重叠(两篇2026-08独立命名同现象)",
+      "note": "2026-08-04 sweep; verdict: direct→C28",
+      "trackIds": [
+        "U-AI"
+      ]
+    },
+    {
+      "id": "SRC-166",
+      "legacyId": "2605.04617",
+      "title": "SIGHT: Temporal Structure Matters for Efficient TTA in Wearable HAR",
+      "topic": "Physiological Personalization",
+      "url": "https://arxiv.org/abs/2605.04617",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "backprop-free TTA，predictive surprise 门控时序惯性；仅 IMU，不区分漂移来源",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-167",
+      "legacyId": "2604.25435",
+      "title": "PI-TTA: Physics-Informed Source-Free TTA for HAR on Mobile",
+      "topic": "Physiological Personalization",
+      "url": "https://arxiv.org/abs/2604.25435",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "三物理一致性约束；factorized shift protocol(rotation/placement/rate 拆开)；非推理时归因输出",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-168",
+      "legacyId": "2512.10807",
+      "title": "HAROOD: Benchmark for OOD Generalization in Sensor-based HAR",
+      "topic": "Physiological Personalization",
+      "url": "https://arxiv.org/abs/2512.10807",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "4类OOD(cross-person/position/dataset/time)×6数据集×16方法；github AIFrontierLab/HAROOD；不做 attribution",
+      "note": "2026-08-04 sweep; verdict: direct→C31",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-169",
+      "legacyId": "2607.09518",
+      "title": "Learning When to Intervene on Habitual Behaviors (Oral Health)",
+      "topic": "Physiological Personalization",
+      "url": "https://arxiv.org/abs/2607.09518",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "习惯时机漂移 online 调整；已部署 trial+RCT；不覆盖生理基线/跨设备",
+      "note": "2026-08-04 sweep; verdict: direct→C35",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-170",
+      "legacyId": "2607.21403",
+      "title": "JITAI-Twins: Diffusion Subpopulation Digital Twin (HeartSteps)",
+      "topic": "Physiological Personalization",
+      "url": "https://arxiv.org/abs/2607.21403",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "条件时序 diffusion 部署前模拟；非运行时 abstention",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "U-PHY",
+        "P-PHY"
+      ]
+    },
+    {
+      "id": "SRC-171",
+      "legacyId": "2509.07322",
+      "title": "Cumulative Marginal Mean Model for Sequential Effects (Digital Health)",
+      "topic": "Physiological Personalization",
+      "url": "https://arxiv.org/abs/2509.07322",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "DML+carryover 分离即时/滞后；群体级HTE(按age)；非 per-user/worst-user",
+      "note": "2026-08-04 sweep; verdict: direct→C33",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-172",
+      "legacyId": "2606.29322",
+      "title": "SP-CACW: Convergence-Aware Client Weighting for Selfish Personalized Learning",
+      "topic": "Physiological Personalization",
+      "url": "https://arxiv.org/abs/2606.29322",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "收敛误差上界选权重可剔有害peer；通用FL未在wearable验证",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-173",
+      "legacyId": "2507.03898",
+      "title": "Deconfounding Cross-Domain HAR (Two-Branch Early-Forking)",
+      "topic": "Physiological Personalization",
+      "url": "https://arxiv.org/abs/2507.03898",
+      "year": "2025",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "因果/非因果特征解耦抗域移；不输出漂移来源标签；仅IMU",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "U-PHY"
+      ]
+    },
+    {
+      "id": "SRC-174",
+      "legacyId": "2603.28006",
+      "title": "FedDES: Graph-Based Dynamic Ensemble Selection for Personalized FL",
+      "topic": "Physiological Personalization",
+      "url": "https://arxiv.org/abs/2603.28006",
+      "year": "2026",
+      "venue": "arXiv",
+      "verification": "verified-abstract",
+      "evidenceBoundary": "GNN meta-learner instance-level ensemble；ICU表格数据非wearable流",
+      "note": "2026-08-04 sweep; verdict: pressure/lead",
+      "trackIds": [
+        "U-PHY"
+      ]
     }
   ],
   "clusters": [
@@ -2473,6 +3496,20 @@
       "candidateIds": [
         "C31"
       ]
+    },
+    {
+      "id": "GAP-UAI-CONSTRUCT",
+      "clusterId": null,
+      "trackId": "U-AI",
+      "statement": "preference construction vs elicitation：澄清的价值可能不在消歧，而在帮用户构建偏好（CoShop 2606.30863）。",
+      "candidateIds": []
+    },
+    {
+      "id": "GAP-UAI-K2A",
+      "clusterId": null,
+      "trackId": "U-AI",
+      "statement": "knowledge-to-action / IPA 归因层：有记忆却不照做被 StateAuditor+IBA-Bench 两篇 2026-08 独立命名；仍缺 memory vs policy vs weight 的归因拆分（FABLE/Reward Crisis）。",
+      "candidateIds": []
     }
   ],
   "candidates": [
@@ -2497,7 +3534,8 @@
       "sourceIds": [
         "SRC-045",
         "SRC-097",
-        "SRC-047"
+        "SRC-047",
+        "SRC-107"
       ],
       "proposal": {
         "paperShape": "Benchmark / Evaluation",
@@ -2538,7 +3576,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-08-03",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-108"
+      ],
       "proposal": null
     },
     {
@@ -2563,7 +3603,9 @@
         "SRC-094",
         "SRC-095",
         "SRC-096",
-        "SRC-099"
+        "SRC-099",
+        "SRC-110",
+        "SRC-111"
       ],
       "proposal": {
         "paperShape": "Benchmark + Systems",
@@ -2625,7 +3667,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-109"
+      ],
       "proposal": null
     },
     {
@@ -2646,7 +3690,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-112"
+      ],
       "proposal": null
     },
     {
@@ -2667,7 +3713,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-119"
+      ],
       "proposal": null
     },
     {
@@ -2691,7 +3739,11 @@
       "sourceIds": [
         "SRC-057",
         "SRC-100",
-        "SRC-102"
+        "SRC-102",
+        "SRC-121",
+        "SRC-122",
+        "SRC-123",
+        "SRC-124"
       ],
       "proposal": {
         "paperShape": "Method + Evaluation",
@@ -2732,7 +3784,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-125"
+      ],
       "proposal": null
     },
     {
@@ -2753,7 +3807,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-127"
+      ],
       "proposal": null
     },
     {
@@ -2795,7 +3851,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-129"
+      ],
       "proposal": null
     },
     {
@@ -2820,7 +3878,11 @@
         "SRC-063",
         "SRC-070",
         "SRC-065",
-        "SRC-066"
+        "SRC-066",
+        "SRC-131",
+        "SRC-134",
+        "SRC-137",
+        "SRC-139"
       ],
       "proposal": {
         "paperShape": "Method + Evaluation",
@@ -2862,7 +3924,10 @@
       "nestedInto": [
         "C13"
       ],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-135",
+        "SRC-136"
+      ],
       "proposal": null
     },
     {
@@ -2949,7 +4014,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-132"
+      ],
       "proposal": null
     },
     {
@@ -2970,7 +4037,11 @@
       "resource": "CPU",
       "updatedAt": "2026-08-03",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-145",
+        "SRC-153",
+        "SRC-154"
+      ],
       "proposal": null
     },
     {
@@ -3012,7 +4083,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-151"
+      ],
       "proposal": null
     },
     {
@@ -3033,7 +4106,10 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-143",
+        "SRC-144"
+      ],
       "proposal": null
     },
     {
@@ -3058,7 +4134,8 @@
         "SRC-075",
         "SRC-040",
         "SRC-077",
-        "SRC-039"
+        "SRC-039",
+        "SRC-146"
       ],
       "proposal": {
         "paperShape": "Diagnosis / Benchmark",
@@ -3099,7 +4176,11 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-148",
+        "SRC-149",
+        "SRC-152"
+      ],
       "proposal": null
     },
     {
@@ -3124,7 +4205,9 @@
         "SRC-103",
         "SRC-104",
         "SRC-105",
-        "SRC-106"
+        "SRC-106",
+        "SRC-156",
+        "SRC-157"
       ],
       "proposal": {
         "paperShape": "Benchmark / Evaluation",
@@ -3165,7 +4248,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-08-03",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-158"
+      ],
       "proposal": null
     },
     {
@@ -3186,7 +4271,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-159"
+      ],
       "proposal": null
     },
     {
@@ -3210,7 +4297,9 @@
       "sourceIds": [
         "SRC-036",
         "SRC-071",
-        "SRC-065"
+        "SRC-065",
+        "SRC-118",
+        "SRC-165"
       ],
       "proposal": {
         "paperShape": "Benchmark / Evaluation",
@@ -3251,7 +4340,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-161"
+      ],
       "proposal": null
     },
     {
@@ -3272,7 +4363,11 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-162",
+        "SRC-163",
+        "SRC-164"
+      ],
       "proposal": null
     },
     {
@@ -3297,7 +4392,8 @@
         "SRC-059",
         "SRC-062",
         "SRC-019",
-        "SRC-091"
+        "SRC-091",
+        "SRC-168"
       ],
       "proposal": {
         "paperShape": "Benchmark + Method",
@@ -3357,7 +4453,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-171"
+      ],
       "proposal": null
     },
     {
@@ -3378,7 +4476,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-143"
+      ],
       "proposal": null
     },
     {
@@ -3399,7 +4499,9 @@
       "resource": "CPU/API",
       "updatedAt": "2026-07-30",
       "nestedInto": [],
-      "sourceIds": [],
+      "sourceIds": [
+        "SRC-169"
+      ],
       "proposal": null
     },
     {
@@ -4235,7 +5337,7 @@
       "verdictRef": "review/AUTO_RESEARCH_OS_SOP_VERDICT_20260804.md"
     }
   ],
-  "sourceRevision": "sha256:d4155becc06409755629a07ad974b483aef1a5d0ffa4759d5d14a7cbafceb03e",
+  "sourceRevision": "sha256:fd91ff81f2c93b95486e38bd2d1bd4982df99a175ff4ab77333de160c01796f4",
   "researchEvents": [
     {
       "id": "EVT-20260731-001",
@@ -4267,6 +5369,1952 @@
       "outcome": "recorded",
       "nextEvidenceAcceptance": "Nested repair slice changes the parent Candidate policy or residual-influence ranking.",
       "blocker": null
+    },
+    {
+      "id": "EVT-SWEEP-20260804",
+      "timestamp": "2026-08-04T18:30:00+08:00",
+      "actor": "codex",
+      "type": "literature.sweep",
+      "baseRevision": "sha256:d4155becc06409755629a07ad974b483aef1a5d0ffa4759d5d14a7cbafceb03e",
+      "affectedEntityIds": [
+        "SRC-107",
+        "SRC-108",
+        "SRC-109",
+        "SRC-110",
+        "SRC-111",
+        "SRC-112",
+        "SRC-113",
+        "SRC-114",
+        "SRC-115",
+        "SRC-116",
+        "SRC-117",
+        "SRC-118",
+        "SRC-119",
+        "SRC-120",
+        "SRC-121",
+        "SRC-122",
+        "SRC-123",
+        "SRC-124",
+        "SRC-125",
+        "SRC-126",
+        "SRC-127",
+        "SRC-128",
+        "SRC-129",
+        "SRC-130",
+        "SRC-131",
+        "SRC-132",
+        "SRC-133",
+        "SRC-134",
+        "SRC-135",
+        "SRC-136",
+        "SRC-137",
+        "SRC-138",
+        "SRC-139",
+        "SRC-140",
+        "SRC-141",
+        "SRC-142",
+        "SRC-143",
+        "SRC-144",
+        "SRC-145",
+        "SRC-146",
+        "SRC-147",
+        "SRC-148",
+        "SRC-149",
+        "SRC-150",
+        "SRC-151",
+        "SRC-152",
+        "SRC-153",
+        "SRC-154",
+        "SRC-155",
+        "SRC-156",
+        "SRC-157",
+        "SRC-158",
+        "SRC-159",
+        "SRC-160",
+        "SRC-161",
+        "SRC-162",
+        "SRC-163",
+        "SRC-164",
+        "SRC-165",
+        "SRC-166",
+        "SRC-167",
+        "SRC-168",
+        "SRC-169",
+        "SRC-170",
+        "SRC-171",
+        "SRC-172",
+        "SRC-173",
+        "SRC-174",
+        "GAP-UAI-CONSTRUCT",
+        "GAP-UAI-K2A"
+      ],
+      "changes": [
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-107",
+            "legacyId": "2607.27773",
+            "title": "ChronoMem: Version Control & Semantic Rollback for LLM Agent Memory",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2607.27773",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "Google ADK语义版本控制层+整库快照+NL undo映射;post-exposure反事实后验证协议;自称首个开源semantic global rollback;单位=整库快照未处理跨层residual/authority",
+            "note": "2026-08-04 sweep; verdict: direct→C01",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-108",
+            "legacyId": "2608.01679",
+            "title": "AuthMem-Bench: When Memory Becomes Authority (Authority Collapse)",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2608.01679",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "consolidation抹掉合法使用约束=\"authority collapse\";paired benchmark 7×7;无authority元数据未授权动作50.3%→预测标签后0.0%;非commit-time gating/无revoke;与Commit-Time Authorization互补",
+            "note": "2026-08-04 sweep; verdict: direct→C02",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-109",
+            "legacyId": "2607.29167",
+            "title": "PPMF: Memory Provenance Laundering — Non-Amplification Firewall",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2607.29167",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "外部observation洗成合法user history;中间件保留provenance匹配action risk;ASR1.0→闸门后0未授权高危;依赖平台provenance可信;与Securing-LLM-Agent相邻独立",
+            "note": "2026-08-04 sweep; verdict: direct→C05",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-110",
+            "legacyId": "2606.29788",
+            "title": "MemLeak: Diagnosing Information Leaks in Multimodal Agent Memory",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2606.29788",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "Information Provenance Graph按deletion affordance分类;删除后保留图像可恢复12%/47%图像泄漏无法从文本恢复;隐私视角非benign revocation/非parametric",
+            "note": "2026-08-04 sweep; verdict: direct→C03",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-111",
+            "legacyId": "2606.15903",
+            "title": "ForgetEval: Control-Plane Placement Shapes Forgetting",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2606.15903",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "recall vs control plane(supersede/release/purge);13配置×385对抗;\"生产失败主要是forgetting失败但benchmark只测recall\";未追踪删除后跨层residual行动后果",
+            "note": "2026-08-04 sweep; verdict: direct→C03",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-112",
+            "legacyId": "2605.28839",
+            "title": "One Mask to Rule Them All: Hidden Facts after Editing",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2605.28839",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "训练compact binary mask逆转weight edit(逆转80%训练/>70%测试);\"edits suppress rather than overwrite\"留residual;针对ROME/MEMIT不涉explicit+parametric联合回滚",
+            "note": "2026-08-04 sweep; verdict: direct→C06",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-113",
+            "legacyId": "2607.20827",
+            "title": "Auditing Provenance Sensitivity in LLM Agent Action Selection",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2607.20827",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "target-specific授权审计;450受控next-action;trusted/untrusted改变动作5.4%;审计敏感性非构造gating机制;stress-set率",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-114",
+            "legacyId": "2606.24535",
+            "title": "MemClaw: Governed Shared Memory for Multi-Agent",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2606.24535",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "fleet-memory四失败(leakage/stale/contradiction/provenance collapse);生产多租户+provenance链100%重建;principal=agent/tenant非家庭自然人",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-115",
+            "legacyId": "2607.05844",
+            "title": "StateFuse: Deterministic Conflict-Preserving Memory",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2607.05844",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "OpSet/CRDT冲突保留记忆;immutable history+correction handle;282冲突切片;never collapse保留矛盾但不做revoke/rollback",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-116",
+            "legacyId": "2606.22030",
+            "title": "Nous: Reliability-Conditional Updating & Provenance-Capped Poisoning Defense",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2606.22030",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "entity-attribute类别分布贝叶斯更新;provenance-capped(信任以来源为上界)抗volumetric poisoning;LoCoMo纯贝叶斯不敌last-write-wins;非laundering/非revoke",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-117",
+            "legacyId": "2606.25161",
+            "title": "TRUSTMEM: Trustworthy Memory Consolidation",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2606.25161",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "Memory Transition Verifier(coverage/preservation/faithfulness)+preference RL;HaluMem+12.14F1;transition级corruption↓79%;保证更新可信非counterfactual rollback",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "M-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-118",
+            "legacyId": "2608.01619",
+            "title": "StateAuditor: Repairing Implicit Stale Dependencies",
+            "topic": "AI Memory",
+            "url": "https://arxiv.org/abs/2608.01619",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "STALE的IPA gap(识别过时仍用旧值);反向从state审计到draft+provenance/chronology校验;VTA.736vs.686;作者自限不覆盖harder lifecycle;STALE本体在库",
+            "note": "2026-08-04 sweep; verdict: direct→C28",
+            "trackIds": [
+              "M-AI",
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-119",
+            "legacyId": "2603.19564",
+            "title": "Wearable FMs Should Go Beyond Static Encoders",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2603.19564",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "论证static encoder在慢性尺度失效;只主张不实现;无模型无数据集",
+            "note": "2026-08-04 sweep; verdict: direct→C07",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-120",
+            "legacyId": "2601.12215",
+            "title": "MMR: Wavelet Masked Multiscale Reconstruction for PPG FM",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2601.12215",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "小波多分辨率masked重建;1700万PPG段;multiscale落在单窗口内时频(10s)非秒→周;reconstruction目标",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-121",
+            "legacyId": "2606.17106",
+            "title": "Informative Missingness to Generate Irregular Clinical TS",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2606.17106",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "diffusion联合生成lab值+missingness pattern;DACMI/MIMIC-III;生成任务非cause→action",
+            "note": "2026-08-04 sweep; verdict: direct→C08",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-122",
+            "legacyId": "2607.02938",
+            "title": "CISM: Missingness as Signal Channel-Independent Spectrogram",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2607.02938",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "每变量spectrogram+missingness stream;MIMIC-IV死亡AUROC0.72;缺失→prediction非→action",
+            "note": "2026-08-04 sweep; verdict: direct→C08",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-123",
+            "legacyId": "2604.21235",
+            "title": "★Dynamic Representations & Policies from Multimodal Clinical TS w/ Informative M",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2604.21235",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "缺失→潜状态(Bayesian filtering)→治疗策略;MIMIC/eICU脓毒症FQE0.679vs0.528;ICU EHR非wearable→C08须锚wearable连续信号+设备语境differentiate",
+            "note": "2026-08-04 sweep; verdict: direct→C08",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-124",
+            "legacyId": "2512.00479",
+            "title": "★Aligning Beliefs under Informative Missingness: LLM Steerability",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2512.00479",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "LLM不原生利用informative missingness需刻意干预;ICU testbed→证伪\"接LLM即可处理缺失语义\"强化C08前提",
+            "note": "2026-08-04 sweep; verdict: direct→C08",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-125",
+            "legacyId": "2605.17859",
+            "title": "Multi-site PPG: In-the-Wild Dataset (耳环/戒指/手表/项链)",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2605.17859",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "量化body-location致HR差异(耳环2.30→项链8.68 bpm);>350小时;数据集非invalidation机制;现成数据可支撑C09评测",
+            "note": "2026-08-04 sweep; verdict: direct→C09",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-126",
+            "legacyId": "2509.25383",
+            "title": "Beyond the Pocket: Bodily Placements of Commercial Wearables",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2509.25383",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "300人问卷真实佩戴习惯;HCI调查未触provenance数据有效性机制",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-127",
+            "legacyId": "2606.23705",
+            "title": "Event-Aligned Multi-Rater Pain Assessments",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2606.23705",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "rater-aware稀疏评分转pain-change事件+生理对齐保留rater身份;处理rater间冲突非急慢冲突;preliminary",
+            "note": "2026-08-04 sweep; verdict: direct→C10",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-128",
+            "legacyId": "2606.10900",
+            "title": "Personalized Short-Term AFib Forecasting from Wearable ECG",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2606.10900",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "全局模型个人微调60s段预测5min;个体化AUROC0.711vs0.614;个体vs全局基线张力但未建急慢冲突仲裁",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-129",
+            "legacyId": "2606.18147",
+            "title": "WEQA: Wearable Health QA w/ Query-Adaptive Agentic Reasoning",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2606.18147",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "query-adaptive agent路由传感工具;4数据集+12专家盲评+24%;与VitalAgent/WAG同家族;未把\"足够性\"设显式目标",
+            "note": "2026-08-04 sweep; verdict: direct→C12",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-130",
+            "legacyId": "2607.06954",
+            "title": "StepFM: 仅用计步数据的广谱健康FM",
+            "topic": "Physiological Memory",
+            "url": "https://arxiv.org/abs/2607.06954",
+            "year": "2607",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "仅计步跨20+任务跨设备迁移;极简充分信号存在性证明(决策充分>重建保真);经验充分非\"摘要充分性\"框架",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "M-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-131",
+            "legacyId": "2602.01532",
+            "title": "PRISM: Festina Lente Proactivity (risk-sensitive uncertainty-aware)",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2602.01532",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "成本非对称阈值门+边界处才慢思考counterfactual；ProactiveBench 上 FA↓22.78% F1↑20.14%；counterfactual 仅内部机制非评测单位",
+            "note": "2026-08-04 sweep; verdict: direct→C13",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-132",
+            "legacyId": "2602.04000",
+            "title": "After Talking with 1,000 Personas: Preference-Aligned Proactive Assistants",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2602.04000",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "1000 persona 模拟冷启动 timing/autonomy/style + 端上 steering；34真人；关停+跨会话trust为核心动因",
+            "note": "2026-08-04 sweep; verdict: direct→C18",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-133",
+            "legacyId": "2608.01949",
+            "title": "STEPS: Self-Triggered Agentic Push Recommendation",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2608.01949",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "同时决定是否推+何时自唤醒；线上A/B 关停率↓1.9% 算力↓79%；工业推荐域",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-134",
+            "legacyId": "2607.03730",
+            "title": "ProACT: Breakdown-Aware Proactive Agent in Multi-User Collab",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2607.03730",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "speaker-attributed 判 breakdown→silence/speak→路由skill；3244 turn×5 LLM；首个多用户协作 proactive benchmark；动作空间不全",
+            "note": "2026-08-04 sweep; verdict: direct→C13",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-135",
+            "legacyId": "2510.25224",
+            "title": "ProMediate: Proactive Agents in Multi-party Negotiation",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2510.25224",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "when&how to intervene，intervention latency 指标；调停域；latency 数字需正文核",
+            "note": "2026-08-04 sweep; verdict: direct→C14",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-136",
+            "legacyId": "2510.13105",
+            "title": "EgoSocial: Proactive Intervention via Egocentric Social Perception",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2510.13105",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "13500 社交video-QA；Intervention Timing 独立指标(Gemini2.5Pro仅14.4%)；社交视频域",
+            "note": "2026-08-04 sweep; verdict: direct→C14",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-137",
+            "legacyId": "2604.15037",
+            "title": "ProVoice-Bench: Proactivity of Voice Agents",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2604.15037",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "4新任务1182样本；over-triggering 被显式测；语音合成域",
+            "note": "2026-08-04 sweep; verdict: direct→C13",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-138",
+            "legacyId": "2602.11351",
+            "title": "BAO: Behavioral Agentic Optimization Pareto Frontiers",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2602.11351",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "agentic RL 正则inter-turn；task-perf↑ vs user-effort↓ Pareto；未用helpfulness/intrusiveness原词",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-139",
+            "legacyId": "2607.11523",
+            "title": "Vinci2 / EgoServe: Proactive Assistance in Continuous Egocentric Video",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2607.11523",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "training-free 记忆agent逐时刻RAG；EgoServe 3000+实例×4时间记忆跨度；egocentric域",
+            "note": "2026-08-04 sweep; verdict: direct→C13",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-140",
+            "legacyId": "2602.03468",
+            "title": "IntentRL: Proactive User-intent Agents for Deep Research via RL",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2602.03468",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "shallow-to-deep intent refinement+两阶段RL；intent hit rate；只覆盖执行前澄清；邻近Ask-before-Plan",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-141",
+            "legacyId": "2607.08768",
+            "title": "UniClawBench: Universal Benchmark for Proactive Agents",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2607.08768",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "5能力400双语真实任务闭环Docker；评测单位是任务checkpoint非介入决策；收口\"benchmark空白\"叙述",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-142",
+            "legacyId": "2604.08898",
+            "title": "Omakase: Proactive Assistance for Evolving Research Projects",
+            "topic": "Proactive Agent",
+            "url": "https://arxiv.org/abs/2604.08898",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "监控项目文档→推断timely查询→蒸馏suggestion；N=42主观usefulness/timeliness；非增量价值测量",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "P-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-143",
+            "legacyId": "2511.02944",
+            "title": "Power Constrained Nonstationary Bandits w/ Habituation & Recovery (ROGUE-TS)",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2511.02944",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "⚠跨Track重叠(U-PHY也捞到→trackIds:[P-PHY,U-PHY]) | habituation/recovery 写进reward+Thompson；2真实MRT；非因果效应估计",
+            "note": "2026-08-04 sweep; verdict: direct→C22,C34",
+            "trackIds": [
+              "P-PHY",
+              "U-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-144",
+            "legacyId": "2502.13500",
+            "title": "Distal Causal Excursion Effects (DCEE)",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2502.13500",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "MRT远期效应估计+cross-fitting；HeartSteps；早期prompt长期效应更强；群体非个体",
+            "note": "2026-08-04 sweep; verdict: direct→C22",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-145",
+            "legacyId": "2606.25107",
+            "title": "Nonparametric Optimal Stochastic JITAI for Distal Outcomes",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2606.25107",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "随机策略regimen-response非参估计+GP置信带；方法学无新部署",
+            "note": "2026-08-04 sweep; verdict: direct→C19",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-146",
+            "legacyId": "2506.20027",
+            "title": "Dynamic Causal Mediation for Intensive Longitudinal Data",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2506.20027",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "natural direct/indirect excursion 分解+多重稳健；HeartSteps+SleepHealth；中介仅即时",
+            "note": "2026-08-04 sweep; verdict: direct→C23",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-147",
+            "legacyId": "2605.24261",
+            "title": "Online Learning under Endogenous Adherence (UCB-BOLD)",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2605.24261",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "线性动力系统+logit建模内生依从；合成队列非真实闭环",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-148",
+            "legacyId": "2602.21383",
+            "title": "Time-Varying Effects in Hybrid SMART-MRT",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2602.21383",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "数字×人工协同因果估计;M-Bridge狂饮;synergy数学形式未给",
+            "note": "2026-08-04 sweep; verdict: direct→C24",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-149",
+            "legacyId": "2606.18596",
+            "title": "LLM Voice Diaries for Sleep (adherence/context)",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2606.18596",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "语音日记vs文本 N=30场地;依从↑但结构化字段↓;与Opportune Smart Speaker相邻但新",
+            "note": "2026-08-04 sweep; verdict: direct→C24",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-150",
+            "legacyId": "2605.27950",
+            "title": "Inferring Dietary Receptivity from Egocentric Eating Images",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2605.27950",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "CLIP+transformer从AIM-2相机推receptivity三维;pilot;可行性非因果,勿当effect",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-151",
+            "legacyId": "2510.18880",
+            "title": "Wayfinding AI: Benefits of Context-seeking in Health Conversations",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2510.18880",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "4研究N=163 randomized blinded;延迟数轮仍更有用;非生理JITAI时机",
+            "note": "2026-08-04 sweep; verdict: direct→C21",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-152",
+            "legacyId": "2508.10060",
+            "title": "PEARL: Personalized Exercise Assistant RL — 4-arm RCT",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2508.10060",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "13463 Fitbit四臂RL nudge;RL臂+296步显著;组均非个体化",
+            "note": "2026-08-04 sweep; verdict: direct→C24",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-153",
+            "legacyId": "2512.08828",
+            "title": "Prediction Intervals for ITE (Conformal, Multi-Decision)",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2512.08828",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "conformal时变ITE区间;Intern Health Study;区间非点识别",
+            "note": "2026-08-04 sweep; verdict: direct→C19",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-154",
+            "legacyId": "2510.08359",
+            "title": "DR-EMEE: Doubly Robust Stabilized Weights for Binary Proximal MRT",
+            "topic": "Physiological Proactive",
+            "url": "https://arxiv.org/abs/2510.08359",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "per-decision IPW+回归双稳健;HeartSteps/PAMAP2/mHealth;MRT Methods的2025增量",
+            "note": "2026-08-04 sweep; verdict: direct→C19",
+            "trackIds": [
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-155",
+            "legacyId": "2607.28384",
+            "title": "When Specifications Conflict: Symmetry-Based Preference Framework",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2607.28384",
+            "year": "2027",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "550冲突×11函数族;偏好序formal>NL>示例;冲突对象是任务规格表示模态非用户role/context/time",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-156",
+            "legacyId": "2605.25200",
+            "title": "GroupTravelBench: Multi-Person Travel Planning",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2605.25200",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "首个多用户多轮规划650任务;私有偏好elicitation+冲突协调+效用公平;顶级模型validity<12%;多人非单用户内部冲突",
+            "note": "2026-08-04 sweep; verdict: direct→C25",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-157",
+            "legacyId": "2603.23848",
+            "title": "BeliefShift: Temporal Belief Consistency & Opinion Drift",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2603.23848",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "3track2400轨迹;个性化vs抗漂移权衡;测belief变化非preference correction debt",
+            "note": "2026-08-04 sweep; verdict: direct→C25",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-158",
+            "legacyId": "2604.25022",
+            "title": "AFA: Identity-Aware Memory Preventing Persona Confusion",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2604.25022",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "命名persona confusion;语音说话人识别+per-user memory;PAT58289turns;PAA35.7%→61.3%;多人非单用户多角色",
+            "note": "2026-08-04 sweep; verdict: direct→C26",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-159",
+            "legacyId": "2601.06407",
+            "title": "Value of Information: Human-Agent Communication",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2601.06407",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "VoI框架权衡提问效用vs认知负担parameter-free;4域;通用ask-vs-act非偏好澄清长期收益",
+            "note": "2026-08-04 sweep; verdict: direct→C27",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-160",
+            "legacyId": "2606.30863",
+            "title": "Beyond Expert Users: Construct Preferences not Elicit (CoShop)",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2606.30863",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "Search-Experience-Credence;CoPref+CoShop基准5模型<56%;澄清=帮建偏好非提取=新gap线索(construction vs elicitation)",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-161",
+            "legacyId": "2605.13307",
+            "title": "PRISM-X: Personalised Fine-Tuning w/ Human & Simulated Users",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2605.13307",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "PRISM重招530人52国;preference FT优于prompting但放大sycophancy/relationship-seeking;模拟用户缺人类自一致性",
+            "note": "2026-08-04 sweep; verdict: direct→C29",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-162",
+            "legacyId": "2512.23067",
+            "title": "Reward Model Selection Crisis in Personalized Alignment (Pref-LaMP)",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2512.23067",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "policy accuracy指标;RM准确率作选择标准灾难失效τ0.08-0.31;ICL≥3B压制RGD;判别排序与生成解耦",
+            "note": "2026-08-04 sweep; verdict: direct→C30",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-163",
+            "legacyId": "2605.24657",
+            "title": "Beyond Inference-Only: Weight Consolidation vs Cascading Compaction",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2605.24657",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "context/compaction vs夜间LoRA weight consolidation;10对话保留80.4%vs36.8%(+43.6);compaction丢纠正=correction debt成因;样本小软件域",
+            "note": "2026-08-04 sweep; verdict: direct→C30",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-164",
+            "legacyId": "2608.00215",
+            "title": "FABLE: Personalizing LLM Agents w/ Small Policy Models",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2608.00215",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "因子化memory/信息获取/回复决策;Bayesian contextual Thompson学残差偏好;把policy层从memory/prompt/weight分离;线性假设方法提案",
+            "note": "2026-08-04 sweep; verdict: direct→C30",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-165",
+            "legacyId": "2608.02171",
+            "title": "IBA-Bench: Implicit Behavioral Alignment",
+            "topic": "AI Personalization",
+            "url": "https://arxiv.org/abs/2608.02171",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "knowledge-to-action gap;9域纵向史;个性化对SOTA仍挑战;与StateAuditor IPA gap高度重叠(两篇2026-08独立命名同现象)",
+            "note": "2026-08-04 sweep; verdict: direct→C28",
+            "trackIds": [
+              "U-AI"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-166",
+            "legacyId": "2605.04617",
+            "title": "SIGHT: Temporal Structure Matters for Efficient TTA in Wearable HAR",
+            "topic": "Physiological Personalization",
+            "url": "https://arxiv.org/abs/2605.04617",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "backprop-free TTA，predictive surprise 门控时序惯性；仅 IMU，不区分漂移来源",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "U-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-167",
+            "legacyId": "2604.25435",
+            "title": "PI-TTA: Physics-Informed Source-Free TTA for HAR on Mobile",
+            "topic": "Physiological Personalization",
+            "url": "https://arxiv.org/abs/2604.25435",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "三物理一致性约束；factorized shift protocol(rotation/placement/rate 拆开)；非推理时归因输出",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "U-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-168",
+            "legacyId": "2512.10807",
+            "title": "HAROOD: Benchmark for OOD Generalization in Sensor-based HAR",
+            "topic": "Physiological Personalization",
+            "url": "https://arxiv.org/abs/2512.10807",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "4类OOD(cross-person/position/dataset/time)×6数据集×16方法；github AIFrontierLab/HAROOD；不做 attribution",
+            "note": "2026-08-04 sweep; verdict: direct→C31",
+            "trackIds": [
+              "U-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-169",
+            "legacyId": "2607.09518",
+            "title": "Learning When to Intervene on Habitual Behaviors (Oral Health)",
+            "topic": "Physiological Personalization",
+            "url": "https://arxiv.org/abs/2607.09518",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "习惯时机漂移 online 调整；已部署 trial+RCT；不覆盖生理基线/跨设备",
+            "note": "2026-08-04 sweep; verdict: direct→C35",
+            "trackIds": [
+              "U-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-170",
+            "legacyId": "2607.21403",
+            "title": "JITAI-Twins: Diffusion Subpopulation Digital Twin (HeartSteps)",
+            "topic": "Physiological Personalization",
+            "url": "https://arxiv.org/abs/2607.21403",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "条件时序 diffusion 部署前模拟；非运行时 abstention",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "U-PHY",
+              "P-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-171",
+            "legacyId": "2509.07322",
+            "title": "Cumulative Marginal Mean Model for Sequential Effects (Digital Health)",
+            "topic": "Physiological Personalization",
+            "url": "https://arxiv.org/abs/2509.07322",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "DML+carryover 分离即时/滞后；群体级HTE(按age)；非 per-user/worst-user",
+            "note": "2026-08-04 sweep; verdict: direct→C33",
+            "trackIds": [
+              "U-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-172",
+            "legacyId": "2606.29322",
+            "title": "SP-CACW: Convergence-Aware Client Weighting for Selfish Personalized Learning",
+            "topic": "Physiological Personalization",
+            "url": "https://arxiv.org/abs/2606.29322",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "收敛误差上界选权重可剔有害peer；通用FL未在wearable验证",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "U-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-173",
+            "legacyId": "2507.03898",
+            "title": "Deconfounding Cross-Domain HAR (Two-Branch Early-Forking)",
+            "topic": "Physiological Personalization",
+            "url": "https://arxiv.org/abs/2507.03898",
+            "year": "2025",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "因果/非因果特征解耦抗域移；不输出漂移来源标签；仅IMU",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "U-PHY"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "sourcePapers"
+          ],
+          "value": {
+            "id": "SRC-174",
+            "legacyId": "2603.28006",
+            "title": "FedDES: Graph-Based Dynamic Ensemble Selection for Personalized FL",
+            "topic": "Physiological Personalization",
+            "url": "https://arxiv.org/abs/2603.28006",
+            "year": "2026",
+            "venue": "arXiv",
+            "verification": "verified-abstract",
+            "evidenceBoundary": "GNN meta-learner instance-level ensemble；ICU表格数据非wearable流",
+            "note": "2026-08-04 sweep; verdict: pressure/lead",
+            "trackIds": [
+              "U-PHY"
+            ]
+          }
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C01",
+            "sourceIds"
+          ],
+          "value": "SRC-107"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C02",
+            "sourceIds"
+          ],
+          "value": "SRC-108"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C05",
+            "sourceIds"
+          ],
+          "value": "SRC-109"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C03",
+            "sourceIds"
+          ],
+          "value": "SRC-110"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C03",
+            "sourceIds"
+          ],
+          "value": "SRC-111"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C06",
+            "sourceIds"
+          ],
+          "value": "SRC-112"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C28",
+            "sourceIds"
+          ],
+          "value": "SRC-118"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C07",
+            "sourceIds"
+          ],
+          "value": "SRC-119"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C08",
+            "sourceIds"
+          ],
+          "value": "SRC-121"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C08",
+            "sourceIds"
+          ],
+          "value": "SRC-122"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C08",
+            "sourceIds"
+          ],
+          "value": "SRC-123"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C08",
+            "sourceIds"
+          ],
+          "value": "SRC-124"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C09",
+            "sourceIds"
+          ],
+          "value": "SRC-125"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C10",
+            "sourceIds"
+          ],
+          "value": "SRC-127"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C12",
+            "sourceIds"
+          ],
+          "value": "SRC-129"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C13",
+            "sourceIds"
+          ],
+          "value": "SRC-131"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C18",
+            "sourceIds"
+          ],
+          "value": "SRC-132"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C13",
+            "sourceIds"
+          ],
+          "value": "SRC-134"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C14",
+            "sourceIds"
+          ],
+          "value": "SRC-135"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C14",
+            "sourceIds"
+          ],
+          "value": "SRC-136"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C13",
+            "sourceIds"
+          ],
+          "value": "SRC-137"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C13",
+            "sourceIds"
+          ],
+          "value": "SRC-139"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C22",
+            "sourceIds"
+          ],
+          "value": "SRC-143"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C34",
+            "sourceIds"
+          ],
+          "value": "SRC-143"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C22",
+            "sourceIds"
+          ],
+          "value": "SRC-144"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C19",
+            "sourceIds"
+          ],
+          "value": "SRC-145"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C23",
+            "sourceIds"
+          ],
+          "value": "SRC-146"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C24",
+            "sourceIds"
+          ],
+          "value": "SRC-148"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C24",
+            "sourceIds"
+          ],
+          "value": "SRC-149"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C21",
+            "sourceIds"
+          ],
+          "value": "SRC-151"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C24",
+            "sourceIds"
+          ],
+          "value": "SRC-152"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C19",
+            "sourceIds"
+          ],
+          "value": "SRC-153"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C19",
+            "sourceIds"
+          ],
+          "value": "SRC-154"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C25",
+            "sourceIds"
+          ],
+          "value": "SRC-156"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C25",
+            "sourceIds"
+          ],
+          "value": "SRC-157"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C26",
+            "sourceIds"
+          ],
+          "value": "SRC-158"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C27",
+            "sourceIds"
+          ],
+          "value": "SRC-159"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C29",
+            "sourceIds"
+          ],
+          "value": "SRC-161"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C30",
+            "sourceIds"
+          ],
+          "value": "SRC-162"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C30",
+            "sourceIds"
+          ],
+          "value": "SRC-163"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C30",
+            "sourceIds"
+          ],
+          "value": "SRC-164"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C28",
+            "sourceIds"
+          ],
+          "value": "SRC-165"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C31",
+            "sourceIds"
+          ],
+          "value": "SRC-168"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C35",
+            "sourceIds"
+          ],
+          "value": "SRC-169"
+        },
+        {
+          "op": "link",
+          "path": [
+            "candidates",
+            "C33",
+            "sourceIds"
+          ],
+          "value": "SRC-171"
+        },
+        {
+          "op": "add",
+          "path": [
+            "gaps"
+          ],
+          "value": {
+            "id": "GAP-UAI-CONSTRUCT",
+            "clusterId": null,
+            "trackId": "U-AI",
+            "statement": "preference construction vs elicitation：澄清的价值可能不在消歧，而在帮用户构建偏好（CoShop 2606.30863）。",
+            "candidateIds": []
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "gaps"
+          ],
+          "value": {
+            "id": "GAP-UAI-K2A",
+            "clusterId": null,
+            "trackId": "U-AI",
+            "statement": "knowledge-to-action / IPA 归因层：有记忆却不照做被 StateAuditor+IBA-Bench 两篇 2026-08 独立命名；仍缺 memory vs policy vs weight 的归因拆分（FABLE/Reward Crisis）。",
+            "candidateIds": []
+          }
+        }
+      ],
+      "nextEvidenceAcceptance": "用户审阅本轮 68 篇新增源与 2 条 novelty 线索；据 novelty 地图决定是否收窄/kill 被 direct 挤压的候选。",
+      "blocker": null,
+      "outcome": "material-change"
     }
   ]
 }

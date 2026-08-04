@@ -12,3 +12,4 @@ artifacts/probe.js
 .agents/
 infra/GPU_RUNBOOK.md
 scripts/gpu-plan.sh
+.sweep-drafts/

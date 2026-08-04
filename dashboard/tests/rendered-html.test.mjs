@@ -53,7 +53,7 @@ test("keeps the canonical data seam, interactions, and social preview wired", as
   ]);
 
   const index = JSON.parse(indexRaw);
-  assert.equal(index.sourcePapers.length, 106);
+  assert.equal(index.sourcePapers.length, 174);
   assert.equal(index.candidates.length, 36);
   assert.equal(index.candidates.filter((candidate) => candidate.nestedInto.length === 0).length, 34);
   assert.equal(index.runs.length, 0);
