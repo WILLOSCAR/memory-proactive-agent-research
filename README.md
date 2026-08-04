@@ -59,9 +59,9 @@ P1–P6 已从“六个 root problems”降级为 paper seeds，并扩散为 36 
 
 | 文件 | 用途 |
 | --- | --- |
-| [infra/GPU_RUNBOOK.md](infra/GPU_RUNBOOK.md) | Stable Worker、Spot Job、Scheduled 整机、SSH、ByteNAS/HDFS 与实例验收 |
-| [scripts/gpu-plan.sh](scripts/gpu-plan.sh) | 默认不提交任务的命令生成器，以及 GPU/HDFS 验收脚本 |
 | [templates/run-manifest.yaml](templates/run-manifest.yaml) | requested/allocated/actual resource、数据 digest 与 Artifact 指针 |
+
+GPU 集群、SSH、存储与实例验收的具体 runbook 与命令生成脚本在本地维护，含环境相关信息，不纳入公开版本库。
 
 卡量和队列会变化，不在研究文档里保存静态“空闲卡数”。每次实验都刷新资源，并以 Instance 内登录、`nvidia-smi` 和存储 probe 为准。
 
@@ -77,21 +77,18 @@ memory-proactive-agent-research/
 ├── OPERATIONS.md
 ├── GPT_PRO_REVIEW.md
 ├── PROJECT_BRIEF.md                  # ChatGPT Project 简报
-├── infra/
-│   └── GPU_RUNBOOK.md
-├── scripts/
-│   └── gpu-plan.sh
 ├── templates/
 │   └── run-manifest.yaml
 ├── sources/
 │   └── 2026-07-30-adjacent-source-ledger.md
-├── review/                           # 外部评审转录与独立 Codex verdict
+├── review/                           # 外部评审转录与独立 verdict
 ├── operations/                       # 已冻结旧协议，不是日常入口
 ├── experiments/                      # 真正开始后才创建子目录
 ├── archive/                          # 已替代历史
-├── artifacts/                        # 不可变导出包
-└── .codex/                           # Bridge bundle、session、verdict 审计
+└── artifacts/                        # 不可变导出包
 ```
+
+（GPU runbook、命令生成脚本与 Bridge 审计目录含环境相关信息，在本地维护，不纳入公开版本库。）
 
 ## 文件增长规则
 

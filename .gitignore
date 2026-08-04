@@ -6,3 +6,9 @@ artifacts/part*.png
 artifacts/seg*.png
 artifacts/*-crop.png
 artifacts/probe.js
+
+# 内部工具/桥接产物（含内部主机名、路径、工具链，不对外）
+.codex/
+.agents/
+infra/GPU_RUNBOOK.md
+scripts/gpu-plan.sh

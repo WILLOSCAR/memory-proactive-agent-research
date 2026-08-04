@@ -354,7 +354,7 @@ Point product 主要服务 UbiComp/IMWUT/CHI 的 system、sensing、interaction�
 - 同时只运行一个单卡 smoke，重训练最多 1–2 个 experiment 并发；
 - 7B/8B LoRA 通常不超过 `2×A100/A800 80G`，confirmation 才考虑 `2–4×80G`；
 - 8 卡、大规模 wearable pretraining 和长序列 RL 不进入当前关键路径；
-- GPU 与跨 SSH 数据路径统一按 `infra/GPU_RUNBOOK.md` 刷新和验收。
+- GPU 与跨 SSH 数据路径统一按本地 GPU runbook 刷新和验收。
 
 GPU 调度只决定实验何时运行，不能反向决定哪些研究问题存在。
 

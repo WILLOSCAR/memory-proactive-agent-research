@@ -137,7 +137,7 @@ attribution_labels:
 - `requested / queued / allocated / actual` 资源分开记录；只有实例内 `nvidia-smi` 才算 actual GPU；
 - 跨 SSH 前记录 resolved host、remote identity、pool 和 mount probe；
 - Spot/preemptible run 必须 checkpoint-resumable；抢占是 `failed/inconclusive`，不是 negative result；
-- GPU 路径、启动命令与验收统一见 `infra/GPU_RUNBOOK.md`，动态卡量不得从旧文档复制。
+- GPU 路径、启动命令与验收统一见本地 GPU runbook，动态卡量不得从旧文档复制。
 
 结果语义只允许：
 
