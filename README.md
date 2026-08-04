@@ -1,100 +1,82 @@
-# vinext-starter
+# Auto Research OS Dashboard
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+面向研究负责人恢复全局认知的只读 Control Plane。它不再维护第二份手工研究事实，而是把
+`memory-proactive-agent-research` 的结构化索引投影成七个可下钻工作区。
 
-## Prerequisites
+## 当前事实边界
 
-- Node.js `>=22.13.0`
+- 106 个 Source ledger 入口、32 个 Literature Cluster。
+- 36 个 Candidate 节点，其中 34 个独立 Candidate、2 个 Nested Slice。
+- 11 个 Experiment Spec；0 Actual Run、0 Local Result。
+- 0 达标 Paper Opportunity、0 Paper Project。
 
-## Quick Start
+页面展示的是研究成熟度和执行准备度，不会把 Spec、GPT Pro 建议或文献结果显示成本地实验结果。
+
+## 七个工作区
+
+1. `Now`：3–5 条确定性 Leader Brief、六 Track 健康和 Evidence Spine。
+2. `Research Map`：Track → Cluster → Source Paper → Gap → Candidate。
+3. `Candidates`：Candidate 厚卡、状态、Evidence、Spec、Decision 与 lineage。
+4. `Experiments`：严格区分 Experiment Spec、Run、Artifact 与 Local Result。
+5. `Decisions`：`proposed → approved → applied` 与 append-only Research Event。
+6. `Paper Portfolio`：区分 promotion watch、Paper Opportunity 和 Paper Project。
+7. `Assets`：事实源优先级、同步合同、Reusable Asset 和 External Review 边界。
+
+## 数据 seam
+
+```text
+memory-proactive-agent-research/research-index.yaml
+memory-proactive-agent-research/research-events.jsonl
+                    ↓ journaled Settlement writer
+          exact SHA-256 source revision
+                    ↓ npm run sync:data
+data/research-index.json
+                    ↓ buildResearchSnapshot(...)
+Now / Map / Candidate / Experiment / Decision / Paper / Assets
+```
+
+- Canonical state：`../memory-proactive-agent-research/research-index.yaml`
+- Append-only events：`../memory-proactive-agent-research/research-events.jsonl`
+- Schema：`../memory-proactive-agent-research/schemas/research-index.schema.json`
+- State writer：`../memory-proactive-agent-research/scripts/settle-research-event.mjs`
+- Dashboard adapter：`scripts/sync-research-index.mjs`
+- Derived research semantics：`lib/research-system.mjs`
+- Generated read model：`data/research-index.json`
+- Type adapter：`app/research-data.ts`
+- Browser workspace：`app/page.tsx`
+- Visual system：`app/globals.css`
+
+`research-index.yaml` 使用 JSON-compatible YAML，以便在不增加解析器依赖的情况下由 Node 校验和同步。
+同步器会在 Settlement lock 或 pending journal 存在时拒绝读取，并把 index + event log 的精确 SHA-256 revision 写入 read model；因此页面可以证明自己读取的是哪一次一致快照。
+
+## 本地打开
+
+要求 Node.js `>=22.13.0`：
 
 ```bash
 npm install
+npm run sync:data
 npm run dev
-npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+也可以双击根目录的 `open-research-idea-forest.command`，固定在
+`http://127.0.0.1:8766/` 打开。
 
-## Included Shape
+## 验证
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm run check:data
+npm run test:model
+npm test
+npm run lint
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+关键守卫：
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+- Nested Slice 不计入独立 Candidate。
+- 缺 Run Manifest 的记录不计为 Actual Run。
+- 缺有效 Artifact digest 的 Evidence Link 不计为 Local Result。
+- Leader Brief 最多展示五条注意项，并保留稳定实体指针。
+- External Review 只能形成 pressure，不能直接形成 support。
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
-
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+`public/research-idea-forest.html` 是旧版静态图谱，仅作为历史快照保留。

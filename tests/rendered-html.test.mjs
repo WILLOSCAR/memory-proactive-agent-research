@@ -1,11 +1,6 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
-
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-const templateRoot = new URL("../", import.meta.url);
-const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
 
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -28,64 +23,57 @@ async function render() {
   );
 }
 
-test("server-renders the starter loading skeleton", async () => {
+test("server-renders the research operating system", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your site is taking shape<\/title>/i);
-  assert.match(html, /Building your site/);
-  assert.match(html, /Your site is taking shape/);
-  assert.match(
-    html,
-    /Your first version will appear here automatically when it’s ready\./,
-  );
-  assert.doesNotMatch(html, /Codex/);
-  assert.match(html, /react-loading-skeleton/);
-  assert.match(html, /role="status"/);
+  assert.match(html, /<title>Auto Research OS \| Memory, Proactive &amp; Personalization<\/title>/i);
+  assert.match(html, /Research control plane · read-only/);
+  assert.match(html, /Leader Brief/);
+  assert.match(html, /Research Map/);
+  assert.match(html, /Paper Portfolio/);
+  assert.match(html, />34<\/strong><span>independent Candidates<\/span>/);
+  assert.match(html, />0<\/strong><span>Actual Runs<\/span>/);
+  assert.match(html, />0<\/strong><span>Paper Projects<\/span>/);
+  assert.match(html, /0 Run 不是空白要被 UI 填满/);
+  assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });
 
-test("keeps the loading skeleton scoped and disposable", async () => {
-  const [preview, css, page, layout, packageJson, files] = await Promise.all([
-    readFile(new URL("SkeletonPreview.tsx", previewRoot), "utf8"),
-    readFile(new URL("preview.css", previewRoot), "utf8"),
+test("keeps the canonical data seam, interactions, and social preview wired", async () => {
+  const [adapter, indexRaw, system, css, page, layout, syncScript] = await Promise.all([
+    readFile(new URL("../app/research-data.ts", import.meta.url), "utf8"),
+    readFile(new URL("../data/research-index.json", import.meta.url), "utf8"),
+    readFile(new URL("../lib/research-system.mjs", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readdir(previewRoot),
+    readFile(new URL("../scripts/sync-research-index.mjs", import.meta.url), "utf8"),
   ]);
 
-  assert.deepEqual(files.sort(), ["SkeletonPreview.tsx", "preview.css"]);
-  assert.match(preview, /from "react-loading-skeleton"/);
-  assert.match(preview, /baseColor="#eceae7"/);
-  assert.match(preview, /highlightColor="#f9f8f6"/);
-  assert.match(preview, /duration=\{2\.8\}/);
-  assert.match(preview, /sites-skeleton-search-placeholder/);
-  assert.match(packageJson, /"react-loading-skeleton": "3\.5\.0"/);
-
-  const shellIndex = preview.indexOf('className="sites-skeleton-shell"');
-  const statusIndex = preview.indexOf('className="sites-skeleton-status"');
-  assert.ok(shellIndex >= 0 && statusIndex > shellIndex);
-  assert.match(css, /position:\s*fixed/);
-  assert.match(css, /inset:\s*0/);
-  assert.match(css, /opacity:\s*0\.52/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /#020617|canvas|pets|progress/i);
-  assert.doesNotMatch(
-    preview,
-    /loading-spinner|status-mark|status-progress|canvas|cookie|random/i,
-  );
-
-  assert.match(page, /export const metadata:\s*Metadata/);
-  assert.match(page, /"codex-preview": "development"/);
-  assert.match(page, /<SkeletonPreview \/>/);
-  assert.match(layout, /title:\s*"Starter Project"/);
-  assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
-  assert.doesNotMatch(css, /(^|\s)(html|body)\s*\{/m);
-
-  await assert.rejects(
-    access(new URL("public/_sites-preview", templateRoot)),
-  );
+  const index = JSON.parse(indexRaw);
+  assert.equal(index.sourcePapers.length, 106);
+  assert.equal(index.candidates.length, 36);
+  assert.equal(index.candidates.filter((candidate) => candidate.nestedInto.length === 0).length, 34);
+  assert.equal(index.runs.length, 0);
+  assert.match(index.sourceRevision, /^sha256:[a-f0-9]{64}$/);
+  assert.match(adapter, /export const researchIndex = index as unknown as ResearchIndex/);
+  assert.match(system, /export function buildResearchSnapshot/);
+  assert.match(system, /RUN_MANIFEST_MISSING/);
+  assert.match(page, /type ViewId = "now" \| "map" \| "candidates" \| "experiments" \| "decisions" \| "papers" \| "assets"/);
+  assert.match(page, /TRACEABILITY GRAPH/);
+  assert.match(page, /Candidate Workspace/);
+  assert.match(page, /Experiment Center/);
+  assert.match(page, /Decision & Lineage/);
+  assert.match(page, /Atomic writer/);
+  assert.match(css, /\.attention-grid/);
+  assert.match(css, /\.candidate-table/);
+  assert.match(css, /\.spec-board/);
+  assert.match(syncScript, /Generated dashboard data is stale/);
+  assert.match(syncScript, /\.research-settlement\.pending\.json/);
+  assert.match(layout, /generateMetadata/);
+  assert.match(layout, /socialImage/);
+  await access(new URL("../public/og.png", import.meta.url));
+  await access(new URL("../public/research-idea-forest.html", import.meta.url));
 });
