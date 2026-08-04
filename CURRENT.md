@@ -1,4 +1,4 @@
-# Current Research Kanban
+# Current Research Projection
 
 周期：2026-07-30 至 2026-08-12
 更新日期：2026-08-03
