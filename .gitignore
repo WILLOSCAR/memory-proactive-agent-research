@@ -1,0 +1,8 @@
+# 临时渲染/截图产物（看板可视化过程中生成，非成品）
+artifacts/shot*.png
+artifacts/ck*.png
+artifacts/g1-*.png
+artifacts/part*.png
+artifacts/seg*.png
+artifacts/*-crop.png
+artifacts/probe.js

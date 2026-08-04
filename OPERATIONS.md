@@ -36,6 +36,44 @@ Problem → Experiment → Run → Artifact → Decision
 
 当前不维护 Draft、论文结构或 claim-evidence 写作表。等问题通过 cheap probe、真正进入成稿期后再创建，不能用“开始写了”替代问题成立。
 
+### 统一最小评测样例
+
+所有 idea 的评测切片共享同一最小 schema（迁自执行看板，作为稳定规范固定在此）。每个候选按自身 failure family 只填相关字段，不要求填满：
+
+```yaml
+latent_state: {}
+observations:
+  available: []
+  missing: []
+  provenance: []
+history:
+  events: []
+  updates: []
+  revocations: []
+available_information_actions: [retrieve, ask, verify, sense, wait]
+available_intervention_actions: [silence, suggest, prepare, execute, withdraw, correct]
+counterfactuals:
+  no_action_outcome:
+  alternative_action_outcomes:
+cost_vector:
+  miss:
+  false_alarm:
+  delay:
+  interruption:
+  privacy:
+  authority:
+  compute:
+  repair:
+attribution_labels:
+  writer:
+  memory:
+  retrieval:
+  reasoning:
+  policy:
+  tool:
+  interface:
+```
+
 ## 2. 文件边界
 
 - `PROGRAM_MAP.md`：长期范围、3×2 资产索引和开放式评测轴；

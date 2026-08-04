@@ -669,3 +669,22 @@ Long-lived Agent under change
 3. 只有 overlap 后仍有独立 evaluation variable 的叶子，才建 candidate；
 4. 先做 evaluator/paired generator/causal simulator；只有方法存在 headroom 才训练；
 5. 新论文继续写入 source ledger，不在本文件追加逐篇摘要。
+
+## 12. 当前整体判断（迁自执行看板）
+
+以下 12 条是二轮 paper/evaluation audit 得到的跨方向研究判断，原记于 `CURRENT.md`。为使执行看板专注于动态卡片状态，判断本身迁入本文件（论文簇判断的正主）。它们与 §1「二轮 review 的总判断」及 §10「对当前核心候选的二轮修正」同源、互相呼应，不构成 novelty 证明或实验结果。
+
+1. **真正的研究对象不是三个孤立组件，而是变化环境中的长期 Agent。** Memory、Proactive、Personalization 更像三个操纵面；3×2 继续承担资产索引，不限制 discovery。
+2. **现有组件指标与真实 Agent 价值之间存在系统性错位。** retrieval recall、memory QA、trigger F1、acceptance、personalized gain 和 outcome prediction 都看不到 no-action counterfactual、长期累积代价或责任归因。
+3. **Memory 的白空间已被新论文进一步压缩。** STALE、MemTX、MemTxn、GateMem 与 commit-time authorization 已直接进入 validity、transaction、governance 和 authority；现在更强的残余问题是 benign revocation 后的跨层 residual influence、责任归因与多主体角色边界。
+4. **Proactive 不应继续只是 act/silent 二分类。** wait、ask、prepare、withdraw、correct、timing regret 与行动后的 repair 构成一组独立 failure family。
+5. **Personalization 的核心压力从“是否使用用户信息”转向冲突与修正。** role/context/time preference conflict、feedback ambiguity、correction debt 和 policy-induced user change 更有独立性。
+6. **生理/行为方向的价值来自特殊评测压力，不是换数据集。** missingness/MNAR、active sensing、drift attribution、closed-loop confounding、干预后状态变化和 derived-data deletion 是当前最重要的切口。
+7. **Evaluation 本身可以是论文主贡献。** 前提是它改变方法/policy 排名、暴露重要而不可观察的 failure，或修正 causal/decision estimand；仅增加题量不够。
+8. **2026 年的 Memory/Proactive benchmark 已快速占据“从组件到行动”的中间层。** MemoryArena、LongMemEval-V2、ProEvent、π-Bench、ProAgentBench 和 AgentAbstain 使“长期”“主动”“不行动”本身不再足以构成 novelty。
+9. **几个原 core idea 必须收窄或降级。** C08 的 generic missingness 版本被 LSM-2/OpenMHC 压缩，只保留 cause→action→regret；C14 的独立 timing benchmark 与 C15 的泛化 repair benchmark 不再单独推进，改为 C13/不可逆行动评测中的 nested slice。
+10. **P-PHY 必须使用 JITAI/MRT 的成熟因果语言。** need、receptivity、feasibility、response prediction 与 treatment effect 不是同一变量；没有 assignment、availability、propensity 与 outcome 时不做 causal claim。
+11. **U-AI/U-PHY 的更强切口是归因而非单纯适配。** HorizonBench、PERMA、BenchPreS 与 Persona2Web 已覆盖偏好演化、context selectivity 和 personalized action；下一步应问发生了哪种冲突/漂移、该更新哪一层、错误更新如何撤销。
+12. **当前最值得先验证的共同变量是 state transition → responsibility → residual influence。** 它同时连接 memory revoke、proactive repair、personalization rollback 与 physiological drift attribution，但不会强制六线共享同一个模型或论文。
+
+这些是当前 paper/evaluation audit 得到的研究判断；尚未产生本项目 empirical result。
