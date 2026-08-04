@@ -25,8 +25,8 @@
 ## 数据 seam
 
 ```text
-memory-proactive-agent-research/research-index.yaml
-memory-proactive-agent-research/research-events.jsonl
+../research-index.yaml
+../research-events.jsonl
                     ↓ journaled Settlement writer
           exact SHA-256 source revision
                     ↓ npm run sync:data
@@ -35,10 +35,10 @@ data/research-index.json
 Now / Map / Candidate / Experiment / Decision / Paper / Assets
 ```
 
-- Canonical state：`../memory-proactive-agent-research/research-index.yaml`
-- Append-only events：`../memory-proactive-agent-research/research-events.jsonl`
-- Schema：`../memory-proactive-agent-research/schemas/research-index.schema.json`
-- State writer：`../memory-proactive-agent-research/scripts/settle-research-event.mjs`
+- Canonical state：`../research-index.yaml`
+- Append-only events：`../research-events.jsonl`
+- Schema：`../schemas/research-index.schema.json`
+- State writer：`../scripts/settle-research-event.mjs`
 - Dashboard adapter：`scripts/sync-research-index.mjs`
 - Derived research semantics：`lib/research-system.mjs`
 - Generated read model：`data/research-index.json`
@@ -51,16 +51,19 @@ Now / Map / Candidate / Experiment / Decision / Paper / Assets
 
 ## 本地打开
 
-要求 Node.js `>=22.13.0`：
+从研究仓库根目录运行，要求 Node.js `>=22.13.0`：
 
 ```bash
+cd dashboard
 npm install
 npm run sync:data
 npm run dev
 ```
 
-也可以双击根目录的 `open-research-idea-forest.command`，固定在
+也可以双击 `dashboard/` 目录里的 `open-research-idea-forest.command`，固定在
 `http://127.0.0.1:8766/` 打开。
+
+当前 Dashboard 不绑定旧 Sites 项目；需要重新托管时应创建新的部署，而不是复用已废弃静态站点。
 
 ## 验证
 

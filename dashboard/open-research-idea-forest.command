@@ -1,10 +1,10 @@
 #!/bin/zsh
 set -euo pipefail
 
-ROOT="/Users/bytedance/Documents/research-idea-forest-site"
+ROOT="/Users/bytedance/Documents/memory-proactive-agent-research/dashboard"
 URL="http://127.0.0.1:8766/"
-LOG_FILE="${TMPDIR:-/tmp}/research-idea-forest-site.log"
-PID_FILE="${TMPDIR:-/tmp}/research-idea-forest-site.pid"
+LOG_FILE="${TMPDIR:-/tmp}/auto-research-dashboard.log"
+PID_FILE="${TMPDIR:-/tmp}/auto-research-dashboard.pid"
 NPM_BIN="/opt/homebrew/bin/npm"
 
 if [[ ! -x "$NPM_BIN" ]]; then

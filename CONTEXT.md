@@ -1,6 +1,6 @@
 # Auto Research OS — Context (Ubiquitous Language)
 
-本文件是本项目的**唯一术语词典**。数据层、`CURRENT.md`、`research-idea-forest-site` 及任何看板都必须使用这里的词义；冲突以本文件为准。
+本文件是本项目的**唯一术语词典**。数据层、`CURRENT.md`、`dashboard/` 及任何看板都必须使用这里的词义；冲突以本文件为准。
 
 > 一句话定位：这是一套**以 Candidate 为核心、以 Evidence 为进度、以 Decision 为驱动、最终汇聚到多个 Paper Project 的研究操作系统**——不是"论文列表 + Idea 看板 + 实验看板"的拼盘。
 

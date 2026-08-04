@@ -83,6 +83,7 @@ memory-proactive-agent-research/
 ├── PROBLEM_BACKLOG.md
 ├── research-index.yaml              # 唯一结构化状态
 ├── research-events.jsonl            # append-only Settlement
+├── dashboard/                       # 唯一浏览器 Control Plane
 ├── schemas/
 │   └── research-index.schema.json
 ├── scripts/
@@ -139,10 +140,10 @@ experiments/<experiment-id>/
 
 ## 浏览器 Control Plane
 
-只读看板在相邻仓库 `../research-idea-forest-site`。更新结构化状态后执行：
+只读看板已合并到本仓库的 `dashboard/`。更新结构化状态后执行：
 
 ```bash
-cd ../research-idea-forest-site
+cd dashboard
 npm run sync:data
 npm test
 ```
@@ -165,4 +166,4 @@ writer 只接受 stable-ID 路径上的 `add / replace / link / unlink`，拒绝
 node scripts/settle-research-event.mjs --recover
 ```
 
-Dashboard sync 在 lock 或 pending journal 存在时会停止，避免读取半次 Settlement。成功提交后再到相邻 site 仓执行 `npm run sync:data`。
+Dashboard sync 在 lock 或 pending journal 存在时会停止，避免读取半次 Settlement。成功提交后再到 `dashboard/` 执行 `npm run sync:data`。

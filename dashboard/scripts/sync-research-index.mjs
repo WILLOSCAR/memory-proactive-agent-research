@@ -5,7 +5,7 @@ import { resolve } from "node:path";
 import { buildResearchSnapshot } from "../lib/research-system.mjs";
 
 const siteRoot = resolve(import.meta.dirname, "..");
-const researchRoot = resolve(siteRoot, "../memory-proactive-agent-research");
+const researchRoot = resolve(siteRoot, "..");
 const canonicalPath = resolve(researchRoot, "research-index.yaml");
 const eventsPath = resolve(researchRoot, "research-events.jsonl");
 const settlementLockPath = resolve(researchRoot, ".research-settlement.lock");

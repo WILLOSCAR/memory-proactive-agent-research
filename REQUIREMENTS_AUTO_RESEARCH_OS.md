@@ -155,7 +155,7 @@ Source / Failure → Paper Radar → Overlap & Evaluation Audit → Problem Defi
 - `experiments/<id>/`：真实开始才建
 - `runs/<id>/manifest.yaml`：真正执行才建
 - `CURRENT.md`：由结构化索引生成，或作轻量人工摘要
-- Dashboard（site 仓）：**只读**结构化索引 + Markdown，不再手写研究事实
+- `dashboard/`：**只读**结构化索引 + Markdown，不再手写研究事实
 
 更新一张 Candidate → Portfolio / Research Map / Experiment Center / Paper Portfolio 自动同步。
 
