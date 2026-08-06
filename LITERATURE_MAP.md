@@ -64,6 +64,8 @@
 
 > **2026-08-04 增补**：六 Track 并行 sweep 新增 68 源（SRC-107..SRC-174），novelty pressure 检查基线更新至 `2026-08-04`。逐源明细与 novelty 线索地图见 [sources/2026-08-04-literature-sweep.md](sources/2026-08-04-literature-sweep.md)；C01/C02/C05/C08/C13/C14/C18/C22/C24/C34/C35 遭 direct-coverage 挤压，C04/C11/C15/C16 相对有余地（均为线索，非 kill 决定）。
 
+> **2026-08-05 增补（round3 横向扩底座）**：5 路并行 sweep 新增 88 源（SRC-211..SRC-298），源库达 **298**，novelty pressure 检查基线更新至 `2026-08-05`。偏薄 Track 倾斜生效（P-PHY 30→50、U-PHY 27→42）。逐源明细与线索地图见 [sources/2026-08-05-literature-sweep-round3.md](sources/2026-08-05-literature-sweep-round3.md)；C13 本轮受冲击最重（6 个角度直击弃权），C27/C30 偏好稳定性与 per-user reward 被硬实证收窄，C15 行动后 repair 仍无新增直接命中（相对最空的角）。均为线索，非 kill/split 决定。
+
 ## 2. M-AI：AI Memory
 
 ### MA-1 存储、组织与运行时管理

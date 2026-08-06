@@ -81,8 +81,22 @@ const snapshot = buildResearchSnapshot(generated);
 if (!snapshot.integrity.ok) {
   throw new Error(snapshot.integrity.errors.map((error) => `${error.code}:${error.entityId}`).join("\n"));
 }
-if (snapshot.summary.candidateNodeCount !== 36 || snapshot.summary.independentCandidateCount !== 34) {
-  throw new Error(`Frozen count mismatch: expected 36 nodes / 34 independent, got ${snapshot.summary.candidateNodeCount} / ${snapshot.summary.independentCandidateCount}`);
+// Lineage-aware validation (audit §A12): validate invariants, not a frozen
+// node count. A legal Split raises the node count; Nest/Merge lowers the
+// independent count — those must sync, not fail. We still catch real corruption:
+// dangling nestedInto pointers and a self-inconsistent independent count.
+const candidateIds = new Set(index.candidates.map((candidate) => candidate.id));
+const danglingNest = index.candidates.flatMap((candidate) =>
+  (candidate.nestedInto ?? [])
+    .filter((parentId) => !candidateIds.has(parentId))
+    .map((parentId) => `${candidate.id} → ${parentId}`),
+);
+if (danglingNest.length > 0) {
+  throw new Error(`nestedInto points at unknown Candidate(s): ${danglingNest.join(", ")}`);
+}
+const expectedIndependent = index.candidates.filter((candidate) => (candidate.nestedInto ?? []).length === 0).length;
+if (snapshot.summary.independentCandidateCount !== expectedIndependent) {
+  throw new Error(`Independent count is not self-consistent: snapshot ${snapshot.summary.independentCandidateCount} vs recomputed ${expectedIndependent}`);
 }
 
 const serialized = `${JSON.stringify(generated, null, 2)}\n`;

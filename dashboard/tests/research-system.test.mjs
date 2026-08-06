@@ -52,6 +52,23 @@ const minimalIndex = {
   externalReviews: [],
 };
 
+test("keeps independent count self-consistent as lineage evolves (Split/Nest are not frozen)", () => {
+  // A legal Split adds a node; the sync validator now checks self-consistency,
+  // not a frozen 36/34. independentCandidateCount must equal the recomputed
+  // count of candidates with an empty nestedInto — for any node total.
+  const split = buildResearchSnapshot({
+    ...minimalIndex,
+    candidates: [
+      ...minimalIndex.candidates,
+      { id: "C01a", trackId: "M-AI", title: "Split child", maturity: "problem", workState: "active", evidenceSummary: "inference", outputShape: ["benchmark"], nextAction: "x", blocker: null, updatedAt: "2026-08-05", nestedInto: [] },
+    ],
+  });
+  const recomputed = split.index.candidates.filter((candidate) => (candidate.nestedInto ?? []).length === 0).length;
+  assert.equal(split.summary.candidateNodeCount, 3);
+  assert.equal(split.summary.independentCandidateCount, recomputed);
+  assert.equal(recomputed, 2);
+});
+
 test("derives honest portfolio counts instead of counting nested slices as independent candidates", () => {
   const snapshot = buildResearchSnapshot(minimalIndex);
 
@@ -65,6 +82,14 @@ test("derives honest portfolio counts instead of counting nested slices as indep
     localResultCount: 0,
     paperOpportunityCount: 0,
     paperProjectCount: 0,
+    sourceStats: {
+      total: 0,
+      verified: 0,
+      verifiedAbstract: 0,
+      unclustered: 0,
+      assertionUnlinked: 0,
+      untracked: 0,
+    },
   });
 });
 
@@ -102,38 +127,69 @@ test("does not expose a running run or local result without an auditable manifes
   ]);
 });
 
-test("builds a deterministic leader brief with evidence pointers and a bounded attention budget", () => {
+test("puts a proposed Decision first and never truncates it under the attention budget", () => {
+  // Five non-decision triggers present (probe, blocked, at-risk, 0-run, 0-paper)
+  // plus a proposed Decision. Under the old append-then-slice(0,5) the Decision
+  // was dropped; Decision-first must keep it at rank 1.
   const snapshot = buildResearchSnapshot({
     ...minimalIndex,
     candidates: [
       ...minimalIndex.candidates,
       {
-        id: "C31",
-        trackId: "P-AI",
-        title: "Blocked candidate",
-        maturity: "audit",
-        workState: "blocked",
-        evidenceSummary: "inference",
-        outputShape: ["method"],
-        nextAction: "Acquire metadata",
-        blocker: "Missing real shift metadata",
-        unlockCondition: "Public longitudinal metadata",
-        updatedAt: "2026-08-03",
-        nestedInto: [],
+        id: "C31", trackId: "P-AI", title: "Blocked candidate", maturity: "audit",
+        workState: "blocked", evidenceSummary: "inference", outputShape: ["method"],
+        nextAction: "Acquire metadata", blocker: "Missing real shift metadata",
+        unlockCondition: "Public longitudinal metadata", updatedAt: "2026-08-03", nestedInto: [],
       },
+    ],
+    decisions: [
+      ...minimalIndex.decisions,
+      { id: "D-009", candidateIds: ["C01"], outcome: "kill", state: "proposed" },
     ],
   });
 
-  assert.equal(snapshot.leaderBrief.phase, "discover-validate");
-  assert.ok(snapshot.leaderBrief.attention.length >= 3);
-  assert.ok(snapshot.leaderBrief.attention.length <= 5);
-  assert.deepEqual(snapshot.leaderBrief.attention.map((item) => item.id).slice(0, 3), [
-    "probe-queue",
-    "blocked-work",
-    "evidence-gap",
-  ]);
+  assert.equal(snapshot.leaderBrief.attention.length, 5);
+  assert.equal(snapshot.leaderBrief.attention[0].id, "decision-needed");
+  assert.ok(snapshot.leaderBrief.attention.some((item) => item.pointerIds.includes("D-009")));
   assert.ok(snapshot.leaderBrief.attention.every((item) => item.pointerIds.length > 0));
-  assert.match(snapshot.leaderBrief.notNow.join(" "), /GPU/i);
+  assert.ok(snapshot.leaderBrief.attention.every((item) => item.pointerKind));
+});
+
+test("separates Basis from assertion-level Evidence level", () => {
+  const snapshot = buildResearchSnapshot(minimalIndex);
+  const byId = Object.fromEntries(snapshot.leaderBrief.attention.map((item) => [item.id, item]));
+
+  // Canonical/derived/policy bases carry no assertion-level evidence level.
+  assert.equal(byId["material-change"].basisKind, "source-pressure");
+  assert.equal(byId["material-change"].evidenceLevel, null);
+  assert.equal(byId["paper-outlook"].basisKind, "policy");
+  assert.equal(byId["paper-outlook"].evidenceLevel, null);
+  // No item claims "inference" as an evidence level just for being a derived notice.
+  assert.ok(snapshot.leaderBrief.attention.every((item) => item.evidenceLevel === null || item.evidenceLevel === "local-result"));
+});
+
+test("builds a delta headline that is honest about the last-view checkpoint", () => {
+  const events = [
+    { id: "EVT-A", timestamp: "2026-08-04T18:30:00+08:00", outcome: "material-change", changes: [1, 2], affectedEntityIds: ["SRC-1"] },
+    { id: "EVT-B", timestamp: "2026-08-05T00:00:00Z", outcome: "material-change", changes: [1], affectedEntityIds: ["SRC-2"] },
+    { id: "EVT-REC", timestamp: "2026-07-31T12:00:00+08:00", outcome: "recorded", affectedEntityIds: ["C14"] },
+  ];
+  const index = { ...minimalIndex, researchEvents: events, sourceRevision: "sha256:current" };
+
+  // No checkpoint → must say "Latest recorded ... since", never fake since-last-view.
+  const cold = buildResearchSnapshot(index, null);
+  assert.equal(cold.leaderBrief.checkpointKnown, false);
+  assert.match(cold.leaderBrief.headline, /Latest recorded material changes since/);
+
+  // Checkpoint before EVT-B → exactly one new material change since.
+  const warm = buildResearchSnapshot(index, { revision: "sha256:old", since: "2026-08-04T20:00:00+08:00" });
+  assert.equal(warm.leaderBrief.checkpointKnown, true);
+  assert.equal(warm.leaderBrief.materialEventCount, 1);
+  assert.match(warm.leaderBrief.headline, /新增 1 条 material change/);
+
+  // Checkpoint at current revision → no new material change.
+  const current = buildResearchSnapshot(index, { revision: "sha256:current", since: "2026-08-05T00:00:00Z" });
+  assert.match(current.leaderBrief.headline, /无新的 material change/);
 });
 
 test("traces a Candidate through sources, gaps, specs, decisions, and paper threads", () => {

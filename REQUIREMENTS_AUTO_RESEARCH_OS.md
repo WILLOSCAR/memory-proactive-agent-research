@@ -128,23 +128,24 @@ Source / Failure → Paper Radar → Overlap & Evaluation Audit → Problem Defi
 └── 2 个 Novelty Threat 未解决
 ```
 
-## 9. 当前实现状态（2026-08-04 重构后）
+## 9. 当前实现状态（结构性，不含可变计数）
 
-已关闭的根因：
+> **计数不在此处维护。** 依 Source Authority，当前结构化状态（Source / Cluster / Candidate / Spec / Run…的实时数量）唯一权威在 `research-index.yaml`，变化历史在 `research-events.jsonl`，由 Dashboard 派生显示。本节只描述**结构性能力是否就位**，不写会漂移的具体数字（避免与 canonical 冲突）。
+
+已关闭的根因（结构性）：
 
 1. `research-index.yaml` 已接管稳定 ID、关系、五维状态、时间戳和指针；Dashboard 不再手工维护第二份研究事实。
-2. 结构化索引包含 **106 Source ledger 入口、32 Literature Cluster、36 Candidate 节点、11 Experiment Spec**。
-3. 所有视图统一派生 **34 独立 Candidate + 2 Nested Slice + 5 Probe Ready + 0 Actual Run + 0 Local Result**。
+2. 结构化索引已承载 Source ledger、Literature Cluster、Candidate 节点、Experiment Spec（数量见 canonical，不在此冻结）。
+3. 所有视图统一从 canonical 派生独立/嵌套 Candidate、Probe Ready、Actual Run、Local Result 计数——不再手写。
 4. `Experiment Spec / Run / Artifact / Local Result`、`Source Paper / Paper Thread`、`Candidate / Proposal view` 已分离。
-5. 浏览器已重构为 `Now / Research Map / Candidates / Experiments / Decisions / Paper Portfolio / Assets` 七个因果下钻工作区。
-6. Leader Brief 采用确定性选择和 3–5 条注意力上限；External Review、Spec 和 Source Paper 结果不会显示成本地证据。
-7. `research-events.jsonl` 已承接 append-only applied transition，Nest 决策可恢复。
-8. `settle-research-event.mjs` 已提供 stable-ID typed changes、optimistic locking、两文件 journal、证据边界校验与中断恢复；Dashboard sync 会拒绝读取写入中或待恢复状态。
+5. 浏览器提供 `Now / Research Map / Candidates / Experiments / Decisions / Paper Portfolio / Assets` 因果下钻工作区。
+6. `research-events.jsonl` 已承接 append-only applied transition，Nest 决策可恢复。
+7. `settle-research-event.mjs` 已提供 stable-ID typed changes、optimistic locking、两文件 journal、证据边界校验与中断恢复；Dashboard sync 会拒绝读取写入中或待恢复状态。
 
 仍未关闭的基础设施：
 
-- 106 个 ledger 来源中仍有一部分等待完整 Cluster / assertion-level Candidate linkage；页面会诚实显示未链接数量；
-- 尚未执行第一条真实 Cheap Probe，因此 Run / Artifact / Local Result / Paper Thread 仍为 0。
+- 一部分 ledger 来源仍等待完整 Cluster / assertion-level Candidate linkage；页面按 canonical 诚实显示未链接数量（unclustered / assertion-unlinked，语义各自独立）；
+- 尚未执行第一条真实 Cheap Probe，因此 Run / Artifact / Local Result / Paper Thread 仍为 0（由 canonical 派生，非手写）。
 
 ## 10. 数据层组织（文件少、边界清）
 
@@ -161,9 +162,9 @@ Source / Failure → Paper Radar → Overlap & Evaluation Audit → Problem Defi
 
 ## 11. 优先级
 
-**P0 · 先把系统事实做对（✅ 已完成）**：冻结术语；稳定 ID 与关系；36 节点 / 34 独立 Candidate；`research-index.yaml`；Spec / Run；Source Paper / Paper Thread；自动汇总；明确 0 Actual Run；原子 writer 与 optimistic locking。
+**P0 · 先把系统事实做对**：冻结术语；稳定 ID 与关系；`research-index.yaml`；Spec / Run；Source Paper / Paper Thread；自动汇总；明确 0 Actual Run；原子 writer 与 optimistic locking。**（数据/写入层已就位；2026-08-06 补齐 delta-aware Leader Brief、Decision-first 优先级与指针路由、Basis 与 Evidence 分离、lineage-aware 计数校验——此前这几项未完成。）**
 
-**P1 · 可工作的研究界面（✅ 已完成）**：Now/Portfolio、Research Map、Candidate Workspace、Experiment Center、Decision/Evolution、Paper Opportunity/Project、Assets。
+**P1 · 可工作的研究界面（部分完成）**：Now/Portfolio、Research Map、Candidate Workspace、Experiment Center、Decision/Evolution、Paper Opportunity/Project、Assets 均已存在并可下钻。**尚未完成的信息架构收敛**：首页领域教学下沉 Help/Governance/System、六 Track 大卡压成矩阵、Decisions 改 Inbox-first、Assets 拆 Library/Help/System、导航收敛为六 operator workspace（IA 审计 P1，待后续）。
 
 **P2 · 效率与体验（进行中）**：GPT Pro Project 自动同步与陈旧提醒；从论文半自动生成 Cluster/Candidate 草稿；Run Manifest 自动采集；Artifact/图表自动挂接；本地服务持久启动；托管访问。
 

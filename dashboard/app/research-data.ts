@@ -27,7 +27,7 @@ export type SourcePaper = {
   url: string;
   year: string;
   venue: string;
-  verification: "verified" | "unverified-lead";
+  verification: "verified" | "verified-abstract" | "unverified-lead";
   evidenceBoundary: string;
   note: string;
   trackIds: TrackId[];

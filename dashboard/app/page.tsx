@@ -26,6 +26,14 @@ type Summary = {
   localResultCount: number;
   paperOpportunityCount: number;
   paperProjectCount: number;
+  sourceStats: {
+    total: number;
+    verified: number;
+    verifiedAbstract: number;
+    unclustered: number;
+    assertionUnlinked: number;
+    untracked: number;
+  };
 };
 
 type LeaderAttention = {
@@ -33,8 +41,10 @@ type LeaderAttention = {
   kind: string;
   title: string;
   explanation: string;
-  evidenceType: string;
+  basisKind: string;
+  evidenceLevel: string | null;
   nextAction: string;
+  pointerKind: "candidate" | "decision" | "event" | "paper";
   pointerIds: string[];
 };
 
@@ -70,6 +80,8 @@ type DerivedSnapshot = {
   leaderBrief: {
     phase: string;
     headline: string;
+    checkpointKnown: boolean;
+    materialEventCount: number;
     attention: LeaderAttention[];
     notNow: string[];
   };
@@ -178,6 +190,37 @@ export default function Home() {
   const [candidateTrack, setCandidateTrack] = useState<TrackId | "all">("all");
   const [candidateId, setCandidateId] = useState<string | null>(null);
   const [sourceId, setSourceId] = useState<string | null>(null);
+  const [leaderBrief, setLeaderBrief] = useState(os.leaderBrief);
+
+  // Delta-aware Leader Brief: the SSR render uses the checkpoint-null baseline
+  // (os.leaderBrief). After mount we read this browser's last-view checkpoint
+  // from localStorage, recompute the brief against it, then persist the current
+  // revision so the *next* visit shows a real since-last-view delta.
+  useEffect(() => {
+    const KEY = "auto-research:last-view";
+    let checkpoint: { revision?: string; since?: string } | null = null;
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      if (raw) checkpoint = JSON.parse(raw);
+    } catch {
+      checkpoint = null;
+    }
+    const derived = buildResearchSnapshot(researchIndex, checkpoint) as DerivedSnapshot;
+    setLeaderBrief(derived.leaderBrief);
+    try {
+      const latestMaterialTs = [...researchIndex.researchEvents]
+        .filter((event) => event.outcome === "material-change")
+        .map((event) => event.timestamp)
+        .sort()
+        .at(-1);
+      window.localStorage.setItem(
+        KEY,
+        JSON.stringify({ revision: researchIndex.sourceRevision, since: latestMaterialTs ?? null }),
+      );
+    } catch {
+      /* localStorage unavailable — since-last-view stays best-effort */
+    }
+  }, []);
 
   const selectedCandidate = candidateId ? candidateById.get(candidateId) ?? null : null;
   const selectedSource = sourceId ? sourceById.get(sourceId) ?? null : null;
@@ -208,6 +251,10 @@ export default function Home() {
     });
   }, [candidateScope, candidateTrack, query]);
 
+  const promotionWatch = researchIndex.candidates.filter(
+    (candidate) => candidate.maturity === "probe" && candidate.workState === "active" && candidate.nestedInto.length === 0,
+  );
+
   const mapClusters = researchIndex.clusters.filter((cluster) => {
     if (cluster.trackId !== trackId) return false;
     if (!query.trim()) return true;
@@ -227,12 +274,22 @@ export default function Home() {
   };
 
   const openLeaderPointer = (item: LeaderAttention) => {
+    // Route by the item's declared pointerKind so Decision/Event cards are not
+    // dead clicks (audit §A4). Candidate/paper fall back to opening the entity.
+    if (item.pointerKind === "decision" || item.pointerKind === "event") {
+      navigate("decisions");
+      return;
+    }
+    if (item.pointerKind === "paper") {
+      navigate("papers");
+      return;
+    }
     const candidatePointer = item.pointerIds.find((id) => candidateById.has(id));
     if (candidatePointer) {
       navigate("candidates");
       setCandidateScope("focus");
       openCandidate(candidatePointer);
-    } else if (item.id === "paper-outlook") {
+    } else {
       navigate("papers");
     }
   };
@@ -252,16 +309,11 @@ export default function Home() {
         </button>
         <div className="truth-stamp">
           <span className={os.integrity.ok ? "truth-dot" : "truth-dot is-error"} />
-          <span><strong>{os.integrity.ok ? "Canonical snapshot valid" : "Integrity warning"}</strong><small>2026-08-04 · schema v{researchIndex.schemaVersion}</small></span>
+          <span><strong>{os.integrity.ok ? "Canonical snapshot valid" : "Integrity warning"}</strong><small>{researchIndex.generatedAt.slice(0, 10)} · schema v{researchIndex.schemaVersion}</small></span>
         </div>
       </header>
 
       <section className="command-header">
-        <div className="command-copy">
-          <p className="kicker">Research control plane · read-only</p>
-          <h1>把不确定问题，压缩成可审计证据与明确决定。</h1>
-          <p>{researchIndex.program.researchObject}</p>
-        </div>
         <div className="truth-metrics" aria-label="Canonical research metrics">
           <div><strong>{os.summary.independentCandidateCount}</strong><span>independent Candidates</span><small>{os.summary.candidateNodeCount} nodes · {os.summary.nestedSliceCount} nested</small></div>
           <div><strong>{os.summary.probeReadyCount}</strong><span>Cheap Probe ready</span><small>Spec readiness, not results</small></div>
@@ -288,15 +340,15 @@ export default function Home() {
       {view === "now" && (
         <div className="workspace-stack">
           <section className="leader-brief">
-            <div className="brief-heading">
-              <div><p className="eyebrow">Leader Brief</p><h2>{os.leaderBrief.headline}</h2></div>
-              <div className="phase-chip"><small>CURRENT PHASE</small><strong>{os.leaderBrief.phase.replace("-", " → ")}</strong></div>
+            <div className="delta-headline">
+              <p className="eyebrow">{leaderBrief.checkpointKnown ? "Since last view" : "Latest recorded changes"}</p>
+              <h2>{leaderBrief.headline}</h2>
             </div>
             <div className="attention-grid">
-              {os.leaderBrief.attention.map((item, index) => (
+              {leaderBrief.attention.map((item, index) => (
                 <button className={`attention-card kind-${item.kind}`} type="button" key={item.id} onClick={() => openLeaderPointer(item)}>
                   <span className="attention-rank">0{index + 1}</span>
-                  <div className="attention-title"><small>{item.kind} · {item.evidenceType}</small><h3>{item.title}</h3></div>
+                  <div className="attention-title"><small>{item.kind} · basis: {item.basisKind}{item.evidenceLevel ? ` · evidence: ${item.evidenceLevel}` : ""}</small><h3>{item.title}</h3></div>
                   <p>{item.explanation}</p>
                   <div><small>NEXT</small><strong>{item.nextAction}</strong></div>
                   <span className="attention-link">{item.pointerIds.slice(0, 5).join(" · ")} →</span>
@@ -349,7 +401,7 @@ export default function Home() {
             </div>
             <div className="section-shell not-now">
               <div className="section-heading compact"><div><p className="eyebrow">Attention guardrail</p><h2>现在不用管什么</h2></div></div>
-              <ul>{os.leaderBrief.notNow.map((item) => <li key={item}>{item}</li>)}</ul>
+              <ul>{leaderBrief.notNow.map((item) => <li key={item}>{item}</li>)}</ul>
               <div className="truth-callout"><strong>最重要的诚实信号</strong><p>0 Run 不是空白要被 UI 填满，而是执行闭环尚未启动的精确状态。</p></div>
             </div>
           </section>
@@ -389,8 +441,8 @@ export default function Home() {
           </section>
           {!mapClusters.length && <EmptyTruth title="没有匹配的 Cluster" detail="清空搜索，或切换 Track。" />}
           <section className="source-inventory">
-            <div><p className="eyebrow">Source inventory</p><h2>106 个核验入口，32 个结构化 Cluster</h2><p>未进入 Cluster 的 ledger 来源仍保留，但不会假装已经完成聚类或 Candidate 归因。</p></div>
-            <div><strong>{researchIndex.sourcePapers.filter((source) => source.trackIds.length === 0).length}</strong><span>Sources waiting for structured linkage</span></div>
+            <div><p className="eyebrow">Source inventory</p><h2>{os.summary.sourceStats.total} 个核验入口，{researchIndex.clusters.length} 个结构化 Cluster</h2><p>{os.summary.sourceStats.verified} verified · {os.summary.sourceStats.verifiedAbstract} verified-abstract（仅摘要核对）。未进入 Cluster 的来源仍保留，但不假装已完成聚类或 assertion 级归因。</p></div>
+            <div><strong>{os.summary.sourceStats.unclustered}</strong><span>Sources 尚未进入任何 Cluster</span><small>{os.summary.sourceStats.assertionUnlinked} 条尚无 assertion 级 Evidence Link</small></div>
           </section>
         </div>
       )}
@@ -403,7 +455,7 @@ export default function Home() {
           </section>
           <section className="candidate-controls">
             <div className="segmented-control">
-              {(["focus", "all", "nested"] as CandidateScope[]).map((scope) => <button className={candidateScope === scope ? "is-active" : ""} type="button" key={scope} onClick={() => setCandidateScope(scope)}>{scope === "focus" ? "Active focus" : scope === "all" ? "All 36 nodes" : "Nested slices"}</button>)}
+              {(["focus", "all", "nested"] as CandidateScope[]).map((scope) => <button className={candidateScope === scope ? "is-active" : ""} type="button" key={scope} onClick={() => setCandidateScope(scope)}>{scope === "focus" ? "Active focus" : scope === "all" ? `All ${researchIndex.candidates.length} nodes` : "Nested slices"}</button>)}
             </div>
             <div className="track-filter"><button className={candidateTrack === "all" ? "is-active" : ""} type="button" onClick={() => setCandidateTrack("all")}>ALL</button>{researchIndex.tracks.map((track) => <button className={candidateTrack === track.id ? "is-active" : ""} style={trackStyle(track.id)} type="button" key={track.id} onClick={() => setCandidateTrack(track.id)}>{track.id}</button>)}</div>
           </section>
@@ -491,7 +543,7 @@ export default function Home() {
           <section className="paper-empty"><EmptyTruth title="尚无达标 Paper Opportunity" detail="这是由 0 Actual Run 推导出的诚实状态；一次有效 Cheap Probe 只是晋级必要条件，不是充分条件。" /></section>
           <section className="promotion-grid">
             <div className="promotion-gate"><p className="eyebrow">Promotion contract</p><h2>Candidate 何时能形成 Paper Thread？</h2><ol><li><span>01</span><div><strong>Valid Cheap Probe</strong><p>有可审计 Run + Artifact，positive / negative / mixed 均可。</p></div></li><li><span>02</span><div><strong>Surviving Claim</strong><p>强 baseline 后仍有明确 failure 或可复用 diagnosis。</p></div></li><li><span>03</span><div><strong>Novelty pressure survived</strong><p>最近相关工作没有直接吞掉核心变量。</p></div></li><li><span>04</span><div><strong>Composable evidence path</strong><p>Candidate、Artifact、贡献与目标 venue 能构成证据脊柱。</p></div></li></ol></div>
-            <div className="promotion-watch"><p className="eyebrow">Promotion watch · not Opportunity</p><h2>最接近产生新证据的 5 张卡</h2>{researchIndex.candidates.filter((candidate) => candidate.maturity === "probe" && candidate.workState === "active" && candidate.nestedInto.length === 0).map((candidate) => <button type="button" style={trackStyle(candidate.trackId)} key={candidate.id} onClick={() => openCandidate(candidate.id)}><span>{candidate.id} · {candidate.trackId}</span><strong>{candidate.title}</strong><small>{candidate.proposal?.nextEvidence ?? candidate.nextAction}</small></button>)}</div>
+            <div className="promotion-watch"><p className="eyebrow">Promotion watch · not Opportunity</p><h2>最接近产生新证据的 {promotionWatch.length} 张卡</h2>{promotionWatch.map((candidate) => <button type="button" style={trackStyle(candidate.trackId)} key={candidate.id} onClick={() => openCandidate(candidate.id)}><span>{candidate.id} · {candidate.trackId}</span><strong>{candidate.title}</strong><small>{candidate.proposal?.nextEvidence ?? candidate.nextAction}</small></button>)}</div>
           </section>
         </div>
       )}

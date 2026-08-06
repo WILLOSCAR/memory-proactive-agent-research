@@ -30,8 +30,12 @@ test("server-renders the research operating system", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Auto Research OS \| Memory, Proactive &amp; Personalization<\/title>/i);
-  assert.match(html, /Research control plane · read-only/);
-  assert.match(html, /Leader Brief/);
+  assert.match(html, /Canonical snapshot valid/);
+  assert.match(html, /attention-grid/);
+  // P0: delta-aware Leader Brief renders an honest cold headline + basis (not evidenceType).
+  assert.match(html, /Latest recorded material changes since|自上次查看/);
+  assert.match(html, /basis:/);
+  assert.doesNotMatch(html, /· inference<\/small>/);
   assert.match(html, /Research Map/);
   assert.match(html, /Paper Portfolio/);
   assert.match(html, />34<\/strong><span>independent Candidates<\/span>/);
@@ -53,7 +57,7 @@ test("keeps the canonical data seam, interactions, and social preview wired", as
   ]);
 
   const index = JSON.parse(indexRaw);
-  assert.equal(index.sourcePapers.length, 210);
+  assert.equal(index.sourcePapers.length, 298);
   assert.equal(index.candidates.length, 36);
   assert.equal(index.candidates.filter((candidate) => candidate.nestedInto.length === 0).length, 34);
   assert.equal(index.runs.length, 0);
