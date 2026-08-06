@@ -1,0 +1,52 @@
+{
+  "candidate": "C03",
+  "combined_system": {
+    "cross_layer_repair": {
+      "benign_retention": 1.0,
+      "residual_influence": 0.0
+    },
+    "no_purge": {
+      "benign_retention": 1.0,
+      "residual_influence": 1.0
+    },
+    "source_tag_purge": {
+      "benign_retention": 1.0,
+      "residual_influence": 1.0
+    }
+  },
+  "config": {
+    "episodes": 400,
+    "seed": 20260806,
+    "topics": 12
+  },
+  "decision_question": "普通 source-tag purge 是否足够清除 benign 撤权后的跨层残留影响？",
+  "evidence_boundary": "Deterministic simulation of a 4-layer memory mechanism; NOT an LLM run and NOT real user data. The residual-influence matrix shows, per derived layer, how much influence a source-tag base purge leaves behind. It proves the residue is mechanistically real, per-layer localizable, and cleared by cross-layer repair; it does NOT quantify prevalence in any deployed system or across real LLM memory stacks.",
+  "experiment": "E-C03-01",
+  "killer_baseline": "source_tag_purge",
+  "layers": [
+    "base_store",
+    "summary",
+    "cache",
+    "adapter"
+  ],
+  "reading": "CONTINUE-signal: with derived layers present, source-tag purge leaves 100% residual influence; cross-layer repair clears it (0%). Residue is localized to derived layers [summary=100%, cache=100%] while a base-only store purges cleanly. Benign revocation residue is real and purge-insufficiency is layer-attributable — supports continuing C03 as a benchmark+systems contribution.",
+  "residual_influence_matrix": {
+    "adapter": {
+      "benign_retention": 1.0,
+      "residual_influence": 0.0
+    },
+    "base_only": {
+      "benign_retention": 1.0,
+      "residual_influence": 0.0
+    },
+    "cache": {
+      "benign_retention": 1.0,
+      "residual_influence": 1.0
+    },
+    "summary": {
+      "benign_retention": 1.0,
+      "residual_influence": 1.0
+    }
+  },
+  "title": "Cross-layer revocation canary"
+}

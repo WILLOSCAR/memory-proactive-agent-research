@@ -1,0 +1,68 @@
+schema_version: 2
+
+identity:
+  run_id: R-E-C03-01-001
+  experiment_id: E-C03-01
+  primary_branch: P-AI/M-AI (C03 Benign Revocation Residual)
+  owner: agent:auto-research
+  started_at: 2026-08-06T12:00:00+08:00
+  ended_at: 2026-08-06T12:00:05+08:00
+
+design:
+  hypothesis: >
+    After a benign user revocation, influence residues across derived memory
+    layers (summary/cache/adapter) and a source-tag base purge is insufficient
+    to remove it; cross-layer repair is required.
+  independent_variable: repair_strategy {no_purge, source_tag_purge, cross_layer_repair}
+  held_constants: [episodes=400, topics=12, seed=20260806, layer_model=4-layer]
+  primary_metric: residual_influence (+ benign_retention guard)
+  baselines: [source_tag_purge (killer baseline), no_purge (floor)]
+  stop_rule: >
+    CONTINUE if source_tag_purge residual > 5% AND cross_layer_repair <= 1% AND
+    base_only purges cleanly; KILL (engineering note) if source_tag_purge <= 1%.
+  resource_ceiling: CPU only, < 1 min
+
+reproducibility:
+  repo: memory-proactive-agent-research
+  commit_sha: 4ebe13d2e3193bbd166d098ea7fa5fe5a9edfea5
+  dirty_diff_digest: experiments-untracked-at-run   # experiment files new this run
+  environment: python 3.14.3 (stdlib only; no external deps, no network)
+  entrypoint: python3 experiments/E-C03-01/canary.py --episodes 400 --topics 12 --seed 20260806
+  prompt_version: not_applicable   # deterministic simulation, no LLM
+  model: none (deterministic mechanism simulation)
+  parameters: {episodes: 400, topics: 12, seed: 20260806}
+  seed: 20260806
+  code_digest: sha256:e1fc4a4c0c0b16a93cb9ef88b414525cd2fe9aadb75ae35c0f4cc3b3a2a804d0
+
+data:
+  source_uri: synthetic (generated in-process from seed)
+  cache_path: not_applicable
+  snapshot_digest: sha256:e1fc4a4c0c0b16a93cb9ef88b414525cd2fe9aadb75ae35c0f4cc3b3a2a804d0
+  split_digest: not_applicable
+  license_or_consent: synthetic, no user data
+  leakage_check: n/a (no train/test; deterministic ablation)
+
+runtime:
+  requested: {cpu: 1, gpu: 0}
+  exit_code: 0
+  wall_time_s: ~5
+  output_uri: experiments/E-C03-01/runs/result.json
+  artifact_digest: sha256:5baa9ada11a4a5bb4cc4078581ccc8f8ad3e90367968e8189ebeea43720ba86e
+
+result_summary:
+  combined_source_tag_purge_residual: 1.00
+  combined_cross_layer_repair_residual: 0.00
+  per_layer_residual_matrix: {summary: 1.00, cache: 1.00, adapter: 0.00, base_only: 0.00}
+  benign_retention_all: 1.00
+  reading: >
+    CONTINUE-signal. Source-tag purge leaves 100% residual influence localized
+    to the summary and cache derived layers; adapter and base-only purge cleanly.
+    Cross-layer repair clears residual to 0% with no benign over-purge.
+
+evidence_boundary: >
+  Deterministic simulation of a 4-layer memory mechanism; NOT an LLM run and NOT
+  real user data. Establishes the benign-revocation residue is mechanistically
+  real, per-layer localizable (summary+cache), and removable by cross-layer
+  repair. Does NOT quantify prevalence in any deployed system or real LLM memory
+  stack. This is a Local Result at the "mechanism exists + is measurable" level,
+  not an empirical claim about production systems.

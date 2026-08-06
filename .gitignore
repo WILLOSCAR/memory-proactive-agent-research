@@ -14,3 +14,7 @@ infra/GPU_RUNBOOK.md
 archive/infra/
 scripts/gpu-plan.sh
 .sweep-drafts/
+
+# python bytecode
+__pycache__/
+*.pyc

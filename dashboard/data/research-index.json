@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/research-index.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-08-05T00:00:00Z",
+  "generatedAt": "2026-08-06T12:00:05+08:00",
   "sourceSnapshot": {
     "authority": "SOURCE_AUTHORITY.yaml",
     "vocabulary": "CONTEXT.md",
@@ -6502,19 +6502,19 @@
         },
         {
           "label": "Evaluator",
-          "state": "active"
+          "state": "done"
         },
         {
           "label": "Baseline",
-          "state": "todo"
+          "state": "done"
         },
         {
           "label": "Run",
-          "state": "todo"
+          "state": "done"
         },
         {
           "label": "Decision",
-          "state": "todo"
+          "state": "active"
         }
       ],
       "note": null,
@@ -6890,8 +6890,43 @@
       "plannedRuns": []
     }
   ],
-  "runs": [],
-  "artifacts": [],
+  "runs": [
+    {
+      "id": "R-E-C03-01-001",
+      "specId": "E-C03-01",
+      "candidateIds": [
+        "C03"
+      ],
+      "status": "completed",
+      "manifest": {
+        "commit": "4ebe13d2e3193bbd166d098ea7fa5fe5a9edfea5",
+        "dataSnapshot": "synthetic:seed-20260806",
+        "startedAt": "2026-08-06T12:00:00+08:00",
+        "endedAt": "2026-08-06T12:00:05+08:00",
+        "environment": "python 3.14.3 stdlib-only, no network",
+        "entrypoint": "python3 experiments/E-C03-01/canary.py --episodes 400 --topics 12 --seed 20260806",
+        "model": "none (deterministic mechanism simulation)",
+        "resource": "CPU",
+        "codeDigest": "sha256:e1fc4a4c0c0b16a93cb9ef88b414525cd2fe9aadb75ae35c0f4cc3b3a2a804d0"
+      },
+      "outputs": [
+        "experiments/E-C03-01/runs/result.json"
+      ],
+      "stopReason": "completed: 400 paired episodes across 3 strategies + per-layer matrix"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "A-R-E-C03-01-001",
+      "runId": "R-E-C03-01-001",
+      "valid": true,
+      "digest": "sha256:5baa9ada11a4a5bb4cc4078581ccc8f8ad3e90367968e8189ebeea43720ba86e",
+      "format": "application/json",
+      "uri": "experiments/E-C03-01/runs/result.json",
+      "title": "C03 cross-layer revocation residual-influence matrix",
+      "summary": "source_tag_purge residual 100% (localized to summary+cache); cross_layer_repair 0%; benign retention 100%. base_only + adapter purge cleanly."
+    }
+  ],
   "evidenceLinks": [
     {
       "id": "EL-C01-01",
@@ -7124,6 +7159,14 @@
       "basisType": "source-paper",
       "scope": "nearest-work and evaluation-space pressure",
       "refId": "SRC-091"
+    },
+    {
+      "id": "EL-C03-run001",
+      "assertionId": "C03@v1.benign_revocation_residual",
+      "relation": "supports",
+      "basisType": "local-result",
+      "scope": "Deterministic 4-layer mechanism simulation: source-tag purge is insufficient (100% residual in summary+cache); cross-layer repair clears it. NOT prevalence in deployed systems.",
+      "refId": "A-R-E-C03-01-001"
     }
   ],
   "decisions": [
@@ -7248,7 +7291,7 @@
       "verdictRef": "review/AUTO_RESEARCH_OS_SOP_VERDICT_20260804.md"
     }
   ],
-  "sourceRevision": "sha256:cfb25cf1ed1b2e0dba18314bce5bb6eb4573931b11f112c1fd0cf8807498bf03",
+  "sourceRevision": "sha256:cf2dd396c952d5b6b0a39d3aadd1674c53d13986d05dcd6b2c8f9f7166dbc0bc",
   "researchEvents": [
     {
       "id": "EVT-20260731-001",
@@ -12210,6 +12253,117 @@
         }
       ],
       "nextEvidenceAcceptance": "用户审阅本轮新增源与 novelty 线索地图;决定是否触发任何 Candidate 的 split/kill/link",
+      "outcome": "material-change"
+    },
+    {
+      "id": "EVT-2026-08-06-C03-run001",
+      "timestamp": "2026-08-06T12:00:05+08:00",
+      "actor": "agent:auto-research",
+      "type": "experiment.run",
+      "baseRevision": "sha256:cfb25cf1ed1b2e0dba18314bce5bb6eb4573931b11f112c1fd0cf8807498bf03",
+      "affectedEntityIds": [
+        "R-E-C03-01-001",
+        "A-R-E-C03-01-001",
+        "EL-C03-run001",
+        "E-C03-01",
+        "C03"
+      ],
+      "changes": [
+        {
+          "op": "add",
+          "path": [
+            "runs"
+          ],
+          "value": {
+            "id": "R-E-C03-01-001",
+            "specId": "E-C03-01",
+            "candidateIds": [
+              "C03"
+            ],
+            "status": "completed",
+            "manifest": {
+              "commit": "4ebe13d2e3193bbd166d098ea7fa5fe5a9edfea5",
+              "dataSnapshot": "synthetic:seed-20260806",
+              "startedAt": "2026-08-06T12:00:00+08:00",
+              "endedAt": "2026-08-06T12:00:05+08:00",
+              "environment": "python 3.14.3 stdlib-only, no network",
+              "entrypoint": "python3 experiments/E-C03-01/canary.py --episodes 400 --topics 12 --seed 20260806",
+              "model": "none (deterministic mechanism simulation)",
+              "resource": "CPU",
+              "codeDigest": "sha256:e1fc4a4c0c0b16a93cb9ef88b414525cd2fe9aadb75ae35c0f4cc3b3a2a804d0"
+            },
+            "outputs": [
+              "experiments/E-C03-01/runs/result.json"
+            ],
+            "stopReason": "completed: 400 paired episodes across 3 strategies + per-layer matrix"
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "artifacts"
+          ],
+          "value": {
+            "id": "A-R-E-C03-01-001",
+            "runId": "R-E-C03-01-001",
+            "valid": true,
+            "digest": "sha256:5baa9ada11a4a5bb4cc4078581ccc8f8ad3e90367968e8189ebeea43720ba86e",
+            "format": "application/json",
+            "uri": "experiments/E-C03-01/runs/result.json",
+            "title": "C03 cross-layer revocation residual-influence matrix",
+            "summary": "source_tag_purge residual 100% (localized to summary+cache); cross_layer_repair 0%; benign retention 100%. base_only + adapter purge cleanly."
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "evidenceLinks"
+          ],
+          "value": {
+            "id": "EL-C03-run001",
+            "assertionId": "C03@v1.benign_revocation_residual",
+            "relation": "supports",
+            "basisType": "local-result",
+            "scope": "Deterministic 4-layer mechanism simulation: source-tag purge is insufficient (100% residual in summary+cache); cross-layer repair clears it. NOT prevalence in deployed systems.",
+            "refId": "A-R-E-C03-01-001"
+          }
+        },
+        {
+          "op": "replace",
+          "path": [
+            "experimentSpecs",
+            "E-C03-01",
+            "stages"
+          ],
+          "value": [
+            {
+              "label": "Literature",
+              "state": "done"
+            },
+            {
+              "label": "Spec",
+              "state": "done"
+            },
+            {
+              "label": "Evaluator",
+              "state": "done"
+            },
+            {
+              "label": "Baseline",
+              "state": "done"
+            },
+            {
+              "label": "Run",
+              "state": "done"
+            },
+            {
+              "label": "Decision",
+              "state": "active"
+            }
+          ]
+        }
+      ],
+      "nextEvidenceAcceptance": "用户审阅 C03 首个 Local Result（跨层撤权残留矩阵）：决定 continue（做成 benchmark+systems，下一步在真实 RAG memory 上复现 summary/cache 泄漏）还是收窄 scope。高影响 continue/kill 判断留用户。",
       "outcome": "material-change"
     }
   ]

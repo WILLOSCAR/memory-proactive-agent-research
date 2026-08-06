@@ -39,9 +39,10 @@ test("server-renders the research operating system", async () => {
   assert.match(html, /Research Map/);
   assert.match(html, /Paper Portfolio/);
   assert.match(html, />34<\/strong><span>independent Candidates<\/span>/);
-  assert.match(html, />0<\/strong><span>Actual Runs<\/span>/);
+  // First real Run has landed: 1 Actual Run / 1 Local Result (canonical fact).
+  assert.match(html, />1<\/strong><span>Actual Runs<\/span>/);
   assert.match(html, />0<\/strong><span>Paper Projects<\/span>/);
-  assert.match(html, /0 Run 不是空白要被 UI 填满/);
+  assert.match(html, /可审计 Run.*Local Result.*机制级证据/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });
 
@@ -60,7 +61,7 @@ test("keeps the canonical data seam, interactions, and social preview wired", as
   assert.equal(index.sourcePapers.length, 298);
   assert.equal(index.candidates.length, 36);
   assert.equal(index.candidates.filter((candidate) => candidate.nestedInto.length === 0).length, 34);
-  assert.equal(index.runs.length, 0);
+  assert.equal(index.runs.length, 1);
   assert.match(index.sourceRevision, /^sha256:[a-f0-9]{64}$/);
   assert.match(adapter, /export const researchIndex = index as unknown as ResearchIndex/);
   assert.match(system, /export function buildResearchSnapshot/);

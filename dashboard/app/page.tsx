@@ -402,7 +402,7 @@ export default function Home() {
             <div className="section-shell not-now">
               <div className="section-heading compact"><div><p className="eyebrow">Attention guardrail</p><h2>现在不用管什么</h2></div></div>
               <ul>{leaderBrief.notNow.map((item) => <li key={item}>{item}</li>)}</ul>
-              <div className="truth-callout"><strong>最重要的诚实信号</strong><p>0 Run 不是空白要被 UI 填满，而是执行闭环尚未启动的精确状态。</p></div>
+              <div className="truth-callout"><strong>最重要的诚实信号</strong><p>{os.summary.actualRunCount === 0 ? "0 Run 不是空白要被 UI 填满，而是执行闭环尚未启动的精确状态。" : `已有 ${os.summary.actualRunCount} 个可审计 Run / ${os.summary.localResultCount} 条 Local Result；仍是机制级证据，尚未在真实系统上量化 prevalence。`}</p></div>
             </div>
           </section>
         </div>
