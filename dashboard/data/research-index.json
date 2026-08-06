@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/research-index.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-08-06T14:00:10+08:00",
+  "generatedAt": "2026-08-06T15:12:00+08:00",
   "sourceSnapshot": {
     "authority": "SOURCE_AUTHORITY.yaml",
     "vocabulary": "CONTEXT.md",
@@ -6929,6 +6929,47 @@
       ],
       "note": "Successor to E-C03-01; upgrades exact-string → real dense-vector retrieval.",
       "plannedRuns": []
+    },
+    {
+      "id": "E-C03-03",
+      "candidateIds": [
+        "C03"
+      ],
+      "title": "Cross-layer revocation canary with a real LLM summary layer",
+      "status": "ready",
+      "resource": "API (deployed LLM endpoint)",
+      "scale": "real doubao-seed-2-1-turbo; summarize + answer-from-memory; 3 topics",
+      "decisionQuestion": "真实 LLM 写的 summary 是否在 base purge 后仍泄漏撤权细节？",
+      "primaryMetric": "secret leak (revoked PIN value surfaces in the answer)",
+      "killerBaseline": "source-tag purge",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "done"
+        },
+        {
+          "label": "Evaluator",
+          "state": "done"
+        },
+        {
+          "label": "Baseline",
+          "state": "done"
+        },
+        {
+          "label": "Run",
+          "state": "done"
+        },
+        {
+          "label": "Decision",
+          "state": "active"
+        }
+      ],
+      "note": "Real LLM in the loop (endpoint ep-20260806150453-8b25v). Successor to E-C03-02.",
+      "plannedRuns": []
     }
   ],
   "runs": [
@@ -6977,6 +7018,29 @@
         "experiments/E-C03-02/runs/result.json"
       ],
       "stopReason": "completed: 300 episodes × 3 strategies + 2-channel attribution + base-only verification"
+    },
+    {
+      "id": "R-E-C03-03-001",
+      "specId": "E-C03-03",
+      "candidateIds": [
+        "C03"
+      ],
+      "status": "completed",
+      "manifest": {
+        "commit": "c387f7a14adc81684f3efe3b9fbb341075ff1e64",
+        "dataSnapshot": "synthetic-canary:pin-4417",
+        "startedAt": "2026-08-06T15:10:00+08:00",
+        "endedAt": "2026-08-06T15:12:00+08:00",
+        "environment": "python 3.14.3 + arkcli Responses API (network required)",
+        "entrypoint": "python3 experiments/E-C03-03/rag_llm_canary.py --topics 3",
+        "model": "doubao-seed-2-1-turbo-260628 via ep-20260806150453-8b25v (temperature 0, thinking disabled)",
+        "resource": "API",
+        "codeDigest": "sha256:a884aac6dd09d2b1982c437e84dbf37dadf8493a688d18cadd6e3f853c534e33"
+      },
+      "outputs": [
+        "experiments/E-C03-03/runs/result.json"
+      ],
+      "stopReason": "completed: 3 strategies, real LLM summary+answer, leak decision stable across 2 runs"
     }
   ],
   "artifacts": [
@@ -6999,6 +7063,16 @@
       "uri": "experiments/E-C03-02/runs/result.json",
       "title": "C03 revocation residue on dense-vector RAG + channel attribution",
       "summary": "Semantic retrieval: source-tag purge residual 100%, cross-layer repair 0%. Channel: summary=origination(16%), cache=propagation(0% alone→100% combined), base-only clean. Residue survives RAG; LLM-summary layer still stubbed."
+    },
+    {
+      "id": "A-R-E-C03-03-001",
+      "runId": "R-E-C03-03-001",
+      "valid": true,
+      "digest": "sha256:982fe69821dcd187aef287b52babfc4660d890ae747382e53aac59ef7f46f448",
+      "format": "application/json",
+      "uri": "experiments/E-C03-03/runs/result.json",
+      "title": "C03 revocation residue with a real LLM summary layer",
+      "summary": "Real LLM: source-tag purge STILL leaks (LLM summary retains 'PIN 4417', answering LLM reveals 4417); cross-layer repair re-summarizes clean → LLM refuses. Residue reproduces with a real model. One model / hand-built canary; not prevalence."
     }
   ],
   "evidenceLinks": [
@@ -7249,6 +7323,14 @@
       "basisType": "local-result",
       "scope": "Real dense-vector (cosine k-NN) RAG memory: benign revocation residue survives semantic retrieval; origination localized to summary layer, cache amplifies. LLM-summary layer stubbed (no endpoint); not deployed-system prevalence.",
       "refId": "A-R-E-C03-02-001"
+    },
+    {
+      "id": "EL-C03-run003",
+      "assertionId": "C03@v1.benign_revocation_residual_real_llm",
+      "relation": "supports",
+      "basisType": "local-result",
+      "scope": "Real LLM (doubao-seed-2-1-turbo) writes summary + answers: benign source-tag purge insufficient (stale LLM summary leaks the revoked value); cross-layer repair clears it. Demonstration on a synthetic canary, temperature 0, decision-level stable; not multi-model prevalence.",
+      "refId": "A-R-E-C03-03-001"
     }
   ],
   "decisions": [
@@ -7373,7 +7455,7 @@
       "verdictRef": "review/AUTO_RESEARCH_OS_SOP_VERDICT_20260804.md"
     }
   ],
-  "sourceRevision": "sha256:57e1dec8fb3ef5e18a2490a7bef909a0cc837fc9aa6f9c994f43f21a70cba56d",
+  "sourceRevision": "sha256:70e981517e27091dbf3867895bc7fc592e260cd0e2901e6e3d3d4d8f2a0a8594",
   "researchEvents": [
     {
       "id": "EVT-20260731-001",
@@ -12570,6 +12652,130 @@
         }
       ],
       "nextEvidenceAcceptance": "用户审阅 C03 第二条 Local Result（真实向量检索 + 通道归因）。真实 LLM-summary 层与真实 embedding 需要部署 endpoint（高影响，待用户拍板）。continue/kill 判断留用户。",
+      "outcome": "material-change"
+    },
+    {
+      "id": "EVT-2026-08-06-C03-run003",
+      "timestamp": "2026-08-06T15:12:00+08:00",
+      "actor": "agent:auto-research",
+      "type": "experiment.run",
+      "baseRevision": "sha256:57e1dec8fb3ef5e18a2490a7bef909a0cc837fc9aa6f9c994f43f21a70cba56d",
+      "affectedEntityIds": [
+        "E-C03-03",
+        "R-E-C03-03-001",
+        "A-R-E-C03-03-001",
+        "EL-C03-run003",
+        "C03"
+      ],
+      "changes": [
+        {
+          "op": "add",
+          "path": [
+            "experimentSpecs"
+          ],
+          "value": {
+            "id": "E-C03-03",
+            "candidateIds": [
+              "C03"
+            ],
+            "title": "Cross-layer revocation canary with a real LLM summary layer",
+            "status": "ready",
+            "resource": "API (deployed LLM endpoint)",
+            "scale": "real doubao-seed-2-1-turbo; summarize + answer-from-memory; 3 topics",
+            "decisionQuestion": "真实 LLM 写的 summary 是否在 base purge 后仍泄漏撤权细节？",
+            "primaryMetric": "secret leak (revoked PIN value surfaces in the answer)",
+            "killerBaseline": "source-tag purge",
+            "stages": [
+              {
+                "label": "Literature",
+                "state": "done"
+              },
+              {
+                "label": "Spec",
+                "state": "done"
+              },
+              {
+                "label": "Evaluator",
+                "state": "done"
+              },
+              {
+                "label": "Baseline",
+                "state": "done"
+              },
+              {
+                "label": "Run",
+                "state": "done"
+              },
+              {
+                "label": "Decision",
+                "state": "active"
+              }
+            ],
+            "note": "Real LLM in the loop (endpoint ep-20260806150453-8b25v). Successor to E-C03-02.",
+            "plannedRuns": []
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "runs"
+          ],
+          "value": {
+            "id": "R-E-C03-03-001",
+            "specId": "E-C03-03",
+            "candidateIds": [
+              "C03"
+            ],
+            "status": "completed",
+            "manifest": {
+              "commit": "c387f7a14adc81684f3efe3b9fbb341075ff1e64",
+              "dataSnapshot": "synthetic-canary:pin-4417",
+              "startedAt": "2026-08-06T15:10:00+08:00",
+              "endedAt": "2026-08-06T15:12:00+08:00",
+              "environment": "python 3.14.3 + arkcli Responses API (network required)",
+              "entrypoint": "python3 experiments/E-C03-03/rag_llm_canary.py --topics 3",
+              "model": "doubao-seed-2-1-turbo-260628 via ep-20260806150453-8b25v (temperature 0, thinking disabled)",
+              "resource": "API",
+              "codeDigest": "sha256:a884aac6dd09d2b1982c437e84dbf37dadf8493a688d18cadd6e3f853c534e33"
+            },
+            "outputs": [
+              "experiments/E-C03-03/runs/result.json"
+            ],
+            "stopReason": "completed: 3 strategies, real LLM summary+answer, leak decision stable across 2 runs"
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "artifacts"
+          ],
+          "value": {
+            "id": "A-R-E-C03-03-001",
+            "runId": "R-E-C03-03-001",
+            "valid": true,
+            "digest": "sha256:982fe69821dcd187aef287b52babfc4660d890ae747382e53aac59ef7f46f448",
+            "format": "application/json",
+            "uri": "experiments/E-C03-03/runs/result.json",
+            "title": "C03 revocation residue with a real LLM summary layer",
+            "summary": "Real LLM: source-tag purge STILL leaks (LLM summary retains 'PIN 4417', answering LLM reveals 4417); cross-layer repair re-summarizes clean → LLM refuses. Residue reproduces with a real model. One model / hand-built canary; not prevalence."
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "evidenceLinks"
+          ],
+          "value": {
+            "id": "EL-C03-run003",
+            "assertionId": "C03@v1.benign_revocation_residual_real_llm",
+            "relation": "supports",
+            "basisType": "local-result",
+            "scope": "Real LLM (doubao-seed-2-1-turbo) writes summary + answers: benign source-tag purge insufficient (stale LLM summary leaks the revoked value); cross-layer repair clears it. Demonstration on a synthetic canary, temperature 0, decision-level stable; not multi-model prevalence.",
+            "refId": "A-R-E-C03-03-001"
+          }
+        }
+      ],
+      "nextEvidenceAcceptance": "用户审阅 C03 第三条 Local Result（真实 LLM in the loop）。若 continue，下一步扩到多 topic×多模型得 prevalence 率 + 加真实 embedding 检索层，并试 mitigation prompt。endpoint ep-20260806150453-8b25v 可保留或拆除。continue/kill 留用户。",
       "outcome": "material-change"
     }
   ]

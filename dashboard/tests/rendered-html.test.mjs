@@ -39,8 +39,8 @@ test("server-renders the research operating system", async () => {
   assert.match(html, /Research Map/);
   assert.match(html, /Paper Portfolio/);
   assert.match(html, />34<\/strong><span>independent Candidates<\/span>/);
-  // Two real Runs landed (C03 E-C03-01 mechanism sim + E-C03-02 dense-vector RAG).
-  assert.match(html, />2<\/strong><span>Actual Runs<\/span>/);
+  // Three real Runs landed (C03: exact-string sim, dense-vector RAG, real-LLM RAG).
+  assert.match(html, />3<\/strong><span>Actual Runs<\/span>/);
   assert.match(html, />0<\/strong><span>Paper Projects<\/span>/);
   // C03 first Run landed: honest callout reflects auditable Run + mechanism-level evidence.
   assert.match(html, /可审计 Run.*Local Result.*机制级证据/);
@@ -69,7 +69,7 @@ test("keeps the canonical data seam, interactions, and social preview wired", as
   assert.equal(index.sourcePapers.length, 298);
   assert.equal(index.candidates.length, 36);
   assert.equal(index.candidates.filter((candidate) => candidate.nestedInto.length === 0).length, 34);
-  assert.equal(index.runs.length, 2);
+  assert.equal(index.runs.length, 3);
   assert.match(index.sourceRevision, /^sha256:[a-f0-9]{64}$/);
   assert.match(adapter, /export const researchIndex = index as unknown as ResearchIndex/);
   assert.match(system, /export function buildResearchSnapshot/);
