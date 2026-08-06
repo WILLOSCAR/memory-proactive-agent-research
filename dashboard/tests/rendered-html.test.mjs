@@ -42,7 +42,15 @@ test("server-renders the research operating system", async () => {
   // First real Run has landed: 1 Actual Run / 1 Local Result (canonical fact).
   assert.match(html, />1<\/strong><span>Actual Runs<\/span>/);
   assert.match(html, />0<\/strong><span>Paper Projects<\/span>/);
+  // C03 first Run landed: honest callout reflects auditable Run + mechanism-level evidence.
   assert.match(html, /可审计 Run.*Local Result.*机制级证据/);
+  // P1 IA reorg: the Now homepage compresses six Track cards into a compact matrix…
+  assert.match(html, /track-matrix/);
+  // …and the domain-teaching blocks are sunk below the operator path into
+  // Help / System, so they must NOT render on the default (Now) homepage.
+  assert.doesNotMatch(html, /designs, not executions/); // evidence-spine teaching → Help
+  assert.doesNotMatch(html, /每次研究交互必须落什么/);      // atomic settlement → System
+  assert.doesNotMatch(html, /Candidate 何时能形成 Paper Thread/); // promotion contract → Help
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });
 
@@ -66,15 +74,41 @@ test("keeps the canonical data seam, interactions, and social preview wired", as
   assert.match(adapter, /export const researchIndex = index as unknown as ResearchIndex/);
   assert.match(system, /export function buildResearchSnapshot/);
   assert.match(system, /RUN_MANIFEST_MISSING/);
-  assert.match(page, /type ViewId = "now" \| "map" \| "candidates" \| "experiments" \| "decisions" \| "papers" \| "assets"/);
+  assert.match(page, /type ViewId = "now" \| "map" \| "candidates" \| "experiments" \| "decisions" \| "papers" \| "library" \| "help" \| "system"/);
   assert.match(page, /TRACEABILITY GRAPH/);
   assert.match(page, /Candidate Workspace/);
   assert.match(page, /Experiment Center/);
   assert.match(page, /Decision & Lineage/);
-  assert.match(page, /Atomic writer/);
+  // P1 IA reorg: secondary Help / System / Library surfaces exist as view branches
+  // (single-page state switch, no router).
+  assert.match(page, /view === "help"/);
+  assert.match(page, /view === "system"/);
+  assert.match(page, /view === "library"/);
+  // Decisions is Inbox-first (audit §B2 / §A8): proposed decisions lead the view.
+  assert.match(page, /Decision inbox/);
+  assert.match(page, /现在需要你决定什么/);
+  // Now compresses the six Track cards into a compact matrix (audit §D3).
+  assert.match(page, /track-matrix/);
+  // Domain teaching sank OUT of the operator path into Help / System (audit §A6–A9).
+  // Assert each moved block by its NEW location: the object-model glossary + full
+  // promotion contract live in the Help branch; the atomic-settlement tutorial +
+  // one-write contract live in the System branch (which follows Help in source).
+  const helpBranch = page.indexOf('view === "help"');
+  const systemBranch = page.indexOf('view === "system"');
+  assert.ok(helpBranch > 0 && systemBranch > helpBranch);
+  const inHelp = (needle) => {
+    const at = page.indexOf(needle);
+    return at > helpBranch && at < systemBranch;
+  };
+  const inSystem = (needle) => page.indexOf(needle) > systemBranch;
+  assert.ok(inHelp("对象模型词典"), "object-model glossary must live in Help");
+  assert.ok(inHelp("Candidate 何时能形成 Paper Thread"), "promotion contract must live in Help");
+  assert.ok(inSystem("每次研究交互必须落什么"), "atomic settlement must live in System");
+  assert.ok(inSystem("Atomic writer"), "one-write contract must live in System");
   assert.match(css, /\.attention-grid/);
   assert.match(css, /\.candidate-table/);
   assert.match(css, /\.spec-board/);
+  assert.match(css, /\.track-matrix/);
   assert.match(syncScript, /Generated dashboard data is stale/);
   assert.match(syncScript, /\.research-settlement\.pending\.json/);
   assert.match(layout, /generateMetadata/);
