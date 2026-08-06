@@ -1,0 +1,75 @@
+schema_version: 2
+
+identity:
+  run_id: R-E-C03-02-001
+  experiment_id: E-C03-02
+  primary_branch: P-AI/M-AI (C03 Benign Revocation Residual)
+  owner: agent:auto-research
+  started_at: 2026-08-06T14:00:00+08:00
+  ended_at: 2026-08-06T14:00:10+08:00
+
+design:
+  hypothesis: >
+    The E-C03-01 cross-layer revocation residue (source-tag purge insufficient;
+    residue in summary/cache) reproduces in a REAL dense-vector RAG memory where
+    retrieval is cosine k-NN over embeddings, not exact-string matching.
+  independent_variable: repair_strategy {no_purge, source_tag_purge, cross_layer_repair} + channel ablation {cache, summary}
+  held_constants: [episodes=300, topics=12, seed=20260806, embed_dim=256]
+  primary_metric: residual_influence (revoked value still surfaces) + benign_retention
+  baselines: [source_tag_purge (killer baseline), no_purge (floor)]
+  stop_rule: >
+    CONTINUE if source_tag_purge residual > 5% AND cross_layer_repair <= 2%;
+    WEAKEN if source_tag_purge <= 2% (residue does not survive semantic retrieval).
+  resource_ceiling: CPU only, < 1 min
+
+reproducibility:
+  repo: memory-proactive-agent-research
+  commit_sha: fa6b836eb8a82ed74be778ec288541ba3a254031
+  dirty_diff_digest: experiments-untracked-at-run
+  environment: python 3.14.3 + numpy 2.5.0 (no network)
+  entrypoint: python3 experiments/E-C03-02/rag_canary.py --episodes 300 --topics 12 --seed 20260806
+  prompt_version: not_applicable
+  model: "none — retrieval is real cosine k-NN over hashed-n-gram dense vectors; LLM-summary layer is a vector-mean stub (no deployed endpoint)"
+  parameters: {episodes: 300, topics: 12, seed: 20260806, embed_dim: 256}
+  seed: 20260806
+  code_digest: sha256:eb3e7dee2f85dd93cbe77019a772e4f8532712cc9d38170d8c77f636fe5a2f06
+
+data:
+  source_uri: synthetic (generated in-process from seed)
+  snapshot_digest: sha256:eb3e7dee2f85dd93cbe77019a772e4f8532712cc9d38170d8c77f636fe5a2f06
+  license_or_consent: synthetic, no user data
+  leakage_check: n/a (deterministic ablation)
+
+runtime:
+  requested: {cpu: 1, gpu: 0}
+  exit_code: 0
+  wall_time_s: ~8
+  output_uri: experiments/E-C03-02/runs/result.json
+  artifact_digest: sha256:2bc32e66bd4d85a597353e8c0ccd065d9643f37ec3447a6c6edb9adcb20b01cd
+
+result_summary:
+  source_tag_purge_residual: 1.00
+  cross_layer_repair_residual: 0.00
+  no_purge_residual: 1.00
+  benign_retention_all: 1.00
+  channel_summary_only: 0.16   # summary is the origination leak
+  channel_cache_only: 0.00     # cache alone originates nothing
+  base_only_both_denied: 0.00  # base store purges cleanly (verified)
+  reading: >
+    CONTINUE-signal on real semantic retrieval. New nuance vs E-C03-01: the
+    summary is the ORIGINATION channel (16% residual on its own — semantic
+    retrieval sometimes still prefers the live base value), while the cache is a
+    PROPAGATION amplifier (0% on its own, but serves a stale-summary-derived
+    answer verbatim, driving the combined residual to 100%). Cross-layer repair
+    clears both; base-only purges cleanly.
+
+evidence_boundary: >
+  Real dense-vector retrieval (cosine k-NN over a genuine hashed-n-gram
+  vector-space model), deterministic + seeded + reproducible (identical digests
+  across runs). Strengthens E-C03-01 from exact-string identity to semantic
+  retrieval, and adds origination-vs-propagation channel attribution. Still NOT a
+  live LLM summary (account forbids model-ID calls; no endpoint deployed — a
+  high-impact action deferred to the user) and NOT real user data. The full
+  publishable claim awaits a real LLM-summary run; this establishes the residue
+  mechanism survives semantic retrieval and localizes its origination to the
+  summary layer.

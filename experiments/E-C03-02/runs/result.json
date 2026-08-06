@@ -1,0 +1,33 @@
+{
+  "candidate": "C03",
+  "channel_attribution_under_purge": {
+    "cache_only": 0.0,
+    "summary_only": 0.1575
+  },
+  "config": {
+    "embed_dim": 256,
+    "episodes": 300,
+    "seed": 20260806,
+    "topics": 12
+  },
+  "evidence_boundary": "Real dense-vector retrieval (cosine k-NN), deterministic + seeded + reproducible. Embeddings are a genuine hashed-n-gram vector-space model, not a lookup, so semantically-near revoked/base values genuinely compete. Still NOT a live LLM summary and NOT real user data: the summary layer is a vector-mean stub because no inference endpoint is deployed. Strengthens E-C03-01 from exact-string to semantic retrieval; the full claim awaits a real LLM-summary run.",
+  "experiment": "E-C03-02",
+  "llm_summary_layer": "stub (vector-mean; no live endpoint — account forbids model-ID calls, none deployed)",
+  "reading": "CONTINUE-signal (real vector retrieval): source-tag purge leaves 100% residual influence; cross-layer repair clears it (0%). Per-channel: summary-only=16%, cache-only=0% — residue carried by [summary]. The E-C03-01 finding survives a semantic-retrieval memory.",
+  "retrieval": "real cosine k-NN over hashed-n-gram L2-normalized dense vectors (numpy)",
+  "strategies": {
+    "cross_layer_repair": {
+      "benign_retention": 1.0,
+      "residual_influence": 0.0
+    },
+    "no_purge": {
+      "benign_retention": 1.0,
+      "residual_influence": 1.0
+    },
+    "source_tag_purge": {
+      "benign_retention": 1.0,
+      "residual_influence": 1.0
+    }
+  },
+  "title": "Cross-layer revocation canary on dense-vector RAG memory"
+}

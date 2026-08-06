@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/research-index.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-08-06T12:00:05+08:00",
+  "generatedAt": "2026-08-06T14:00:10+08:00",
   "sourceSnapshot": {
     "authority": "SOURCE_AUTHORITY.yaml",
     "vocabulary": "CONTEXT.md",
@@ -6888,6 +6888,47 @@
       ],
       "note": "Broad repair paper killed；保留不可逆 action slice。",
       "plannedRuns": []
+    },
+    {
+      "id": "E-C03-02",
+      "candidateIds": [
+        "C03"
+      ],
+      "title": "Cross-layer revocation canary on dense-vector RAG memory",
+      "status": "ready",
+      "resource": "CPU/API",
+      "scale": "300 episodes · real cosine k-NN · channel attribution",
+      "decisionQuestion": "撤权残留是否在语义检索(RAG)下复现？哪一层承载？",
+      "primaryMetric": "residual influence + per-channel attribution",
+      "killerBaseline": "source-tag purge",
+      "stages": [
+        {
+          "label": "Literature",
+          "state": "done"
+        },
+        {
+          "label": "Spec",
+          "state": "done"
+        },
+        {
+          "label": "Evaluator",
+          "state": "done"
+        },
+        {
+          "label": "Baseline",
+          "state": "done"
+        },
+        {
+          "label": "Run",
+          "state": "done"
+        },
+        {
+          "label": "Decision",
+          "state": "active"
+        }
+      ],
+      "note": "Successor to E-C03-01; upgrades exact-string → real dense-vector retrieval.",
+      "plannedRuns": []
     }
   ],
   "runs": [
@@ -6913,6 +6954,29 @@
         "experiments/E-C03-01/runs/result.json"
       ],
       "stopReason": "completed: 400 paired episodes across 3 strategies + per-layer matrix"
+    },
+    {
+      "id": "R-E-C03-02-001",
+      "specId": "E-C03-02",
+      "candidateIds": [
+        "C03"
+      ],
+      "status": "completed",
+      "manifest": {
+        "commit": "fa6b836eb8a82ed74be778ec288541ba3a254031",
+        "dataSnapshot": "synthetic:seed-20260806",
+        "startedAt": "2026-08-06T14:00:00+08:00",
+        "endedAt": "2026-08-06T14:00:10+08:00",
+        "environment": "python 3.14.3 + numpy 2.5.0, no network",
+        "entrypoint": "python3 experiments/E-C03-02/rag_canary.py --episodes 300 --topics 12 --seed 20260806",
+        "model": "none (real cosine k-NN dense-vector retrieval; LLM-summary layer = vector-mean stub, no endpoint)",
+        "resource": "CPU",
+        "codeDigest": "sha256:eb3e7dee2f85dd93cbe77019a772e4f8532712cc9d38170d8c77f636fe5a2f06"
+      },
+      "outputs": [
+        "experiments/E-C03-02/runs/result.json"
+      ],
+      "stopReason": "completed: 300 episodes × 3 strategies + 2-channel attribution + base-only verification"
     }
   ],
   "artifacts": [
@@ -6925,6 +6989,16 @@
       "uri": "experiments/E-C03-01/runs/result.json",
       "title": "C03 cross-layer revocation residual-influence matrix",
       "summary": "source_tag_purge residual 100% (localized to summary+cache); cross_layer_repair 0%; benign retention 100%. base_only + adapter purge cleanly."
+    },
+    {
+      "id": "A-R-E-C03-02-001",
+      "runId": "R-E-C03-02-001",
+      "valid": true,
+      "digest": "sha256:2bc32e66bd4d85a597353e8c0ccd065d9643f37ec3447a6c6edb9adcb20b01cd",
+      "format": "application/json",
+      "uri": "experiments/E-C03-02/runs/result.json",
+      "title": "C03 revocation residue on dense-vector RAG + channel attribution",
+      "summary": "Semantic retrieval: source-tag purge residual 100%, cross-layer repair 0%. Channel: summary=origination(16%), cache=propagation(0% alone→100% combined), base-only clean. Residue survives RAG; LLM-summary layer still stubbed."
     }
   ],
   "evidenceLinks": [
@@ -7167,6 +7241,14 @@
       "basisType": "local-result",
       "scope": "Deterministic 4-layer mechanism simulation: source-tag purge is insufficient (100% residual in summary+cache); cross-layer repair clears it. NOT prevalence in deployed systems.",
       "refId": "A-R-E-C03-01-001"
+    },
+    {
+      "id": "EL-C03-run002",
+      "assertionId": "C03@v1.benign_revocation_residual_rag",
+      "relation": "supports",
+      "basisType": "local-result",
+      "scope": "Real dense-vector (cosine k-NN) RAG memory: benign revocation residue survives semantic retrieval; origination localized to summary layer, cache amplifies. LLM-summary layer stubbed (no endpoint); not deployed-system prevalence.",
+      "refId": "A-R-E-C03-02-001"
     }
   ],
   "decisions": [
@@ -7291,7 +7373,7 @@
       "verdictRef": "review/AUTO_RESEARCH_OS_SOP_VERDICT_20260804.md"
     }
   ],
-  "sourceRevision": "sha256:cf2dd396c952d5b6b0a39d3aadd1674c53d13986d05dcd6b2c8f9f7166dbc0bc",
+  "sourceRevision": "sha256:57e1dec8fb3ef5e18a2490a7bef909a0cc837fc9aa6f9c994f43f21a70cba56d",
   "researchEvents": [
     {
       "id": "EVT-20260731-001",
@@ -12364,6 +12446,130 @@
         }
       ],
       "nextEvidenceAcceptance": "用户审阅 C03 首个 Local Result（跨层撤权残留矩阵）：决定 continue（做成 benchmark+systems，下一步在真实 RAG memory 上复现 summary/cache 泄漏）还是收窄 scope。高影响 continue/kill 判断留用户。",
+      "outcome": "material-change"
+    },
+    {
+      "id": "EVT-2026-08-06-C03-run002",
+      "timestamp": "2026-08-06T14:00:10+08:00",
+      "actor": "agent:auto-research",
+      "type": "experiment.run",
+      "baseRevision": "sha256:cf2dd396c952d5b6b0a39d3aadd1674c53d13986d05dcd6b2c8f9f7166dbc0bc",
+      "affectedEntityIds": [
+        "E-C03-02",
+        "R-E-C03-02-001",
+        "A-R-E-C03-02-001",
+        "EL-C03-run002",
+        "C03"
+      ],
+      "changes": [
+        {
+          "op": "add",
+          "path": [
+            "experimentSpecs"
+          ],
+          "value": {
+            "id": "E-C03-02",
+            "candidateIds": [
+              "C03"
+            ],
+            "title": "Cross-layer revocation canary on dense-vector RAG memory",
+            "status": "ready",
+            "resource": "CPU/API",
+            "scale": "300 episodes · real cosine k-NN · channel attribution",
+            "decisionQuestion": "撤权残留是否在语义检索(RAG)下复现？哪一层承载？",
+            "primaryMetric": "residual influence + per-channel attribution",
+            "killerBaseline": "source-tag purge",
+            "stages": [
+              {
+                "label": "Literature",
+                "state": "done"
+              },
+              {
+                "label": "Spec",
+                "state": "done"
+              },
+              {
+                "label": "Evaluator",
+                "state": "done"
+              },
+              {
+                "label": "Baseline",
+                "state": "done"
+              },
+              {
+                "label": "Run",
+                "state": "done"
+              },
+              {
+                "label": "Decision",
+                "state": "active"
+              }
+            ],
+            "note": "Successor to E-C03-01; upgrades exact-string → real dense-vector retrieval.",
+            "plannedRuns": []
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "runs"
+          ],
+          "value": {
+            "id": "R-E-C03-02-001",
+            "specId": "E-C03-02",
+            "candidateIds": [
+              "C03"
+            ],
+            "status": "completed",
+            "manifest": {
+              "commit": "fa6b836eb8a82ed74be778ec288541ba3a254031",
+              "dataSnapshot": "synthetic:seed-20260806",
+              "startedAt": "2026-08-06T14:00:00+08:00",
+              "endedAt": "2026-08-06T14:00:10+08:00",
+              "environment": "python 3.14.3 + numpy 2.5.0, no network",
+              "entrypoint": "python3 experiments/E-C03-02/rag_canary.py --episodes 300 --topics 12 --seed 20260806",
+              "model": "none (real cosine k-NN dense-vector retrieval; LLM-summary layer = vector-mean stub, no endpoint)",
+              "resource": "CPU",
+              "codeDigest": "sha256:eb3e7dee2f85dd93cbe77019a772e4f8532712cc9d38170d8c77f636fe5a2f06"
+            },
+            "outputs": [
+              "experiments/E-C03-02/runs/result.json"
+            ],
+            "stopReason": "completed: 300 episodes × 3 strategies + 2-channel attribution + base-only verification"
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "artifacts"
+          ],
+          "value": {
+            "id": "A-R-E-C03-02-001",
+            "runId": "R-E-C03-02-001",
+            "valid": true,
+            "digest": "sha256:2bc32e66bd4d85a597353e8c0ccd065d9643f37ec3447a6c6edb9adcb20b01cd",
+            "format": "application/json",
+            "uri": "experiments/E-C03-02/runs/result.json",
+            "title": "C03 revocation residue on dense-vector RAG + channel attribution",
+            "summary": "Semantic retrieval: source-tag purge residual 100%, cross-layer repair 0%. Channel: summary=origination(16%), cache=propagation(0% alone→100% combined), base-only clean. Residue survives RAG; LLM-summary layer still stubbed."
+          }
+        },
+        {
+          "op": "add",
+          "path": [
+            "evidenceLinks"
+          ],
+          "value": {
+            "id": "EL-C03-run002",
+            "assertionId": "C03@v1.benign_revocation_residual_rag",
+            "relation": "supports",
+            "basisType": "local-result",
+            "scope": "Real dense-vector (cosine k-NN) RAG memory: benign revocation residue survives semantic retrieval; origination localized to summary layer, cache amplifies. LLM-summary layer stubbed (no endpoint); not deployed-system prevalence.",
+            "refId": "A-R-E-C03-02-001"
+          }
+        }
+      ],
+      "nextEvidenceAcceptance": "用户审阅 C03 第二条 Local Result（真实向量检索 + 通道归因）。真实 LLM-summary 层与真实 embedding 需要部署 endpoint（高影响，待用户拍板）。continue/kill 判断留用户。",
       "outcome": "material-change"
     }
   ]
