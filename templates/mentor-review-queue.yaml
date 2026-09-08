@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "trackId": "<track-id>",
+  "updatedAt": null,
+  "states": ["new", "observed", "needs-review", "resolved"],
+  "deepReviewLimitPerInvocation": 1,
+  "items": []
+}

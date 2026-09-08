@@ -1,4 +1,4 @@
-schema_version: 2
+schema_version: 3
 
 identity:
   run_id:
@@ -7,15 +7,17 @@ identity:
   owner:
   started_at:
   ended_at:
+  supersedes_run_id: not_applicable
 
 design:
+  evidence_role: claim-bearing | pipeline-smoke
   hypothesis:
   independent_variable:
   held_constants: []
   primary_metric:
   baselines: []
   stop_rule:
-  resource_ceiling:
+  resource_ceiling:  # For Claim-bearing Runs describe the container CPU/API/GPU slice; never label it local-CPU.
 
 reproducibility:
   repo:
@@ -36,7 +38,38 @@ data:
   license_or_consent:
   leakage_check:
 
+reusable_assets:
+  records: []  # Each record: asset_id, kind, revision, uri, inventory_digest, total_bytes, receipt_uri, verification_receipt_uri, load_gate_receipt_uri, compatibility.
+  model_interfaces: []  # Claim model services: exact transport_route plus interface artifact URI/SHA, materialization receipt URI/SHA, source provenance/launch arg, dynamic render context or rendered-prompt digest, and cache namespace digest; must match the load receipt.
+  local_staging_path:
+  readback_state: pending | passed | failed
+  load_gate: pending | passed | failed
+
 runtime:
+  execution_state: requested | queued | running | completed | failed | cancelled
+  execution_lane: interactive-lab | batch-job
+  container_kind: stable-worker | devbox | job-shell
+  container_id:
+  student_lab_id: not_applicable
+  gpu_slice: []  # Empty is valid for container CPU/API execution; execution_lane must still be a remote container lane.
+  watchdog:
+    applicable:
+    policy_source_url:
+    rule_id:
+    rule_version:
+    metric:
+    aggregation_scope:
+    reclaim_condition:
+    alarm_after_hours:
+    kill_after_hours:
+    survival_target_percent:
+    observed_sm_percent:
+    observed_window:
+    observed_at:
+    state: not-applicable | unknown | below-target | survival-gated | warned | reclaimed
+    useful_workload_ref: not_applicable  # Required when another real Run keeps the owning Lab above the survival target.
+    event_id: not_applicable
+    earliest_kill_at: not_applicable
   requested:
     gpu:
     cpu:
@@ -49,10 +82,20 @@ runtime:
   ssh_target:
   resolved_host:
   remote_identity:
+  remote_repo_path:
+  storage_profile_id:
+  lab_verification_receipt_uri:
+  source_verification_receipt_uri:
+  asset_verification_receipt_uris: []
+  api_services: []  # Each record points to an external-service receipt for an existing ModelHub binding or User/PI-provided Endpoint, with resolved model/revision, region when applicable, transport, resolved_at, retirement check, and cache namespace.
   pool:
-  job_worker_instance:
-  storage_source_uri:
-  mount_probe:
+  worker_id: not_applicable
+  job_id: not_applicable
+  trial_id: not_applicable
+  instance_id:
+  job_worker_instance: deprecated-use-explicit-fields
+  storage_source_uri:  # Compatibility summary; the receipt is authoritative for the exact mount/HDFS checks.
+  mount_probe:  # Compatibility summary; do not use prose here instead of lab_verification_receipt_uri.
   exit_code:
   wall_time:
 
@@ -61,10 +104,26 @@ artifacts:
   logs_uri:
   metrics_uri:
   checkpoint_uri: not_applicable
+  run_report_uri:
+  archive_receipt_uri:
   digests: {}
 
 result:
-  status: positive | negative | mixed | failed | invalid | inconclusive
+  scientific_outcome: positive | negative | mixed | inconclusive | not-interpretable
+  reproduction_outcome: not-applicable | pipeline-smoke | reproduced | partial-reproduction | mismatch
   summary:
   integrity_notes:
-  decision: continue | branch | park | kill
+
+archive:
+  state: local-draft | local-verified | published | archive-verified | superseded
+  durable_uri:
+  digest_readback: pending | passed | failed
+
+review:
+  student_verdict:
+  mentor_settlement: unreviewed | mentor-accepted | mentor-rejected | settled
+  settlement_pointer: not_applicable
+
+decision:
+  recommended: continue | split | nest | merge | park | kill | no-change
+  next_evidence:

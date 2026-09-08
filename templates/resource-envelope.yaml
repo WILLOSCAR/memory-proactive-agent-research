@@ -1,0 +1,98 @@
+schema_version: 2
+envelope_id: "<required>"
+scope: "<PROGRAM-or-portfolio-or-track-or-student>"
+status: unset
+owner: "<required>"
+valid_from: null
+valid_until: null
+execution_placement: container-first
+
+limits:
+  active_evidence_cycles: null
+  cpu:
+    max_concurrent_tasks: null
+    max_wall_time_hours: null
+  gpu:
+    allowed_device_types: []
+    interactive_lab:
+      max_labs_per_student: null
+      preferred_min_devices_per_lab: null
+      min_devices_per_lab: null
+      max_devices_per_lab: null
+      compact_fallback:
+        allowed: null
+        allowed_device_types: []
+        devices_per_lab: null
+        workload_capacity_preflight_required: true
+        no_faster_feasible_full_route_required: true
+        route_redecision_required: true
+      persistent_across_idea_variants: null
+      persistent_across_cycles: null
+      useful_utilization_target_percent: null
+      reclaim_policy:
+        source_url: null
+        rule_id: null
+        rule_version: null
+        metric: null
+        aggregation_scope: null
+        comparison_operator: null
+        kill_threshold_percent: null
+        survival_target_percent: null
+        alarm_after_hours: null
+        kill_after_hours: null
+        effective_timezone: null
+        verified_at: null
+        synthetic_load_forbidden: true
+    batch_jobs:
+      allowed: null
+      max_concurrent_jobs_per_student: null
+      max_devices_per_job: null
+      max_wall_time_hours: null
+      one_active_submission_per_run: null
+  storage:
+    allowed_profile_ids: []
+    hdfs_read_roots: []
+    hdfs_write_roots: []
+    bytenas_read_roots: []
+    bytenas_write_roots: []
+    system_disk_working_set_max_gib: null
+    lab_verification_receipt_required: true
+    reusable_asset_manifest_required: true
+    reusable_asset_receipt_required: true
+    reusable_asset_load_receipt_required_when_applicable: true
+    inventory_and_digest_required: true
+    replacement_fast_verify_required: true
+    strong_verify_on_create_or_drift: true
+    framework_and_real_load_gate_required: true
+    max_output_gib: null
+  external_services:
+    max_cost: null
+    allowed_services: []
+    provider_preference_order:
+      - existing-modelhub-binding
+      - user-provided-endpoint
+    endpoint_creation_allowed: false
+    endpoint_provisioning_owner: user
+    user_provided_endpoint_ids: []
+    external_service_receipt_required: true
+
+escalation_gates:
+  scientific_gate_required: true
+  validity_gate_required: true
+  decision_gate_required: true
+
+notes: >-
+  Null values are not implicit permission. AUTO_RESEARCH_SOP.md records the
+  current Program standing authorization for one persistent capacity-qualified
+  remote container Lab per active Student: 4–8 GPU is preferred, while exactly
+  2xH20 is an allowed compact fallback only after workload-capacity and dynamic
+  route preflight. A concrete envelope may narrow or expand it and must record
+  explicit values and validity. Every Claim-bearing CPU/API/GPU
+  Run executes inside that Lab or a Job container. Lab allocation, hardware
+  verification, watchdog survival, scientific validity, and efficiency are
+  separate states. Every concrete reclaim_policy is a timestamped observation
+  of the live rule, not a permanent platform promise; the Program currently
+  uses monitored Worker SM above 30 percent as a safety target where the live
+  rule kills at or below 25 percent. Each real Run still declares its GPU slice
+  and actual Worker/Job/Instance. Remote data writes require an approved storage
+  root and a live probe. Synthetic or meaningless GPU load is never authorized.

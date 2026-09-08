@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "deployment_id": "<required-unique-deployment-id>",
+  "student_id": "<required-student-id>",
+  "cycle_id": "<required-live-cycle-id>",
+  "worker": {
+    "id": "<required-numeric-worker-id>",
+    "control_client": "/opt/tiger/mlx_deploy/mlxc",
+    "gpu_count": 4
+  },
+  "asset": {
+    "asset_id": "<required-exact-model-asset-id>",
+    "repo_id": "<required-hugging-face-org-and-repo>",
+    "revision": "<required-40-to-64-character-lowercase-hex-revision>",
+    "expected_file_count": 1,
+    "required_files": [
+      "config.json",
+      "<required-weight-index-or-weight-file>"
+    ],
+    "onion": {
+      "bucket": "ai-infra",
+      "name": "<required-exact-onion-model-name>"
+    },
+    "fallbacks": [
+      {
+        "kind": "hfd"
+      },
+      {
+        "kind": "hf_endpoint",
+        "endpoint": "http://huggingface-proxy-sg.byted.org"
+      },
+      {
+        "kind": "hf_endpoint",
+        "endpoint": "https://hf-mirror.com"
+      },
+      {
+        "kind": "modelscope"
+      }
+    ]
+  },
+  "workload": {
+    "class": "real_inference",
+    "synthetic": false,
+    "model_asset_id": "<must-match-the-loaded-model-asset>",
+    "dataset_asset_id": "<required-dataset-or-request-queue-asset-id>",
+    "purpose": "<required-useful-research-or-evaluation-purpose>",
+    "command": [
+      "/absolute/path/to/owned/python",
+      "/absolute/path/to/immutable/launcher.py",
+      "<exact-argv>"
+    ],
+    "output_root": "/absolute/non-overwriting/output/root",
+    "source_bindings": [
+      {
+        "path": "/absolute/path/to/immutable/launcher.py",
+        "sha256": "<required-64-character-lowercase-sha256>"
+      },
+      {
+        "path": "/absolute/path/to/model/config.json",
+        "sha256": "<required-64-character-lowercase-sha256>"
+      },
+      {
+        "path": "/absolute/path/to/frozen/dataset-or-queue",
+        "sha256": "<required-64-character-lowercase-sha256>"
+      }
+    ],
+    "health_command": [
+      "/usr/bin/jq",
+      "-e",
+      ".status == \"running\" or .status == \"passed\"",
+      "/absolute/path/to/workload/heartbeat.json"
+    ],
+    "tmux": {
+      "socket": "/absolute/path/to/owned/tmux.sock",
+      "session": "<required-unique-session-name>",
+      "adopt_existing": true,
+      "launch_if_missing": true
+    }
+  },
+  "survival": {
+    "required_gpu_count": 4,
+    "target_worker_mean_sm_percent": 30,
+    "comparison_operator": ">",
+    "aggregation_scope": "worker_mean_all_gpus",
+    "sample_interval_seconds": 10,
+    "consecutive_pass_samples": 6,
+    "max_wait_seconds": 900,
+    "synthetic_load_forbidden": true,
+    "rule": {
+      "source_url": "<required-live-watchdog-rule-url>",
+      "rule_id": "<required-live-watchdog-rule-id>",
+      "rule_version": "<required-live-rule-version>",
+      "metric": "SM utilization percent",
+      "aggregation_scope": "worker_mean_all_gpus",
+      "comparison_operator": "<=",
+      "kill_threshold_percent": 25,
+      "alarm_after_hours": 4,
+      "kill_after_hours": 8,
+      "effective_timezone": "UTC+8",
+      "verified_at": "<required-current-RFC3339-timestamp>",
+      "max_age_hours": 24
+    }
+  }
+}

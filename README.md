@@ -1,169 +1,140 @@
-# Memory / Proactive / Personalization Research
+# Auto Research · Memory / Proactive / Personalization
 
-更新日期：2026-08-04
+围绕长期 Agent 的记忆、主动行为与个性化开展研究：从论文和真实失败中提出问题，通过复现、证伪与受控实验形成可追溯的结论，再汇聚为论文与可复用资产。
 
-这是一个以论文产出为主、以 Auto Research 为执行方式的研究仓库。当前阶段从论文、benchmark 与真实 failure 中高速发现和证伪问题；暂不设置 Draft gate。
+研究由 Mentor、Student 和 Execution Controller 协作完成。课题身份、当前判断和恢复点保存在文件中；Agent 会话负责执行；实验包保存证据；看板帮助研究负责人查看全局并下钻。
 
-长期关注三条线：
+**阅读顺序：** [完整工作流程](docs/WORKFLOW.md) → [启动与恢复](START_HERE.md) → [协作 SOP](AUTO_RESEARCH_SOP.md) / [科研与实验规则](OPERATIONS.md)。
 
-1. AI Memory；
-2. Proactive Agent；
-3. Personalization。
+> GitHub 保存版本化文档与研究资产，不代表当前会话、GPU 或定时任务在线。部署工作区还需要角色状态、运行适配器、远端环境和访问权限；具体边界见[部署与运行前检查](docs/WORKFLOW.md#deployment)。文档中的本地运行路径使用代码格式标注。
 
-每条线都包含通用 AI 与生理/行为数据设置。`3×2` 是资产索引，不是学术 ontology 或 idea 边界；六个分支都可独立、持续地产生多个 idea、评测、实验和论文。
+## 研究范围
 
-## 日常入口
-
-文件出现术语或结论冲突时，先看 [SOURCE_AUTHORITY.yaml](SOURCE_AUTHORITY.yaml) 的权威层级；低权威文件只用于审计，不得覆盖 canonical 定义。
-
-| 文件 | 唯一职责 | 不应该放什么 |
+| Track | 研究方向 | 关注的问题空间 |
 | --- | --- | --- |
-| [CONTEXT.md](CONTEXT.md) | Auto Research OS 的唯一术语词典与计数口径 | 页面实现、任务状态、研究结论 |
-| [PROGRAM_MAP.md](PROGRAM_MAP.md) | 长期研究对象、3×2 索引、开放式评测轴 | 当前任务、运行日志 |
-| [LITERATURE_MAP.md](LITERATURE_MAP.md) | 六个方向的论文簇、共同盲区、Idea Forest 与 cross-branch 组合 | 逐篇来源流水、card 实时状态 |
-| [PROBLEM_BACKLOG.md](PROBLEM_BACKLOG.md) | 36 个候选、Top 12、问题定义、证据边界和初始路由 | card 实时列、周进度、长篇原始外部回答 |
-| [research-index.yaml](research-index.yaml) | 稳定 ID、关系、五维状态、时间戳和指针的唯一结构化事实源 | 长篇叙事、聊天记录 |
-| [research-events.jsonl](research-events.jsonl) | append-only Settlement 与 applied transition 历史 | 手工摘要、未生效建议 |
-| [CURRENT.md](CURRENT.md) | 方便人阅读的当前摘要与执行车道 | 覆盖结构化索引、另建一套计数 |
-| [OPERATIONS.md](OPERATIONS.md) | idea、实验、运行、评测与数据规则 | 研究方向判断、某周具体结果 |
-| [GPT_PRO_REVIEW.md](GPT_PRO_REVIEW.md) | GPT Pro 建议与 Codex 的采纳/修改/拒绝 | 未经复核的新事实 |
-| [sources/2026-07-30-adjacent-source-ledger.md](sources/2026-07-30-adjacent-source-ledger.md) | 已打开核验的原始论文、benchmark 与证据范围 | 本项目已复现论文或完成 novelty search 的暗示 |
+| M-AI | AI Memory | 长期记忆的存储、组织、使用、更新与撤回 |
+| M-PHY | Physiological Memory | 生理与行为历史中，哪些信息对后续决策充分且可靠 |
+| P-AI | Proactive Agent | 何时询问、等待、建议或行动，以及行动的反事实价值 |
+| P-PHY | Physiological Proactivity | 生理场景中的干预时机、接收性与因果可采性 |
+| U-AI | AI Personalization | 偏好学习、纠正、反馈解释与长期适应 |
+| U-PHY | Physiological Personalization | 个体差异、设备与分布漂移、闭环生理适应 |
 
-系统自身的产品目标、Leader 体验、对象模型与验收基线见 [REQUIREMENTS_AUTO_RESEARCH_OS.md](REQUIREMENTS_AUTO_RESEARCH_OS.md)；它是设计约束，不是日常研究状态入口。
+六条 Track 是研究组合与资产索引。具体课题可以跨领域借鉴方法；当前问题、优先级和证据以[研究索引](research-index.yaml)、[问题地图](PROBLEM_BACKLOG.md)与各 Student 工作区为准。
 
-新发现先写入 backlog；状态和关系的实质变化通过 Settlement writer 同时更新 `research-index.yaml` 与 `research-events.jsonl`，不要手工分两次改。只有进入真实 Experiment/Run 才增加目录。
+## 组织与分工
 
-## 当前研究口径
+```text
+User / PI
+└── Primary Portfolio Orchestrator        全局入口、优先级与跨方向协调
+    ├── Scoped Portfolio Orchestrator     按需管理非重叠子组合
+    ├── Research Orchestrator             跨方向研究讨论与 Student 会诊
+    └── Track Mentor                     每条 Track 的科学负责人
+        ├── Student 1–3                   每个 Student 负责一个长期课题
+        ├── Execution Controller coverage 运行巡检、恢复与有界修复
+        └── 临时 Engineer                复杂工程故障的专项修复
 
-共同研究对象是：
+外部指导工具：GPT Pro Teacher
+执行设施：交互 Lab / Batch Job / GPU / HDFS / 挂载云盘
+```
 
-> 一个在用户、历史、环境、权限、传感器、工具和自身记忆持续变化时，必须选择获取信息、等待、行动、不行动、撤回与修复的长期 Agent。
+- **Portfolio** 帮助 PI 理解全局、调整优先级和处理跨方向冲突；Research 职能在规模较小时可以兼任。
+- **Mentor** 给出课题边界，定期阅读阶段报告，审阅证据与 Handoff，沉淀团队知识。
+- **Student** 自主完成调研、问题深化、实现、实验、评测和判断更新。一个 Student 负责一个稳定 Mission，Idea 变体和顺序迭代留在同一工作区。
+- **Controller** 按定时计划检查会话、实验与资源，修复已授权的运行问题；一个 Controller 可看护多个 Student，但覆盖范围和写权必须明确。
+- **Engineer** 在复杂 incident 出现时临时介入，完成修复和验收后退出。
+- **Pro Teacher** 提供高层分析与审稿压力，由本地 owner 核验后决定是否采纳。
 
-P1–P6 已从“六个 root problems”降级为 paper seeds，并扩散为 36 个候选。当前优先候选是：
+Lead 是 Student 的优先级标签。每个 Student 同时只有一个科学状态 writer 和一个未结束 Cycle。架构中的角色不要求全部创建独立会话。
 
-- C01 lifecycle counterfactuals；
-- C03 benign revocation residual；
-- C13 multi-action deferral；
-- C23 closed-loop confounding；
-- C25 conflict attribution / negotiation / rollback；
-- C28 feedback-cause routing；
-- C31 drift attribution；
-- C08 missingness cause → acquisition/action → regret。
+## 一个课题怎样推进
 
-其中 C14 timing 与 C15 repair 的 broad standalone framing 已终止，改为 C13/C03 的 nested evaluator slices。这些仍只是最先验证的节点，不是已经批准的论文题目。benchmark、evaluation、diagnosis、causal/proxy audit 与 method 同样是一等产出。
+```text
+Mentor 给出 Mission、Seed Question、证据和资源边界
+    ↓
+Student 恢复唯一 Cycle
+    ↓
+论文 / 代码 / Benchmark 审计
+    ↓
+问题、竞争解释、Claim 与证伪条件
+    ↓
+冻结实验设计 → 远端 Cheap Probe / 复现 / 受控改进
+    ↓
+Evaluator 与独立审阅 → 阶段记录 → 下一条证据
+    └───────────────────────────────────────↺
+    ↓ 达到 Handoff 条件
+Mentor 审阅 → 正式研究结算 → 团队知识与看板更新
+```
 
-## 狂暴迭代，不狂暴下结论
+研究会根据证据返回前面的步骤。问题可以来自 Benchmark 缺口、方法失效、评测偏差、负结果、应用约束或跨领域矛盾，不要求所有课题长成同一种方法论文。
 
-- 每个分支持续维护至少 6 个不同 failure family；
-- 六条 Track 都保持可解释的信息流，但不要求同一深度或平均分配资源；
-- 每条 Track 显式处于 `explore / validate / maintain / parked` 之一；只有 `explore` 可把“每周补充候选”当作 brainstorm heuristic，不作为组合健康硬指标；
-- 每个候选必须有真实 failure、counterfactual、killer baseline、1–3 天 probe 和 kill/branch 条件；
-- CPU/API 工作可以全线并行，单卡 smoke 串行；
-- 每周至少 kill 或 branch 一个节点；
-- `current ledger 未观察到直接覆盖` 不等于 `此前没有工作研究过`；
-- prediction、acceptance、receptivity 和 causal treatment effect 不互相替代。
+**进展看判断发生了什么变化：** 原来相信什么，哪条证据改变了它，现在能声称什么，还缺什么验证。论文数量、Round 数、GPU 占用和文档数量只表示活动。
 
-## 实验基础设施
+详细步骤、每步产物和验收条件见[完整工作流程](docs/WORKFLOW.md#research-loop)。
 
-| 文件 | 用途 |
+## 三条持续闭环
+
+| 闭环 | 运行方式 | 留下什么 |
+| --- | --- | --- |
+| Student 科研 | 学习 → 提问 → 设计 → 实验 → 审阅 → 下一轮 | Cycle、Workspace、Run 包、阶段报告 |
+| Mentor 指导 | 每日阅读阶段报告 → 队列分流 → 按需深审 → Student 独立回应 | Dossier 快照、Review、Inbox、Acknowledgement |
+| 运行改进 | 发现故障 → 归因 → 修复 → 验证 → 更新规则 → 同会话恢复 | 运行 checkpoint、incident 与 prevention 记录 |
+
+Mentor 每日可以只观察进展，无需每次指导。普通 Research Round、一次 Run 完成、一个 Idea 失败或上下文切换都可以留在原 Cycle；正式回交条件见[Handoff 与结算](docs/WORKFLOW.md#settlement)。
+
+## 实验、存储与证据
+
+Student 在验收后的远端容器中运行会影响科研判断的 CPU、API 和 GPU 工作。本地负责阅读、代码编辑、静态检查、打包与控制。交互 Lab 用于复现和调试，固定版本的长实验走异步 Job；申请、排队、分配、验收、实际运行分别记录。
+
+HDFS 保存版本化数据、代码和不可覆盖实验归档；挂载云盘保存经核验的可复用工作集；机器临时盘用于可恢复缓存。运行前核对真实主机、挂载、源码与资产版本，运行后核对日志、结果、digest 和归档回执。
+
+每次真实 Run 都保留完整报告，包括复现目标或 Proposal、代码变化、准确命令、预期与实际、结果边界、失败归因和下一证据。负结果、执行失败、无效和证据不足分别记录。
+
+- [逐 Run 报告与归档标准](experiments/EXPERIMENT_REPORTING_STANDARD.md)
+- [资源和执行流程](system/scheduling/README.md)
+- [完整实验与存储说明](docs/WORKFLOW.md#execution)
+
+## 从哪里进入
+
+| 目的 | 入口 |
 | --- | --- |
-| [templates/run-manifest.yaml](templates/run-manifest.yaml) | requested/allocated/actual resource、数据 digest 与 Artifact 指针 |
+| 理解整个流程、文件如何协作 | [docs/WORKFLOW.md](docs/WORKFLOW.md) |
+| 启动或恢复 Mentor / Student | [START_HERE.md](START_HERE.md) |
+| 看整体研究对象和问题分布 | [PROGRAM_MAP.md](PROGRAM_MAP.md)、[LITERATURE_MAP.md](LITERATURE_MAP.md)、[PROBLEM_BACKLOG.md](PROBLEM_BACKLOG.md) |
+| 查正式研究状态与变化历史 | [research-index.yaml](research-index.yaml)、[research-events.jsonl](research-events.jsonl) |
+| 看方便阅读的摘要 | [CURRENT.md](CURRENT.md)，同时检查摘要时间和底层来源 |
+| 查术语和文档优先级 | [CONTEXT.md](CONTEXT.md)、[SOURCE_AUTHORITY.yaml](SOURCE_AUTHORITY.yaml) |
+| 查角色、权限、并发与交接 | [AUTO_RESEARCH_SOP.md](AUTO_RESEARCH_SOP.md)、[组织架构](system/architecture/FRAMEWORK.md) |
+| 查论文审计、Claim、Evaluator 和科学门槛 | [OPERATIONS.md](OPERATIONS.md) |
+| 查 Mentor / Student 通信和文件结构 | [通信协议](system/coordination/README.md)、[工作区目录](tracks/README.md) |
+| 查成功和失败经验的晋级方式 | [knowledge/README.md](knowledge/README.md) |
+| 查模板、底层脚本及部署依赖 | [文件与实现地图](docs/WORKFLOW.md#files) |
 
-GPU 集群、SSH、存储与实例验收的具体 runbook 与命令生成脚本在本地维护，含环境相关信息，不纳入公开版本库。
-
-卡量和队列会变化，不在研究文档里保存静态“空闲卡数”。每次实验都刷新资源，并以 Instance 内登录、`nvidia-smi` 和存储 probe 为准。
-
-## 当前树
-
-```text
-memory-proactive-agent-research/
-├── README.md
-├── PROGRAM_MAP.md
-├── LITERATURE_MAP.md
-├── PROBLEM_BACKLOG.md
-├── research-index.yaml              # 唯一结构化状态
-├── research-events.jsonl            # append-only Settlement
-├── dashboard/                       # 唯一浏览器 Control Plane
-├── schemas/
-│   └── research-index.schema.json
-├── scripts/
-│   └── settle-research-event.mjs    # 唯一状态写入口
-├── tests/
-│   └── settle-research-event.test.mjs
-├── CURRENT.md
-├── OPERATIONS.md
-├── GPT_PRO_REVIEW.md
-├── PROJECT_BRIEF.md                  # ChatGPT Project 简报
-├── templates/
-│   └── run-manifest.yaml
-├── sources/
-│   └── 2026-07-30-adjacent-source-ledger.md
-├── review/                           # 外部评审转录与独立 verdict
-├── operations/                       # 已冻结旧协议，不是日常入口
-├── experiments/                      # 真正开始后才创建子目录
-├── archive/                          # 已替代历史
-└── artifacts/                        # 不可变导出包
-```
-
-（GPU runbook、命令生成脚本与 Bridge 审计目录含环境相关信息，在本地维护，不纳入公开版本库。）
-
-## 文件增长规则
-
-- 不为“以后可能会用”创建空文件；
-- 不按每个 candidate 或 brainstorm 建文件；
-- 一个真实 Experiment 初始最多创建：
+## 文件布局
 
 ```text
-experiments/<experiment-id>/
-├── README.md
-└── runs/<run-id>/
-    └── manifest.yaml
+README.md / START_HERE.md                 阅读与启动入口
+CONTEXT.md / SOURCE_AUTHORITY.yaml        术语与权威边界
+AUTO_RESEARCH_SOP.md / OPERATIONS.md       协作和科研规则
+research-index.yaml / research-events.jsonl
+                                         正式研究状态与变更历史
+docs/WORKFLOW.md / docs/adr/               流程说明与架构决定
+system/                                  通信、调度和治理合同
+tracks/                                  Mentor / Student 工作界面
+templates/                               角色、Cycle、报告和回执模板
+sources/ / review/                       来源审计与评审记录
+experiments/                             实验设计、Run 和报告
+knowledge/                               已复核的可复用经验
+dashboard/                               桌面研究看板
 ```
 
-- 原始数据、checkpoint、日志和大输出不复制进文档树，只记录 URI、digest 和访问边界；
-- GPT Pro 每轮只保留不可变原文与独立 Codex verdict。
+具体 task ID、定时计划、GPU、挂载、Cycle 和运行状态在部署工作区中查询，不把 README 中的目录或角色当作已运行证明。旧协议保留作历史审计，优先级由 `SOURCE_AUTHORITY.yaml` 指定。
 
-## ChatGPT Project
+## 看板
 
-仓库绑定到 ChatGPT Project `Auto Research`。Project Sources 提供稳定背景，单轮 Task Bundle 提供精确快照；两者不能互相替代。
+看板采用“高密度研究总览 + 可下钻详情”：先看方向、问题、关键变化、证据、风险和下一步，再进入 Candidate、Source Paper、实验或对应会话。展示目标是桌面研究控制台。
 
-当前需要长期同步的核心来源是：
+前端采用 React、TypeScript、Tailwind CSS、shadcn/ui、Zod 和 Lucide；构建、同步与启动命令以 `dashboard/package.json` 中实际存在的 scripts 为准。研究视图来自正式索引和事件；运行观察、待审工作与模块状态单独显示。
 
-- `PROJECT_BRIEF.md`；
-- `PROGRAM_MAP.md`；
-- `LITERATURE_MAP.md`；
-- `PROBLEM_BACKLOG.md`；
-- `OPERATIONS.md`；
-- `sources/2026-07-30-adjacent-source-ledger.md`。
+## 使用边界
 
-`operations/ASSET_PROTOCOL.md`、`operations/WEEKLY_ITERATION.md` 和 `review/PORTFOLIO_SELF_AUDIT.md` 是此前评审看到的冻结快照，保留用于审计，但不再作为当前规范。
-
-## 浏览器 Control Plane
-
-只读看板已合并到本仓库的 `dashboard/`。更新结构化状态后执行：
-
-```bash
-cd dashboard
-npm run sync:data
-npm test
-```
-
-浏览器数据由 `research-index.yaml + research-events.jsonl` 生成，不解析聊天记录，也不把 External Review、Experiment Spec 或 Source Paper 结果显示成本地实验结果。
-
-## Settlement writer
-
-先取得当前精确 revision，把它写入 typed event 的 `baseRevision`；再 dry-run，最后提交：
-
-```bash
-node scripts/settle-research-event.mjs --revision
-node scripts/settle-research-event.mjs --event /absolute/path/to/event.json --dry-run
-node scripts/settle-research-event.mjs --event /absolute/path/to/event.json
-```
-
-writer 只接受 stable-ID 路径上的 `add / replace / link / unlink`，拒绝过期 revision、重复 ID、不完整 Run Manifest、无 digest/Run 的 Artifact、本地结果伪链接、把 External Review 当 support，以及非法 Decision state。写入期间使用独占锁和 durable journal；若进程在两个文件替换之间中断，先执行：
-
-```bash
-node scripts/settle-research-event.mjs --recover
-```
-
-Dashboard sync 在 lock 或 pending journal 存在时会停止，避免读取半次 Settlement。成功提交后再到 `dashboard/` 执行 `npm run sync:data`。
+本仓库使用文件和脚本约束 Agent 行为，自动化能力需按部署环境验收。文档与模板存在，不代表 GPU 分配、消息传递、会话恢复或后台调度已经开启。开始长期运行前，完成[部署检查](docs/WORKFLOW.md#deployment)，并以带时间戳的真实状态为准。

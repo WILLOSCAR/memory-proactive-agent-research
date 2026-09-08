@@ -1,0 +1,37 @@
+schema_version: 1
+track_id: "<required>"
+mentor_id: "MENTOR-<required>"
+status: idle # idle | active | blocked
+
+active_action: null
+last_completed_action_id: null
+action_queue: []
+
+student_roster: []
+
+action_resolution:
+  max_actions_per_goal: 1
+  implicit_review_handoff: true
+  implicit_review_incident: false
+  require_explicit_request_for:
+    - admit-mission
+    - review-incident
+    - review-portfolio
+
+action_pointer_contract:
+  required_fields: [action_id, action_type, status, subject_ref, input_refs]
+  action_types: [admit-mission, review-handoff, review-incident, review-portfolio]
+  queue_statuses: [ready, blocked]
+  active_action_adds: [mentor_cycle_id]
+
+file_first_runtime:
+  launch_file: "tracks/<track-id>/GOAL.md"
+  mentor_cycle_dir: "tracks/<track-id>/mentor-cycles/"
+  mentor_cycle_template: "templates/mentor-cycle.md"
+  one_live_action: true
+  one_writer: true
+
+notes: >-
+  Operational Track-level decision state only. Scientific working judgment stays
+  in Student workspaces; canonical research state changes only through the
+  settlement writer. Queue entries are pointers, not copied research records.

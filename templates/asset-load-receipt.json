@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "record_type": "asset_load_verification",
+  "asset_id": "<required>",
+  "revision": "<required>",
+  "student_id": "<required>",
+  "worker_id": "<required>",
+  "physical_hostname": "<current-container-hostname>",
+  "verified_root": "<absolute-path-in-current-container>",
+  "verified_at": "<RFC3339>",
+  "status": "passed | failed",
+  "framework": "<model-or-environment-runtime>",
+  "device_ids": [],
+  "model_interface": {
+    "applicable": false,
+    "transport_route": "<required-for-model-service-or-not_applicable>",
+    "artifacts": [
+      {
+        "kind": "<chat_template-or-other-interface-artifact>",
+        "uri": "<immutable-source-or-receipt-uri>",
+        "sha256": "<64-lowercase-hex>",
+        "receipt_uri": "<materialization-or-interface-receipt-uri>",
+        "receipt_sha256": "<64-lowercase-hex>",
+        "provenance_uri": "<owned-model-source-uri>",
+        "provenance_sha256": "<64-lowercase-hex>",
+        "launch_argument": "<exact-framework-argument-consuming-this-artifact>"
+      }
+    ],
+    "render_context": {
+      "mode": "static | dynamic | not_applicable",
+      "effective_value": "<bound-context-or-not_applicable>",
+      "rendered_prompt_digest": "<64-lowercase-hex-or-not_applicable>"
+    },
+    "cache_namespace_digest": "<64-lowercase-hex-or-not_applicable>"
+  },
+  "command_digest": "<sha256-of-exact-command-or-script>",
+  "stdout_uri": "<owned-evidence-path>",
+  "stderr_uri": "<owned-evidence-path>",
+  "evidence_digest": "<sha256-of-load-result>",
+  "note": "This receipt must come from a real model/environment/data load in the current physical container. For a Claim-bearing model service, model_interface.applicable is true and the exact route, interface artifacts, dynamic render context and cache namespace are required."
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auto-research.local/schemas/runtime-bindings.schema.json",
+  "title": "Observed Student Runtime Bindings",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "updatedAt", "source", "bindings"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "updatedAt": { "type": ["string", "null"] },
+    "source": { "const": "scripts/mentor-communication.mjs refresh-runtime" },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["studentId", "trackId", "controllerId", "profile", "declared", "observed", "effective"],
+        "properties": {
+          "studentId": { "type": "string", "minLength": 1 },
+          "trackId": { "type": "string", "minLength": 1 },
+          "controllerId": { "type": ["string", "null"] },
+          "profile": { "type": "string", "minLength": 1 },
+          "declared": { "type": "object" },
+          "observed": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "tmuxSession", "tmuxSocket", "claudeSessionId", "studentId", "activeCycleId", "paneDead", "runtimeState", "autoContinue", "controllerFreezeStartedAtEpoch", "controllerFreezeReason", "lastObservedAt"],
+            "properties": {
+              "kind": { "const": "claude-tmux" },
+              "tmuxSession": { "type": ["string", "null"] },
+              "tmuxSocket": { "type": ["string", "null"] },
+              "claudeSessionId": { "type": ["string", "null"] },
+              "studentId": { "type": ["string", "null"] },
+              "activeCycleId": { "type": ["string", "null"] },
+              "paneDead": { "type": ["string", "null"] },
+              "runtimeState": { "type": "string" },
+              "autoContinue": { "type": ["string", "null"] },
+              "controllerFreezeStartedAtEpoch": { "type": ["string", "null"] },
+              "controllerFreezeReason": { "type": ["string", "null"] },
+              "lastObservedAt": { "type": ["string", "null"] }
+            }
+          },
+          "effective": {
+            "type": "object",
+            "required": ["state", "reason"],
+            "properties": {
+              "state": { "enum": ["connected", "stale", "disconnected", "conflicted"] },
+              "reason": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

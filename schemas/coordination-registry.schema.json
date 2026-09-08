@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "coordination-registry.schema.json",
+  "type": "object",
+  "required": ["schemaVersion", "updatedAt", "source", "executionControllerBindings", "mentorBindings", "studentBindings"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "updatedAt": { "type": "string" },
+    "source": {
+      "type": "object",
+      "required": ["kind", "canonicalResearch", "remoteLive", "boundary"],
+      "properties": {
+        "kind": { "const": "local-coordination-registry" },
+        "canonicalResearch": { "const": false },
+        "remoteLive": { "const": false },
+        "boundary": { "type": "string", "minLength": 1 }
+      }
+    },
+    "portfolioBindings": { "type": "array" },
+    "executionControllerBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["controllerId", "roleType", "ownedTrackIds", "mentorRoleIds", "studentIds", "writerScope", "goalPath", "codexThreadId", "automationId", "status"],
+        "properties": {
+          "controllerId": { "type": "string", "pattern": "^CTRL-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+          "roleType": { "const": "execution-controller" },
+          "ownedTrackIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "enum": ["M-AI", "M-PHY", "P-AI", "P-PHY", "U-AI", "U-PHY"] }
+          },
+          "mentorRoleIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+          "studentIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^STU-[A-Z0-9]+(?:-[A-Z0-9]+)*$" }
+          },
+          "writerScope": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+          "goalPath": { "type": "string", "minLength": 1 },
+          "codexThreadId": { "type": ["string", "null"] },
+          "automationId": { "type": ["string", "null"] },
+          "status": { "enum": ["create-ready", "active", "paused", "closed", "unknown"] },
+          "lastVerifiedAt": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "mentorBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["roleId", "roleType", "trackId", "workspacePath", "writerScope", "codexThreadId", "status"],
+        "properties": {
+          "roleId": { "type": "string" },
+          "roleType": { "const": "track-mentor" },
+          "trackId": { "enum": ["M-AI", "M-PHY", "P-AI", "P-PHY", "U-AI", "U-PHY"] },
+          "workspacePath": { "type": "string" },
+          "writerScope": { "type": "array", "items": { "type": "string" } },
+          "codexThreadId": { "type": ["string", "null"] },
+          "status": { "enum": ["create-ready", "active", "paused", "closed", "unknown"] },
+          "lastVerifiedAt": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "studentBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["studentId", "trackId", "missionId", "researchLineId", "workspacePath", "writerScope", "writerExceptions", "codexThreadId", "status", "proLineage"],
+        "properties": {
+          "studentId": { "type": "string", "pattern": "^STU-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+          "trackId": { "enum": ["M-AI", "M-PHY", "P-AI", "P-PHY", "U-AI", "U-PHY"] },
+          "missionId": { "type": "string", "pattern": "^MS-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+          "researchLineId": { "type": "string", "pattern": "^RL-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+          "workspacePath": { "type": "string" },
+          "writerScope": { "type": "array", "items": { "type": "string" } },
+          "writerExceptions": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+          "codexThreadId": { "type": ["string", "null"] },
+          "status": { "enum": ["create-ready", "active", "paused", "closed", "unknown"] },
+          "lastVerifiedAt": { "type": ["string", "null"] },
+          "proLineage": {
+            "type": "object",
+            "required": ["status", "primaryConversation", "probes"],
+            "properties": {
+              "status": { "enum": ["unbound", "conversation-bound", "active-round", "paused", "unknown"] },
+              "primaryConversation": {
+                "oneOf": [
+                  { "type": "null" },
+                  {
+                    "type": "object",
+                    "required": ["conversationId", "bridgeThreadId", "status", "lastVerifiedAt"],
+                    "properties": {
+                      "conversationId": { "type": "string" },
+                      "bridgeThreadId": { "type": ["string", "null"] },
+                      "status": { "enum": ["bound-unverified", "ready", "active", "paused", "superseded"] },
+                      "lastVerifiedAt": { "type": ["string", "null"] }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "probes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["conversationId", "bridgeThreadId", "status", "lastVerifiedAt"],
+                  "properties": {
+                    "conversationId": { "type": "string" },
+                    "bridgeThreadId": { "type": ["string", "null"] },
+                    "status": { "enum": ["bound-unverified", "ready", "active", "paused", "superseded"] },
+                    "lastVerifiedAt": { "type": ["string", "null"] }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

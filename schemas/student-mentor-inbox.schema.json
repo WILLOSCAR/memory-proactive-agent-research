@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auto-research.local/schemas/student-mentor-inbox.schema.json",
+  "title": "Student Mentor Inbox",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "studentId", "updatedAt", "currentReviewId", "items"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "studentId": { "type": "string", "minLength": 1 },
+    "updatedAt": { "type": ["string", "null"] },
+    "currentReviewId": { "type": ["string", "null"] },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reviewId", "queueId", "reviewUri", "reviewSha256", "deliveredAt"],
+        "properties": {
+          "reviewId": { "type": "string", "minLength": 1 },
+          "queueId": { "type": "string", "minLength": 1 },
+          "reviewUri": { "type": "string", "minLength": 1 },
+          "reviewSha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "deliveredAt": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auto-research.local/schemas/mentor-review-queue.schema.json",
+  "title": "Mentor Review Queue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "trackId", "updatedAt", "states", "deepReviewLimitPerInvocation", "items"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "trackId": { "enum": ["M-AI", "M-PHY", "P-AI", "P-PHY", "U-AI", "U-PHY"] },
+    "updatedAt": { "type": ["string", "null"] },
+    "states": {
+      "const": ["new", "observed", "needs-review", "resolved"]
+    },
+    "deepReviewLimitPerInvocation": { "const": 1 },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "studentId", "type", "summary", "sourceUri", "sourceSha256", "createdAt", "status", "waitingFor", "reviewId", "resolvedAt"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^MQ-[A-Z0-9-]+-[0-9]{8}-[0-9]{3}$" },
+          "studentId": { "type": "string", "minLength": 1 },
+          "type": { "enum": ["progress", "question", "incident", "handoff"] },
+          "summary": { "type": "string", "minLength": 1 },
+          "sourceUri": { "type": "string", "minLength": 1 },
+          "sourceSha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "createdAt": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["new", "observed", "needs-review", "resolved"] },
+          "waitingFor": { "type": ["string", "null"] },
+          "reviewId": { "type": ["string", "null"] },
+          "resolvedAt": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

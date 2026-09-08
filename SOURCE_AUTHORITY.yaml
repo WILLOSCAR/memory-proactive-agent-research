@@ -1,5 +1,5 @@
 schema_version: 1
-updated_at: 2026-08-04
+updated_at: 2026-09-08
 purpose: >-
   Resolve precedence when local files or ChatGPT Project Sources use different
   generations of the Auto Research ontology. Lower-authority sources remain
@@ -14,7 +14,55 @@ precedence:
   - frozen_legacy
   - user_managed_reference
 
+topic_owners:
+  repository_navigation: README.md
+  end_to_end_workflow_guide: docs/WORKFLOW.md
+  human_launch: START_HERE.md
+  vocabulary: CONTEXT.md
+  macro_architecture: system/architecture/FRAMEWORK.md
+  collaboration_workflow: AUTO_RESEARCH_SOP.md
+  scientific_workflow: OPERATIONS.md
+  executable_settlement_event_contract: templates/research-event.json
+  experiment_run_archive_contract: experiments/EXPERIMENT_REPORTING_STANDARD.md
+  implementation_maturity: system/architecture/IMPLEMENTATION_STATUS.yaml
+  coordination_binding: system/coordination/registry.yaml
+  mentor_student_review_queue: tracks/<track-id>/mentor/REVIEW_QUEUE.yaml
+  mentor_daily_observation: tracks/<track-id>/mentor/daily/<YYYY-MM>.md
+  student_mentor_dossier: tracks/<track-id>/students/<student-id>/MENTOR_DOSSIER.md
+  mentor_review_delivery: system/coordination/delivery-ledger.jsonl
+  mentor_daily_automation_binding: system/coordination/mentor-automations.yaml
+  student_runtime_observation: system/coordination/runtime-bindings.yaml
+  track_mentor_goal_behavior: templates/track-mentor-goal.md
+  track_mentor_workspace_contract: templates/mentor-workspace.yaml
+  track_mentor_cycle_contract: templates/mentor-cycle.md
+  student_goal_behavior: templates/student-goal.md
+  execution_controller_goal_behavior: templates/execution-controller-goal.md
+  student_goal_incident_learning: system/coordination/student-goal-incidents.jsonl
+  student_gpu_lab_policy: AUTO_RESEARCH_SOP.md
+  student_container_runtime_binding: system/scheduling/student-labs.yaml
+  student_storage_profiles: system/scheduling/storage-profiles.json
+  reusable_storage_asset_receipt: templates/storage-asset-receipt.json
+  reusable_asset_load_receipt: templates/asset-load-receipt.json
+  gpu_quick_deploy_spec: templates/gpu-quick-deploy-spec.json
+  external_service_resolution_receipt: templates/external-service-receipt.json
+  legacy_asset_migration: system/migration/FINAL_RECEIPT.json
+
 sources:
+  README.md:
+    authority: supporting_context
+    governs: [repository_navigation, workflow_overview]
+    note: GitHub entry point; links to authoritative contracts and never freezes live role, resource, or research counts.
+
+  docs/WORKFLOW.md:
+    authority: supporting_context
+    governs: [end_to_end_workflow_guide, documentation_and_deployment_boundary]
+    note: Connects existing contracts for readers. AUTO_RESEARCH_SOP.md, OPERATIONS.md, and the reporting standard retain authority; deployment paths require actual runtime verification.
+
+  START_HERE.md:
+    authority: canonical
+    governs: [human_goal_launch, current_student_goal_index, file_first_runtime_entry]
+    note: This is the only human launch index. It does not store live research or Chat state.
+
   CONTEXT.md:
     authority: canonical
     governs: [vocabulary, entity_boundaries, evidence_terms]
@@ -23,9 +71,198 @@ sources:
     authority: canonical
     governs: [product_goal, domain_model, interface_contract, acceptance]
 
+  AUTO_RESEARCH_SOP.md:
+    authority: canonical
+    governs: [orchestrator_authority, agent_topology, chat_binding, student_wip, daily_mentor_supervision, execution_controller_role, optional_engineer_escalation, peer_diagnostic, pro_teacher_boundary, user_agent_interaction, handoff_contract]
+
+  system/architecture/FRAMEWORK.md:
+    authority: canonical
+    governs: [macro_authority_tree, module_boundaries, student_research_line_granularity, execution_controller_topology, external_pro_scopes, execution_control_plane, concurrency_boundary]
+
+  system/architecture/IMPLEMENTATION_STATUS.yaml:
+    authority: current_state
+    governs: [system_module_implementation_maturity]
+    note: Built, partial, and planned apply to system implementation only; this file does not override research, Chat runtime, or live resource state.
+
+  system/coordination/README.md:
+    authority: canonical
+    governs: [coordination_registry_contract, mentor_action_recovery, student_cycle_recovery, mentor_daily_review_queue, dossier_snapshot_contract, mentor_review_delivery, student_review_ack, runtime_binding_observation, claude_tmux_transport_boundary, communication_packet_contract, delivery_ack_contract, cross_track_writer_rule]
+    note: The contract is canonical. Review delivery is implemented for the Mentor-Student path; the generic Communication Packet delivery adapter remains incomplete.
+
+  system/coordination/registry.yaml:
+    authority: current_state
+    governs: [role_addressing, track_binding, student_mission_binding, student_research_line_lineage, execution_controller_binding, codex_task_binding, automation_binding, scoped_pro_lineage, writer_scope]
+    note: create-ready is file readiness only. Registry active means an observed task ID, while scientific execution is determined by the Student live Cycle. This registry never stores Research Judgment.
+
+  system/coordination/runtime-bindings.yaml:
+    authority: current_state
+    governs: [student_tmux_profile, observed_claude_session, observed_cycle_pointer, controller_freeze_observation, effective_runtime_connection]
+    note: This is a timestamped operational observation. Connected or frozen does not prove useful workload, GPU allocation, scientific progress, or a Codex task binding.
+
+  system/coordination/mentor-automations.yaml:
+    authority: current_state
+    governs: [mentor_daily_automation_id, mentor_target_thread, mentor_daily_cadence, mentor_notification_policy]
+    note: This is a readback of scheduler bindings. It does not prove a daily check completed; completion must be read from Track Mentor files and scheduler run state.
+
+  tracks/<track-id>/mentor/REVIEW_QUEUE.yaml:
+    authority: current_state
+    governs: [daily_mentor_triage, mentor_review_waiting_for, review_delivery_pointer]
+    note: This queue is independent from MENTOR_WORKSPACE Action state and never changes scientific or canonical state.
+
+  tracks/<track-id>/students/<student-id>/MENTOR_DOSSIER.md:
+    authority: supporting_context
+    governs: [student_stage_synthesis, mentor_facing_research_question, mentor_facing_next_evidence]
+    note: Student-owned synthesis only. Underlying Cycle, Run, report, log and evidence pointers remain authoritative; each queued digest is snapshotted immutably.
+
+  system/coordination/delivery-ledger.jsonl:
+    authority: current_state
+    governs: [mentor_review_sent_receipt, student_review_ack_receipt]
+    note: A receipt proves delivery or acknowledgement only. Applied guidance is not canonical Settlement or scientific Evidence.
+
+  system/coordination/student-goal-incidents.jsonl:
+    authority: current_state
+    governs: [student_runtime_incident_history, generalized_prevention_rule, prompt_delta_validation]
+    note: The registered Execution Controller Agent is the sole writer for its declared scope. This durable operational ledger records confirmed prevention decisions; it is not scientific Evidence and does not override Student, Run, Handoff, or Settlement state.
+
+  system/migration/asset-ledger.jsonl:
+    authority: current_state
+    governs: [legacy_asset_inventory, migration_class, proposed_target_owner, migration_action]
+    note: Migration classification does not upgrade Evidence, Run closure, Candidate state, or Decision state.
+
+  system/migration/FINAL_RECEIPT.json:
+    authority: current_state
+    governs: [legacy_source_digest, student_asset_ownership, migration_disposition, cleanup_receipt]
+    note: The receipt proves ownership and cleanup only; it does not promote legacy prose or filesystem observations into canonical Evidence or Decision.
+
+  system/scheduling/README.md:
+    authority: supporting_context
+    governs: [execution_controller_patrol, execution_control_plan, operational_learning, derived_experiment_queue_design, scale_up_gates, resource_envelope_design, student_gpu_lab_runtime, batch_job_lane]
+    note: fit-now and scale-up are planned derived views. The standing Student Lab authorization comes from AUTO_RESEARCH_SOP.md; this file explains its execution semantics but does not prove an allocation exists.
+
+  system/scheduling/student-labs.yaml:
+    authority: current_state
+    governs: [student_container_lifecycle, worker_or_job_binding, remote_execution_identity, storage_binding]
+    note: An entry proves only the recorded lifecycle state. `verified` additionally requires live SSH, Instance, nvidia-smi, framework, repository, and storage evidence; null IDs never imply allocation.
+
+  system/scheduling/storage-profiles.json:
+    authority: current_state
+    governs: [site_storage_profile, expected_mount_identity, allowed_hdfs_write_prefix]
+    note: A profile is an expected verification contract, not proof that a Worker inherited a mount or asset. Every physical Worker still requires a fresh machine-readable verification receipt.
+
+  infra/GPU_RUNBOOK.md:
+    authority: supporting_context
+    governs: [gpu_path_selection, ssh_preflight, worker_job_lifecycle, storage_verification, live_resource_probe]
+    note: Commands and dated observations are operational evidence only. A fresh Instance login, nvidia-smi, and storage probe are required for actual resource claims.
+
+  tracks/README.md:
+    authority: canonical
+    governs: [track_workspace_layout, mentor_goal_binding, student_goal_binding, student_workspace_interface, lazy_creation_rule, idea_variant_placement]
+
+  knowledge/README.md:
+    authority: canonical
+    governs: [team_knowledge_promotion, knowledge_entry_boundary, knowledge_index_boundary]
+
   OPERATIONS.md:
     authority: canonical
-    governs: [research_workflow, experiment_rules, settlement_sop]
+    governs: [research_judgment_workflow, evidence_rules, experiment_rules, settlement_sop]
+
+  experiments/EXPERIMENT_REPORTING_STANDARD.md:
+    authority: canonical
+    governs: [run_package, run_report, archive_receipt, hdfs_publication, run_closure]
+
+  templates/paper-audit.yaml:
+    authority: canonical
+    governs: [source_verification_record, paper_audit_record, deep_audit_completion]
+
+  templates/run-manifest.yaml:
+    authority: canonical
+    governs: [run_manifest_fields, orthogonal_run_states]
+
+  templates/run-report.md:
+    authority: canonical
+    governs: [per_run_scientific_report]
+
+  templates/archive-receipt.yaml:
+    authority: canonical
+    governs: [per_run_archive_verification]
+
+  templates/storage-asset-receipt.json:
+    authority: canonical
+    governs: [reusable_asset_inventory_receipt, fast_metadata_verification, strong_digest_verification]
+    note: Storage inventory verifies layout and bytes only; model, environment, framework, and CUDA load remain separate gates.
+
+  templates/asset-load-receipt.json:
+    authority: canonical
+    governs: [reusable_asset_real_load_receipt, current_container_compatibility_evidence]
+    note: This receipt is valid only for the named asset revision, physical container evidence, command digest, and device set; it does not establish Watchdog survival.
+
+  templates/gpu-quick-deploy-spec.json:
+    authority: canonical
+    governs: [gpu_quick_deploy_binding, useful_workload_binding, watchdog_survival_gate_fields]
+    note: The typed spec binds an exact asset, immutable workload, current Worker, and freshly verified live reclaim rule. Passing its survival gate is infrastructure evidence only, never scientific evidence or a permanent lease guarantee.
+
+  templates/external-service-receipt.json:
+    authority: canonical
+    governs: [external_provider_binding_resolution, user_provided_endpoint_resolution, client_transport_identity, retired_resource_preflight]
+    note: Provider and Endpoint bindings are time-specific. Endpoint provisioning is User/PI-owned; the receipt contains no credential and cannot override a user-retired resource.
+
+  templates/communication-packet.md:
+    authority: canonical
+    governs: [bounded_agent_communication_packet]
+
+  templates/research-event.json:
+    authority: canonical
+    governs: [material_change_settlement_event_fields, writer_input_contract]
+    note: no-material-change is a Cycle/Handoff outcome until a separate ledger is implemented.
+
+  templates/track-charter.md:
+    authority: canonical
+    governs: [track_charter_fields]
+
+  templates/student-charter.md:
+    authority: canonical
+    governs: [student_mission_charter_fields, research_line_revision_boundary]
+
+  templates/student-workspace.yaml:
+    authority: canonical
+    governs: [student_dynamic_workspace_fields, student_mission_boundary, research_line_lineage, research_line_cycle_key]
+
+  templates/student-assets.yaml:
+    authority: canonical
+    governs: [student_asset_pointer_fields, immutable_asset_pointer_contract, bootstrap_import_pointer_contract]
+
+  templates/track-mentor-goal.md:
+    authority: canonical
+    governs: [repository_bound_track_mentor_goal_behavior, mentor_action_resolution, mentor_daily_observation_boundary, mentor_stop_condition]
+
+  templates/mentor-workspace.yaml:
+    authority: canonical
+    governs: [mentor_dynamic_workspace_fields, one_live_mentor_action, mentor_queue_pointer_contract]
+
+  templates/mentor-cycle.md:
+    authority: canonical
+    governs: [mentor_action_audit_record, mentor_action_completion]
+
+  templates/student-goal.md:
+    authority: canonical
+    governs: [repository_bound_student_goal_behavior, continuous_mission_loop, stage_settlement, mentor_dossier_update, mentor_review_ack, research_line_write_scope, conditional_student_handoff]
+
+  templates/execution-controller-goal.md:
+    authority: canonical
+    governs: [execution_controller_tick, repair_boundary, engineer_escalation, operational_prevention_loop, mentor_runtime_delta]
+
+  templates/research-cycle.md:
+    authority: canonical
+    governs: [student_cycle_record, multi_round_record, stage_settlement_record, reproduction_gate_record, cycle_recovery_point]
+
+  templates/knowledge-entry.md:
+    authority: canonical
+    governs: [mentor_accepted_team_knowledge_record]
+
+  templates/resource-envelope.yaml:
+    authority: canonical
+    governs: [standing_resource_envelope_fields, student_lab_fields, batch_job_fields, scale_up_gate_fields]
+    note: Null values are not permission. AUTO_RESEARCH_SOP.md supplies the current Program-level Student Lab authorization; concrete allocations and any narrower override still require explicit values and live verification.
 
   PROJECT_BRIEF.md:
     authority: supporting_context
@@ -45,12 +282,12 @@ sources:
 
   research-index.yaml:
     authority: current_state
-    governs: [stable_ids, entity_relations, five_dimensional_state, timestamps, pointers]
+    governs: [stable_ids, entity_relations, six_dimensional_state, research_reviews, paper_audit_records, judgment_contract, idea_types, review_routes, problem_gates, candidate_reasoning, current_next_evidence, run_closure_state, judgment_waves, timestamps, pointers]
     note: This is the only structured state consumed by the dashboard.
 
   research-events.jsonl:
     authority: current_state
-    governs: [settlement_history, applied_transitions, decision_lineage]
+    governs: [settlement_history, judgment_deltas, applied_transitions, decision_lineage]
     note: Append-only event log; narrative summaries cannot override it.
 
   CURRENT.md:
@@ -70,6 +307,84 @@ sources:
   review/AUTO_RESEARCH_OS_SOP_VERDICT_20260804.md:
     authority: adopted_decision
     governs: [auto_research_os_architecture_delta, settlement_delta]
+
+  review/AUTO_RESEARCH_DASHBOARD_IA_VERDICT_20260806.md:
+    authority: adopted_decision
+    governs: [dashboard_information_architecture, reasoning_projection, one_write_ui_contract]
+
+  review/2026-08-06-memory-judgment-audit.md:
+    authority: supporting_context
+    governs: [memory_paper_proof_boundaries, memory_review_pressure]
+    note: Local verdict and routing pressure; not Local Result and not an applied Decision.
+
+  review/2026-08-06-proactive-judgment-audit.md:
+    authority: supporting_context
+    governs: [proactive_paper_proof_boundaries, proactive_review_pressure]
+    note: Local verdict and routing pressure; not Local Result and not an applied Decision.
+
+  review/2026-08-06-personalization-judgment-audit.md:
+    authority: supporting_context
+    governs: [personalization_paper_proof_boundaries, personalization_review_pressure]
+    note: Local verdict and routing pressure; not Local Result and not an applied Decision.
+
+  review/2026-08-06-research-judgment-operating-audit.md:
+    authority: supporting_context
+    governs: [judgment_first_workflow_audit, proposed_portfolio_routes]
+    note: Canonical state records adoption through Research Review objects and Settlement; the document alone cannot change lineage.
+
+  review/2026-08-08-six-track-gpt-pro-verdict.md:
+    authority: adopted_decision
+    governs: [six_track_review_verdict, portfolio_route_pressure, gpu_gate_pressure]
+    note: Local verdict of verified external-review pressure; not Local Result and not an applied Decision. D-003 stays proposed until user approval.
+
+  review/2026-08-08-six-track-local-deep-audits.md:
+    authority: supporting_context
+    governs: [six_track_proof_boundaries, six_track_review_pressure]
+    note: Local evidence audit / routing pressure; not Local Result unless an explicitly manifested Run is cited, and not an applied Decision.
+
+  review/2026-08-08-six-track-local-judgment-matrix.md:
+    authority: supporting_context
+    governs: [six_track_judgment_synthesis, proposed_portfolio_routes]
+    note: Local Codex synthesis / routing pressure; not Local Result and not an applied Decision.
+
+  review/2026-08-09-agent-workflow-chat-audit.md:
+    authority: supporting_context
+    governs: [timestamped_chat_observation, observed_control_tasks, target_topology_pressure]
+    note: This is an operations observation, not a formal coordination registry and not Research Evidence.
+
+  review/2026-08-09-six-track-standalone-idea-sync-plan.md:
+    authority: supporting_context
+    governs: [student_split_proposal, standalone_chat_handoff_pressure]
+    note: This is a proposed transition plan; it does not prove Student bindings were created.
+
+  review/2026-08-10-claude-sop-revision-audit.md:
+    authority: supporting_context
+    governs: [claude_suggestion_local_verdict, framework_revision_rationale, deferred_execution_decisions]
+    note: This audit explains adoption and deferral; it does not change research state or authorize resources.
+
+  docs/adr/0001-stable-root-interface.md:
+    authority: adopted_decision
+    governs: [stable_root_interface, additive_module_layout]
+
+  docs/adr/0002-serialized-settlement-first.md:
+    authority: adopted_decision
+    governs: [global_settlement_serialization, sharding_revisit_trigger]
+
+  docs/adr/0004-file-first-goal-runtime.md:
+    authority: adopted_decision
+    governs: [file_first_goal_runtime, human_launch_boundary, node_maintenance_boundary, cycle_recovery]
+
+  docs/adr/0005-event-driven-mentor-actions.md:
+    authority: adopted_decision
+    governs: [mentor_action_types, mentor_cycle_boundary, bootstrap_import_boundary, mentor_resource_authority]
+
+  docs/adr/0006-mentor-incident-review.md:
+    authority: adopted_decision
+    governs: [mentor_review_incident_action, engineering_incident_delivery_boundary, engineer_dispatch_return_path]
+
+  docs/adr/0003-student-mission-and-evolving-line.md:
+    authority: adopted_decision
+    governs: [student_mission_identity, seed_question_boundary, research_line_revision, student_fork_condition]
 
   review/PORTFOLIO_SELF_AUDIT.md:
     authority: frozen_legacy
@@ -93,9 +408,20 @@ remote_user_managed:
 
 rules:
   - Canonical vocabulary wins over frozen legacy terminology.
+  - Root canonical files are a stable public interface; new modules are additive and must not duplicate or silently relocate those authorities.
+  - A planned path or role is not a live instance; implementation maturity comes from system/architecture/IMPLEMENTATION_STATUS.yaml and runtime state still requires a fresh observation.
+  - AUTO_RESEARCH_SOP.md governs roles, Chat binding, WIP, user intent, and Handoff; OPERATIONS.md governs research evidence and execution semantics; the experiment reporting standard governs Run package closure and archival proof.
+  - Track and Student GOAL files are human launch interfaces and bindings, not dynamic state. Mentor Actions write through the bound Track Mentor Workspace and one Mentor Cycle; daily supervision uses the separate Track mentor directory and declared communication adapter. Student research writes through its bound workspace and owned Experiment paths.
+  - Execution Controller state is valid only through an explicit registry binding and its declared writer scope. Each Track has at most one active Controller coverage; a shared Controller must name every Mentor and Student, keep scopes disjoint, and emit Track-scoped deltas. Engineer work is ephemeral, incident-scoped, and cannot become a second runtime writer.
+  - Moving or indexing a legacy asset never promotes its scientific status. A Bootstrap Import is not a Student Cycle, Handoff, Evidence, Judgment Delta, Mentor verdict, or Settlement; promotion still requires the original evidence gates and reviewed Settlement.
   - Current-state files may change research state but may not redefine entities.
+  - Every Claim-bearing Run executes inside a verified remote Student Lab or Job container. Local commands are control-plane smoke only and cannot become Evidence or support Stage Settlement.
   - Verified evidence supports only its recorded scope.
   - External review never becomes evidence and changes state only through a local verdict.
   - Dashboard and Leader Brief must derive from canonical/current-state assets, not chat transcripts.
   - Structured counts and state come from research-index.yaml; CURRENT.md is a readable projection.
+  - Candidate current-next evidence has one canonical field; Proposal, Reasoning, and Leader narratives may only reference it.
   - A Research Event records change history but does not become evidence unless it contains a valid typed evidence pointer.
+  - Research Question and declarative Claim are distinct; a question cannot be indexed as a Claim.
+  - Review Route is proposed pressure until an explicit Decision is applied; it cannot silently mutate Candidate lineage.
+  - Source, Candidate, document, page, and Run counts are inventory/activity; material Judgment Delta is the primary progress unit.

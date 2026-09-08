@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "asset_id": "<required>",
+  "kind": "model-cache | environment | dataset | checkpoint | evaluator | source-lock | other",
+  "revision": "<required>",
+  "created_at": "<RFC3339>",
+  "root_uri": "<durable-URI-not-a-secret>",
+  "inventory": {
+    "file_count": 0,
+    "symlink_count": 0,
+    "directory_count": 0,
+    "total_file_bytes": 0,
+    "metadata_digest": "<sha256-of-canonical-entry-metadata>",
+    "inventory_digest": "<sha256-of-canonical-entry-list>",
+    "entries": []
+  },
+  "verification": {
+    "mode": "created | fast | strong",
+    "verified_at": null,
+    "verified_root": null,
+    "status": "pending | passed | failed",
+    "error": null
+  },
+  "load_gate": {
+    "required": true,
+    "status": "pending | passed | failed | not-applicable",
+    "evidence_uri": null,
+    "note": "Inventory verification proves bytes and layout, not framework/model compatibility or CUDA loading."
+  }
+}

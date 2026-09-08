@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auto-research.local/schemas/mentor-automations.schema.json",
+  "title": "Mentor Daily Automations",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "updatedAt", "automations"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "updatedAt": { "type": "string", "minLength": 1 },
+    "automations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["trackId", "mentorRoleId", "automationId", "targetThreadId", "cadence", "status", "notificationPolicy", "contractPath", "lastVerifiedAt"],
+        "properties": {
+          "trackId": { "enum": ["M-AI", "M-PHY", "P-AI", "P-PHY", "U-AI", "U-PHY"] },
+          "mentorRoleId": { "type": "string", "minLength": 1 },
+          "automationId": { "type": "string", "minLength": 1 },
+          "targetThreadId": { "type": "string", "minLength": 1 },
+          "cadence": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["ACTIVE", "PAUSED"] },
+          "notificationPolicy": { "enum": ["failed_runs_only"] },
+          "contractPath": { "const": "templates/daily-mentor-check.md" },
+          "lastVerifiedAt": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

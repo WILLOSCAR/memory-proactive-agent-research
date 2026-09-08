@@ -1,0 +1,21 @@
+schema_version: 3
+student_id: "<required>"
+mission_id: "MS-<required>"
+research_line_id: "<required>"
+updated_at: "<ISO-8601>"
+
+assets:
+  sources: []
+  reviews: []
+  code_revisions: []
+  experiment_specs: []
+  runs: []
+  artifacts: []
+  external_review_records: []
+  reusable_assets: []
+  bootstrap_imports: []
+
+pointer_contract:
+  required_fields: [id, uri, sha256]
+  allow_mutable_uri_without_digest: false
+  copy_large_payloads_into_workspace: false

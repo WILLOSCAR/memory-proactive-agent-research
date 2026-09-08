@@ -1,0 +1,66 @@
+auditVersion: 2
+
+auditId:
+sourceId:
+candidateId:
+trackId:
+auditor:
+auditedAt:
+
+# Legacy flat fields remain required by Candidate Reasoning.paperBriefs until
+# migration completes. Fill them from the v2 sections without widening scope.
+researchProblem:
+method:
+coreIdea:
+keyAssumption:
+experiment:
+result:
+limitation:
+inspiration:
+relation:
+detailBoundary:
+
+sourceVerification:
+  sourceVersion:
+  primaryUrls: []
+  accessScope: full-source | official-assets | abstract-only
+  openedAssets: []
+  verificationNotes:
+
+paperCore:
+  contribution:
+  insight:
+  goal:
+  data:
+  training:
+  evaluation:
+
+proofBoundary:
+  researchProblem:
+  keyAssumptions: []
+  coreMechanism:
+  directResults:
+  unsupportedInferences: []
+  benchmarkAdequacy:
+  failureConditions: []
+  limitations:
+  openProblem:
+
+researchDelta:
+  relationToCandidate:
+  priorJudgment:
+  changedByThisSource:
+  currentJudgment:
+  falsifier:
+  consequence: strengthen | narrow | weaken | contradict | no-change
+  nextEvidence:
+
+completeness:
+  auditState: inventory | source-verified | structured-audit | deep-audit
+  unknownFields: []
+  detailBoundary:
+  localReviewer:
+
+# Embed the completed record in Candidate Reasoning.paperBriefs or a stable
+# Research Review. Do not create one Markdown file per paper.
+# abstract-only records cannot use auditState: deep-audit.

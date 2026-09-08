@@ -1,0 +1,40 @@
+schema_version: 1
+
+identity:
+  run_id:
+  experiment_id:
+  created_at:
+  publisher:
+
+publication:
+  state: local-draft | local-verified | published | archive-verified | superseded
+  destination_uri:
+  immutable: true
+  supersedes_run_id: not_applicable
+  staging_uri: not_applicable
+  promotion_method:
+
+inventory:
+  declared_files: []
+  observed_files: []
+  unexpected_files: []
+  missing_files: []
+  transient_entries: []
+
+digests:
+  algorithm: sha256
+  local_manifest_uri:
+  remote_manifest_uri:
+  matched: false
+  readback_probe:
+
+boundary:
+  contains_sensitive_data: false
+  excluded_assets: []
+  claim_ceiling:
+
+verification:
+  verifier:
+  verified_at:
+  status: pending | passed | failed
+  failure_reason: not_applicable

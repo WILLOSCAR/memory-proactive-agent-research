@@ -1,0 +1,32 @@
+{
+  "id": "EVT-YYYY-MM-DD-<stable-slug>",
+  "timestamp": "<ISO-8601>",
+  "actor": "codex",
+  "type": "<typed-event-name>",
+  "baseRevision": "sha256:<exact-current-revision>",
+  "affectedEntityIds": [
+    "<stable-entity-id>"
+  ],
+  "changes": [
+    {
+      "op": "replace",
+      "path": [
+        "<collection>",
+        "<stable-entity-id>",
+        "<field>"
+      ],
+      "value": "<new-value>"
+    }
+  ],
+  "decisionRefs": [],
+  "decisionNeededFromUser": "none",
+  "nextEvidenceAcceptance": "<one observable acceptance test>",
+  "blocker": "none",
+  "outcome": "material-change",
+  "narrative": {
+    "priorJudgment": "<before or unknown>",
+    "changed": "<what changed and why it matters>",
+    "newJudgment": "<after>",
+    "likelyFalsifier": "<result that would overturn the new judgment>"
+  }
+}

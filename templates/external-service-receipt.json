@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "record_type": "external_service_resolution",
+  "resource_kind": "modelhub-binding | user-provided-endpoint",
+  "provider": "<required>",
+  "provider_binding": "<required-existing-binding-name>",
+  "provisioning_policy": {
+    "endpoint_creation_allowed": false,
+    "endpoint_provisioning_owner": "User/PI",
+    "binding_source": "existing-modelhub-config | user-supplied-endpoint"
+  },
+  "endpoint_id": null,
+  "resolved_model_id": "<required>",
+  "resolved_model_revision": null,
+  "region": null,
+  "base_url": "<redacted-non-secret-origin>",
+  "client_transport": "modelhub-openai-compatible | arkcli | openai-compatible-http | provider-sdk | other",
+  "resolved_at": "<RFC3339>",
+  "resolver": {
+    "tool": "<required>",
+    "command_digest": "<sha256-of-secret-free-command>",
+    "raw_receipt_uri": "<owned-evidence-path>",
+    "raw_receipt_digest": "<sha256>"
+  },
+  "retirement_preflight": {
+    "source_uri": "infra/GPU_RUNBOOK.md#用户退役的外部资源",
+    "source_digest": "<sha256>",
+    "checked_at": "<RFC3339>",
+    "status": "allowed | retired | unknown | not-applicable-no-endpoint"
+  },
+  "status": "passed | failed",
+  "note": "endpoint_id is required only for resource_kind=user-provided-endpoint and must come from the User/PI. Agents never create or deploy an Endpoint. Never record API keys, Authorization headers, tokens, or complete private environment variables."
+}

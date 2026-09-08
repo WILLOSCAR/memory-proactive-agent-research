@@ -1,0 +1,67 @@
+schema_version: 3
+student_id: "<required>"
+track_id: "<required>"
+mission_id: "MS-<required>"
+research_line_id: "<required>"
+based_on_revision: "sha256:<canonical-revision>"
+current_instruction_packet: null
+lead_label: false
+status: create-ready # create-ready | active | awaiting-mentor-review | parked | killed | closed | conflict
+
+mission:
+  statement: "<stable problem-space envelope>"
+  importance: "<why this Mission is worth sustained work>"
+  in_scope: []
+  out_of_scope: []
+  mentor_review_gates: []
+
+seed_questions: []
+
+problem_identity:
+  statement: "<current Research Line question>"
+  primary_estimand: "<required>"
+  allowed_claim: "<required>"
+  excluded_claims: []
+  strongest_falsifier: "<required>"
+  split_condition: "<required>"
+
+candidate_pointers: []
+idea_variants: []
+competing_explanations: []
+research_line_lineage:
+  current_revision: "RLR-001"
+  revisions:
+    - id: "RLR-001"
+      transition: seed
+      before: null
+      after: "<initial Research Line question>"
+      trigger: "Mentor Brief / Seed Question"
+      evidence_refs: []
+      consequence: "bootstrap"
+  allowed_transitions: [refine, narrow, generalize, reframe, sequential-pivot, fork-proposal]
+current_next_evidence:
+  deliverable: "<one deliverable>"
+  acceptance_test: "<observable test>"
+  stop_or_escalate: "<condition>"
+
+execution_runtime:
+  policy: container-first
+  lab_registry: system/scheduling/student-labs.yaml
+  required_before_claim_bearing_run: true
+
+active_cycle_id: null
+cycle_state: idle # idle | initializing | active | paused | handed-off | settled | closed
+last_handoff_cycle_id: null
+bootstrap_import_refs: []
+
+file_first_runtime:
+  launch_file: "tracks/<track-id>/students/<student-id>/GOAL.md"
+  cycle_template: "templates/research-cycle.md"
+  one_live_cycle: true
+  one_writer: true
+
+notes: >-
+  This is the Student's dynamic working view, not a second canonical research
+  database. The Mission is stable; the Research Line may evolve through recorded
+  revisions. Candidate, Evidence, Run, Artifact, Decision, and Source fields are
+  represented by stable pointers only.
